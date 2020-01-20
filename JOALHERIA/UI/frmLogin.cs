@@ -125,5 +125,20 @@ namespace JOALHERIA.UI
             codigo_login = loginDAL.Cadastrar_Login(loginBLL);
         }
 
+        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                txtSenha.Focus();
+            }
+        }
+
+        private void txtSenha_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+                btnLogar.PerformClick();
+
+            
+        }
     }//
 }//
