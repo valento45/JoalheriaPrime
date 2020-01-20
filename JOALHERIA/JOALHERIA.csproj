@@ -1,0 +1,430 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DB43CA47-19F3-4BED-B9DD-07EAC1204868}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JOALHERIA</RootNamespace>
+    <AssemblyName>JOALHERIA</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="nunit.framework, Version=2.5.10.11092, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUsuario.Designer.cs">
+      <DependentUpon>frmUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\DataSet1.cs">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="UI\DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="UI\DataSetVenda.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetVenda.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmBackup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmBackup.Designer.cs">
+      <DependentUpon>frmBackup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmBuscaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmBuscaCliente.Designer.cs">
+      <DependentUpon>frmBuscaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmBuscaProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmBuscaProduto.Designer.cs">
+      <DependentUpon>frmBuscaProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmCategoria.Designer.cs">
+      <DependentUpon>frmCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmCliente.Designer.cs">
+      <DependentUpon>frmCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmConsultarOrdem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmConsultarOrdem.Designer.cs">
+      <DependentUpon>frmConsultarOrdem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmConsultarVendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmConsultarVendas.Designer.cs">
+      <DependentUpon>frmConsultarVendas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmImprimirVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmImprimirVenda.Designer.cs">
+      <DependentUpon>frmImprimirVenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmCaixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmCaixa.Designer.cs">
+      <DependentUpon>frmCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmMenu.Designer.cs">
+      <DependentUpon>frmMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmOrdemServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmOrdemServico.Designer.cs">
+      <DependentUpon>frmOrdemServico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmProduto.Designer.cs">
+      <DependentUpon>frmProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmRelVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmRelVenda.Designer.cs">
+      <DependentUpon>FrmRelVenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmServico.Designer.cs">
+      <DependentUpon>frmServico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmVenda.Designer.cs">
+      <DependentUpon>frmVenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmVerItensDaVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmVerItensDaVenda.Designer.cs">
+      <DependentUpon>frmVerItensDaVenda.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmUsuario.resx">
+      <DependentUpon>frmUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UI\frmBackup.resx">
+      <DependentUpon>frmBackup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmBuscaCliente.resx">
+      <DependentUpon>frmBuscaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmBuscaProduto.resx">
+      <DependentUpon>frmBuscaProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmCategoria.resx">
+      <DependentUpon>frmCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmCliente.resx">
+      <DependentUpon>frmCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmConsultarOrdem.resx">
+      <DependentUpon>frmConsultarOrdem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmConsultarVendas.resx">
+      <DependentUpon>frmConsultarVendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmImprimirVenda.resx">
+      <DependentUpon>frmImprimirVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmCaixa.resx">
+      <DependentUpon>frmCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmMenu.resx">
+      <DependentUpon>frmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmOrdemServico.resx">
+      <DependentUpon>frmOrdemServico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmProduto.resx">
+      <DependentUpon>frmProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmRelVenda.resx">
+      <DependentUpon>FrmRelVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmServico.resx">
+      <DependentUpon>frmServico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmVenda.resx">
+      <DependentUpon>frmVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmVerItensDaVenda.resx">
+      <DependentUpon>frmVerItensDaVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\RelVendas.rdlc" />
+    <EmbeddedResource Include="UI\ReportOrdem.rdlc" />
+    <EmbeddedResource Include="UI\ReportVenda.rdlc" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="UI\DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="UI\DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="UI\DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="UI\DataSetVenda.xsc">
+      <DependentUpon>DataSetVenda.xsd</DependentUpon>
+    </None>
+    <None Include="UI\DataSetVenda.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetVenda.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="UI\DataSetVenda.xss">
+      <DependentUpon>DataSetVenda.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\Login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\NOK.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\Confirmar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\Cancelar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\Notepad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\Lixeira.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\Acessar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\reporSenha.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\fundo1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\Monster-Energy-Best-Image-Wallpaper-Desktop.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\Novo_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\imgSair.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\Exit-Planning-300x300.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\Cadastro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\Cliente.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\imgCadCliente.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\dsds.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\imgCadProduto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\Novo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\Novo_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\imgRelatorio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\imgEntradaCaixa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\imgFinanceiro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\process.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\favorite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\Sistema.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\BackupRestauracao.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\BancoDados.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\Calculadora.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\Logoff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\ConfigurarBanco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\Sobre.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\Venda.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\Estoque.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\imgConProduto1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\Financeiro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\Backup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\Consulta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JOALHERIABLL\JOALHERIABLL.csproj">
+      <Project>{53efda14-e157-499e-90f5-5676eb10f5a7}</Project>
+      <Name>JOALHERIABLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JOALHERIADAL\JOALHERIADAL.csproj">
+      <Project>{991334b6-64c6-4c41-bea3-ce4a48872d73}</Project>
+      <Name>JOALHERIADAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\fundo_editado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\fundo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\Imprimir.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
