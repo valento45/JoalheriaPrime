@@ -36,7 +36,8 @@ namespace JOALHERIA
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if(txtNome.Text == "" || txtRg.Text =="" || txtCpf.Text =="" || txtEndereco.Text =="" || txtUsuario.Text =="" || txtSenha.Text =="" || cmbTipo.Text =="")
+
+            if( txtNome.Text == "" || txtRg.Text =="" || txtCpf.Text =="" || txtEndereco.Text =="" || txtUsuario.Text =="" || txtSenha.Text =="" || cmbTipo.Text =="")
             {
                 MessageBox.Show("preencha todos os campos Obrigatórios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
