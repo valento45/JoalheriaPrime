@@ -104,7 +104,7 @@ namespace JOALHERIA.UI
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {       
-            if(ValidarCamposObrigatorios() == true && alterar == false)
+            if( alterar == false && ValidarCamposObrigatorios() == true )
             {
                 clienteBLL.Nome = txtNome.Text;
                 clienteBLL.Rg = txtRg.Text;
@@ -121,7 +121,8 @@ namespace JOALHERIA.UI
                 MessageBox.Show("Cliente registrado !", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ResetarCampos();
                 ConsultarGrid();
-                
+
+                return;              
 
             }
 
@@ -142,6 +143,8 @@ namespace JOALHERIA.UI
                 MessageBox.Show("Cliente Atualizado !", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ResetarCampos();
                 ConsultarGrid();
+
+                return;
             }
 
             if(ValidarCamposObrigatorios() == false)
@@ -152,13 +155,13 @@ namespace JOALHERIA.UI
 
         public bool ValidarCamposObrigatorios()
         {
-            if(txtNome.Text.Trim() != "" || txtCpf.Text.Trim() != "" || txtDataNascimento.Text.Trim() != "")
+            if(txtNome.Text.Trim() == "" || txtCpf.Text.Trim() == "" || txtDataNascimento.Text.Trim() == "")
             {
-                return true;
+                return false;
             }
             else
             {
-                return false;
+                return true;
             }
         }
         private void button3_Click(object sender, EventArgs e)
