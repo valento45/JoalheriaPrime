@@ -14,7 +14,7 @@ namespace JOALHERIADAL
     {
 
         //SQL SERVER
-        SqlConnection con = new SqlConnection(@"Data Source=MX15733\DEVELOPER;Initial Catalog=BDJOALHERIA;Integrated Security=true;");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-PLV91ND\SQLEXPRESS;Initial Catalog=BDJOALHERIA;Integrated Security=true;");
 
         public SqlConnection Conectar()
         {
