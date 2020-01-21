@@ -12,7 +12,6 @@ namespace JOALHERIADAL
 {
     public class Conexao
     {
-
         //SQL SERVER
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-PLV91ND\SQLEXPRESS;Initial Catalog=BDJOALHERIA;Integrated Security=true;");
 
@@ -30,13 +29,5 @@ namespace JOALHERIADAL
             if (con.State == ConnectionState.Open)
                 con.Close();
         }
-
-
-
-        //POSTGREE SQL
-
-
-
-
     }
 }

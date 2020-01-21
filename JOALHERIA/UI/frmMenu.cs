@@ -54,9 +54,8 @@ namespace JOALHERIA.UI
         }
 
         private void timer1_Tick(object sender, EventArgs e)
-        {
-            txtdata.Text = DateTime.Now.ToString("dd/MM/yyyy \t HH:mm:ss");
-            txtDate.Text = DateTime.Now.ToString("HH:mm:ss \n dd/MM/yyyy");
+        {            
+            txtDate.Text = DateTime.Now.ToString("dd/MM/yyyy \n HH:mm:ss");
         }
 
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)

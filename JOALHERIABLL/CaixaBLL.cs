@@ -13,7 +13,6 @@ namespace JOALHERIABLL
         string descricao;
         string observacoes;
 
-
         public int Idcaixa
         {
             get
