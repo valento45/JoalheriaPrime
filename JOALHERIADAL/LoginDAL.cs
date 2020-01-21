@@ -16,7 +16,7 @@ namespace JOALHERIADAL
         public int Cadastrar_Login(JOALHERIABLL.LoginBLL loginBLL)
         {
           
-                SqlCommand cmd = new SqlCommand("INSERT INTO JOALHERIA.LOGIN (IDCAIXA, IDUSUARIO, USUARIO, DATA_LOGIN, VALOR_CAIXA) VALUES (@IDCAIXA, @IDUSUARIO, @USUARIO, @DATA_LOGIN, @VALOR_CAIXA)", con.Conectar());
+                SqlCommand cmd = new SqlCommand("INSERT INTO JOALHERIA.LOGIN (IDCAIXA, IDUSUARIO, USUARIO, DATA_LOGIN, VALOR_CAIXA) VALUES (@IDCAIXA, @IDUSUARIO, @USUARIO, @DATA_LOGIN, @VALOR_CAIXA);SELECT SCOPE_IDENTITY();", con.Conectar());
                 cmd.Parameters.AddWithValue(@"IDCAIXA", loginBLL.Idcaixa);
                 cmd.Parameters.AddWithValue(@"IDUSUARIO", loginBLL.Idusuario);
                 cmd.Parameters.AddWithValue(@"USUARIO", loginBLL.Usuario);
