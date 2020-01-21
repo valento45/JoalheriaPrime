@@ -110,15 +110,6 @@ namespace JOALHERIADAL
             //    return null;
             //}
        // }
-    
-         public DataTable ConsultarTodos()
-        {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.CLIENTE",con.Conectar());
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-
-            return dt;
-        }
 
         public JOALHERIABLL.ClienteBLL RetornarDados(JOALHERIABLL.ClienteBLL clienteBLL)
         {
@@ -144,6 +135,46 @@ namespace JOALHERIADAL
             con.Desconectar();
             return clienteBLL;
         }
+        //====================================== CONSULTAS =========================================================
+        public DataTable ConsultarTodos()
+        {
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.CLIENTE", con.Conectar());
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            return dt;
+        }
+
+        public DataTable ConsultarPorNome(JOALHERIABLL.ClienteBLL clienteBLL)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.CLIENTE WHERE NOME LIKE @NOME",con.Conectar());
+            da.SelectCommand.Parameters.AddWithValue(@"NOME", clienteBLL.Nome + "%");
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Desconectar();
+            return dt;
+        }
+
+        public DataTable ConsultarPorCpf(JOALHERIABLL.ClienteBLL clienteBLL)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.CLIENTE WHERE CPF LIKE @CPF", con.Conectar());
+            da.SelectCommand.Parameters.AddWithValue(@"CPF", clienteBLL.Cpf + "%");
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Desconectar();
+            return dt;
+        }
+
+        public DataTable ConsultarPorCodigo(JOALHERIABLL.ClienteBLL clienteBLL)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.CLIENTE WHERE IDCLIENTE = @IDCLIENTE",con.Conectar());
+            da.SelectCommand.Parameters.AddWithValue(@"IDCLIENTE", clienteBLL.Idcliente);
+            DataTable DT = new DataTable();
+            da.Fill(DT);
+            con.Desconectar();
+            return DT;
+        }
+        
 
     }//
 }//

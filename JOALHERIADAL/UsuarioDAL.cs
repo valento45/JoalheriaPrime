@@ -118,6 +118,51 @@ namespace JOALHERIADAL
             return usuarioBLL;
         }
 
+        public DataTable ConsultarPorCodigo(JOALHERIABLL.UsuarioBLL usuarioBLL)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.USUARIO WHERE IDUSUARIO = @IDUSUARIO",con.Conectar());
+            da.SelectCommand.Parameters.AddWithValue(@"IDUSUARIO", usuarioBLL.Idusuario);
 
-    }
-}
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            con.Desconectar();
+            return dt;
+        }
+
+        public DataTable ConsultarPorNome(JOALHERIABLL.UsuarioBLL usuarioBLL)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.USUARIO WHERE NOME LIKE @NOME",con.Conectar());
+            da.SelectCommand.Parameters.AddWithValue(@"NOME", usuarioBLL.Nome + "%");
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Desconectar();
+            return dt;
+        }
+
+        public DataTable ConsultarPorCpf(JOALHERIABLL.UsuarioBLL usuarioBLL)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.USUARIO WHERE CPF LIKE @CPF",con.Conectar());
+            da.SelectCommand.Parameters.AddWithValue(@"CPF", usuarioBLL.Cpf + "%");
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Desconectar();
+            return dt;
+        }
+
+        public DataTable ConsultarPorUsuario(JOALHERIABLL.UsuarioBLL usuarioBLL)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.USUARIO WHERE USUARIO LIKE @USUARIO",con.Conectar());
+            da.SelectCommand.Parameters.AddWithValue(@"USUARIO", usuarioBLL.Usuario + "%");
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Desconectar();
+            return dt;
+        }
+
+
+    }//
+}//

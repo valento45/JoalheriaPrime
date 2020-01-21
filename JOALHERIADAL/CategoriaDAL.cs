@@ -71,6 +71,27 @@ namespace JOALHERIADAL
             return dt;
         }
 
+        public DataTable ConsultarPorCategoria(JOALHERIABLL.CategoriaBLL categoriaBLL)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.CATEGORIA WHERE CATEGORIA LIKE @CATEGORIA",con.Conectar());
+            da.SelectCommand.Parameters.AddWithValue(@"CATEGORIA", categoriaBLL.Categoria + "%");
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Desconectar();
+            return dt;
+        }
+
+        public DataTable ConsultarPorCodigo(JOALHERIABLL.CategoriaBLL categoriaBLL)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.CATEGORIA WHERE IDCATEGORIA = @IDCATEGORIA",con.Conectar());
+            da.SelectCommand.Parameters.AddWithValue(@"IDCATEGORIA", categoriaBLL.Idcategoria);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Desconectar();
+            return dt;
+        }
+
 
 
     }//

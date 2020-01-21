@@ -80,15 +80,6 @@ namespace JOALHERIADAL
             return produtoBLL;
         }
 
-        public DataTable ConsultarTodos()
-        {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT IDPRODUTO, IDCATEGORIA, DESCRICAO, QUANTIDADE, PRECOIMPORTADO, PRECOVENDA, LUCRO, OBSERVACOES FROM JOALHERIA.PRODUTO", con.Conectar());
-            DataTable dt = new DataTable();
-
-            da.Fill(dt);
-            con.Desconectar();
-            return dt;
-        }
         //BAIXAR ESTOQUE
         public void BaixarEstoque(JOALHERIABLL.ProdutoBLL produtoBLL)
         {
@@ -99,5 +90,44 @@ namespace JOALHERIADAL
             con.Desconectar();
 
         }
-    }
-}
+        //========================================== CONSULTAS ==================================================
+        public DataTable ConsultarTodos()
+        {
+            SqlDataAdapter da = new SqlDataAdapter("SELECT IDPRODUTO, IDCATEGORIA, DESCRICAO, QUANTIDADE, PRECOIMPORTADO, PRECOVENDA, LUCRO, OBSERVACOES FROM JOALHERIA.PRODUTO", con.Conectar());
+            DataTable dt = new DataTable();
+
+            da.Fill(dt);
+            con.Desconectar();
+            return dt;
+        }
+
+        //consultar por descricao
+        public DataTable ConsultarPorDescricao(JOALHERIABLL.ProdutoBLL produtoBLL)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.PRODUTO WHERE DESCRICAO LIKE @DESCRICAO",con.Conectar());
+            da.SelectCommand.Parameters.AddWithValue(@"DESCRICAO", produtoBLL.Descricao + "%");
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Desconectar();
+            return dt;
+        }
+
+        public DataTable ConsultarPorCodigo(JOALHERIABLL.ProdutoBLL produtoBLL)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.PRODUTO WHERE IDPRODUTO = @IDPRODUTO",con.Conectar());
+            da.SelectCommand.Parameters.AddWithValue(@"IDPRODUTO", produtoBLL.Idproduto);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Desconectar();
+            return dt;
+        }
+
+        //METODO EM IMPLEMENTAÇÃO
+        //public DataTable ConsultarPorCategoria(JOALHERIABLL.ProdutoBLL produtoBLL)
+        //{
+        //    SqlDataAdapter da = new SqlDataAdapter("SELECT IDPRODUTO, CATEGORIA FROM JOALHERIA.PRODUTO JOIN JOALHERIA.CATEGORIA ON JOALHERIA.PRODUTO.IDCATEGORIA = JOALHERIA.CATEGORIA.IDCATEGORIA WHERE IDCATEGORIA = @IDCATEGORIA",con.Conectar());
+        //}
+
+
+    }//
+}//

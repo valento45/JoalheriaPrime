@@ -73,5 +73,37 @@ namespace JOALHERIADAL
             
         }
 
+        public void Excluir(JOALHERIABLL.LoginBLL loginBLL)
+        {
+            SqlCommand cmd = new SqlCommand("DELETE FROM JOALHERIA.LOGIN WHERE IDLOGIN = @IDLOGIN",con.Conectar());
+            cmd.Parameters.AddWithValue(@"IDLOGIN", loginBLL.Idlogin);
+            cmd.ExecuteNonQuery();
+            con.Desconectar();
+        }
+
+        public DataTable ConsultarPorData(JOALHERIABLL.LoginBLL loginBLL)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.LOGIN WHERE DATA_LOGIN = @DATA_LOGIN",con.Conectar());
+            da.SelectCommand.Parameters.AddWithValue(@"DATA_LOGIN", loginBLL.Data_login);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Desconectar();
+            return dt;
+        }
+
+        public DataTable ConsultarPorCodigo(JOALHERIABLL.LoginBLL loginBLL)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.LOGIN WHERE IDLOGIN = @IDLOGIN",con.Conectar());
+            da.SelectCommand.Parameters.AddWithValue(@"IDLOGIN", loginBLL.Idlogin);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Desconectar();
+            return dt;
+
+        }
+
+
     }
 }
