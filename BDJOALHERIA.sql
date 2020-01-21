@@ -161,7 +161,7 @@ GO
 
 --select * from joalheria.item_ordemservico where idordem = 2
 
-select iditem, idordem, descricao, valor_servico, quantidade_pedido from joalheria.ITEM_ORDEMSERVICO join joalheria.SERVICO on JOALHERIA.ITEM_ORDEMSERVICO.IDSERVICO = JOALHERIA.SERVICO.IDSERVICO where idordem = @idordem
+--select iditem, idordem, descricao, valor_servico, quantidade_pedido from joalheria.ITEM_ORDEMSERVICO join joalheria.SERVICO on JOALHERIA.ITEM_ORDEMSERVICO.IDSERVICO = JOALHERIA.SERVICO.IDSERVICO where idordem = @idordem
 
 --SELECT IDITEM, IDORDEM, DESCRICAO, PRECO_UNITARIO, QUANTIDADE_PEDIDO FROM JOALHERIA.ITEM
 
