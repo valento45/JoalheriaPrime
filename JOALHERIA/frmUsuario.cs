@@ -16,7 +16,7 @@ namespace JOALHERIA
 
         JOALHERIABLL.UsuarioBLL usuarioBLL = new JOALHERIABLL.UsuarioBLL();
         JOALHERIADAL.UsuarioDAL usuarioDAL = new JOALHERIADAL.UsuarioDAL();
-
+        JOALHERIADAL.FuncoesAuxiliaresDAL funcoesAuxiliares = new FuncoesAuxiliaresDAL();
         bool alterar = false;
        
 
@@ -36,16 +36,9 @@ namespace JOALHERIA
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
-
-            if( txtNome.Text == "" || txtRg.Text =="" || txtCpf.Text =="" || txtEndereco.Text =="" || txtUsuario.Text =="" || txtSenha.Text =="" || cmbTipo.Text =="")
-            {
-                MessageBox.Show("preencha todos os campos Obrigatórios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
-            else
-            {
-                if(alterar == false)
+        {          
+            
+                if(alterar == false && ValidarCamposObrigatorios() == true)
                 {
                     usuarioBLL.Nome = txtNome.Text.ToString();
                     usuarioBLL.Rg = txtRg.Text;
@@ -66,20 +59,11 @@ namespace JOALHERIA
 
                     usuarioDAL.Cadastrar(usuarioBLL);
                     MessageBox.Show("Dados gravados com Sucesso!","Atenção!",MessageBoxButtons.OK,MessageBoxIcon.Information);
-
-                    txtNome.Clear();
-                    txtRg.Clear();
-                    txtCpf.Clear();
-                    txtEndereco.Clear();
-                    txtTelefone.Clear();
-                    cmbTipo.Text = "";
-                    txtUsuario.Clear();
-                    txtSenha.Clear();
-
+                    LimparCampos();
                     dgvConsultarUsuario.DataSource = usuarioDAL.ConsultarTodos();
                 }
 
-                else
+                if(alterar == true && ValidarCamposObrigatorios()==true)
                 {
                     usuarioBLL.Nome = txtNome.Text;
                     usuarioBLL.Rg = txtRg.Text;
@@ -101,28 +85,10 @@ namespace JOALHERIA
                     usuarioDAL.Atualizar(usuarioBLL);
                     MessageBox.Show("Dados Atualizados com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    alterar = false;
-                    if(alterar == false)
-                    {
-                        label11.Text = "Cadastrar Usuário";
-                    }
+                ResetarCampos();
+                    dgvConsultarUsuario.DataSource = usuarioDAL.ConsultarTodos();           
 
-                    dgvConsultarUsuario.DataSource = usuarioDAL.ConsultarTodos();
-
-                    txtNome.Clear();
-                    txtRg.Clear();
-                    txtCpf.Clear();
-                    txtEndereco.Clear();
-                    txtTelefone.Clear();
-                    cmbTipo.Text = "";
-                    txtUsuario.Clear();
-                    txtSenha.Clear();
-
-                }
-            }
-                
-
-            
+                }               
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -203,6 +169,37 @@ namespace JOALHERIA
 
         private void button4_Click(object sender, EventArgs e)
         {
+            ResetarCampos();         
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public bool ValidarCamposObrigatorios()
+        {
+            if (txtNome.Text == "" || txtRg.Text == "" || txtCpf.Text == "" || txtEndereco.Text == "" || txtUsuario.Text == "" || txtSenha.Text == "" || cmbTipo.Text == "")
+            {
+                MessageBox.Show("preencha todos os campos Obrigatórios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+            else
+            {
+                string cpf = txtCpf.Text.Replace(".", "").Replace("-", "");
+                if (funcoesAuxiliares.ValidarCpf(cpf))
+                    return true;
+
+                else if (MessageBox.Show("Cpf inválido ! \nDeseja prosseguir ?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    return true;
+
+                else
+                    return false;
+            }
+        }
+        public void LimparCampos()
+        {
+
             txtNome.Clear();
             txtRg.Clear();
             txtCpf.Clear();
@@ -211,16 +208,17 @@ namespace JOALHERIA
             cmbTipo.Text = "";
             txtUsuario.Clear();
             txtSenha.Clear();
+        }
+
+        public void ResetarCampos()
+        {
+            LimparCampos();
 
             alterar = false;
-            label11.Text = "Cadastrar Usuário";
-
-
+            if (alterar == false)
+            {
+                label11.Text = "Cadastrar Usuário";
+            }
         }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-    }
-}
+    }//
+}//

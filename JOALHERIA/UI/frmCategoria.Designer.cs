@@ -166,6 +166,7 @@
             // 
             this.dgvConsultarCategoria.AllowUserToAddRows = false;
             this.dgvConsultarCategoria.AllowUserToDeleteRows = false;
+            this.dgvConsultarCategoria.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvConsultarCategoria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvConsultarCategoria.Location = new System.Drawing.Point(6, 70);
             this.dgvConsultarCategoria.Name = "dgvConsultarCategoria";

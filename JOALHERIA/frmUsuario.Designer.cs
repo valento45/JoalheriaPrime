@@ -154,7 +154,7 @@
             // txtCpf
             // 
             this.txtCpf.Location = new System.Drawing.Point(58, 119);
-            this.txtCpf.Mask = "000.000.000-00";
+            this.txtCpf.Mask = "000,000,000-00";
             this.txtCpf.Name = "txtCpf";
             this.txtCpf.Size = new System.Drawing.Size(99, 20);
             this.txtCpf.TabIndex = 21;
