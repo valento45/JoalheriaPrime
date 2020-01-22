@@ -52,6 +52,8 @@ namespace JOALHERIADAL
         //METODO EXCLUIR
         public void Excluir(JOALHERIABLL.UsuarioBLL usuarioBLL)
         {
+
+            
             SqlCommand cmd = new SqlCommand("DELETE FROM JOALHERIA.USUARIO WHERE IDUSUARIO = @IDUSUARIO", con.Conectar());
             cmd.Parameters.AddWithValue("@IDUSUARIO", usuarioBLL.Idusuario);
 

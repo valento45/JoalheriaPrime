@@ -143,33 +143,33 @@ namespace JOALHERIA
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
+            
             if(MessageBox.Show("Deseja realmente Excluir este Registro?","Atenção",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 if(dgvConsultarUsuario.RowCount > 0)
                 {
-                    usuarioBLL.Idusuario = Convert.ToInt16(dgvConsultarUsuario.SelectedCells[0].Value);
-                    usuarioDAL.Excluir(usuarioBLL);
+                    try
+                    {
+                        usuarioBLL.Idusuario = Convert.ToInt16(dgvConsultarUsuario.SelectedCells[0].Value);
+                        usuarioDAL.Excluir(usuarioBLL);
 
-                    dgvConsultarUsuario.DataSource = usuarioDAL.ConsultarTodos();
-
-
+                        dgvConsultarUsuario.DataSource = usuarioDAL.ConsultarTodos();
+                        return;
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show("Impossível excluir o registro selecionado. \n " + ex, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Selecione algum registro!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Selecione algum registro!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-            }
+            }            
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            alterar = true;
-
-            if(alterar == true)
-            {
-                label11.Text = "Alterar Usuário";
-            }
-
+        {       
             try
             {
                 usuarioBLL.Idusuario = Convert.ToInt16(dgvConsultarUsuario.SelectedCells[0].Value);
@@ -184,8 +184,14 @@ namespace JOALHERIA
                 txtUsuario.Text = usuarioBLL.Usuario;
                 txtSenha.Text = usuarioBLL.Senha;
 
-                tabControl1.SelectedTab = tabPage1;    
-                
+                alterar = true;
+
+                if (alterar == true)
+                {
+                    label11.Text = "Alterar Usuário";
+                }
+
+                tabControl1.SelectedTab = tabPage1;                   
                             
             }
             catch

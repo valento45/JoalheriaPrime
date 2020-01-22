@@ -83,7 +83,7 @@ namespace JOALHERIA.UI
                 return;
             }
 
-            if (btnVerItens.Text == "Ver Itens(F5)")
+            if (btnVerItens.Text == "Ver Itens(F5)" && dgvConsultarOrdem.RowCount > 0)
             {
                 codigo_ordem = Convert.ToInt32(dgvConsultarOrdem.SelectedCells[0].Value);
                 itemservicoBLL.Idordem = codigo_ordem;

@@ -87,13 +87,19 @@ namespace JOALHERIA.UI
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            alterar = true;
+            if (dgvConsultarCategoria.RowCount > 0)
+            {
 
-            categoriaBLL.Idcategoria = Convert.ToInt16(dgvConsultarCategoria.SelectedCells[0].Value);
-            categoriaDAL.RetornarDados(categoriaBLL);
-            txtCategoria.Text = categoriaBLL.Categoria;
-
-            tabControl1.SelectedTab = tabPage1;
+                categoriaBLL.Idcategoria = Convert.ToInt16(dgvConsultarCategoria.SelectedCells[0].Value);
+                categoriaDAL.RetornarDados(categoriaBLL);
+                txtCategoria.Text = categoriaBLL.Categoria;
+                alterar = true;
+                tabControl1.SelectedTab = tabPage1;
+            }
+            else
+            {
+                MessageBox.Show("Selecione algum registro para alterar ", "Alterar Categoria", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
         }
 
