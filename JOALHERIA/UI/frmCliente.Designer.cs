@@ -458,7 +458,7 @@
             this.txtRg.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtRg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRg.Location = new System.Drawing.Point(48, 59);
-            this.txtRg.Mask = "00.000.000-0";
+            this.txtRg.Mask = "00,000,000-0";
             this.txtRg.Name = "txtRg";
             this.txtRg.Size = new System.Drawing.Size(101, 22);
             this.txtRg.TabIndex = 6;
@@ -468,7 +468,7 @@
             this.txtCpf.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtCpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCpf.Location = new System.Drawing.Point(197, 59);
-            this.txtCpf.Mask = "000.000.000-00";
+            this.txtCpf.Mask = "000,000,000-00";
             this.txtCpf.Name = "txtCpf";
             this.txtCpf.Size = new System.Drawing.Size(100, 22);
             this.txtCpf.TabIndex = 7;

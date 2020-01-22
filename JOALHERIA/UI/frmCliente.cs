@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using JOALHERIABLL;
 using JOALHERIADAL;
+
 namespace JOALHERIA.UI
 {
     public partial class frmCliente : Form
     {
         JOALHERIABLL.ClienteBLL clienteBLL = new JOALHERIABLL.ClienteBLL();
         JOALHERIADAL.ClienteDAL clienteDAL = new JOALHERIADAL.ClienteDAL();
+
+        JOALHERIADAL.FuncoesAuxiliaresDAL funcoesAuxiliares = new FuncoesAuxiliaresDAL();
 
         bool alterar = false;
 
@@ -126,7 +129,7 @@ namespace JOALHERIA.UI
 
             }
 
-            if(ValidarCamposObrigatorios() == true && alterar == true)
+            if(alterar == true && ValidarCamposObrigatorios() == true)
             {
                 clienteBLL.Nome = txtNome.Text;
                 clienteBLL.Rg = txtRg.Text;
@@ -146,23 +149,27 @@ namespace JOALHERIA.UI
 
                 return;
             }
-
-            if(ValidarCamposObrigatorios() == false)
-            {
-                MessageBox.Show("Preencha os campos obrigatórios!", "Validar Campos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
         }
 
         public bool ValidarCamposObrigatorios()
         {
             if(txtNome.Text.Trim() == "" || txtCpf.Text.Trim() == "" || txtDataNascimento.Text.Trim() == "")
             {
-                return false;
+                MessageBox.Show("Preencha os campos obrigatórios!", "Validar Campos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;                
             }
             else
             {
-                return true;
-            }
+                string cpf = txtCpf.Text.Replace(".", "").Replace("-", "");
+                if (funcoesAuxiliares.ValidarCpf(cpf))
+                    return true;
+
+                else if (MessageBox.Show("Cpf inválido, deseja prosseguir ?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    return true;
+
+                else
+                    return false;
+            }            
         }
         private void button3_Click(object sender, EventArgs e)
         {
@@ -199,6 +206,7 @@ namespace JOALHERIA.UI
         private void tabPage1_Enter(object sender, EventArgs e)
         {
            // ResetarCampos();
-        }
+        }    
+     
     }//fim 
 }//fim
