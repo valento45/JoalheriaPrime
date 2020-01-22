@@ -13,6 +13,7 @@ namespace JOALHERIA
 {
     public partial class frmUsuario : Form
     {
+
         JOALHERIABLL.UsuarioBLL usuarioBLL = new JOALHERIABLL.UsuarioBLL();
         JOALHERIADAL.UsuarioDAL usuarioDAL = new JOALHERIADAL.UsuarioDAL();
 
