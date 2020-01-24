@@ -66,13 +66,18 @@
             this.tbtnExcluir = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.txtConsultar = new System.Windows.Forms.TextBox();
+            this.txtFiltro = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvConsultarCliente = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.rdbCodigo = new System.Windows.Forms.RadioButton();
+            this.rdbNome = new System.Windows.Forms.RadioButton();
+            this.rdbCpf = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -84,6 +89,8 @@
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultarCliente)).BeginInit();
             this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -487,11 +494,9 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.panel4);
             this.tabPage2.Controls.Add(this.toolStrip1);
-            this.tabPage2.Controls.Add(this.txtConsultar);
-            this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.dgvConsultarCliente);
-            this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -558,18 +563,20 @@
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton1.Text = "Imprimir";
             // 
-            // txtConsultar
+            // txtFiltro
             // 
-            this.txtConsultar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConsultar.Location = new System.Drawing.Point(55, 123);
-            this.txtConsultar.Name = "txtConsultar";
-            this.txtConsultar.Size = new System.Drawing.Size(280, 22);
-            this.txtConsultar.TabIndex = 24;
+            this.txtFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFiltro.Location = new System.Drawing.Point(58, 77);
+            this.txtFiltro.Name = "txtFiltro";
+            this.txtFiltro.Size = new System.Drawing.Size(458, 22);
+            this.txtFiltro.TabIndex = 24;
+            this.txtFiltro.TextChanged += new System.EventHandler(this.txtFiltro_TextChanged);
+            this.txtFiltro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFiltro_KeyPress);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 126);
+            this.label7.Location = new System.Drawing.Point(9, 80);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(43, 13);
             this.label7.TabIndex = 23;
@@ -597,7 +604,7 @@
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(379, 32);
+            this.label6.Location = new System.Drawing.Point(375, 12);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(154, 24);
             this.label6.TabIndex = 21;
@@ -621,11 +628,11 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.SystemColors.Control;
-            this.label10.Location = new System.Drawing.Point(405, 3);
+            this.label10.Location = new System.Drawing.Point(451, 3);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(131, 18);
+            this.label10.Size = new System.Drawing.Size(53, 18);
             this.label10.TabIndex = 24;
-            this.label10.Text = "Cadastrar Produtos";
+            this.label10.Text = "Cliente";
             // 
             // button3
             // 
@@ -641,6 +648,65 @@
             this.button3.TabIndex = 23;
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.groupBox3);
+            this.panel4.Controls.Add(this.txtFiltro);
+            this.panel4.Controls.Add(this.label7);
+            this.panel4.Controls.Add(this.label6);
+            this.panel4.Location = new System.Drawing.Point(6, 31);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(894, 114);
+            this.panel4.TabIndex = 26;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.groupBox3.Controls.Add(this.rdbCpf);
+            this.groupBox3.Controls.Add(this.rdbNome);
+            this.groupBox3.Controls.Add(this.rdbCodigo);
+            this.groupBox3.Location = new System.Drawing.Point(726, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(165, 108);
+            this.groupBox3.TabIndex = 25;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Filtrar Por";
+            // 
+            // rdbCodigo
+            // 
+            this.rdbCodigo.AutoSize = true;
+            this.rdbCodigo.Location = new System.Drawing.Point(6, 19);
+            this.rdbCodigo.Name = "rdbCodigo";
+            this.rdbCodigo.Size = new System.Drawing.Size(58, 17);
+            this.rdbCodigo.TabIndex = 0;
+            this.rdbCodigo.TabStop = true;
+            this.rdbCodigo.Text = "Código";
+            this.rdbCodigo.UseVisualStyleBackColor = true;
+            // 
+            // rdbNome
+            // 
+            this.rdbNome.AutoSize = true;
+            this.rdbNome.Location = new System.Drawing.Point(7, 43);
+            this.rdbNome.Name = "rdbNome";
+            this.rdbNome.Size = new System.Drawing.Size(53, 17);
+            this.rdbNome.TabIndex = 1;
+            this.rdbNome.TabStop = true;
+            this.rdbNome.Text = "Nome";
+            this.rdbNome.UseVisualStyleBackColor = true;
+            // 
+            // rdbCpf
+            // 
+            this.rdbCpf.AutoSize = true;
+            this.rdbCpf.Location = new System.Drawing.Point(7, 66);
+            this.rdbCpf.Name = "rdbCpf";
+            this.rdbCpf.Size = new System.Drawing.Size(45, 17);
+            this.rdbCpf.TabIndex = 2;
+            this.rdbCpf.TabStop = true;
+            this.rdbCpf.Text = "CPF";
+            this.rdbCpf.UseVisualStyleBackColor = true;
             // 
             // frmCliente
             // 
@@ -673,6 +739,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultarCliente)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -699,7 +769,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dgvConsultarCliente;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtConsultar;
+        private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tbtnAlterar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -724,5 +794,10 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RadioButton rdbCpf;
+        private System.Windows.Forms.RadioButton rdbNome;
+        private System.Windows.Forms.RadioButton rdbCodigo;
     }
 }

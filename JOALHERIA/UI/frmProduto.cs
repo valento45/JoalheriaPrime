@@ -37,7 +37,7 @@ namespace JOALHERIA.UI
             cmbCategoria.DisplayMember = "CATEGORIA";
             cmbCategoria.ValueMember = "IDCATEGORIA";
 
-            dgvConsultarProduto.DataSource = produtoDAL.ConsultarTodos();
+            ConsultarTodosGrid();
         }
 
         private void btnAddCategoria_Click(object sender, EventArgs e)
@@ -72,8 +72,8 @@ namespace JOALHERIA.UI
                     {
                         produtoBLL.Idproduto = Convert.ToInt16(dgvConsultarProduto.SelectedCells[0].Value);
                         produtoDAL.Excluir(produtoBLL);
-                        dgvConsultarProduto.DataSource = produtoDAL.ConsultarTodos();
-                    }
+                    ConsultarTodosGrid();
+                }
 
                 }
                 else
@@ -116,7 +116,7 @@ namespace JOALHERIA.UI
 
                     produtoDAL.Cadastrar(produtoBLL);
                     MessageBox.Show("Produto registrado com sucesso!", "Succesful", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                    dgvConsultarProduto.DataSource = produtoDAL.ConsultarTodos();
+                    ConsultarTodosGrid();
                     ResetarCampos();
                 }
 
@@ -135,7 +135,7 @@ namespace JOALHERIA.UI
 
                     produtoDAL.Alterar(produtoBLL);
                     MessageBox.Show("Dados Alterados com sucesso!", "Succesful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    dgvConsultarProduto.DataSource = produtoDAL.ConsultarTodos();
+                    ConsultarTodosGrid();
                     ResetarCampos();
                 }                
             }
@@ -201,5 +201,39 @@ namespace JOALHERIA.UI
         {
            
         }
-    }///////
-}
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFiltro.Text.Length > 0)
+            {
+                if (rdbCodigo.Checked)
+                {
+                    if (char.IsNumber(Convert.ToChar(txtFiltro.Text)))
+                    {
+                        produtoBLL.Idproduto = Convert.ToInt32(txtFiltro.Text);
+                        dgvConsultarProduto.DataSource = produtoDAL.ConsultarPorCodigo(produtoBLL);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Digite Apenas números para consultar por código!", "Consulta Inváida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        ConsultarTodosGrid();
+                    }
+                }
+                if (rdbDescricao.Checked)
+                {
+                    produtoBLL.Descricao = txtFiltro.Text;
+                    dgvConsultarProduto.DataSource = produtoDAL.ConsultarPorDescricao(produtoBLL);
+                }
+            }
+            else
+            {
+                ConsultarTodosGrid();
+            }
+        }
+
+        public void ConsultarTodosGrid()
+        {
+            dgvConsultarProduto.DataSource = produtoDAL.ConsultarTodos();
+        }
+    }//
+}//

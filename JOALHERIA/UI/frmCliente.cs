@@ -206,7 +206,45 @@ namespace JOALHERIA.UI
         private void tabPage1_Enter(object sender, EventArgs e)
         {
            // ResetarCampos();
-        }    
-     
+        }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFiltro.Text.Length > 0)
+            {
+                if (rdbCodigo.Checked)
+                {                   
+                        clienteBLL.Idcliente = Convert.ToInt32(dgvConsultarCliente.SelectedCells[0].Value);
+                        dgvConsultarCliente.DataSource = clienteDAL.ConsultarPorCodigo(clienteBLL);                   
+                   
+                }
+                if (rdbNome.Checked)
+                {
+                    clienteBLL.Nome = txtFiltro.Text;
+                    dgvConsultarCliente.DataSource = clienteDAL.ConsultarPorNome(clienteBLL);
+
+                }
+                if (rdbCpf.Checked)
+                {
+                    clienteBLL.Cpf = txtFiltro.Text;
+                    dgvConsultarCliente.DataSource = clienteDAL.ConsultarPorCpf(clienteBLL);
+                }
+            }
+            else
+            {
+                dgvConsultarCliente.DataSource = clienteDAL.ConsultarTodos();
+            }
+        }
+
+        private void txtFiltro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (rdbCodigo.Checked)
+            {
+                if (!char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != (char)Keys.Delete)
+                {
+                    e.Handled = true;
+                }
+            }
+        }
     }//fim 
 }//fim
