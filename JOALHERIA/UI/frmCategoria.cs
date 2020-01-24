@@ -107,5 +107,39 @@ namespace JOALHERIA.UI
         {
             this.Close();
         }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            if(txtFiltro.Text.Length > 0)
+            {
+                if (rdbCodigo.Checked)
+                {
+                    if (!char.IsNumber(Convert.ToChar(txtFiltro.Text)))
+                    {
+                        MessageBox.Show("Digite apenas numero para consultar por Código!", "Consultar por código", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtFiltro.Clear();
+                        
+                        return;
+                    }
+                    categoriaBLL.Idcategoria = Convert.ToInt32(txtFiltro.Text);
+                    categoriaDAL.ConsultarPorCodigo(categoriaBLL);
+                }
+
+                if (rdbCategoria.Checked)
+                {
+                    categoriaBLL.Categoria = txtFiltro.Text;
+                    categoriaDAL.ConsultarPorCategoria(categoriaBLL);
+                }
+            }
+            else
+            {
+                ConsultarTodosGrid();
+            }
+            
+        }
+        private void ConsultarTodosGrid()
+        {
+            dgvConsultarCategoria.DataSource = categoriaDAL.ConsultarTodos();
+        }
     }//
 }
