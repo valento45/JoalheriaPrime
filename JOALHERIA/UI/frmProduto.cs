@@ -207,17 +207,9 @@ namespace JOALHERIA.UI
             if (txtFiltro.Text.Length > 0)
             {
                 if (rdbCodigo.Checked)
-                {
-                    if (char.IsNumber(Convert.ToChar(txtFiltro.Text)))
-                    {
+                {                   
                         produtoBLL.Idproduto = Convert.ToInt32(txtFiltro.Text);
-                        dgvConsultarProduto.DataSource = produtoDAL.ConsultarPorCodigo(produtoBLL);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Digite Apenas números para consultar por código!", "Consulta Inváida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        ConsultarTodosGrid();
-                    }
+                        dgvConsultarProduto.DataSource = produtoDAL.ConsultarPorCodigo(produtoBLL);                 
                 }
                 if (rdbDescricao.Checked)
                 {
@@ -234,6 +226,15 @@ namespace JOALHERIA.UI
         public void ConsultarTodosGrid()
         {
             dgvConsultarProduto.DataSource = produtoDAL.ConsultarTodos();
+        }
+
+        private void txtFiltro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (rdbCodigo.Checked)
+            {
+                if (!char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != (char)Keys.Delete)
+                    e.Handled = true;
+            }
         }
     }//
 }//

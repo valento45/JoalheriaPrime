@@ -24,9 +24,13 @@ namespace JOALHERIA.UI
 
         private void frmConsultarVendas_Load(object sender, EventArgs e)
         {
+            VerificarFiltros();
+            ConsultarGrid();
+        }
+        public void ConsultarGrid()
+        {
             dgvConsultarVendas.DataSource = vendaDAL.ConsultarTodos();
         }
-
         //metodo para inserir HotKeys (tecla de atalho)
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -85,6 +89,60 @@ namespace JOALHERIA.UI
 
                 frmImprimirVenda imprimirVenda = new frmImprimirVenda("xml");
                 imprimirVenda.ShowDialog();
+            }
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            VerificarFiltros();
+        }
+        public void VerificarFiltros()
+        {
+            if (rdbCodigo.Checked)
+            {
+                pnlFiltro.Visible = true;
+                pnlPeriodo.Visible = false;
+            }
+            if (rdbPeriodo.Checked)
+            {
+                pnlFiltro.Visible = false;
+                pnlPeriodo.Visible = true;
+            }
+        }
+
+        private void rdbPeriodo_CheckedChanged(object sender, EventArgs e)
+        {
+            VerificarFiltros();
+        }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            string data1 = txtDe.Text.ToString();
+            string data2 = txtAte.Text.ToString();
+
+            dgvConsultarVendas.DataSource = vendaDAL.ConsultarPorPeriodo(data1, data2);
+        }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFiltro.Text.Length == 0)
+            {
+                ConsultarGrid();
+            }
+            else
+            {
+                vendaBLL.Idvenda = Convert.ToInt32(txtFiltro.Text);
+                dgvConsultarVendas.DataSource = vendaDAL.ConsultarPorCodigoVenda(vendaBLL);
+
+            }
+        }
+
+        private void txtFiltro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (rdbCodigo.Checked)
+            {
+                if (!char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != (char)Keys.Delete)
+                    e.Handled = true;
             }
         }
     }//
