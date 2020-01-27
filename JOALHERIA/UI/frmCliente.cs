@@ -214,7 +214,7 @@ namespace JOALHERIA.UI
             {
                 if (rdbCodigo.Checked)
                 {                   
-                        clienteBLL.Idcliente = Convert.ToInt32(dgvConsultarCliente.SelectedCells[0].Value);
+                        clienteBLL.Idcliente = Convert.ToInt32(txtFiltro.Text);
                         dgvConsultarCliente.DataSource = clienteDAL.ConsultarPorCodigo(clienteBLL);                   
                    
                 }

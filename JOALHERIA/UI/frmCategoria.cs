@@ -109,26 +109,21 @@ namespace JOALHERIA.UI
         }
 
         private void txtFiltro_TextChanged(object sender, EventArgs e)
-        {
+        {            
             if(txtFiltro.Text.Length > 0)
             {
                 if (rdbCodigo.Checked)
                 {
-                    if (!char.IsNumber(Convert.ToChar(txtFiltro.Text)))
-                    {
-                        MessageBox.Show("Digite apenas numero para consultar por Código!", "Consultar por código", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        txtFiltro.Clear();
-                        
-                        return;
-                    }
+                    
                     categoriaBLL.Idcategoria = Convert.ToInt32(txtFiltro.Text);
-                    categoriaDAL.ConsultarPorCodigo(categoriaBLL);
+                    dgvConsultarCategoria.DataSource = categoriaDAL.ConsultarPorCodigo(categoriaBLL);
                 }
 
                 if (rdbCategoria.Checked)
                 {
+                    
                     categoriaBLL.Categoria = txtFiltro.Text;
-                    categoriaDAL.ConsultarPorCategoria(categoriaBLL);
+                   dgvConsultarCategoria.DataSource = categoriaDAL.ConsultarPorCategoria(categoriaBLL);
                 }
             }
             else
@@ -140,6 +135,16 @@ namespace JOALHERIA.UI
         private void ConsultarTodosGrid()
         {
             dgvConsultarCategoria.DataSource = categoriaDAL.ConsultarTodos();
+        }
+
+        private void txtFiltro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (rdbCodigo.Checked)
+            {
+                if (!char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != (char)Keys.Delete)
+                    e.Handled = true;                
+            }
+           
         }
     }//
 }

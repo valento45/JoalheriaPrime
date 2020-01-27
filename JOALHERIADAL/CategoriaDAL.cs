@@ -85,7 +85,6 @@ namespace JOALHERIADAL
         {
             SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.CATEGORIA WHERE IDCATEGORIA = @IDCATEGORIA",con.Conectar());
             da.SelectCommand.Parameters.AddWithValue(@"IDCATEGORIA", categoriaBLL.Idcategoria);
-
             DataTable dt = new DataTable();
             da.Fill(dt);
             con.Desconectar();
