@@ -15,7 +15,7 @@ namespace JOALHERIADAL
 
         public void Cadastrar(JOALHERIABLL.ProdutoBLL produtoBLL)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO JOALHERIA.PRODUTO (IDCATEGORIA, DESCRICAO, QUANTIDADE, PRECOIMPORTADO, PRECOVENDA, LUCRO, OBSERVACOES) VALUES (@IDCATEGORIA, @DESCRICAO, @QUANTIDADE, @PRECOIMPORTADO, @PRECOVENDA, @LUCRO, @OBSERVACOES)", con.Conectar());
+            SqlCommand cmd = new SqlCommand("INSERT INTO JOALHERIA.PRODUTO (IDCATEGORIA, DESCRICAO, QUANTIDADE, PRECOIMPORTADO, PRECOVENDA, LUCRO, OBSERVACOES, IMAGEM) VALUES (@IDCATEGORIA, @DESCRICAO, @QUANTIDADE, @PRECOIMPORTADO, @PRECOVENDA, @LUCRO, @OBSERVACOES, @IMAGEM)", con.Conectar());
 
             cmd.Parameters.AddWithValue("@IDCATEGORIA", produtoBLL.Idcategoria);
             cmd.Parameters.AddWithValue("@DESCRICAO", produtoBLL.Descricao);
@@ -24,6 +24,8 @@ namespace JOALHERIADAL
             cmd.Parameters.AddWithValue("@PRECOVENDA", produtoBLL.Precovenda);
             cmd.Parameters.AddWithValue("@LUCRO", produtoBLL.Lucro);
             cmd.Parameters.AddWithValue("@OBSERVACOES", produtoBLL.Observacoes);
+            cmd.Parameters.AddWithValue("@IMAGEM", produtoBLL.Imagem);
+
 
             cmd.ExecuteNonQuery();
             con.Desconectar();
@@ -32,7 +34,7 @@ namespace JOALHERIADAL
 
         public void Alterar(JOALHERIABLL.ProdutoBLL produtoBLL)
         {
-            SqlCommand cmd = new SqlCommand("UPDATE JOALHERIA.PRODUTO SET IDCATEGORIA = @IDCATEGORIA, DESCRICAO = @DESCRICAO, QUANTIDADE = @QUANTIDADE, PRECOIMPORTADO = @PRECOIMPORTADO, PRECOVENDA = @PRECOVENDA, LUCRO = @LUCRO, OBSERVACOES = @OBSERVACOES WHERE IDPRODUTO = @IDPRODUTO", con.Conectar());
+            SqlCommand cmd = new SqlCommand("UPDATE JOALHERIA.PRODUTO SET IDCATEGORIA = @IDCATEGORIA, DESCRICAO = @DESCRICAO, QUANTIDADE = @QUANTIDADE, PRECOIMPORTADO = @PRECOIMPORTADO, PRECOVENDA = @PRECOVENDA, LUCRO = @LUCRO, OBSERVACOES = @OBSERVACOES, IMAGEM = @IMAGEM WHERE IDPRODUTO = @IDPRODUTO", con.Conectar());
             cmd.Parameters.AddWithValue("@IDPRODUTO", produtoBLL.Idproduto);
             cmd.Parameters.AddWithValue("@IDCATEGORIA", produtoBLL.Idcategoria);
             cmd.Parameters.AddWithValue("@DESCRICAO", produtoBLL.Descricao);
@@ -41,6 +43,7 @@ namespace JOALHERIADAL
             cmd.Parameters.AddWithValue("@PRECOVENDA", produtoBLL.Precovenda);
             cmd.Parameters.AddWithValue("@LUCRO", produtoBLL.Lucro);
             cmd.Parameters.AddWithValue("@OBSERVACOES", produtoBLL.Observacoes);
+            cmd.Parameters.AddWithValue(@"IMAGEM", produtoBLL.Imagem);
 
             cmd.ExecuteNonQuery();
             con.Desconectar();
@@ -72,6 +75,7 @@ namespace JOALHERIADAL
                 produtoBLL.Precovenda = Convert.ToDecimal(dr["PRECOVENDA"]);
                 produtoBLL.Lucro = Convert.ToDecimal(dr["LUCRO"]);
                 produtoBLL.Observacoes = Convert.ToString(dr["OBSERVACOES"]);
+                produtoBLL.Imagem = dr["IMAGEM"].ToString();
 
             }
 

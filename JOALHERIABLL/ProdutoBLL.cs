@@ -16,7 +16,19 @@ namespace JOALHERIABLL
         decimal precovenda;
         decimal lucro;
         string observacoes;
+        string imagem;
 
+        public string Imagem
+        {
+            get
+            {
+                return imagem;
+            }
+            set
+            {
+                imagem = value;
+            }
+        }
         public int Idproduto
         {
             get

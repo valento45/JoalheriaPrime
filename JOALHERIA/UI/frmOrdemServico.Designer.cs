@@ -187,7 +187,7 @@
             this.pnlInferior.BackColor = System.Drawing.Color.Teal;
             this.pnlInferior.Controls.Add(this.btnSair);
             this.pnlInferior.Controls.Add(this.btnFinalizar);
-            this.pnlInferior.Location = new System.Drawing.Point(2, 833);
+            this.pnlInferior.Location = new System.Drawing.Point(2, 701);
             this.pnlInferior.Name = "pnlInferior";
             this.pnlInferior.Size = new System.Drawing.Size(1244, 85);
             this.pnlInferior.TabIndex = 3;
@@ -231,12 +231,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtTroco);
+            this.panel1.Controls.Add(this.cmbForma);
+            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.txtValorPago);
             this.panel1.Controls.Add(this.lblTroco);
             this.panel1.Controls.Add(this.lblValorPago);
             this.panel1.Controls.Add(this.txtTotal);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.cmbForma);
             this.panel1.Controls.Add(this.dgvItens);
             this.panel1.Controls.Add(this.imgServico);
             this.panel1.Controls.Add(this.btnSelecionarFormaPagamento);
@@ -252,9 +252,9 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtCliente);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(12, 72);
+            this.panel1.Location = new System.Drawing.Point(2, 72);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1224, 755);
+            this.panel1.Size = new System.Drawing.Size(1234, 623);
             this.panel1.TabIndex = 4;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -264,7 +264,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(3, 627);
+            this.label6.Location = new System.Drawing.Point(3, 509);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(164, 32);
             this.label6.TabIndex = 96;
@@ -278,7 +278,7 @@
             this.txtTroco.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtTroco.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold);
             this.txtTroco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.txtTroco.Location = new System.Drawing.Point(941, 638);
+            this.txtTroco.Location = new System.Drawing.Point(951, 575);
             this.txtTroco.Name = "txtTroco";
             this.txtTroco.Size = new System.Drawing.Size(280, 41);
             this.txtTroco.TabIndex = 95;
@@ -292,7 +292,7 @@
             this.txtValorPago.BackColor = System.Drawing.Color.Teal;
             this.txtValorPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.txtValorPago.Location = new System.Drawing.Point(941, 578);
+            this.txtValorPago.Location = new System.Drawing.Point(951, 532);
             this.txtValorPago.Name = "txtValorPago";
             this.txtValorPago.Size = new System.Drawing.Size(280, 40);
             this.txtValorPago.TabIndex = 94;
@@ -307,7 +307,7 @@
             this.lblTroco.AutoSize = true;
             this.lblTroco.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTroco.ForeColor = System.Drawing.Color.White;
-            this.lblTroco.Location = new System.Drawing.Point(849, 647);
+            this.lblTroco.Location = new System.Drawing.Point(859, 584);
             this.lblTroco.Name = "lblTroco";
             this.lblTroco.Size = new System.Drawing.Size(86, 32);
             this.lblTroco.TabIndex = 93;
@@ -320,7 +320,7 @@
             this.lblValorPago.AutoSize = true;
             this.lblValorPago.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValorPago.ForeColor = System.Drawing.Color.White;
-            this.lblValorPago.Location = new System.Drawing.Point(729, 582);
+            this.lblValorPago.Location = new System.Drawing.Point(741, 536);
             this.lblValorPago.Name = "lblValorPago";
             this.lblValorPago.Size = new System.Drawing.Size(208, 32);
             this.lblValorPago.TabIndex = 92;
@@ -335,7 +335,7 @@
             this.txtTotal.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtTotal.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.txtTotal.Location = new System.Drawing.Point(3, 671);
+            this.txtTotal.Location = new System.Drawing.Point(3, 543);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(456, 75);
             this.txtTotal.TabIndex = 91;
@@ -347,7 +347,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(436, 546);
+            this.label7.Location = new System.Drawing.Point(467, 537);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(270, 32);
             this.label7.TabIndex = 90;
@@ -364,7 +364,7 @@
             this.cmbForma.Items.AddRange(new object[] {
             "Dinheiro",
             "Cartão"});
-            this.cmbForma.Location = new System.Drawing.Point(439, 580);
+            this.cmbForma.Location = new System.Drawing.Point(470, 571);
             this.cmbForma.Name = "cmbForma";
             this.cmbForma.Size = new System.Drawing.Size(290, 41);
             this.cmbForma.TabIndex = 89;
@@ -385,11 +385,11 @@
             this.Column3,
             this.Column4,
             this.Column5});
-            this.dgvItens.Location = new System.Drawing.Point(17, 230);
+            this.dgvItens.Location = new System.Drawing.Point(17, 190);
             this.dgvItens.Name = "dgvItens";
             this.dgvItens.ReadOnly = true;
             this.dgvItens.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvItens.Size = new System.Drawing.Size(631, 292);
+            this.dgvItens.Size = new System.Drawing.Size(641, 292);
             this.dgvItens.TabIndex = 88;
             // 
             // Column1
@@ -427,7 +427,7 @@
             this.imgServico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.imgServico.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.imgServico.ErrorImage = null;
-            this.imgServico.Location = new System.Drawing.Point(654, 235);
+            this.imgServico.Location = new System.Drawing.Point(664, 190);
             this.imgServico.Name = "imgServico";
             this.imgServico.Size = new System.Drawing.Size(281, 287);
             this.imgServico.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -442,7 +442,7 @@
             this.btnSelecionarFormaPagamento.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold);
             this.btnSelecionarFormaPagamento.ForeColor = System.Drawing.Color.BlanchedAlmond;
             this.btnSelecionarFormaPagamento.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSelecionarFormaPagamento.Location = new System.Drawing.Point(1018, 429);
+            this.btnSelecionarFormaPagamento.Location = new System.Drawing.Point(1028, 422);
             this.btnSelecionarFormaPagamento.Name = "btnSelecionarFormaPagamento";
             this.btnSelecionarFormaPagamento.Size = new System.Drawing.Size(203, 55);
             this.btnSelecionarFormaPagamento.TabIndex = 86;
@@ -458,7 +458,7 @@
             this.btnSelecionarProduto.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelecionarProduto.ForeColor = System.Drawing.Color.BlanchedAlmond;
             this.btnSelecionarProduto.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSelecionarProduto.Location = new System.Drawing.Point(1018, 230);
+            this.btnSelecionarProduto.Location = new System.Drawing.Point(1028, 223);
             this.btnSelecionarProduto.Name = "btnSelecionarProduto";
             this.btnSelecionarProduto.Size = new System.Drawing.Size(203, 63);
             this.btnSelecionarProduto.TabIndex = 83;
@@ -474,7 +474,7 @@
             this.btnRemover.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold);
             this.btnRemover.ForeColor = System.Drawing.Color.BlanchedAlmond;
             this.btnRemover.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnRemover.Location = new System.Drawing.Point(1018, 368);
+            this.btnRemover.Location = new System.Drawing.Point(1028, 361);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(203, 55);
             this.btnRemover.TabIndex = 85;
@@ -490,7 +490,7 @@
             this.btnAdicionar.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold);
             this.btnAdicionar.ForeColor = System.Drawing.Color.BlanchedAlmond;
             this.btnAdicionar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAdicionar.Location = new System.Drawing.Point(1018, 299);
+            this.btnAdicionar.Location = new System.Drawing.Point(1028, 292);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(203, 63);
             this.btnAdicionar.TabIndex = 84;
@@ -506,7 +506,7 @@
             this.btnSelecionarCliente.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelecionarCliente.ForeColor = System.Drawing.Color.BlanchedAlmond;
             this.btnSelecionarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSelecionarCliente.Location = new System.Drawing.Point(1018, 161);
+            this.btnSelecionarCliente.Location = new System.Drawing.Point(1028, 154);
             this.btnSelecionarCliente.Name = "btnSelecionarCliente";
             this.btnSelecionarCliente.Size = new System.Drawing.Size(203, 63);
             this.btnSelecionarCliente.TabIndex = 82;
@@ -521,7 +521,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(104, 84);
+            this.label3.Location = new System.Drawing.Point(104, 74);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(118, 32);
             this.label3.TabIndex = 80;
@@ -533,7 +533,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(718, 161);
+            this.label1.Location = new System.Drawing.Point(728, 136);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 32);
             this.label1.TabIndex = 79;
@@ -545,7 +545,7 @@
             this.txtQuantidade.BackColor = System.Drawing.Color.Teal;
             this.txtQuantidade.Font = new System.Drawing.Font("Century Gothic", 20.25F);
             this.txtQuantidade.ForeColor = System.Drawing.Color.White;
-            this.txtQuantidade.Location = new System.Drawing.Point(796, 165);
+            this.txtQuantidade.Location = new System.Drawing.Point(806, 134);
             this.txtQuantidade.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -575,9 +575,9 @@
             this.txtServico.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtServico.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtServico.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.txtServico.Location = new System.Drawing.Point(233, 67);
+            this.txtServico.Location = new System.Drawing.Point(233, 57);
             this.txtServico.Name = "txtServico";
-            this.txtServico.Size = new System.Drawing.Size(861, 78);
+            this.txtServico.Size = new System.Drawing.Size(871, 67);
             this.txtServico.TabIndex = 77;
             this.txtServico.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -589,7 +589,7 @@
             this.txtPreco.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtPreco.Font = new System.Drawing.Font("Arial Rounded MT Bold", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPreco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.txtPreco.Location = new System.Drawing.Point(495, 165);
+            this.txtPreco.Location = new System.Drawing.Point(505, 134);
             this.txtPreco.Name = "txtPreco";
             this.txtPreco.Size = new System.Drawing.Size(217, 53);
             this.txtPreco.TabIndex = 76;
@@ -601,7 +601,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(226, 165);
+            this.label2.Location = new System.Drawing.Point(236, 142);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(263, 32);
             this.label2.TabIndex = 75;
@@ -616,9 +616,9 @@
             this.txtCliente.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtCliente.Font = new System.Drawing.Font("Century Gothic", 20.25F);
             this.txtCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.txtCliente.Location = new System.Drawing.Point(125, 18);
+            this.txtCliente.Location = new System.Drawing.Point(125, 8);
             this.txtCliente.Name = "txtCliente";
-            this.txtCliente.Size = new System.Drawing.Size(969, 41);
+            this.txtCliente.Size = new System.Drawing.Size(979, 41);
             this.txtCliente.TabIndex = 66;
             this.txtCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -629,7 +629,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(11, 20);
+            this.label4.Location = new System.Drawing.Point(11, 10);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(114, 32);
             this.label4.TabIndex = 65;
@@ -640,7 +640,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.ClientSize = new System.Drawing.Size(1248, 920);
+            this.ClientSize = new System.Drawing.Size(1248, 788);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlInferior);
             this.Controls.Add(this.pnlSuperior);

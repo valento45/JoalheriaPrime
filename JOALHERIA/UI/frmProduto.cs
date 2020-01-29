@@ -17,7 +17,7 @@ namespace JOALHERIA.UI
 
         JOALHERIABLL.CategoriaBLL categoriaBLL = new JOALHERIABLL.CategoriaBLL();
         JOALHERIADAL.CategoriaDAL categoriaDAL = new JOALHERIADAL.CategoriaDAL();
-
+        string caminho;
         bool alterar = false;
 
         public frmProduto()
@@ -111,8 +111,7 @@ namespace JOALHERIA.UI
                     produtoBLL.Precovenda = Convert.ToDecimal(txtPrecoVenda.Text);
                     produtoBLL.Lucro = Convert.ToDecimal(txtLucro.Text);
                     produtoBLL.Observacoes = txtObservacoes.Text;
-
-                   
+                    produtoBLL.Imagem = caminho.ToString();                   
 
                     produtoDAL.Cadastrar(produtoBLL);
                     MessageBox.Show("Produto registrado com sucesso!", "Succesful", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -132,6 +131,7 @@ namespace JOALHERIA.UI
                     produtoBLL.Precovenda = Convert.ToDecimal(txtPrecoVenda.Text);
                     produtoBLL.Lucro = Convert.ToDecimal(txtLucro.Text);
                     produtoBLL.Observacoes = txtObservacoes.Text;
+                    produtoBLL.Imagem = caminho.ToString();
 
                     produtoDAL.Alterar(produtoBLL);
                     MessageBox.Show("Dados Alterados com sucesso!", "Succesful", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -155,6 +155,7 @@ namespace JOALHERIA.UI
             txtQuantidade.Clear();
             alterar = false;
             label11.Text = "Cadastrar Produto";
+            pctImagemProduto.Image = null;
 
         }
         private void button3_Click(object sender, EventArgs e)
@@ -186,6 +187,9 @@ namespace JOALHERIA.UI
                     txtPrecoVenda.Text = Convert.ToString(produtoBLL.Precovenda);
                     txtLucro.Text = Convert.ToString(produtoBLL.Lucro);
                     txtObservacoes.Text = produtoBLL.Observacoes;
+                    caminho = produtoBLL.Imagem;
+                    pctImagemProduto.Load(caminho);
+                    pctImagemProduto.SizeMode = PictureBoxSizeMode.Zoom;
 
                     tabControl1.SelectedTab = tabPage1;
                 }
@@ -234,6 +238,16 @@ namespace JOALHERIA.UI
             {
                 if (!char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != (char)Keys.Delete)
                     e.Handled = true;
+            }
+        }
+
+        private void btnProcurarImagem_Click(object sender, EventArgs e)
+        {
+            if(openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                caminho = openFileDialog1.FileName;
+                pctImagemProduto.Load(caminho);
+                pctImagemProduto.SizeMode = PictureBoxSizeMode.Zoom;
             }
         }
     }//

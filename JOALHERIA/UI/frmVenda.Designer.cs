@@ -183,7 +183,7 @@
             this.txtPreco.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtPreco.Font = new System.Drawing.Font("Arial Rounded MT Bold", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPreco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.txtPreco.Location = new System.Drawing.Point(263, 229);
+            this.txtPreco.Location = new System.Drawing.Point(277, 198);
             this.txtPreco.Name = "txtPreco";
             this.txtPreco.Size = new System.Drawing.Size(217, 66);
             this.txtPreco.TabIndex = 61;
@@ -194,7 +194,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(-6, 229);
+            this.label2.Location = new System.Drawing.Point(8, 198);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(263, 32);
             this.label2.TabIndex = 60;
@@ -211,7 +211,7 @@
             this.txtProduto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.txtProduto.Location = new System.Drawing.Point(239, 137);
             this.txtProduto.Name = "txtProduto";
-            this.txtProduto.Size = new System.Drawing.Size(900, 78);
+            this.txtProduto.Size = new System.Drawing.Size(900, 58);
             this.txtProduto.TabIndex = 62;
             this.txtProduto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -249,6 +249,7 @@
             this.dgvItens.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvItens.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvItens.BackgroundColor = System.Drawing.Color.AliceBlue;
             this.dgvItens.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvItens.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -256,11 +257,11 @@
             this.Column3,
             this.Column4,
             this.Column5});
-            this.dgvItens.Location = new System.Drawing.Point(12, 314);
+            this.dgvItens.Location = new System.Drawing.Point(14, 275);
             this.dgvItens.Name = "dgvItens";
             this.dgvItens.ReadOnly = true;
             this.dgvItens.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvItens.Size = new System.Drawing.Size(631, 292);
+            this.dgvItens.Size = new System.Drawing.Size(631, 284);
             this.dgvItens.TabIndex = 66;
             // 
             // Column1
@@ -301,7 +302,7 @@
             this.txtTotal.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtTotal.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.txtTotal.Location = new System.Drawing.Point(19, 751);
+            this.txtTotal.Location = new System.Drawing.Point(19, 619);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(456, 75);
             this.txtTotal.TabIndex = 72;
@@ -312,7 +313,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(486, 225);
+            this.label1.Location = new System.Drawing.Point(500, 202);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 32);
             this.label1.TabIndex = 71;
@@ -320,29 +321,29 @@
             // 
             // label7
             // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(394, 663);
+            this.label7.Location = new System.Drawing.Point(672, 572);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(270, 32);
+            this.label7.Size = new System.Drawing.Size(171, 32);
             this.label7.TabIndex = 70;
-            this.label7.Text = "Tipo de Pagamento";
+            this.label7.Text = "Forma Pgto.";
             // 
             // cmbForma
             // 
-            this.cmbForma.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cmbForma.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbForma.BackColor = System.Drawing.Color.Teal;
             this.cmbForma.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbForma.Font = new System.Drawing.Font("Century Gothic", 20.25F);
+            this.cmbForma.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbForma.ForeColor = System.Drawing.Color.PaleTurquoise;
             this.cmbForma.FormattingEnabled = true;
             this.cmbForma.Items.AddRange(new object[] {
             "Dinheiro",
             "Cartão"});
-            this.cmbForma.Location = new System.Drawing.Point(397, 697);
+            this.cmbForma.Location = new System.Drawing.Point(849, 570);
             this.cmbForma.Name = "cmbForma";
-            this.cmbForma.Size = new System.Drawing.Size(290, 41);
+            this.cmbForma.Size = new System.Drawing.Size(290, 38);
             this.cmbForma.TabIndex = 67;
             this.cmbForma.SelectedIndexChanged += new System.EventHandler(this.cmbForma_SelectedIndexChanged);
             // 
@@ -351,7 +352,7 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(15, 719);
+            this.label6.Location = new System.Drawing.Point(15, 587);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(164, 32);
             this.label6.TabIndex = 69;
@@ -362,7 +363,7 @@
             this.txtQuantidade.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtQuantidade.BackColor = System.Drawing.Color.Teal;
             this.txtQuantidade.Font = new System.Drawing.Font("Century Gothic", 20.25F);
-            this.txtQuantidade.Location = new System.Drawing.Point(564, 229);
+            this.txtQuantidade.Location = new System.Drawing.Point(578, 198);
             this.txtQuantidade.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -392,7 +393,7 @@
             this.pnlRodape.Controls.Add(this.txtData);
             this.pnlRodape.Controls.Add(this.btnSair);
             this.pnlRodape.Controls.Add(this.btnFinalizar);
-            this.pnlRodape.Location = new System.Drawing.Point(0, 832);
+            this.pnlRodape.Location = new System.Drawing.Point(0, 700);
             this.pnlRodape.Name = "pnlRodape";
             this.pnlRodape.Size = new System.Drawing.Size(1144, 83);
             this.pnlRodape.TabIndex = 73;
@@ -421,7 +422,7 @@
             this.btnSelecionarCliente.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelecionarCliente.ForeColor = System.Drawing.Color.Black;
             this.btnSelecionarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSelecionarCliente.Location = new System.Drawing.Point(936, 258);
+            this.btnSelecionarCliente.Location = new System.Drawing.Point(936, 206);
             this.btnSelecionarCliente.Name = "btnSelecionarCliente";
             this.btnSelecionarCliente.Size = new System.Drawing.Size(203, 63);
             this.btnSelecionarCliente.TabIndex = 0;
@@ -437,7 +438,7 @@
             this.btnSelecionarProduto.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelecionarProduto.ForeColor = System.Drawing.Color.Black;
             this.btnSelecionarProduto.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSelecionarProduto.Location = new System.Drawing.Point(936, 327);
+            this.btnSelecionarProduto.Location = new System.Drawing.Point(936, 275);
             this.btnSelecionarProduto.Name = "btnSelecionarProduto";
             this.btnSelecionarProduto.Size = new System.Drawing.Size(203, 63);
             this.btnSelecionarProduto.TabIndex = 1;
@@ -453,7 +454,7 @@
             this.btnAdicionar.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold);
             this.btnAdicionar.ForeColor = System.Drawing.Color.Black;
             this.btnAdicionar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAdicionar.Location = new System.Drawing.Point(936, 396);
+            this.btnAdicionar.Location = new System.Drawing.Point(936, 344);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(203, 63);
             this.btnAdicionar.TabIndex = 2;
@@ -469,7 +470,7 @@
             this.btnRemover.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold);
             this.btnRemover.ForeColor = System.Drawing.Color.Black;
             this.btnRemover.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnRemover.Location = new System.Drawing.Point(936, 465);
+            this.btnRemover.Location = new System.Drawing.Point(936, 413);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(203, 55);
             this.btnRemover.TabIndex = 5;
@@ -482,9 +483,9 @@
             this.imgProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.imgProduto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.imgProduto.ErrorImage = null;
-            this.imgProduto.Location = new System.Drawing.Point(649, 319);
+            this.imgProduto.Location = new System.Drawing.Point(649, 275);
             this.imgProduto.Name = "imgProduto";
-            this.imgProduto.Size = new System.Drawing.Size(281, 287);
+            this.imgProduto.Size = new System.Drawing.Size(281, 284);
             this.imgProduto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgProduto.TabIndex = 65;
             this.imgProduto.TabStop = false;
@@ -499,7 +500,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(104, 163);
+            this.label3.Location = new System.Drawing.Point(110, 148);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(123, 32);
             this.label3.TabIndex = 74;
@@ -510,7 +511,7 @@
             this.lblValorPago.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblValorPago.AutoSize = true;
             this.lblValorPago.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorPago.Location = new System.Drawing.Point(693, 702);
+            this.lblValorPago.Location = new System.Drawing.Point(695, 618);
             this.lblValorPago.Name = "lblValorPago";
             this.lblValorPago.Size = new System.Drawing.Size(160, 32);
             this.lblValorPago.TabIndex = 75;
@@ -522,7 +523,7 @@
             this.lblTroco.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTroco.AutoSize = true;
             this.lblTroco.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTroco.Location = new System.Drawing.Point(767, 762);
+            this.lblTroco.Location = new System.Drawing.Point(768, 661);
             this.lblTroco.Name = "lblTroco";
             this.lblTroco.Size = new System.Drawing.Size(86, 32);
             this.lblTroco.TabIndex = 77;
@@ -535,7 +536,7 @@
             this.txtValorPago.BackColor = System.Drawing.Color.Teal;
             this.txtValorPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.txtValorPago.Location = new System.Drawing.Point(859, 693);
+            this.txtValorPago.Location = new System.Drawing.Point(859, 611);
             this.txtValorPago.Name = "txtValorPago";
             this.txtValorPago.Size = new System.Drawing.Size(280, 40);
             this.txtValorPago.TabIndex = 78;
@@ -551,7 +552,7 @@
             this.txtTroco.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtTroco.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold);
             this.txtTroco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.txtTroco.Location = new System.Drawing.Point(859, 753);
+            this.txtTroco.Location = new System.Drawing.Point(859, 655);
             this.txtTroco.Name = "txtTroco";
             this.txtTroco.Size = new System.Drawing.Size(280, 41);
             this.txtTroco.TabIndex = 80;
@@ -567,7 +568,7 @@
             this.btnSelecionarFormaPagamento.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold);
             this.btnSelecionarFormaPagamento.ForeColor = System.Drawing.Color.Black;
             this.btnSelecionarFormaPagamento.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSelecionarFormaPagamento.Location = new System.Drawing.Point(936, 526);
+            this.btnSelecionarFormaPagamento.Location = new System.Drawing.Point(936, 474);
             this.btnSelecionarFormaPagamento.Name = "btnSelecionarFormaPagamento";
             this.btnSelecionarFormaPagamento.Size = new System.Drawing.Size(203, 55);
             this.btnSelecionarFormaPagamento.TabIndex = 81;
@@ -580,7 +581,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.ClientSize = new System.Drawing.Size(1144, 920);
+            this.ClientSize = new System.Drawing.Size(1144, 788);
             this.Controls.Add(this.btnSelecionarFormaPagamento);
             this.Controls.Add(this.txtTroco);
             this.Controls.Add(this.txtValorPago);

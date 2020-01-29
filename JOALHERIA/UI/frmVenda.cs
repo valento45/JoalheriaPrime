@@ -117,6 +117,7 @@ namespace JOALHERIA.UI
                 produtoDAL.RetornarDados(produtoBLL);
                 txtProduto.Text = produtoBLL.Descricao;
                 txtPreco.Text = Convert.ToString( produtoBLL.Precovenda);
+                imgProduto.Load(produtoBLL.Imagem);
             }
             txtQuantidade.Focus();
             txtQuantidade.Select(0, txtQuantidade.Text.Length);
@@ -191,12 +192,8 @@ namespace JOALHERIA.UI
                 // CalcularTroco();
 
                 //limpar
-                txtValorPago.Clear();
-                txtTroco.Text = "";
-                produtoBLL.Idproduto = 0;
-                txtProduto.Text = "";
-                txtQuantidade.Value = 1;
-                txtPreco.Text = "";                
+                limpar();
+                
             }
             else
             {
@@ -204,6 +201,17 @@ namespace JOALHERIA.UI
             }
         }
 
+        public void limpar()
+        {
+            //limpar
+            txtValorPago.Clear();
+            txtTroco.Text = "";
+            produtoBLL.Idproduto = 0;
+            txtProduto.Text = "";
+            txtQuantidade.Value = 1;
+            txtPreco.Text = "";
+            imgProduto.Image = null;
+        }
         private void timerHora_Tick(object sender, EventArgs e)
         {
             txtData.Text = DateTime.Now.ToString("dd/MM/yyyy \t HH:mm:ss");
