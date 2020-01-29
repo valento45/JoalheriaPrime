@@ -42,9 +42,9 @@ namespace JOALHERIA.UI
         }
 
         private void frmServico_Load(object sender, EventArgs e)
-        {          
-
-        }
+        {
+            PopularGrid();
+        }       
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -103,7 +103,7 @@ namespace JOALHERIA.UI
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if(ValidarCampos() == true && alterar == false)
+            if(ValidarCampos()  && alterar == false)
             {
                 servicoBLL.Descricao = txtDescricao.Text.ToString();
                 servicoBLL.Valor_servico = Convert.ToDecimal(txtValor.Text);
@@ -114,7 +114,7 @@ namespace JOALHERIA.UI
                 PopularGrid();
                 return;
             }
-            if(ValidarCampos() == true && alterar == true)
+            if(ValidarCampos() && alterar == true)
             {
                 servicoBLL.Descricao = txtDescricao.Text.ToString();
                 servicoBLL.Valor_servico = Convert.ToDecimal(txtValor.Text);
@@ -126,7 +126,7 @@ namespace JOALHERIA.UI
 
                 return;
             }
-            if(ValidarCampos() == false)
+            if(!ValidarCampos())
             {
                 MessageBox.Show("Preencha todos os campos!", "Validação de campos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }

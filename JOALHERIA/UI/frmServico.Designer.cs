@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblAcao = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
@@ -41,11 +42,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnSelecionar = new System.Windows.Forms.Button();
             this.pnlFiltros = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rdbDescricao = new System.Windows.Forms.RadioButton();
+            this.rdbCodigo = new System.Windows.Forms.RadioButton();
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvConsultarServico = new System.Windows.Forms.DataGridView();
@@ -55,8 +57,6 @@
             this.tbtnExcluir = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tbtnImprimir = new System.Windows.Forms.ToolStripButton();
-            this.lblAcao = new System.Windows.Forms.Label();
-            this.btnSelecionar = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -94,6 +94,17 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cadastrar";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // lblAcao
+            // 
+            this.lblAcao.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblAcao.AutoSize = true;
+            this.lblAcao.Font = new System.Drawing.Font("Century Gothic", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAcao.Location = new System.Drawing.Point(425, 26);
+            this.lblAcao.Name = "lblAcao";
+            this.lblAcao.Size = new System.Drawing.Size(113, 25);
+            this.lblAcao.TabIndex = 2;
+            this.lblAcao.Text = "Cadastrar";
             // 
             // panel1
             // 
@@ -223,6 +234,21 @@
             this.panel2.Size = new System.Drawing.Size(912, 431);
             this.panel2.TabIndex = 1;
             // 
+            // btnSelecionar
+            // 
+            this.btnSelecionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSelecionar.BackColor = System.Drawing.Color.Teal;
+            this.btnSelecionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelecionar.ForeColor = System.Drawing.Color.White;
+            this.btnSelecionar.Location = new System.Drawing.Point(756, 161);
+            this.btnSelecionar.Name = "btnSelecionar";
+            this.btnSelecionar.Size = new System.Drawing.Size(153, 34);
+            this.btnSelecionar.TabIndex = 2;
+            this.btnSelecionar.Text = "Selecionar";
+            this.btnSelecionar.UseVisualStyleBackColor = false;
+            this.btnSelecionar.Visible = false;
+            this.btnSelecionar.Click += new System.EventHandler(this.btnSelecionar_Click);
+            // 
             // pnlFiltros
             // 
             this.pnlFiltros.Controls.Add(this.groupBox2);
@@ -236,8 +262,8 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.radioButton3);
-            this.groupBox2.Controls.Add(this.radioButton2);
-            this.groupBox2.Controls.Add(this.radioButton1);
+            this.groupBox2.Controls.Add(this.rdbDescricao);
+            this.groupBox2.Controls.Add(this.rdbCodigo);
             this.groupBox2.Location = new System.Drawing.Point(495, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(200, 118);
@@ -256,27 +282,27 @@
             this.radioButton3.Text = "radioButton3";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rdbDescricao
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(7, 44);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(85, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "radioButton2";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rdbDescricao.AutoSize = true;
+            this.rdbDescricao.Location = new System.Drawing.Point(7, 44);
+            this.rdbDescricao.Name = "rdbDescricao";
+            this.rdbDescricao.Size = new System.Drawing.Size(73, 17);
+            this.rdbDescricao.TabIndex = 1;
+            this.rdbDescricao.TabStop = true;
+            this.rdbDescricao.Text = "Descrição";
+            this.rdbDescricao.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rdbCodigo
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(7, 20);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(85, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "radioButton1";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rdbCodigo.AutoSize = true;
+            this.rdbCodigo.Location = new System.Drawing.Point(7, 20);
+            this.rdbCodigo.Name = "rdbCodigo";
+            this.rdbCodigo.Size = new System.Drawing.Size(58, 17);
+            this.rdbCodigo.TabIndex = 0;
+            this.rdbCodigo.TabStop = true;
+            this.rdbCodigo.Text = "Código";
+            this.rdbCodigo.UseVisualStyleBackColor = true;
             // 
             // txtFiltro
             // 
@@ -367,32 +393,6 @@
             this.tbtnImprimir.Size = new System.Drawing.Size(23, 22);
             this.tbtnImprimir.Text = "Imprimir";
             // 
-            // lblAcao
-            // 
-            this.lblAcao.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblAcao.AutoSize = true;
-            this.lblAcao.Font = new System.Drawing.Font("Century Gothic", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAcao.Location = new System.Drawing.Point(425, 26);
-            this.lblAcao.Name = "lblAcao";
-            this.lblAcao.Size = new System.Drawing.Size(113, 25);
-            this.lblAcao.TabIndex = 2;
-            this.lblAcao.Text = "Cadastrar";
-            // 
-            // btnSelecionar
-            // 
-            this.btnSelecionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelecionar.BackColor = System.Drawing.Color.Teal;
-            this.btnSelecionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelecionar.ForeColor = System.Drawing.Color.White;
-            this.btnSelecionar.Location = new System.Drawing.Point(756, 161);
-            this.btnSelecionar.Name = "btnSelecionar";
-            this.btnSelecionar.Size = new System.Drawing.Size(153, 34);
-            this.btnSelecionar.TabIndex = 2;
-            this.btnSelecionar.Text = "Selecionar";
-            this.btnSelecionar.UseVisualStyleBackColor = false;
-            this.btnSelecionar.Visible = false;
-            this.btnSelecionar.Click += new System.EventHandler(this.btnSelecionar_Click);
-            // 
             // frmServico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -451,8 +451,8 @@
         private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rdbDescricao;
+        private System.Windows.Forms.RadioButton rdbCodigo;
         private System.Windows.Forms.Label lblAcao;
         private System.Windows.Forms.Button btnSelecionar;
     }

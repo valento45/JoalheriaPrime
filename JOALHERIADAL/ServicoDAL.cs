@@ -45,32 +45,28 @@ namespace JOALHERIADAL
             con.Desconectar();
         }
 
-        //METODO CONSULTAR COM LISTA
+        //METODO CONSULTAR COM LISTA IGUAL O DOC    
         public List<JOALHERIABLL.ServicoBLL> ConsultarTodosList()
         {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM JOALHERIA.SERVICO",con.Conectar());
             List<JOALHERIABLL.ServicoBLL> Result = new List<JOALHERIABLL.ServicoBLL>();
-            SqlDataReader dr = cmd.ExecuteReader();
-            while (dr.Read())
-            {
-                Result.Add(new JOALHERIABLL.ServicoBLL()
-                {
-                    Idservico = Convert.ToInt32(dr["IDSERVICO"]),
-                    Descricao = dr["DESCRICAO"].ToString(),
-                    Valor_servico = Convert.ToDecimal(dr["PRECO_UNITARIO"])
-                }
-                );
-            }//fim while
-            dr.Close();
-            con.Desconectar();
+            SqlCommand cmd = new SqlCommand("SELECT * FROM JOALHERIA.SERVICO",con.Conectar());
+
+            foreach (DataRow row in ExecuteReader(cmd).Tables[0].Rows)
+                Result.Add(new JOALHERIABLL.ServicoBLL(row));
             return Result;
+            
         }
 
         //METODO EXECUTE READER LEITURA QUASE QUE UNIVERSAL
-        //public static IDbCommand ExecuteReader(IDbCommand(SqlCommand))
-        //{
+        public DataSet ExecuteReader(IDbCommand cmd)
+        {
+            DataSet ds = null;
+            IDbDataAdapter da = new SqlDataAdapter((SqlCommand)cmd);
+            ds = new DataSet();
+            da.Fill(ds);
 
-        //}
+            return ds;
+        }
 
         public JOALHERIABLL.ServicoBLL RetornarDados(JOALHERIABLL.ServicoBLL servicoBLL)
         {
