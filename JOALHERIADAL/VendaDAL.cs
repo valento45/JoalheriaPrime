@@ -207,7 +207,7 @@ namespace JOALHERIADAL
         //CONSULTAR VENDA POR PERIODO
         public DataTable ConsultarPorPeriodo(string data1, string data2)
         {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.VENDA WHERE DATAVENDA >= " + "'" + data1 + " 00:00:01" + "'" + " AND DATAVENDA <= " + "'" + data2 + " 23:59:59" + "'" + " ORDER BY IDVENDA", con.Conectar());
+            SqlDataAdapter da = new SqlDataAdapter("SELECT IDVENDA, NOME AS CLIENTE, DATAVENDA, USUARIO, PRECOTOTAL, FORMAPAGAMENTO, VALORPAGO, TROCO FROM JOALHERIA.CLIENTE JOIN JOALHERIA.VENDA ON JOALHERIA.CLIENTE.IDCLIENTE = JOALHERIA.VENDA.IDCLIENTE WHERE DATAVENDA >= " + "'" + data1 + " 00:00:01" + "'" + " AND DATAVENDA <= " + "'" + data2 + " 23:59:59" + "'" + " ORDER BY IDVENDA", con.Conectar());
             DataTable dt = new DataTable();
             da.Fill(dt);
             con.Desconectar();

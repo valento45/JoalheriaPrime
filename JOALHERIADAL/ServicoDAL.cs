@@ -66,6 +66,12 @@ namespace JOALHERIADAL
             return Result;
         }
 
+        //METODO EXECUTE READER LEITURA QUASE QUE UNIVERSAL
+        //public static IDbCommand ExecuteReader(IDbCommand(SqlCommand))
+        //{
+
+        //}
+
         public JOALHERIABLL.ServicoBLL RetornarDados(JOALHERIABLL.ServicoBLL servicoBLL)
         {
             SqlCommand cmd = new SqlCommand("SELECT * FROM JOALHERIA.SERVICO WHERE IDSERVICO = @IDSERVICO", con.Conectar());

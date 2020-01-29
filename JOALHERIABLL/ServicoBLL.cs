@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace JOALHERIABLL
 {
@@ -11,6 +13,18 @@ namespace JOALHERIABLL
         int idservico;
         string descricao;
         decimal valor_servico;
+
+        public ServicoBLL(DataRow dr)
+        {
+            Idservico = Convert.ToInt32(dr["IDSERVICO"]);
+            Descricao = dr["DESCRICAO"].ToString();
+            Valor_servico = Convert.ToDecimal(dr["PRECO_UNITARIO"]);
+        }
+
+        public ServicoBLL()
+        {
+
+        }
 
         public int Idservico
         {
