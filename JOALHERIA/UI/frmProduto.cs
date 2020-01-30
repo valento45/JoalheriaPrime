@@ -203,7 +203,7 @@ namespace JOALHERIA.UI
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-           
+            ResetarCampos();
         }
 
         private void txtFiltro_TextChanged(object sender, EventArgs e)
