@@ -35,15 +35,20 @@
             this.dgvConsultarItens = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rdbCodigo = new System.Windows.Forms.RadioButton();
+            this.rdbDescricao = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultarItens)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Teal;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.btnSair);
             this.panel1.Controls.Add(this.txtFiltro);
             this.panel1.Controls.Add(this.label1);
@@ -92,6 +97,8 @@
             // 
             this.dgvConsultarItens.AllowUserToAddRows = false;
             this.dgvConsultarItens.AllowUserToDeleteRows = false;
+            this.dgvConsultarItens.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvConsultarItens.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvConsultarItens.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvConsultarItens.Location = new System.Drawing.Point(3, 129);
             this.dgvConsultarItens.Name = "dgvConsultarItens";
@@ -124,6 +131,40 @@
             this.label7.Text = "Itens";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rdbDescricao);
+            this.groupBox1.Controls.Add(this.rdbCodigo);
+            this.groupBox1.Location = new System.Drawing.Point(373, 16);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(111, 107);
+            this.groupBox1.TabIndex = 37;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Filtrar Por";
+            // 
+            // rdbCodigo
+            // 
+            this.rdbCodigo.AutoSize = true;
+            this.rdbCodigo.Checked = true;
+            this.rdbCodigo.Location = new System.Drawing.Point(6, 22);
+            this.rdbCodigo.Name = "rdbCodigo";
+            this.rdbCodigo.Size = new System.Drawing.Size(58, 17);
+            this.rdbCodigo.TabIndex = 0;
+            this.rdbCodigo.TabStop = true;
+            this.rdbCodigo.Text = "Código";
+            this.rdbCodigo.UseVisualStyleBackColor = true;
+            // 
+            // rdbDescricao
+            // 
+            this.rdbDescricao.AutoSize = true;
+            this.rdbDescricao.Location = new System.Drawing.Point(7, 46);
+            this.rdbDescricao.Name = "rdbDescricao";
+            this.rdbDescricao.Size = new System.Drawing.Size(73, 17);
+            this.rdbDescricao.TabIndex = 1;
+            this.rdbDescricao.TabStop = true;
+            this.rdbDescricao.Text = "Descrição";
+            this.rdbDescricao.UseVisualStyleBackColor = true;
+            // 
             // frmVerItensDaVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -140,6 +181,8 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultarItens)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -153,5 +196,8 @@
         private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rdbDescricao;
+        private System.Windows.Forms.RadioButton rdbCodigo;
     }
 }

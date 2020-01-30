@@ -54,7 +54,7 @@ namespace JOALHERIADAL
 
         public DataTable ConsultarTodos()
         {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.ORDEMSERVICO",con.Conectar());
+            SqlDataAdapter da = new SqlDataAdapter("SELECT IDORDEM, NOME AS CLIENTE, DATAATUAL,DATAENTREGA, DESCONTO, VALOR_TOTAL,FORMA_PAGAMENTO, VALOR_PAGO,TROCO, IDUSUARIO FROM JOALHERIA.CLIENTE JOIN JOALHERIA.ORDEMSERVICO ON JOALHERIA.CLIENTE.IDCLIENTE = JOALHERIA.ORDEMSERVICO.IDCLIENTE ORDER BY IDORDEM", con.Conectar());
             DataTable dt = new DataTable();
             da.Fill(dt);
             con.Desconectar();
@@ -86,5 +86,35 @@ namespace JOALHERIADAL
             return ordemservicoBLL;
 
         }
+
+        //public List<JOALHERIABLL.OrdemServicoBLL> ConsultarPorCodigoList(JOALHERIABLL.OrdemServicoBLL ordemservicoBLL)
+        //{
+        //    List<JOALHERIABLL.OrdemServicoBLL> Result = new List<JOALHERIABLL.OrdemServicoBLL>();
+        //    SqlCommand cmd = new SqlCommand("SELECT IDORDEM, NOME AS CLIENTE, DATAATUAL,DATAENTREGA, DESCONTO, VALOR_TOTAL,FORMA_PAGAMENTO, VALOR_PAGO,TROCO, IDUSUARIO FROM JOALHERIA.CLIENTE JOIN JOALHERIA.ORDEMSERVICO ON JOALHERIA.CLIENTE.IDCLIENTE = JOALHERIA.ORDEMSERVICO.IDCLIENTE WHERE IDORDEM = @IDORDEM",con.Conectar());
+        //    cmd.Parameters.AddWithValue("@IDORDEM", ordemservicoBLL.Idordem);
+        //    foreach (DataRow row in Acces.ExecuteReader(cmd).Tables[0].Rows)
+        //        Result.Add(new JOALHERIABLL.OrdemServicoBLL(row));
+        //    return Result;
+        //}
+
+        public DataTable ConsultarPorCodigo(JOALHERIABLL.OrdemServicoBLL ordemservicoBLL)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("SELECT IDORDEM, NOME AS CLIENTE, DATAATUAL,DATAENTREGA, DESCONTO, VALOR_TOTAL,FORMA_PAGAMENTO, VALOR_PAGO,TROCO, IDUSUARIO FROM JOALHERIA.CLIENTE JOIN JOALHERIA.ORDEMSERVICO ON JOALHERIA.CLIENTE.IDCLIENTE = JOALHERIA.ORDEMSERVICO.IDCLIENTE WHERE IDORDEM = @IDORDEM ORDER BY IDORDEM", con.Conectar());
+            da.SelectCommand.Parameters.AddWithValue("@IDORDEM", ordemservicoBLL.Idordem);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Desconectar();
+            return dt;
+        }
+
+        public DataTable ConsultarPorPeriodo(string data1, string data2)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("SELECT IDORDEM, NOME AS CLIENTE, DATAATUAL,DATAENTREGA, DESCONTO, VALOR_TOTAL,FORMA_PAGAMENTO, VALOR_PAGO,TROCO, IDUSUARIO FROM JOALHERIA.CLIENTE JOIN JOALHERIA.ORDEMSERVICO ON JOALHERIA.CLIENTE.IDCLIENTE = JOALHERIA.ORDEMSERVICO.IDCLIENTE WHERE DATAATUAL >= "+ "'"+data1+ " 00:00:01" + "'" + " AND DATAATUAL <= " + "'" + data2 + " 23:59:59"+ "'" + " ORDER BY IDORDEM", con.Conectar());
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Desconectar();
+            return dt;
+        }
+
     }//
 }//

@@ -30,6 +30,9 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlPeriodo = new System.Windows.Forms.Panel();
+            this.txtAte = new System.Windows.Forms.MaskedTextBox();
+            this.txtDe = new System.Windows.Forms.MaskedTextBox();
+            this.btnFiltrar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlFiltro = new System.Windows.Forms.Panel();
@@ -46,9 +49,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnVerItens = new System.Windows.Forms.Button();
             this.dgvConsultarVendas = new System.Windows.Forms.DataGridView();
-            this.btnFiltrar = new System.Windows.Forms.Button();
-            this.txtDe = new System.Windows.Forms.MaskedTextBox();
-            this.txtAte = new System.Windows.Forms.MaskedTextBox();
             this.panel1.SuspendLayout();
             this.pnlPeriodo.SuspendLayout();
             this.pnlFiltro.SuspendLayout();
@@ -89,6 +89,32 @@
             this.pnlPeriodo.Name = "pnlPeriodo";
             this.pnlPeriodo.Size = new System.Drawing.Size(414, 56);
             this.pnlPeriodo.TabIndex = 38;
+            // 
+            // txtAte
+            // 
+            this.txtAte.Location = new System.Drawing.Point(175, 24);
+            this.txtAte.Mask = "00/00/0000";
+            this.txtAte.Name = "txtAte";
+            this.txtAte.Size = new System.Drawing.Size(100, 20);
+            this.txtAte.TabIndex = 6;
+            // 
+            // txtDe
+            // 
+            this.txtDe.Location = new System.Drawing.Point(31, 24);
+            this.txtDe.Mask = "00/00/0000";
+            this.txtDe.Name = "txtDe";
+            this.txtDe.Size = new System.Drawing.Size(100, 20);
+            this.txtDe.TabIndex = 5;
+            // 
+            // btnFiltrar
+            // 
+            this.btnFiltrar.Location = new System.Drawing.Point(321, 22);
+            this.btnFiltrar.Name = "btnFiltrar";
+            this.btnFiltrar.Size = new System.Drawing.Size(75, 23);
+            this.btnFiltrar.TabIndex = 4;
+            this.btnFiltrar.Text = "Filtrar";
+            this.btnFiltrar.UseVisualStyleBackColor = true;
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
             // label4
             // 
@@ -275,6 +301,8 @@
             // 
             this.dgvConsultarVendas.AllowUserToAddRows = false;
             this.dgvConsultarVendas.AllowUserToDeleteRows = false;
+            this.dgvConsultarVendas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvConsultarVendas.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvConsultarVendas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvConsultarVendas.Location = new System.Drawing.Point(3, 120);
             this.dgvConsultarVendas.Name = "dgvConsultarVendas";
@@ -282,32 +310,6 @@
             this.dgvConsultarVendas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvConsultarVendas.Size = new System.Drawing.Size(541, 235);
             this.dgvConsultarVendas.TabIndex = 0;
-            // 
-            // btnFiltrar
-            // 
-            this.btnFiltrar.Location = new System.Drawing.Point(321, 22);
-            this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(75, 23);
-            this.btnFiltrar.TabIndex = 4;
-            this.btnFiltrar.Text = "Filtrar";
-            this.btnFiltrar.UseVisualStyleBackColor = true;
-            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
-            // 
-            // txtDe
-            // 
-            this.txtDe.Location = new System.Drawing.Point(31, 24);
-            this.txtDe.Mask = "00/00/0000";
-            this.txtDe.Name = "txtDe";
-            this.txtDe.Size = new System.Drawing.Size(100, 20);
-            this.txtDe.TabIndex = 5;
-            // 
-            // txtAte
-            // 
-            this.txtAte.Location = new System.Drawing.Point(175, 24);
-            this.txtAte.Mask = "00/00/0000";
-            this.txtAte.Name = "txtAte";
-            this.txtAte.Size = new System.Drawing.Size(100, 20);
-            this.txtAte.TabIndex = 6;
             // 
             // frmConsultarVendas
             // 

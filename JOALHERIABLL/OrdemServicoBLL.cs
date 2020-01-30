@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data;
 namespace JOALHERIABLL
 {
     public class OrdemServicoBLL
@@ -18,6 +18,25 @@ namespace JOALHERIABLL
         decimal valor_pago;
         decimal troco;
         int idusuario;
+        
+        public OrdemServicoBLL(DataRow dr)
+        {
+            Idordem = Convert.ToInt32(dr["IDORDEM"]);           
+            Idcliente = Convert.ToInt32(dr["IDCLIENTE"]);
+            Dataatual = Convert.ToDateTime(dr["DATAATUAL"]);
+            Dataentrega = Convert.ToDateTime(dr["DATAENTREGA"]);
+            Desconto = Convert.ToDecimal(dr["DESCONTO"]);
+            Valor_total = Convert.ToDecimal(dr["VALOR_TOTAL"]);
+            Forma_pagamento = dr["FORMA_PAGAMENTO"].ToString();
+            Valor_pago = Convert.ToDecimal(dr["VALOR_PAGO"]);
+            Troco = Convert.ToDecimal(dr["TROCO"]);
+            Idusuario = Convert.ToInt32(dr["IDUSUARIO"]);
+        }
+
+        public OrdemServicoBLL()
+        {
+
+        }
 
         public int Idordem
         {

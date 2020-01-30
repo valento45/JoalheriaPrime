@@ -28,7 +28,8 @@ namespace JOALHERIA.UI
 
         private void frmConsultarOrdem_Load(object sender, EventArgs e)
         {
-            dgvConsultarOrdem.DataSource = ordemservicoDAL.ConsultarTodos();
+            AtualizarGrid();
+            VerificarTipoDeFiltro();
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -105,6 +106,73 @@ namespace JOALHERIA.UI
                 btnVerItens.Text = "Ver Itens(F5)";
                 dgvConsultarOrdem.DataSource = ordemservicoDAL.ConsultarTodos();
             }
+        }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            if (rdbCodigo.Checked)
+            {
+                try 
+                {
+                    ordemservicoBLL.Idordem = Convert.ToInt32(txtFiltro.Text);
+                    dgvConsultarOrdem.DataSource = ordemservicoDAL.ConsultarPorCodigo(ordemservicoBLL);
+                }
+                catch
+                {
+                    txtFiltro.Clear();
+                    AtualizarGrid();
+                }
+            }            
+        }
+        public void AtualizarGrid()
+        {
+            dgvConsultarOrdem.DataSource = ordemservicoDAL.ConsultarTodos();
+        }
+
+        public void VerificarTipoDeFiltro()
+        {
+            if (rdbCodigo.Checked)
+            {
+                pnlFiltro.Visible = true;
+                pnlPeriodo.Visible = false;
+            }
+            if (rdbPeriodo.Checked)
+            {
+                pnlFiltro.Visible = false;
+                pnlPeriodo.Visible = true;
+            }
+        }
+
+        private void rdbCodigo_CheckedChanged(object sender, EventArgs e)
+        {
+            VerificarTipoDeFiltro();
+            LimparFiltros();
+            AtualizarGrid();
+        }
+
+        private void rdbPeriodo_CheckedChanged(object sender, EventArgs e)
+        {
+            VerificarTipoDeFiltro();
+            LimparFiltros();
+            AtualizarGrid();
+        }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dgvConsultarOrdem.DataSource = ordemservicoDAL.ConsultarPorPeriodo(txtDe.Text, txtAte.Text);
+            }
+            catch
+            {
+                AtualizarGrid();
+            }
+        }
+        public void LimparFiltros()
+        {
+            txtFiltro.Clear();
+            txtDe.Clear();
+            txtAte.Clear();            
         }
     }
 }
