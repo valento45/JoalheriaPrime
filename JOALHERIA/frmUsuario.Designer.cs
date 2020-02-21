@@ -63,6 +63,16 @@
             this.button3 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label13 = new System.Windows.Forms.Label();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRg = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCpf = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEndereco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTelefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSenha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chkSelecionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -401,10 +411,21 @@
             // 
             this.dgvConsultarUsuario.AllowUserToAddRows = false;
             this.dgvConsultarUsuario.AllowUserToDeleteRows = false;
+            this.dgvConsultarUsuario.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvConsultarUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvConsultarUsuario.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colId,
+            this.colNome,
+            this.colRg,
+            this.colCpf,
+            this.colEndereco,
+            this.colTelefone,
+            this.colTipo,
+            this.colUsuario,
+            this.colSenha,
+            this.chkSelecionar});
             this.dgvConsultarUsuario.Location = new System.Drawing.Point(3, 89);
             this.dgvConsultarUsuario.Name = "dgvConsultarUsuario";
-            this.dgvConsultarUsuario.ReadOnly = true;
             this.dgvConsultarUsuario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvConsultarUsuario.Size = new System.Drawing.Size(535, 150);
             this.dgvConsultarUsuario.TabIndex = 0;
@@ -444,6 +465,84 @@
             this.label13.Size = new System.Drawing.Size(124, 18);
             this.label13.TabIndex = 23;
             this.label13.Text = "Cadastrar Usuário";
+            // 
+            // colId
+            // 
+            this.colId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colId.HeaderText = "ID";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            this.colId.Width = 43;
+            // 
+            // colNome
+            // 
+            this.colNome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colNome.HeaderText = "Nome";
+            this.colNome.Name = "colNome";
+            this.colNome.ReadOnly = true;
+            this.colNome.Width = 60;
+            // 
+            // colRg
+            // 
+            this.colRg.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colRg.HeaderText = "RG";
+            this.colRg.Name = "colRg";
+            this.colRg.ReadOnly = true;
+            this.colRg.Width = 48;
+            // 
+            // colCpf
+            // 
+            this.colCpf.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colCpf.HeaderText = "CPF";
+            this.colCpf.Name = "colCpf";
+            this.colCpf.ReadOnly = true;
+            this.colCpf.Width = 52;
+            // 
+            // colEndereco
+            // 
+            this.colEndereco.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colEndereco.HeaderText = "Endereço";
+            this.colEndereco.Name = "colEndereco";
+            this.colEndereco.ReadOnly = true;
+            this.colEndereco.Width = 78;
+            // 
+            // colTelefone
+            // 
+            this.colTelefone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colTelefone.HeaderText = "Telefone";
+            this.colTelefone.Name = "colTelefone";
+            this.colTelefone.ReadOnly = true;
+            this.colTelefone.Width = 74;
+            // 
+            // colTipo
+            // 
+            this.colTipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colTipo.HeaderText = "Tipo";
+            this.colTipo.Name = "colTipo";
+            this.colTipo.ReadOnly = true;
+            this.colTipo.Width = 53;
+            // 
+            // colUsuario
+            // 
+            this.colUsuario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colUsuario.HeaderText = "Usuario";
+            this.colUsuario.Name = "colUsuario";
+            this.colUsuario.ReadOnly = true;
+            this.colUsuario.Width = 68;
+            // 
+            // colSenha
+            // 
+            this.colSenha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colSenha.HeaderText = "Senha";
+            this.colSenha.Name = "colSenha";
+            this.colSenha.ReadOnly = true;
+            this.colSenha.Width = 63;
+            // 
+            // chkSelecionar
+            // 
+            this.chkSelecionar.HeaderText = "                ";
+            this.chkSelecionar.Name = "chkSelecionar";
+            this.chkSelecionar.Width = 61;
             // 
             // frmUsuario
             // 
@@ -510,6 +609,16 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRg;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCpf;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEndereco;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTelefone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colUsuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSenha;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn chkSelecionar;
     }
 }
 

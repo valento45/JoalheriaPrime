@@ -9,11 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using JOALHERIABLL;
 using JOALHERIADAL;
+using System.Data;
+using System.Data.SqlClient;
+
 namespace JOALHERIA
 {
     public partial class frmUsuario : Form
     {
-
+        Conexao con = new Conexao();
         JOALHERIABLL.UsuarioBLL usuarioBLL = new JOALHERIABLL.UsuarioBLL();
         JOALHERIADAL.UsuarioDAL usuarioDAL = new JOALHERIADAL.UsuarioDAL();
         JOALHERIADAL.FuncoesAuxiliaresDAL funcoesAuxiliares = new FuncoesAuxiliaresDAL();
@@ -86,15 +89,22 @@ namespace JOALHERIA
                     MessageBox.Show("Dados Atualizados com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 ResetarCampos();
-                    dgvConsultarUsuario.DataSource = usuarioDAL.ConsultarTodos();           
-
+                PopulaGrid();
                 }               
+        }
+        public void PopulaGrid()
+        {
+            dgvConsultarUsuario.Rows.Add(usuarioDAL.ListarTodosUsuarios().ToArray());
+            //foreach (var al in usuarioDAL.ListarTodosUsuarios())
+            //{
+            //    dgvConsultarUsuario.Rows.Add(al.Idusuario, al.Nome, al.Rg, al.Cpf, al.Endereco, al.Telefone, al.Tipo, al.Usuario, al.Senha);
+            //}
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            dgvConsultarUsuario.DataSource = usuarioDAL.ConsultarTodos();
-           
+            PopulaGrid();           
         }
 
         private void tabPage2_Click(object sender, EventArgs e)
@@ -108,8 +118,7 @@ namespace JOALHERIA
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
-        {
-            
+        {            
             if(MessageBox.Show("Deseja realmente Excluir este Registro?","Atenção",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 if(dgvConsultarUsuario.RowCount > 0)
@@ -133,7 +142,6 @@ namespace JOALHERIA
                 }
             }            
         }
-
         private void toolStripButton1_Click(object sender, EventArgs e)
         {       
             try
@@ -199,7 +207,6 @@ namespace JOALHERIA
         }
         public void LimparCampos()
         {
-
             txtNome.Clear();
             txtRg.Clear();
             txtCpf.Clear();

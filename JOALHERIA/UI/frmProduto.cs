@@ -89,6 +89,13 @@ namespace JOALHERIA.UI
 
         }
 
+        private void PopularGridTodos()
+        {
+            dgvConsultarProduto.Rows.Clear();
+            foreach (JOALHERIABLL.ProdutoBLL rs in JOALHERIADAL.ProdutoDAL.ListarProdutos().OrderBy(c => c.Descricao))
+                dgvConsultarProduto.Rows.Add(rs.Idproduto, rs.Descricao, rs.Idcategoria, rs.Precoimportado, rs.Precovenda, rs.Lucro, rs.Quantidade, rs.Imagem, rs.Observacoes);
+
+        }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             if(txtDescricao.Text.Trim() == "" || cmbCategoria.Text == "" || txtLucro.Text.Trim() == "" || txtPrecoImportado.Text == "" || txtQuantidade.Text =="")

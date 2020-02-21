@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -131,6 +132,24 @@ namespace JOALHERIABLL
             {
                 observacoes = value;
             }
+        }
+
+        public ProdutoBLL(DataRow dr)
+        {
+            Idproduto = Convert.ToInt32(dr["idproduto"]);
+            Idcategoria = Convert.ToInt32(dr["idcategoria"]);
+            Descricao = dr["descricao"].ToString();
+            Quantidade = Convert.ToInt32(dr["quantidade"]);
+            Precoimportado = Convert.ToDecimal(dr["precoimportado"]);
+            Precovenda = Convert.ToDecimal(dr["precovenda"]);
+            Lucro = Convert.ToDecimal(dr["lucro"]);
+            Observacoes = dr["observacoes"].ToString();
+            Imagem = dr["imagem"].ToString();
+        }
+
+        public ProdutoBLL()
+        {
+
         }
     }
 }

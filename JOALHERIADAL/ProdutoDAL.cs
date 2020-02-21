@@ -15,24 +15,36 @@ namespace JOALHERIADAL
 
         public void Cadastrar(JOALHERIABLL.ProdutoBLL produtoBLL)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO JOALHERIA.PRODUTO (IDCATEGORIA, DESCRICAO, QUANTIDADE, PRECOIMPORTADO, PRECOVENDA, LUCRO, OBSERVACOES, IMAGEM) VALUES (@IDCATEGORIA, @DESCRICAO, @QUANTIDADE, @PRECOIMPORTADO, @PRECOVENDA, @LUCRO, @OBSERVACOES, @IMAGEM)", con.Conectar());
+            string comand = "INSERT INTO JOALHERIA.PRODUTO (IDCATEGORIA, DESCRICAO, QUANTIDADE, PRECOIMPORTADO, PRECOVENDA, LUCRO, OBSERVACOES, IMAGEM) VALUES (@IDCATEGORIA, @DESCRICAO, @QUANTIDADE, @PRECOIMPORTADO, @PRECOVENDA, @LUCRO, @OBSERVACOES, @IMAGEM)";
+            SqlCommand command = new SqlCommand(comand);
 
-            cmd.Parameters.AddWithValue("@IDCATEGORIA", produtoBLL.Idcategoria);
-            cmd.Parameters.AddWithValue("@DESCRICAO", produtoBLL.Descricao);
-            cmd.Parameters.AddWithValue("@QUANTIDADE", produtoBLL.Quantidade);
-            cmd.Parameters.AddWithValue("@PRECOIMPORTADO", produtoBLL.Precoimportado);
-            cmd.Parameters.AddWithValue("@PRECOVENDA", produtoBLL.Precovenda);
-            cmd.Parameters.AddWithValue("@LUCRO", produtoBLL.Lucro);
-            cmd.Parameters.AddWithValue("@OBSERVACOES", produtoBLL.Observacoes);
-            cmd.Parameters.AddWithValue("@IMAGEM", produtoBLL.Imagem);
+            command.Parameters.AddWithValue("@IDCATEGORIA", produtoBLL.Idcategoria);
+            command.Parameters.AddWithValue("@DESCRICAO", produtoBLL.Descricao);
+            command.Parameters.AddWithValue("@QUANTIDADE", produtoBLL.Quantidade);
+            command.Parameters.AddWithValue("@PRECOIMPORTADO", produtoBLL.Precoimportado);
+            command.Parameters.AddWithValue("@PRECOVENDA", produtoBLL.Precovenda);
+            command.Parameters.AddWithValue("@LUCRO", produtoBLL.Lucro);
+            command.Parameters.AddWithValue("@OBSERVACOES", produtoBLL.Observacoes);
+            command.Parameters.AddWithValue("@IMAGEM", produtoBLL.Imagem);
 
-
-            cmd.ExecuteNonQuery();
-            con.Desconectar();
+            Acces.ExecuteNonQuery(command);
         }
 
+        public static List<JOALHERIABLL.ProdutoBLL> ListarProdutos()
+        {
+            List<JOALHERIABLL.ProdutoBLL> result = new List<JOALHERIABLL.ProdutoBLL>();
+            string query = "SELECT * FROM joalheria.produto";
+            SqlCommand cmd = new SqlCommand(query);
+            foreach (DataRow row in Acces.ExecuteReader(cmd).Tables[0].Rows)
+                result.Add(new JOALHERIABLL.ProdutoBLL(row));
 
-        public void Alterar(JOALHERIABLL.ProdutoBLL produtoBLL)
+            if (result.Count > 0)
+                return result;
+
+            else
+                return new List<JOALHERIABLL.ProdutoBLL>();
+        }
+    public void Alterar(JOALHERIABLL.ProdutoBLL produtoBLL)
         {
             SqlCommand cmd = new SqlCommand("UPDATE JOALHERIA.PRODUTO SET IDCATEGORIA = @IDCATEGORIA, DESCRICAO = @DESCRICAO, QUANTIDADE = @QUANTIDADE, PRECOIMPORTADO = @PRECOIMPORTADO, PRECOVENDA = @PRECOVENDA, LUCRO = @LUCRO, OBSERVACOES = @OBSERVACOES, IMAGEM = @IMAGEM WHERE IDPRODUTO = @IDPRODUTO", con.Conectar());
             cmd.Parameters.AddWithValue("@IDPRODUTO", produtoBLL.Idproduto);

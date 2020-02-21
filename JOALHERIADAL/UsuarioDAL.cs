@@ -5,13 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using JOALHERIABLL;
+using System.Windows.Forms;
 
 namespace JOALHERIADAL
 {
     public class UsuarioDAL
     {
-        Conexao con = new Conexao();      
-       
+        Conexao con = new Conexao();
+        JOALHERIABLL.UsuarioBLL usuarioBLL = new UsuarioBLL();
+
         //METODO CADASTRAR
         public void Cadastrar(JOALHERIABLL.UsuarioBLL usuarioBLL)
         {
@@ -164,7 +167,17 @@ namespace JOALHERIADAL
             con.Desconectar();
             return dt;
         }
+        public List<UsuarioBLL> ListarTodosUsuarios()
+        {
+            List<UsuarioBLL> result = new List<UsuarioBLL>();
+            SqlCommand cmd = new SqlCommand("SELECT * FROM JOALHERIA.USUARIO", con.Conectar());
+            
+            foreach (DataRow row in Acces.ExecuteReader(cmd).Tables[0].Rows)
+                result.Add(new UsuarioBLL(row));
 
+            con.Desconectar();
+            return result;
+        }
 
     }//
 }//

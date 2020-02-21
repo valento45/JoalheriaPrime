@@ -17,7 +17,7 @@ namespace JOALHERIADAL
 
         public int Cadastrar(JOALHERIABLL.OrdemServicoBLL ordemservicoBLL)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO JOALHERIA.ORDEMSERVICO (IDCLIENTE, DATAATUAL, DATAENTREGA, DESCONTO, VALOR_TOTAL, FORMA_PAGAMENTO, VALOR_PAGO, TROCO, IDUSUARIO) VALUES (@IDCLIENTE, @DATAATUAL, @DATAENTREGA, @DESCONTO, @VALOR_TOTAL, @FORMA_PAGAMENTO, @VALOR_PAGO, @TROCO, @IDUSUARIO);SELECT SCOPE_IDENTITY();", con.Conectar());
+                                             SqlCommand cmd = new SqlCommand("INSERT INTO JOALHERIA.ORDEMSERVICO (IDCLIENTE, DATAATUAL, DATAENTREGA, DESCONTO, VALOR_TOTAL, FORMA_PAGAMENTO, VALOR_PAGO, TROCO, IDUSUARIO) VALUES (@IDCLIENTE, @DATAATUAL, @DATAENTREGA, @DESCONTO, @VALOR_TOTAL, @FORMA_PAGAMENTO, @VALOR_PAGO, @TROCO, @IDUSUARIO);SELECT SCOPE_IDENTITY();", con.Conectar());
             cmd.Parameters.AddWithValue(@"IDCLIENTE", ordemservicoBLL.Idcliente);
             cmd.Parameters.AddWithValue(@"DATAATUAL", ordemservicoBLL.Dataatual);
             cmd.Parameters.AddWithValue(@"DATAENTREGA", ordemservicoBLL.Dataentrega);

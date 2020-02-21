@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data;
 namespace JOALHERIABLL
 {
     public class UsuarioBLL
@@ -17,6 +17,24 @@ namespace JOALHERIABLL
         bool tipo;
         String usuario;
         String senha;
+
+        public UsuarioBLL(DataRow dr)
+        {
+            Idusuario = Convert.ToInt16(dr["IDUSUARIO"]);
+            Nome = Convert.ToString(dr["NOME"]);
+            Rg = Convert.ToString(dr["RG"]);
+            Cpf = Convert.ToString(dr["CPF"]);
+            Endereco = Convert.ToString(dr["ENDERECO"]);
+            Telefone = Convert.ToString(dr["TELEFONE"]);
+            Tipo = Convert.ToBoolean(dr["TIPO"]);
+            Usuario = Convert.ToString(dr["USUARIO"]);
+            Senha = Convert.ToString(dr["SENHA"]);
+        }
+
+        public UsuarioBLL()
+        {
+
+        }
 
         public int Idusuario
         {
