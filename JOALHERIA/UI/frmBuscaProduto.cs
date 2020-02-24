@@ -33,7 +33,7 @@ namespace JOALHERIA.UI
 
         private void frmBuscaProduto_Load(object sender, EventArgs e)
         {
-            dgvConsultarProduto.DataSource = produtoDAL.ConsultarTodos();
+            dgvConsultarProduto.DataSource = JOALHERIADAL.ProdutoDAL.ListarProdutos().OrderBy(c => c.Descricao).ToList();
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -53,7 +53,7 @@ namespace JOALHERIA.UI
         {
             if(dgvConsultarProduto.RowCount > 0)
             {
-                idProduto = Convert.ToInt16(dgvConsultarProduto.SelectedCells[0].Value);
+                idProduto = Convert.ToInt16(dgvConsultarProduto.SelectedCells[1].Value);
                 this.Close();
             }
         }

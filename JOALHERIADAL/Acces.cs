@@ -82,7 +82,7 @@ namespace JOALHERIADAL
 
         public static IDbConnection GetConnection()
         {
-            string connectionString = "Data Source=MX15733\\DEVELOPER;Initial Catalog=;Integrated Security=true;";
+            string connectionString = "Data Source=MX15733\\DEVELOPER;Initial Catalog=BDJOALHERIA;Integrated Security=true;";
             SqlConnection con = new SqlConnection(connectionString);
             return con;
         }
@@ -152,7 +152,6 @@ namespace JOALHERIADAL
                 {
                     if (command.Connection.State == ConnectionState.Open && !transaction)
                     {
-
                         command.Connection.Close();
                     }
                 }

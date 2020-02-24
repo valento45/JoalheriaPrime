@@ -33,7 +33,7 @@ namespace JOALHERIADAL
         public static List<JOALHERIABLL.ProdutoBLL> ListarProdutos()
         {
             List<JOALHERIABLL.ProdutoBLL> result = new List<JOALHERIABLL.ProdutoBLL>();
-            string query = "SELECT * FROM joalheria.produto";
+            string query = "SELECT * FROM JOALHERIA.PRODUTO";
             SqlCommand cmd = new SqlCommand(query);
             foreach (DataRow row in Acces.ExecuteReader(cmd).Tables[0].Rows)
                 result.Add(new JOALHERIABLL.ProdutoBLL(row));
@@ -44,7 +44,7 @@ namespace JOALHERIADAL
             else
                 return new List<JOALHERIABLL.ProdutoBLL>();
         }
-    public void Alterar(JOALHERIABLL.ProdutoBLL produtoBLL)
+        public void Alterar(JOALHERIABLL.ProdutoBLL produtoBLL)
         {
             SqlCommand cmd = new SqlCommand("UPDATE JOALHERIA.PRODUTO SET IDCATEGORIA = @IDCATEGORIA, DESCRICAO = @DESCRICAO, QUANTIDADE = @QUANTIDADE, PRECOIMPORTADO = @PRECOIMPORTADO, PRECOVENDA = @PRECOVENDA, LUCRO = @LUCRO, OBSERVACOES = @OBSERVACOES, IMAGEM = @IMAGEM WHERE IDPRODUTO = @IDPRODUTO", con.Conectar());
             cmd.Parameters.AddWithValue("@IDPRODUTO", produtoBLL.Idproduto);
@@ -55,10 +55,9 @@ namespace JOALHERIADAL
             cmd.Parameters.AddWithValue("@PRECOVENDA", produtoBLL.Precovenda);
             cmd.Parameters.AddWithValue("@LUCRO", produtoBLL.Lucro);
             cmd.Parameters.AddWithValue("@OBSERVACOES", produtoBLL.Observacoes);
-            cmd.Parameters.AddWithValue(@"IMAGEM", produtoBLL.Imagem);
+            cmd.Parameters.AddWithValue("@IMAGEM", produtoBLL.Imagem);
 
-            cmd.ExecuteNonQuery();
-            con.Desconectar();
+            Acces.ExecuteNonQuery(cmd);
         }
 
         public void Excluir(JOALHERIABLL.ProdutoBLL produtoBLL)
@@ -66,34 +65,42 @@ namespace JOALHERIADAL
             SqlCommand cmd = new SqlCommand("DELETE FROM JOALHERIA.PRODUTO WHERE IDPRODUTO = @IDPRODUTO", con.Conectar());
             cmd.Parameters.AddWithValue("@IDPRODUTO", produtoBLL.Idproduto);
 
-            cmd.ExecuteNonQuery();
-            con.Desconectar();
+            Acces.ExecuteNonQuery(cmd);
         }
 
-        public JOALHERIABLL.ProdutoBLL RetornarDados(JOALHERIABLL.ProdutoBLL produtoBLL)
+        public JOALHERIABLL.ProdutoBLL GetById(int codigo)
         {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM JOALHERIA.PRODUTO WHERE IDPRODUTO = @IDPRODUTO", con.Conectar());
-            cmd.Parameters.AddWithValue("@IDPRODUTO", produtoBLL.Idproduto);
 
-            SqlDataReader dr = cmd.ExecuteReader();
+            //SqlCommand cmd = new SqlCommand("SELECT * FROM JOALHERIA.PRODUTO WHERE IDPRODUTO = @IDPRODUTO", con.Conectar());
+            //cmd.Parameters.AddWithValue("@IDPRODUTO", produtoBLL.Idproduto);
 
-            if (dr.Read())
-            {
-                produtoBLL.Idproduto = Convert.ToInt16(dr["IDPRODUTO"]);
-                produtoBLL.Idcategoria = Convert.ToInt16(dr["IDCATEGORIA"]);
-                produtoBLL.Descricao = Convert.ToString(dr["DESCRICAO"]);
-                produtoBLL.Quantidade = Convert.ToInt16(dr["QUANTIDADE"]);
-                produtoBLL.Precoimportado = Convert.ToDecimal(dr["PRECOIMPORTADO"]);
-                produtoBLL.Precovenda = Convert.ToDecimal(dr["PRECOVENDA"]);
-                produtoBLL.Lucro = Convert.ToDecimal(dr["LUCRO"]);
-                produtoBLL.Observacoes = Convert.ToString(dr["OBSERVACOES"]);
-                produtoBLL.Imagem = dr["IMAGEM"].ToString();
+            //SqlDataReader dr = cmd.ExecuteReader();
 
-            }
+            //if (dr.Read())
+            //{
+            //    produtoBLL.Idproduto = Convert.ToInt16(dr["IDPRODUTO"]);
+            //    produtoBLL.Idcategoria = Convert.ToInt16(dr["IDCATEGORIA"]);
+            //    produtoBLL.Descricao = Convert.ToString(dr["DESCRICAO"]);
+            //    produtoBLL.Quantidade = Convert.ToInt16(dr["QUANTIDADE"]);
+            //    produtoBLL.Precoimportado = Convert.ToDecimal(dr["PRECOIMPORTADO"]);
+            //    produtoBLL.Precovenda = Convert.ToDecimal(dr["PRECOVENDA"]);
+            //    produtoBLL.Lucro = Convert.ToDecimal(dr["LUCRO"]);
+            //    produtoBLL.Observacoes = Convert.ToString(dr["OBSERVACOES"]);
+            //    produtoBLL.Imagem = dr["IMAGEM"].ToString();
 
-            dr.Close();
-            con.Desconectar();
-            return produtoBLL;
+            //}
+
+            //dr.Close();
+            //con.Desconectar();
+            //return produtoBLL;            
+
+            SqlCommand lCmd = new SqlCommand("SELECT * FROM JOALHERIA.PRODUTO WHERE IDPRODUTO =" + codigo + ";");
+            DataTable table = Acces.ExecuteReader(lCmd).Tables[0];
+            if (table.Rows.Count == 1)
+                return new JOALHERIABLL.ProdutoBLL(table.Rows[0]);
+            else
+                return new JOALHERIABLL.ProdutoBLL();
+
         }
 
         //BAIXAR ESTOQUE
@@ -102,8 +109,7 @@ namespace JOALHERIADAL
             SqlCommand cmd = new SqlCommand("UPDATE JOALHERIA.PRODUTO SET QUANTIDADE = QUANTIDADE - @QUANTIDADE WHERE IDPRODUTO = @IDPRODUTO", con.Conectar());
             cmd.Parameters.AddWithValue("@IDPRODUTO", produtoBLL.Idproduto);
             cmd.Parameters.AddWithValue("@QUANTIDADE", produtoBLL.Quantidade);
-            cmd.ExecuteNonQuery();
-            con.Desconectar();
+            Acces.ExecuteNonQuery(cmd);
 
         }
         //========================================== CONSULTAS ==================================================
@@ -120,7 +126,7 @@ namespace JOALHERIADAL
         //consultar por descricao
         public DataTable ConsultarPorDescricao(JOALHERIABLL.ProdutoBLL produtoBLL)
         {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.PRODUTO WHERE DESCRICAO LIKE @DESCRICAO",con.Conectar());
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.PRODUTO WHERE DESCRICAO LIKE @DESCRICAO", con.Conectar());
             da.SelectCommand.Parameters.AddWithValue(@"DESCRICAO", produtoBLL.Descricao + "%");
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -130,7 +136,7 @@ namespace JOALHERIADAL
 
         public DataTable ConsultarPorCodigo(JOALHERIABLL.ProdutoBLL produtoBLL)
         {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.PRODUTO WHERE IDPRODUTO = @IDPRODUTO",con.Conectar());
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.PRODUTO WHERE IDPRODUTO = @IDPRODUTO", con.Conectar());
             da.SelectCommand.Parameters.AddWithValue(@"IDPRODUTO", produtoBLL.Idproduto);
             DataTable dt = new DataTable();
             da.Fill(dt);

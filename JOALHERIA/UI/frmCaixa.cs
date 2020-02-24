@@ -106,13 +106,20 @@ namespace JOALHERIA.UI
             }
             else
             {
-                loginBLL.Idlogin = frmLogin.codigo_login;
-                loginBLL.Valor_caixa = Convert.ToDecimal(txtValor.Text);
-                loginDAL.Alterar(loginBLL);
+                try
+                {
+                    loginBLL.Idlogin = frmLogin.codigo_login;
+                    loginBLL.Valor_caixa = Convert.ToDecimal(txtValor.Text);
+                    loginDAL.Alterar(loginBLL);
 
-                frmMenu menu = new frmMenu();
-                this.Close();
-                menu.Show();                
+                    frmMenu menu = new frmMenu();
+                    this.Close();
+                    menu.Show();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Não foi possível prosseguir: \n\r\n\r\n\r\n" + ex.Message);
+                }
             }
         }
 

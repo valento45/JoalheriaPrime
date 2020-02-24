@@ -112,9 +112,8 @@ namespace JOALHERIA.UI
             frmBuscaProduto.ShowDialog();
 
             if(frmBuscaProduto.idProduto != 0)
-            {
-                produtoBLL.Idproduto = frmBuscaProduto.idProduto;
-                produtoDAL.RetornarDados(produtoBLL);
+            {                
+                produtoDAL.GetById(frmBuscaProduto.idProduto);
                 txtProduto.Text = produtoBLL.Descricao;
                 txtPreco.Text = Convert.ToString( produtoBLL.Precovenda);
                 imgProduto.Load(produtoBLL.Imagem);

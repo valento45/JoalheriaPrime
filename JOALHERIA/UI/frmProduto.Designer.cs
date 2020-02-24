@@ -74,6 +74,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.colIdProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDescricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIdCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colQuantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrecoVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colObservacoes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -540,8 +546,15 @@
             this.dgvConsultarProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvConsultarProduto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvConsultarProduto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvConsultarProduto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvConsultarProduto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colIdProduto,
+            this.colDescricao,
+            this.colIdCategoria,
+            this.colQuantidade,
+            this.colPrecoVenda,
+            this.colObservacoes});
             this.dgvConsultarProduto.Location = new System.Drawing.Point(3, 26);
             this.dgvConsultarProduto.Name = "dgvConsultarProduto";
             this.dgvConsultarProduto.ReadOnly = true;
@@ -642,6 +655,48 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // colIdProduto
+            // 
+            this.colIdProduto.HeaderText = "ID";
+            this.colIdProduto.Name = "colIdProduto";
+            this.colIdProduto.ReadOnly = true;
+            this.colIdProduto.Width = 43;
+            // 
+            // colDescricao
+            // 
+            this.colDescricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colDescricao.HeaderText = "Descricao";
+            this.colDescricao.Name = "colDescricao";
+            this.colDescricao.ReadOnly = true;
+            // 
+            // colIdCategoria
+            // 
+            this.colIdCategoria.HeaderText = "Categoria";
+            this.colIdCategoria.Name = "colIdCategoria";
+            this.colIdCategoria.ReadOnly = true;
+            this.colIdCategoria.Width = 77;
+            // 
+            // colQuantidade
+            // 
+            this.colQuantidade.HeaderText = "Quantidade";
+            this.colQuantidade.Name = "colQuantidade";
+            this.colQuantidade.ReadOnly = true;
+            this.colQuantidade.Width = 87;
+            // 
+            // colPrecoVenda
+            // 
+            this.colPrecoVenda.HeaderText = "Preço";
+            this.colPrecoVenda.Name = "colPrecoVenda";
+            this.colPrecoVenda.ReadOnly = true;
+            this.colPrecoVenda.Width = 60;
+            // 
+            // colObservacoes
+            // 
+            this.colObservacoes.HeaderText = "Observações";
+            this.colObservacoes.Name = "colObservacoes";
+            this.colObservacoes.ReadOnly = true;
+            this.colObservacoes.Width = 95;
+            // 
             // frmProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -729,5 +784,11 @@
         private System.Windows.Forms.PictureBox pctImagemProduto;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colIdProduto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDescricao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colIdCategoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colQuantidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPrecoVenda;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colObservacoes;
     }
 }

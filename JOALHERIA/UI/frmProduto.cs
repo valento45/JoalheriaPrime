@@ -48,14 +48,11 @@ namespace JOALHERIA.UI
             cmbCategoria.DataSource = categoriaDAL.ConsultarTodos();
             cmbCategoria.DisplayMember = "CATEGORIA";
             cmbCategoria.ValueMember = "IDCATEGORIA";
-        
-
-
         }
 
         private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -65,30 +62,23 @@ namespace JOALHERIA.UI
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-          
-                if (dgvConsultarProduto.RowCount > 0)
+            if (dgvConsultarProduto.RowCount > 0)
+            {
+                if (MessageBox.Show("Deseja excluir este registro?", "atencao", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if(MessageBox.Show("Deseja excluir este registro?","atencao",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
-                    {
-                        produtoBLL.Idproduto = Convert.ToInt16(dgvConsultarProduto.SelectedCells[0].Value);
-                        produtoDAL.Excluir(produtoBLL);
+                    produtoBLL.Idproduto = Convert.ToInt16(dgvConsultarProduto.SelectedCells[0].Value);
+                    produtoDAL.Excluir(produtoBLL);
                     ConsultarTodosGrid();
                 }
-
-                }
-                else
-                {
-                    MessageBox.Show("Selecione algum registro!", "Atencao", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                }
-            
+            }
+            else
+                MessageBox.Show("Selecione algum registro!", "Atencao", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
         private void PopularGridTodos()
         {
             dgvConsultarProduto.Rows.Clear();
@@ -98,15 +88,12 @@ namespace JOALHERIA.UI
         }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if(txtDescricao.Text.Trim() == "" || cmbCategoria.Text == "" || txtLucro.Text.Trim() == "" || txtPrecoImportado.Text == "" || txtQuantidade.Text =="")
-            {
+            if (txtDescricao.Text.Trim() == "" || cmbCategoria.Text == "" || txtLucro.Text.Trim() == "" || txtPrecoImportado.Text == "" || txtQuantidade.Text == "")
                 MessageBox.Show("Preencha todos os campos obrigatórios", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
             else
             {
-                
-                if(alterar == false)
+
+                if (!alterar)
                 {
                     cmbCategoria.DisplayMember = "IDCATEGORIA";
                     cmbCategoria.ValueMember = "IDCATEGORIA";
@@ -118,15 +105,14 @@ namespace JOALHERIA.UI
                     produtoBLL.Precovenda = Convert.ToDecimal(txtPrecoVenda.Text);
                     produtoBLL.Lucro = Convert.ToDecimal(txtLucro.Text);
                     produtoBLL.Observacoes = txtObservacoes.Text;
-                    produtoBLL.Imagem = caminho.ToString();                   
+                    produtoBLL.Imagem = caminho.ToString();
 
                     produtoDAL.Cadastrar(produtoBLL);
                     MessageBox.Show("Produto registrado com sucesso!", "Succesful", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     ConsultarTodosGrid();
                     ResetarCampos();
                 }
-
-                else
+                if (alterar)
                 {
                     cmbCategoria.DisplayMember = "IDCATEGORIA";
                     cmbCategoria.ValueMember = "IDCATEGORIA";
@@ -144,7 +130,7 @@ namespace JOALHERIA.UI
                     MessageBox.Show("Dados Alterados com sucesso!", "Succesful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ConsultarTodosGrid();
                     ResetarCampos();
-                }                
+                }
             }
         }
 
@@ -179,33 +165,27 @@ namespace JOALHERIA.UI
         {
             if (dgvConsultarProduto.RowCount > 0)
             {
+                label11.Text = "Alterar Produto";
+                produtoBLL.Idproduto = Convert.ToInt16(dgvConsultarProduto.SelectedCells[0].Value);
+                produtoDAL.GetById(produtoBLL.Idproduto);
+
+                cmbCategoria.Text = Convert.ToString(produtoBLL.Idcategoria);
+                txtDescricao.Text = produtoBLL.Descricao;
+                txtQuantidade.Text = Convert.ToString(produtoBLL.Quantidade);
+                txtPrecoImportado.Text = Convert.ToString(produtoBLL.Precoimportado);
+                txtPrecoVenda.Text = Convert.ToString(produtoBLL.Precovenda);
+                txtLucro.Text = Convert.ToString(produtoBLL.Lucro);
+                txtObservacoes.Text = produtoBLL.Observacoes;
+                caminho = produtoBLL.Imagem;
+                pctImagemProduto.Load(caminho);
+                pctImagemProduto.SizeMode = PictureBoxSizeMode.Zoom;
                 alterar = true;
-
-                if (alterar == true)
-                {
-                    label11.Text = "Alterar Produto";
-                    produtoBLL.Idproduto = Convert.ToInt16(dgvConsultarProduto.SelectedCells[0].Value);
-                    produtoDAL.RetornarDados(produtoBLL);
-
-                    cmbCategoria.Text = Convert.ToString(produtoBLL.Idcategoria);
-                    txtDescricao.Text = produtoBLL.Descricao;
-                    txtQuantidade.Text = Convert.ToString(produtoBLL.Quantidade);
-                    txtPrecoImportado.Text = Convert.ToString(produtoBLL.Precoimportado);
-                    txtPrecoVenda.Text = Convert.ToString(produtoBLL.Precovenda);
-                    txtLucro.Text = Convert.ToString(produtoBLL.Lucro);
-                    txtObservacoes.Text = produtoBLL.Observacoes;
-                    caminho = produtoBLL.Imagem;
-                    pctImagemProduto.Load(caminho);
-                    pctImagemProduto.SizeMode = PictureBoxSizeMode.Zoom;
-
-                    tabControl1.SelectedTab = tabPage1;
-                }
+                tabControl1.SelectedTab = tabPage1;
             }
 
             else
-            {
                 MessageBox.Show("Selecione algum registro!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+
         }
 
         private void button2_Click_1(object sender, EventArgs e)
@@ -218,9 +198,9 @@ namespace JOALHERIA.UI
             if (txtFiltro.Text.Length > 0)
             {
                 if (rdbCodigo.Checked)
-                {                   
-                        produtoBLL.Idproduto = Convert.ToInt32(txtFiltro.Text);
-                        dgvConsultarProduto.DataSource = produtoDAL.ConsultarPorCodigo(produtoBLL);                 
+                {
+                    int codigo = int.Parse(txtFiltro.Text);
+                    dgvConsultarProduto.DataSource = JOALHERIADAL.ProdutoDAL.ListarProdutos().Where(p => p.Idproduto == codigo).ToList();
                 }
                 if (rdbDescricao.Checked)
                 {
@@ -236,7 +216,11 @@ namespace JOALHERIA.UI
 
         public void ConsultarTodosGrid()
         {
-            dgvConsultarProduto.DataSource = produtoDAL.ConsultarTodos();
+            dgvConsultarProduto.Rows.Clear();
+            dgvConsultarProduto.Refresh();
+            foreach (JOALHERIABLL.ProdutoBLL produto in JOALHERIADAL.ProdutoDAL.ListarProdutos().OrderBy(c => c.Descricao))
+                dgvConsultarProduto.Rows.Add(produto.Idproduto, produto.Descricao, produto.Idcategoria, produto.Quantidade, produto.Precovenda, produto.Observacoes);
+
         }
 
         private void txtFiltro_KeyPress(object sender, KeyPressEventArgs e)
@@ -250,7 +234,7 @@ namespace JOALHERIA.UI
 
         private void btnProcurarImagem_Click(object sender, EventArgs e)
         {
-            if(openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 caminho = openFileDialog1.FileName;
                 pctImagemProduto.Load(caminho);
