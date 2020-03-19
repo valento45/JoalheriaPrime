@@ -185,17 +185,17 @@ namespace JOALHERIA.UI
 
         private void btnSelecionarCliente_Click(object sender, EventArgs e)
         {
-            frmBuscaCliente cliente = new frmBuscaCliente();
-            cliente.ShowDialog();
+            //frmBuscaCliente cliente = new frmBuscaCliente();
+            //cliente.ShowDialog();
 
-            if(cliente.idCliente != 0)
-            {
-                clienteBLL.Idcliente = cliente.idCliente;
-                clienteDAL.RetornarDados(clienteBLL);
+            //if(cliente.idCliente != 0)
+            //{
+            //    clienteBLL.Idcliente = cliente.idCliente;
+            //    clienteDAL.RetornarDados(clienteBLL);
 
-                txtCliente.Text = clienteBLL.Nome.ToString();
-                id_cliente = clienteBLL.Idcliente;
-            }
+            //    txtCliente.Text = clienteBLL.Nome.ToString();
+            //    id_cliente = clienteBLL.Idcliente;
+            //}
         }
 
         private void btnSelecionarProduto_Click(object sender, EventArgs e)

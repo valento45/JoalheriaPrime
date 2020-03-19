@@ -31,9 +31,9 @@ namespace JOALHERIA.UI
 
         private void frmBuscaCliente_Load(object sender, EventArgs e)
         {
-            dgvConsultarCliente.DataSource = clienteDAL.ConsultarTodos();
+            //dgvConsultarCliente.DataSource = clienteDAL.ConsultarTodos();
 
-            dgvConsultarCliente.Focus();
+            //dgvConsultarCliente.Focus();
         }
 
         //metodo para permitir teclas de Atalho HotKeys 

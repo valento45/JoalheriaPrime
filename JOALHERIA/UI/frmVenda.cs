@@ -92,15 +92,15 @@ namespace JOALHERIA.UI
 
         private void btnSelecionarCliente_Click(object sender, EventArgs e)
         {
-            frmBuscaCliente buscacliente = new frmBuscaCliente();
-            buscacliente.ShowDialog();
+            //frmBuscaCliente buscacliente = new frmBuscaCliente();
+            //buscacliente.ShowDialog();
 
-            if (buscacliente.idCliente != 0)
-            {
-                clienteBLL.Idcliente = buscacliente.idCliente;
-                clienteDAL.RetornarDados(clienteBLL);
-                txtCliente.Text = clienteBLL.Nome;
-            }
+            //if (buscacliente.idCliente != 0)
+            //{
+            //    clienteBLL.Idcliente = buscacliente.idCliente;
+            //    clienteDAL.RetornarDados(clienteBLL);
+            //    txtCliente.Text = clienteBLL.Nome;
+            //}
         }
 
         private void btnSelecionarProduto_Click(object sender, EventArgs e)

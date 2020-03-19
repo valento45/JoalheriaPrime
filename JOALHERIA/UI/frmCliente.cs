@@ -14,11 +14,8 @@ namespace JOALHERIA.UI
 {
     public partial class frmCliente : Form
     {
-        JOALHERIABLL.ClienteBLL clienteBLL = new JOALHERIABLL.ClienteBLL();
         JOALHERIADAL.ClienteDAL clienteDAL = new JOALHERIADAL.ClienteDAL();
-
         JOALHERIADAL.FuncoesAuxiliaresDAL funcoesAuxiliares = new FuncoesAuxiliaresDAL();
-
         bool alterar = false;
 
         public frmCliente()
@@ -34,7 +31,7 @@ namespace JOALHERIA.UI
         private void btnSair_Click(object sender, EventArgs e)
         {
             alterar = false;
-            this.Close();          
+            this.Close();
         }
 
         private void label7_Click(object sender, EventArgs e)
@@ -48,115 +45,106 @@ namespace JOALHERIA.UI
         }
         public void ConsultarGrid()
         {
-            dgvConsultarCliente.DataSource = clienteDAL.ConsultarTodos();
+
         }
         private void frmCliente_Load(object sender, EventArgs e)
         {
             ConsultarGrid();
 
             txtNome.Focus();
-               
+
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja realmente excluir Cliente?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
                 if (dgvConsultarCliente.RowCount > 0)
                 {
-                    clienteBLL.Idcliente = Convert.ToInt16(dgvConsultarCliente.SelectedCells[0].Value);
-                    clienteDAL.Excluir(clienteBLL);
-
+                    clienteDAL.Idpessoa = Convert.ToInt16(dgvConsultarCliente.SelectedCells[0].Value);
+                    //Método excluir
                     ConsultarGrid();
-
                 }
                 else
-                {
                     MessageBox.Show("Selecione Algum registro!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            if(dgvConsultarCliente.RowCount > 0)
+            if (dgvConsultarCliente.RowCount > 0)
             {
-                clienteBLL.Idcliente = Convert.ToInt32(dgvConsultarCliente.SelectedCells[0].Value);
-                clienteDAL.RetornarDados(clienteBLL);
+                clienteDAL.Idpessoa = Convert.ToInt32(dgvConsultarCliente.SelectedCells[0].Value);
+                clienteDAL.GetById(clienteDAL.Idpessoa);
 
-                txtNome.Text = clienteBLL.Nome;
-                txtRg.Text = clienteBLL.Rg;
-                txtCpf.Text = clienteBLL.Cpf;
-                txtDataNascimento.Text = clienteBLL.Data_nascimento.ToString();
-                txtEmail.Text = clienteBLL.Email;
-                txtTelefone.Text = clienteBLL.Telefone;
-                txtEndereco.Text = clienteBLL.Endereco;
-                txtCidade.Text = clienteBLL.Cidade;
-                cmbUf.Text = clienteBLL.Uf;
-                cmbTipo.Text = clienteBLL.Tipo_cliente;
+                txtNome.Text = clienteDAL.Nome;
+                txtRg.Text = clienteDAL.Documento;
+                txtCpf.Text = clienteDAL.Cpf_cnpj;
+                txtDataNascimento.Text = clienteDAL.Data_nascimento.ToString();
+                txtEmail.Text = clienteDAL.Email;
+                txtTelefone.Text = clienteDAL.Telefone;
+                txtEndereco.Text = clienteDAL.Endereco;
+                txtCidade.Text = clienteDAL.Cidade;
+                cmbUf.Text = clienteDAL.Uf;
+                cmbTipo.Text = clienteDAL.Tipo_cliente;
 
                 lblTitulo.Text = "Atualizar Dados Cliente";
                 alterar = true;
-                tabControl1.SelectedTab = tabPage1;                             
+                tabControl1.SelectedTab = tabPage1;
             }
-            else
-            {
-                MessageBox.Show("Selecione Algum registro ", "Tabela Vazia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            else            
+                MessageBox.Show("Selecione Algum registro para alterar!", "Nenhum registro selecionado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
-        {       
-            if( alterar == false && ValidarCamposObrigatorios() == true )
-            {
-                clienteBLL.Nome = txtNome.Text;
-                clienteBLL.Rg = txtRg.Text;
-                clienteBLL.Cpf = txtCpf.Text;
-                clienteBLL.Data_nascimento = Convert.ToDateTime(txtDataNascimento.Text);
-                clienteBLL.Email = txtEmail.Text;
-                clienteBLL.Telefone = txtTelefone.Text;
-                clienteBLL.Endereco = txtEndereco.Text;
-                clienteBLL.Cidade = txtCidade.Text;
-                clienteBLL.Uf = cmbUf.Text;
-                clienteBLL.Tipo_cliente = cmbTipo.Text;
-
-                clienteDAL.Cadastrar(clienteBLL);
-                MessageBox.Show("Cliente registrado !", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ResetarCampos();
-                ConsultarGrid();
-
-                return;              
-
-            }
-
-            if(alterar == true && ValidarCamposObrigatorios() == true)
-            {
-                clienteBLL.Nome = txtNome.Text;
-                clienteBLL.Rg = txtRg.Text;
-                clienteBLL.Cpf = txtCpf.Text;
-                clienteBLL.Data_nascimento = Convert.ToDateTime(txtDataNascimento.Text);
-                clienteBLL.Email = txtEmail.Text;
-                clienteBLL.Telefone = txtTelefone.Text;
-                clienteBLL.Endereco = txtEndereco.Text;
-                clienteBLL.Cidade = txtCidade.Text;
-                clienteBLL.Uf = cmbUf.Text;
-                clienteBLL.Tipo_cliente = cmbTipo.Text;
-
-                clienteDAL.Alterar(clienteBLL);
-                MessageBox.Show("Cliente Atualizado !", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ResetarCampos();
-                ConsultarGrid();
-
-                return;
-            }
+        {
+            Salvar();
         }
 
+        public void Salvar()
+        {
+            if (alterar == false && ValidarCamposObrigatorios() == true)
+            {
+                clienteDAL.Nome = txtNome.Text;
+                clienteDAL.Documento = txtRg.Text;
+                clienteDAL.Cpf_cnpj = txtCpf.Text;
+                clienteDAL.Data_nascimento = Convert.ToDateTime(txtDataNascimento.Text);
+                clienteDAL.Email = txtEmail.Text;
+                clienteDAL.Telefone = txtTelefone.Text;
+                clienteDAL.Endereco = txtEndereco.Text;
+                clienteDAL.Cidade = txtCidade.Text;
+                clienteDAL.Uf = cmbUf.Text;
+                clienteDAL.Tipo_cliente = cmbTipo.Text;
+                clienteDAL.Insert_Client(clienteDAL);
+
+                MessageBox.Show("Cliente registrado !", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ResetarCampos();
+                ConsultarGrid();                
+            }
+            if (alterar == true && ValidarCamposObrigatorios() == true && clienteDAL.Idpessoa > 0)
+            {
+                clienteDAL.Nome = txtNome.Text;
+                clienteDAL.Documento = txtRg.Text;
+                clienteDAL.Cpf_cnpj = txtCpf.Text;
+                clienteDAL.Data_nascimento = Convert.ToDateTime(txtDataNascimento.Text);
+                clienteDAL.Email = txtEmail.Text;
+                clienteDAL.Telefone = txtTelefone.Text;
+                clienteDAL.Endereco = txtEndereco.Text;
+                clienteDAL.Cidade = txtCidade.Text;
+                clienteDAL.Uf = cmbUf.Text;
+                clienteDAL.Tipo_cliente = cmbTipo.Text;
+                clienteDAL.Update_Client(clienteDAL);
+
+                MessageBox.Show("Cliente Atualizado !", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ResetarCampos();
+                ConsultarGrid();                
+            }
+        }
         public bool ValidarCamposObrigatorios()
         {
-            if(txtNome.Text.Trim() == "" || txtCpf.Text.Trim() == "" || txtDataNascimento.Text.Trim() == "")
+            if (txtNome.Text.Trim() == "" || txtCpf.Text.Trim() == "" || txtDataNascimento.Text.Trim() == "")
             {
                 MessageBox.Show("Preencha os campos obrigatórios!", "Validar Campos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;                
+                return false;
             }
             else
             {
@@ -169,7 +157,7 @@ namespace JOALHERIA.UI
 
                 else
                     return false;
-            }            
+            }
         }
         private void button3_Click(object sender, EventArgs e)
         {
@@ -205,46 +193,46 @@ namespace JOALHERIA.UI
 
         private void tabPage1_Enter(object sender, EventArgs e)
         {
-           // ResetarCampos();
+            // ResetarCampos();
         }
 
         private void txtFiltro_TextChanged(object sender, EventArgs e)
         {
-            if (txtFiltro.Text.Length > 0)
-            {
-                if (rdbCodigo.Checked)
-                {                   
-                        clienteBLL.Idcliente = Convert.ToInt32(txtFiltro.Text);
-                        dgvConsultarCliente.DataSource = clienteDAL.ConsultarPorCodigo(clienteBLL);                   
-                   
-                }
-                if (rdbNome.Checked)
-                {
-                    clienteBLL.Nome = txtFiltro.Text;
-                    dgvConsultarCliente.DataSource = clienteDAL.ConsultarPorNome(clienteBLL);
+            #region OLD
+            //if (txtFiltro.Text.Length > 0)
+            //{
+            //    if (rdbCodigo.Checked)
+            //    {
+            //        clienteDAL.Idcliente = Convert.ToInt32(txtFiltro.Text);
+            //        dgvConsultarCliente.DataSource = clienteDAL.ConsultarPorCodigo(clienteDAL);
 
-                }
-                if (rdbCpf.Checked)
-                {
-                    clienteBLL.Cpf = txtFiltro.Text;
-                    dgvConsultarCliente.DataSource = clienteDAL.ConsultarPorCpf(clienteBLL);
-                }
-            }
-            else
-            {
-                dgvConsultarCliente.DataSource = clienteDAL.ConsultarTodos();
-            }
+            //    }
+            //    if (rdbNome.Checked)
+            //    {
+            //        clienteBLL.Nome = txtFiltro.Text;
+            //        dgvConsultarCliente.DataSource = clienteDAL.ConsultarPorNome(clienteBLL);
+
+            //    }
+            //    if (rdbCpf.Checked)
+            //    {
+            //        clienteBLL.Cpf = txtFiltro.Text;
+            //        dgvConsultarCliente.DataSource = clienteDAL.ConsultarPorCpf(clienteBLL);
+            //    }
+            //}
+            //else
+            //{
+            //    dgvConsultarCliente.DataSource = clienteDAL.ConsultarTodos();
+            //}
+            #endregion
+
+
         }
 
         private void txtFiltro_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (rdbCodigo.Checked)
-            {
                 if (!char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != (char)Keys.Delete)
-                {
                     e.Handled = true;
-                }
-            }
         }
     }//fim 
 }//fim

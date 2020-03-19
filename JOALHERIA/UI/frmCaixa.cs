@@ -104,8 +104,7 @@ namespace JOALHERIA.UI
                 MessageBox.Show("Preencha o campo para prosseguir !", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            else
-            {
+            else            
                 try
                 {
                     loginBLL.Idlogin = frmLogin.codigo_login;
@@ -120,7 +119,7 @@ namespace JOALHERIA.UI
                 {
                     MessageBox.Show("Não foi possível prosseguir: \n\r\n\r\n\r\n" + ex.Message);
                 }
-            }
+            
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

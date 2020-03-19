@@ -16,8 +16,79 @@ namespace JOALHERIADAL
     public class Acces
     {
         Conexao con = new Conexao();
-        public static void ExecuteNonQuery(IDbCommand cmd, bool registrolog = true)
+
+        public static int ExecuteScalar(IDbCommand cmd, bool registrolog = true)
         {
+            int result = -1;
+            int tentativa = 1;
+            bool retry = false;
+            bool transaction = true;
+
+            do
+            {
+                if (retry && !transaction)
+                    cmd.Connection = null;
+
+                if (cmd.Connection == null)
+                {
+                    cmd.Connection = GetConnection();
+                    transaction = false;
+                }
+                try
+                {
+                    foreach (SqlParameter parmt in cmd.Parameters)
+                        try
+                        {
+                            if (parmt.Value.ToString() == char.MinValue.ToString() || parmt.Value == null)
+                                parmt.Value = DBNull.Value;
+                        }
+                        catch { };
+
+                    if (cmd.Connection.State == ConnectionState.Closed)
+                    {
+                        transaction = false;
+                        cmd.Connection.Open();
+                    }
+
+                    result = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    if (retry)
+                        retry = false;
+                    return result;
+                }
+                catch (SqlException ex)
+                {
+                    result = -1;
+                    //NetworkLog.Insert(ex, pCommand.CommandText);
+                    if (ex.Message.Contains("Exception while writing to stream") || ex.Message.Contains("Exception while reading from stream"))
+                    {
+                        if (!retry)
+                            retry = true;
+                        else
+                        {
+                            MessageBox.Show("Atenção! Houve perda de conexão com o servidor ou ele demorou muito a responder." + (ex.InnerException != null ? "\r\n\r\nDetalhamento do erro: " + ex.InnerException.Message : "") + "\r\n\r\nÉ possível que as últimas alterações não foram salvas, por favor verifique.", "1) " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            retry = false;
+                        }
+                        //Application.Exit(new CancelEventArgs(true));
+                    }
+                    else if (ex.Data["Code"]?.ToString().CompareTo("08P01") == 0)
+                        MessageBox.Show("Atenção! Erro ao executar o comando:\r\n\r\n" + cmd.CommandText + "", "Violação de protocolo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    else
+                        TrataExcecao(ex, (SqlCommand)cmd);
+
+                }
+                finally
+                {
+                    if (cmd.Connection.State == ConnectionState.Open)
+                        cmd.Connection.Close();
+                }
+            } while (retry);
+            return result;
+        }
+
+        public static bool ExecuteNonQuery(IDbCommand cmd, bool registrolog = true)
+        {
+            bool sucesso = false;
             int tentativa = 1;
             bool retry = false;
             bool transaction = true;
@@ -52,9 +123,11 @@ namespace JOALHERIADAL
 
                     if (retry)
                         retry = false;
+                    sucesso = true;
                 }
                 catch (SqlException ex)
                 {
+                    sucesso = false;
                     //NetworkLog.Insert(ex, pCommand.CommandText);
                     if (ex.Message.Contains("Exception while writing to stream") || ex.Message.Contains("Exception while reading from stream"))
                     {
@@ -72,9 +145,13 @@ namespace JOALHERIADAL
                     else
                         TrataExcecao(ex, (SqlCommand)cmd);
                 }
-
+                finally
+                {
+                    if (cmd.Connection.State == ConnectionState.Open)
+                        cmd.Connection.Close();
+                }
             } while (retry);
-
+            return sucesso;
         }
 
         public static IDbConnection GetConnection()
@@ -169,7 +246,7 @@ namespace JOALHERIADAL
                         detalhes += parmt.Value.ToString() + ", ";
                 detalhes = detalhes.Substring(0, detalhes.Length - 2) + ".";
             }
-            switch (excecao.Data["Code"?.ToString()])
+            switch (excecao.Data["Code"]?.ToString())
             {
                 case "":
                     MessageBox.Show("Falha ao estabelecer conexão com o servidor (MRX157\\DEVELOPER).  O endereço IP do servidor está correto?\r\n* Porta 5432 no firewall do servidor está desbloqueada?\r\n* As configurações do servidor PostgreSQL estão corretas?", "Falha ao estabelecer conexão", MessageBoxButtons.OK, MessageBoxIcon.Warning);
