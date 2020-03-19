@@ -43,47 +43,44 @@ namespace JOALHERIA.UI
 
         public void CalcularTroco()
         {
+            bool validacao = false;
             valorpago = Convert.ToDecimal(txtValorPago.Text);
 
-            if(txtTotal.Text.Trim() == "" || dgvItens.RowCount <= 0)
+            if (txtTotal.Text.Trim() != "" && dgvItens.RowCount > 0)
+                validacao = true;
+
+            else
             {
                 MessageBox.Show("Insira itens na venda para poder prosseguir!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (valorpago < total)
+            if (validacao && (valorpago >= total))
             {
-                MessageBox.Show("Valor pago não pode ser menor que o total !", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);                
-            }
-
-            if (valorpago >= total)
-            {                
                 troco = valorpago - total;
                 txtTroco.Text = troco.ToString();
             }
+            else
+                MessageBox.Show("Valor pago não pode ser menor que o total !", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         //-------------------------------------------criacao metodos de funcionamento do sistema
         //metodo calcular total
-            public void CalcularTotal()
+        public void CalcularTotal()
         {
             total = 0;
-            for(int i = 0; i < dgvItens.RowCount; i++)
-            {
+            for (int i = 0; i < dgvItens.RowCount; i++)
                 total += Convert.ToDecimal(dgvItens[4, i].Value);
-            }
+
             txtTotal.Text = total.ToString("c");
         }
         //metodo para verificar quantidade disponivvel
         public bool VerificarQuantidadeDisponivel()
         {
             int qtd = 0;
-            for(int i = 0;  i < dgvItens.RowCount; i++)
-            {
-                if(produtoBLL.Idproduto.ToString() == dgvItens[0, i].Value.ToString())
-                {
+            for (int i = 0; i < dgvItens.RowCount; i++)
+                if (produtoBLL.Idproduto.ToString() == dgvItens[0, i].Value.ToString())
                     qtd += Convert.ToInt16(dgvItens[2, i].Value);
-                }
-            }
+
             qtd += Convert.ToInt16(txtQuantidade.Value);
             if (qtd > produtoBLL.Quantidade)
                 return false;
@@ -91,14 +88,14 @@ namespace JOALHERIA.UI
                 return true;
         }
 
-       
+
 
         private void btnSelecionarCliente_Click(object sender, EventArgs e)
         {
             frmBuscaCliente buscacliente = new frmBuscaCliente();
             buscacliente.ShowDialog();
 
-            if(buscacliente.idCliente != 0)
+            if (buscacliente.idCliente != 0)
             {
                 clienteBLL.Idcliente = buscacliente.idCliente;
                 clienteDAL.RetornarDados(clienteBLL);
@@ -111,13 +108,23 @@ namespace JOALHERIA.UI
             frmBuscaProduto frmBuscaProduto = new frmBuscaProduto();
             frmBuscaProduto.ShowDialog();
 
-            if(frmBuscaProduto.idProduto != 0)
-            {                
-                produtoDAL.GetById(frmBuscaProduto.idProduto);
-                txtProduto.Text = produtoBLL.Descricao;
-                txtPreco.Text = Convert.ToString( produtoBLL.Precovenda);
-                imgProduto.Load(produtoBLL.Imagem);
-            }
+            if (frmBuscaProduto.idProduto > 0)
+                try
+                {
+                    //produtoBLL.Idproduto = frmBuscaProduto.idProduto;
+                    //produtoDAL.GetById(produtoBLL);
+                    //txtProduto.Text = produtoBLL.Descricao;
+                    //txtPreco.Text = Convert.ToString( produtoBLL.Precovenda);
+                    //imgProduto.Load(produtoBLL.Imagem);
+                    ProdutoDAL.GetById(frmBuscaProduto.idProduto);
+                    txtProduto.Text = produtoBLL.Descricao;
+                    txtPreco.Text = Convert.ToString(produtoBLL.Precovenda);
+                    imgProduto.Load(produtoBLL.Imagem);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Exceção " +  "\n\r\n\r\n\r" + ex.Message + "\n\r\n\r\n\r");
+                }
             txtQuantidade.Focus();
             txtQuantidade.Select(0, txtQuantidade.Text.Length);
         }
@@ -170,14 +177,14 @@ namespace JOALHERIA.UI
 
             timerHora.Enabled = true;
             timerHora.Interval = 1000;
-            timerHora.Tick += timerHora_Tick;  
+            timerHora.Tick += timerHora_Tick;
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            if(produtoBLL.Idproduto != 0)
+            if (produtoBLL.Idproduto != 0)
             {
-                if(VerificarQuantidadeDisponivel() == false)
+                if (VerificarQuantidadeDisponivel() == false)
                 {
                     MessageBox.Show("Quantidade insuficiente no estoque!", "Atencao", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -192,11 +199,11 @@ namespace JOALHERIA.UI
 
                 //limpar
                 limpar();
-                
+
             }
             else
             {
-                MessageBox.Show("Selecione algum produto","Atencao", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Selecione algum produto", "Atencao", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -219,7 +226,7 @@ namespace JOALHERIA.UI
         //metodo botao remover pedido da lista
         private void btnRemover_Click(object sender, EventArgs e)
         {
-            if(dgvItens.RowCount > 0)
+            if (dgvItens.RowCount > 0)
             {
                 dgvItens.Rows.Remove(dgvItens.CurrentRow);
                 CalcularTotal();
@@ -229,42 +236,41 @@ namespace JOALHERIA.UI
 
         private void btnFinalizar_Click(object sender, EventArgs e)
         {
-            if(VerificarCampos() == false)
-            {
-                MessageBox.Show("Verifique o preenchimento dos campos!","Validar campos",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                return;
-            }
+            if (VerificarCampos())
+                Salvar();
+
             else
-            {
-                //cadastrando itens da venda
-                vendaBLL.Usuario = UI.frmLogin.usuariologado.ToString();
-                vendaBLL.Idcliente = clienteBLL.Idcliente;
-                vendaBLL.Precototal = total;
-                vendaBLL.Formapagamento = cmbForma.Text;
-                vendaBLL.Valorpago = Convert.ToDecimal( txtValorPago.Text);
-                vendaBLL.Troco = Convert.ToDecimal(txtTroco.Text);
-                vendaBLL.Datavenda = Convert.ToDateTime(txtData.Text);
-                itempedidoBLL.Idvenda = vendaDAL.Cadastrar(vendaBLL);
-
-                //cadastrando itens da lista de item
-                for (int i = 0; i < dgvItens.RowCount; i++)
-                {
-                    itempedidoBLL.Idproduto = Convert.ToInt16(dgvItens[0, i].Value);
-                    itempedidoBLL.Quantidade = Convert.ToInt16(dgvItens[2, i].Value);
-                    itempedidoBLL.Precounitario = Convert.ToDecimal(dgvItens[3, i].Value);
-                    itempedidoDAL.Cadastrar(itempedidoBLL);
-
-                    //baixar estoque ainda dentro do for
-                    produtoBLL.Quantidade = itempedidoBLL.Quantidade;
-                    produtoBLL.Idproduto = itempedidoBLL.Idproduto;
-                    produtoDAL.BaixarEstoque(produtoBLL);
-                }
-                //mensagem de confirmação de dados salvos
-                MessageBox.Show("Venda registrada com sucesso!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimparCampos();               
-            }
+                MessageBox.Show("Verifique o preenchimento dos campos!", "Validar campos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
+        private void Salvar()
+        {
+            //cadastrando itens da venda
+            vendaBLL.Usuario = UI.frmLogin.usuariologado.ToString();
+            vendaBLL.Idcliente = clienteBLL.Idcliente;
+            vendaBLL.Precototal = total;
+            vendaBLL.Formapagamento = cmbForma.Text;
+            vendaBLL.Valorpago = Convert.ToDecimal(txtValorPago.Text);
+            vendaBLL.Troco = Convert.ToDecimal(txtTroco.Text);
+            vendaBLL.Datavenda = Convert.ToDateTime(txtData.Text);
+            itempedidoBLL.Idvenda = vendaDAL.Cadastrar(vendaBLL);
 
+            //cadastrando itens da lista de item
+            for (int i = 0; i < dgvItens.RowCount; i++)
+            {
+                itempedidoBLL.Idproduto = Convert.ToInt16(dgvItens[0, i].Value);
+                itempedidoBLL.Quantidade = Convert.ToInt16(dgvItens[2, i].Value);
+                itempedidoBLL.Precounitario = Convert.ToDecimal(dgvItens[3, i].Value);
+                itempedidoDAL.Cadastrar(itempedidoBLL);
+
+                //baixar estoque ainda dentro do for
+                produtoBLL.Quantidade = itempedidoBLL.Quantidade;
+                produtoBLL.Idproduto = itempedidoBLL.Idproduto;
+                produtoDAL.BaixarEstoque(produtoBLL);
+            }
+            //mensagem de confirmação de dados salvos
+            MessageBox.Show("Venda registrada com sucesso!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LimparCampos();
+        }
         public void LimparCampos()
         {
             //LIMPANDO OS CAMPOS
@@ -283,7 +289,7 @@ namespace JOALHERIA.UI
         }
         private void cmbForma_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cmbForma.SelectedIndex == 0)
+            if (cmbForma.SelectedIndex == 0)
             {
                 FormaPagamentoDinheiro();
                 txtValorPago.Focus();
@@ -295,7 +301,7 @@ namespace JOALHERIA.UI
         }
 
         public void FormaPagamentoDinheiro()
-        {         
+        {
             lblValorPago.Visible = true;
             txtValorPago.Visible = true;
 
@@ -317,12 +323,12 @@ namespace JOALHERIA.UI
 
         private void txtValorPago_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back) && e.KeyChar != Convert.ToChar(Keys.Enter) && e.KeyChar != 44) 
+            if (!char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back) && e.KeyChar != Convert.ToChar(Keys.Enter) && e.KeyChar != 44)
             {
                 e.Handled = true;
-                MessageBox.Show("Este campo so aceita números !","Validação de campos",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("Este campo so aceita números !", "Validação de campos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            if(e.KeyChar == Convert.ToChar(Keys.Enter) && txtValorPago.Text.Trim() != "")
+            if (e.KeyChar == Convert.ToChar(Keys.Enter) && txtValorPago.Text.Trim() != "")
             {
                 CalcularTroco();
             }
@@ -330,14 +336,11 @@ namespace JOALHERIA.UI
 
         public bool VerificarCampos()
         {
-            if (txtCliente.Text.Trim() != "" && dgvItens.RowCount > 0 || cmbForma.SelectedIndex == 0 && valorpago >= total)
-            {
+            if ((txtCliente.Text.Trim() != "" && dgvItens.RowCount > 0) || (cmbForma.SelectedIndex == 0 && valorpago >= total))
                 return true;
-            }
+
             else
-            {
                 return false;
-            }
         }
 
         private void btnSelecionarFormaPagamento_Click(object sender, EventArgs e)
@@ -347,9 +350,9 @@ namespace JOALHERIA.UI
 
         private void txtQuantidade_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar == Convert.ToChar(Keys.Enter))
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                if(cmbForma.SelectedIndex == 0)
+                if (cmbForma.SelectedIndex == 0)
                 {
                     txtValorPago.Focus();
                 }

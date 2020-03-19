@@ -16,9 +16,6 @@ namespace JOALHERIADAL
     public class Acces
     {
         Conexao con = new Conexao();
-
-
-
         public static void ExecuteNonQuery(IDbCommand cmd, bool registrolog = true)
         {
             int tentativa = 1;

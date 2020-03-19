@@ -167,7 +167,7 @@ namespace JOALHERIA.UI
             {
                 label11.Text = "Alterar Produto";
                 produtoBLL.Idproduto = Convert.ToInt16(dgvConsultarProduto.SelectedCells[0].Value);
-                produtoDAL.GetById(produtoBLL.Idproduto);
+                produtoDAL.GetById(produtoBLL);
 
                 cmbCategoria.Text = Convert.ToString(produtoBLL.Idcategoria);
                 txtDescricao.Text = produtoBLL.Descricao;

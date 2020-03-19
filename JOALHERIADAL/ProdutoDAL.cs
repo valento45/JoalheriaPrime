@@ -68,39 +68,50 @@ namespace JOALHERIADAL
             Acces.ExecuteNonQuery(cmd);
         }
 
-        public JOALHERIABLL.ProdutoBLL GetById(int codigo)
+        public JOALHERIABLL.ProdutoBLL GetById(JOALHERIABLL.ProdutoBLL produtoBLL)
         {
 
-            //SqlCommand cmd = new SqlCommand("SELECT * FROM JOALHERIA.PRODUTO WHERE IDPRODUTO = @IDPRODUTO", con.Conectar());
-            //cmd.Parameters.AddWithValue("@IDPRODUTO", produtoBLL.Idproduto);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM JOALHERIA.PRODUTO WHERE IDPRODUTO = @IDPRODUTO", con.Conectar());
+            cmd.Parameters.AddWithValue("@IDPRODUTO", produtoBLL.Idproduto);
 
-            //SqlDataReader dr = cmd.ExecuteReader();
+            SqlDataReader dr = cmd.ExecuteReader();
 
-            //if (dr.Read())
-            //{
-            //    produtoBLL.Idproduto = Convert.ToInt16(dr["IDPRODUTO"]);
-            //    produtoBLL.Idcategoria = Convert.ToInt16(dr["IDCATEGORIA"]);
-            //    produtoBLL.Descricao = Convert.ToString(dr["DESCRICAO"]);
-            //    produtoBLL.Quantidade = Convert.ToInt16(dr["QUANTIDADE"]);
-            //    produtoBLL.Precoimportado = Convert.ToDecimal(dr["PRECOIMPORTADO"]);
-            //    produtoBLL.Precovenda = Convert.ToDecimal(dr["PRECOVENDA"]);
-            //    produtoBLL.Lucro = Convert.ToDecimal(dr["LUCRO"]);
-            //    produtoBLL.Observacoes = Convert.ToString(dr["OBSERVACOES"]);
-            //    produtoBLL.Imagem = dr["IMAGEM"].ToString();
+            if (dr.Read())
+            {
+                produtoBLL.Idproduto = Convert.ToInt16(dr["IDPRODUTO"]);
+                produtoBLL.Idcategoria = Convert.ToInt16(dr["IDCATEGORIA"]);
+                produtoBLL.Descricao = Convert.ToString(dr["DESCRICAO"]);
+                produtoBLL.Quantidade = Convert.ToInt16(dr["QUANTIDADE"]);
+                produtoBLL.Precoimportado = Convert.ToDecimal(dr["PRECOIMPORTADO"]);
+                produtoBLL.Precovenda = Convert.ToDecimal(dr["PRECOVENDA"]);
+                produtoBLL.Lucro = Convert.ToDecimal(dr["LUCRO"]);
+                produtoBLL.Observacoes = Convert.ToString(dr["OBSERVACOES"]);
+                produtoBLL.Imagem = dr["IMAGEM"].ToString();
 
-            //}
+            }
 
-            //dr.Close();
-            //con.Desconectar();
-            //return produtoBLL;            
+            dr.Close();
+            con.Desconectar();
+            return produtoBLL;
 
-            SqlCommand lCmd = new SqlCommand("SELECT * FROM JOALHERIA.PRODUTO WHERE IDPRODUTO =" + codigo + ";");
-            DataTable table = Acces.ExecuteReader(lCmd).Tables[0];
-            if (table.Rows.Count == 1)
-                return new JOALHERIABLL.ProdutoBLL(table.Rows[0]);
-            else
-                return new JOALHERIABLL.ProdutoBLL();
+            //SqlCommand lCmd = new SqlCommand("SELECT * FROM JOALHERIA.PRODUTO WHERE IDPRODUTO =" + codigo + ";");
+            //DataTable table = Acces.ExecuteReader(lCmd).Tables[0];
+            //if (table.Rows.Count == 1)
+            //    return new JOALHERIABLL.ProdutoBLL(table.Rows[0]);
+            //else
+            //    return new JOALHERIABLL.ProdutoBLL();
 
+        }
+
+        public static JOALHERIABLL.ProdutoBLL GetById(int id)
+        {
+            SqlCommand cmd = new SqlCommand("SELECT * FROM JOALHERIA.PRODUTO WHERE IDPRODUTO = '" + id + "';");
+            JOALHERIABLL.ProdutoBLL produto = new JOALHERIABLL.ProdutoBLL();
+            DataTable result = Acces.ExecuteReader(cmd).Tables[0];
+
+            foreach (DataRow row in result.Rows)
+                produto = new JOALHERIABLL.ProdutoBLL(row);
+            return produto;
         }
 
         //BAIXAR ESTOQUE

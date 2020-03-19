@@ -136,15 +136,15 @@ namespace JOALHERIABLL
 
         public ProdutoBLL(DataRow dr)
         {
-            Idproduto = Convert.ToInt32(dr["idproduto"]);
-            Idcategoria = Convert.ToInt32(dr["idcategoria"]);
-            Descricao = dr["descricao"].ToString();
-            Quantidade = Convert.ToInt32(dr["quantidade"]);
-            Precoimportado = Convert.ToDecimal(dr["precoimportado"]);
-            Precovenda = Convert.ToDecimal(dr["precovenda"]);
-            Lucro = Convert.ToDecimal(dr["lucro"]);
-            Observacoes = dr["observacoes"].ToString();
-            Imagem = dr["imagem"].ToString();
+            Idproduto = Convert.ToInt16(dr["IDPRODUTO"]);
+            Idcategoria = Convert.ToInt16(dr["IDCATEGORIA"]);
+            Descricao = Convert.ToString(dr["DESCRICAO"]);
+            Quantidade = Convert.ToInt16(dr["QUANTIDADE"]);
+            Precoimportado = Convert.ToDecimal(dr["PRECOIMPORTADO"]);
+            Precovenda = Convert.ToDecimal(dr["PRECOVENDA"]);
+            Lucro = Convert.ToDecimal(dr["LUCRO"]);
+            Observacoes = Convert.ToString(dr["OBSERVACOES"]);
+            Imagem = dr["IMAGEM"].ToString();
         }
 
         public ProdutoBLL()
