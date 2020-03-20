@@ -45,14 +45,13 @@ namespace JOALHERIA.UI
         }
         public void ConsultarGrid()
         {
-
+            dgvConsultarCliente.Rows.Clear();
+            foreach (ClienteDAL cliente in ClienteDAL.ListarClientes().OrderBy(c => c.Nome).ToList())
+                dgvConsultarCliente.Rows.Add(cliente.Idpessoa, cliente.Nome, cliente.Tipo_documento, cliente.Documento, cliente.Cpf_cnpj, cliente.Data_nascimento, cliente.Email, cliente.Telefone, cliente.Endereco, cliente.Cidade, cliente.Uf, cliente.Complemento, cliente.Tipo_pessoa, cliente.Tipo_cliente, cliente.Data_registro);
         }
         private void frmCliente_Load(object sender, EventArgs e)
         {
             ConsultarGrid();
-
-            txtNome.Focus();
-
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -60,8 +59,8 @@ namespace JOALHERIA.UI
             if (MessageBox.Show("Deseja realmente excluir Cliente?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 if (dgvConsultarCliente.RowCount > 0)
                 {
-                    clienteDAL.Idpessoa = Convert.ToInt16(dgvConsultarCliente.SelectedCells[0].Value);
-                    //Método excluir
+                    int idcliente = Convert.ToInt16(dgvConsultarCliente.SelectedCells[colIdCliente.Index].Value);
+                    ClienteDAL.Delete_Client(idcliente);                    
                     ConsultarGrid();
                 }
                 else
@@ -70,15 +69,15 @@ namespace JOALHERIA.UI
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            if (dgvConsultarCliente.RowCount > 0)
+            if (dgvConsultarCliente.RowCount > 0 && alterar)
             {
-                clienteDAL.Idpessoa = Convert.ToInt32(dgvConsultarCliente.SelectedCells[0].Value);
-                clienteDAL.GetById(clienteDAL.Idpessoa);
-
+                clienteDAL.Idpessoa = Convert.ToInt32(dgvConsultarCliente.SelectedCells[colIdCliente.Index].Value);
+                clienteDAL = ClienteDAL.GetById(clienteDAL.Idpessoa);
+                
                 txtNome.Text = clienteDAL.Nome;
                 txtRg.Text = clienteDAL.Documento;
                 txtCpf.Text = clienteDAL.Cpf_cnpj;
-                txtDataNascimento.Text = clienteDAL.Data_nascimento.ToString();
+                txtDataNascimento.Text = clienteDAL.Data_nascimento.ToString() == null ? "" : clienteDAL.Data_nascimento.ToString();
                 txtEmail.Text = clienteDAL.Email;
                 txtTelefone.Text = clienteDAL.Telefone;
                 txtEndereco.Text = clienteDAL.Endereco;
@@ -90,9 +89,9 @@ namespace JOALHERIA.UI
                 alterar = true;
                 tabControl1.SelectedTab = tabPage1;
             }
-            else            
+            else
                 MessageBox.Show("Selecione Algum registro para alterar!", "Nenhum registro selecionado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            
+
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -104,6 +103,8 @@ namespace JOALHERIA.UI
         {
             if (alterar == false && ValidarCamposObrigatorios() == true)
             {
+                var clienteDAL = new JOALHERIADAL.ClienteDAL();
+
                 clienteDAL.Nome = txtNome.Text;
                 clienteDAL.Documento = txtRg.Text;
                 clienteDAL.Cpf_cnpj = txtCpf.Text;
@@ -114,14 +115,14 @@ namespace JOALHERIA.UI
                 clienteDAL.Cidade = txtCidade.Text;
                 clienteDAL.Uf = cmbUf.Text;
                 clienteDAL.Tipo_cliente = cmbTipo.Text;
-                clienteDAL.Insert_Client(clienteDAL);
+                ClienteDAL.Insert_Client(clienteDAL);
 
                 MessageBox.Show("Cliente registrado !", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ResetarCampos();
-                ConsultarGrid();                
+                ConsultarGrid();
             }
             if (alterar == true && ValidarCamposObrigatorios() == true && clienteDAL.Idpessoa > 0)
-            {
+            {               
                 clienteDAL.Nome = txtNome.Text;
                 clienteDAL.Documento = txtRg.Text;
                 clienteDAL.Cpf_cnpj = txtCpf.Text;
@@ -132,11 +133,11 @@ namespace JOALHERIA.UI
                 clienteDAL.Cidade = txtCidade.Text;
                 clienteDAL.Uf = cmbUf.Text;
                 clienteDAL.Tipo_cliente = cmbTipo.Text;
-                clienteDAL.Update_Client(clienteDAL);
+                ClienteDAL.Update_Client(clienteDAL);
 
                 MessageBox.Show("Cliente Atualizado !", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ResetarCampos();
-                ConsultarGrid();                
+                ConsultarGrid();
             }
         }
         public bool ValidarCamposObrigatorios()
@@ -166,6 +167,7 @@ namespace JOALHERIA.UI
 
         public void ResetarCampos()
         {
+            clienteDAL = new ClienteDAL();
             txtCpf.Clear();
             txtNome.Clear();
             txtRg.Clear();
@@ -193,7 +195,7 @@ namespace JOALHERIA.UI
 
         private void tabPage1_Enter(object sender, EventArgs e)
         {
-            // ResetarCampos();
+            ResetarCampos();
         }
 
         private void txtFiltro_TextChanged(object sender, EventArgs e)
@@ -224,15 +226,24 @@ namespace JOALHERIA.UI
             //    dgvConsultarCliente.DataSource = clienteDAL.ConsultarTodos();
             //}
             #endregion
-
-
+            string filtro = null;
+            if (rdbNome.Checked)
+            {
+                filtro = txtFiltro.Text;
+                dgvConsultarCliente.Rows.Clear();
+                foreach (ClienteDAL cliente in ClienteDAL.ListarClientes().Where(c => c.Nome.ToLower().Contains(filtro.ToLower())).ToList())
+                    dgvConsultarCliente.Rows.Add(cliente.Idpessoa, cliente.Nome, cliente.Tipo_documento, cliente.Documento, cliente.Cpf_cnpj, cliente.Data_nascimento, cliente.Email, cliente.Telefone, cliente.Endereco, cliente.Cidade, cliente.Uf, cliente.Complemento, cliente.Tipo_pessoa, cliente.Tipo_cliente, cliente.Data_registro);
+            }
         }
 
         private void txtFiltro_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (rdbCodigo.Checked)
                 if (!char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != (char)Keys.Delete)
+                {
                     e.Handled = true;
+                    MessageBox.Show("Apenas Números são permitidos para filtrar por Código!", "Validar Filtro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }                    
         }
     }//fim 
 }//fim

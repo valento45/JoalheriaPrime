@@ -60,24 +60,39 @@
             this.txtCpf = new System.Windows.Forms.MaskedTextBox();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.rdbCpf = new System.Windows.Forms.RadioButton();
+            this.rdbNome = new System.Windows.Forms.RadioButton();
+            this.rdbCodigo = new System.Windows.Forms.RadioButton();
+            this.txtFiltro = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tbtnAlterar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tbtnExcluir = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.txtFiltro = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.dgvConsultarCliente = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.rdbCodigo = new System.Windows.Forms.RadioButton();
-            this.rdbNome = new System.Windows.Forms.RadioButton();
-            this.rdbCpf = new System.Windows.Forms.RadioButton();
+            this.colIdCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTipoDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCpf = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDataNasc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTelefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEndereco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colUf = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colComplemento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTipoPessoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTipoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDataRegistro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -86,11 +101,11 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultarCliente)).BeginInit();
             this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -506,6 +521,96 @@
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.groupBox3);
+            this.panel4.Controls.Add(this.txtFiltro);
+            this.panel4.Controls.Add(this.label7);
+            this.panel4.Controls.Add(this.label6);
+            this.panel4.Location = new System.Drawing.Point(6, 31);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(894, 114);
+            this.panel4.TabIndex = 26;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.groupBox3.Controls.Add(this.rdbCpf);
+            this.groupBox3.Controls.Add(this.rdbNome);
+            this.groupBox3.Controls.Add(this.rdbCodigo);
+            this.groupBox3.Location = new System.Drawing.Point(726, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(165, 108);
+            this.groupBox3.TabIndex = 25;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Filtrar Por";
+            // 
+            // rdbCpf
+            // 
+            this.rdbCpf.AutoSize = true;
+            this.rdbCpf.Location = new System.Drawing.Point(7, 66);
+            this.rdbCpf.Name = "rdbCpf";
+            this.rdbCpf.Size = new System.Drawing.Size(45, 17);
+            this.rdbCpf.TabIndex = 2;
+            this.rdbCpf.TabStop = true;
+            this.rdbCpf.Text = "CPF";
+            this.rdbCpf.UseVisualStyleBackColor = true;
+            // 
+            // rdbNome
+            // 
+            this.rdbNome.AutoSize = true;
+            this.rdbNome.Location = new System.Drawing.Point(7, 43);
+            this.rdbNome.Name = "rdbNome";
+            this.rdbNome.Size = new System.Drawing.Size(53, 17);
+            this.rdbNome.TabIndex = 1;
+            this.rdbNome.TabStop = true;
+            this.rdbNome.Text = "Nome";
+            this.rdbNome.UseVisualStyleBackColor = true;
+            // 
+            // rdbCodigo
+            // 
+            this.rdbCodigo.AutoSize = true;
+            this.rdbCodigo.Location = new System.Drawing.Point(6, 19);
+            this.rdbCodigo.Name = "rdbCodigo";
+            this.rdbCodigo.Size = new System.Drawing.Size(58, 17);
+            this.rdbCodigo.TabIndex = 0;
+            this.rdbCodigo.TabStop = true;
+            this.rdbCodigo.Text = "Código";
+            this.rdbCodigo.UseVisualStyleBackColor = true;
+            // 
+            // txtFiltro
+            // 
+            this.txtFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFiltro.Location = new System.Drawing.Point(58, 77);
+            this.txtFiltro.Name = "txtFiltro";
+            this.txtFiltro.Size = new System.Drawing.Size(458, 22);
+            this.txtFiltro.TabIndex = 24;
+            this.txtFiltro.TextChanged += new System.EventHandler(this.txtFiltro_TextChanged);
+            this.txtFiltro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFiltro_KeyPress);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(9, 80);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(43, 13);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "Buscar:";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(375, 12);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(154, 24);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Consultar Cliente";
+            // 
             // toolStrip1
             // 
             this.toolStrip1.BackColor = System.Drawing.SystemColors.Control;
@@ -563,26 +668,6 @@
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton1.Text = "Imprimir";
             // 
-            // txtFiltro
-            // 
-            this.txtFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFiltro.Location = new System.Drawing.Point(58, 77);
-            this.txtFiltro.Name = "txtFiltro";
-            this.txtFiltro.Size = new System.Drawing.Size(458, 22);
-            this.txtFiltro.TabIndex = 24;
-            this.txtFiltro.TextChanged += new System.EventHandler(this.txtFiltro_TextChanged);
-            this.txtFiltro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFiltro_KeyPress);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 80);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(43, 13);
-            this.label7.TabIndex = 23;
-            this.label7.Text = "Buscar:";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
-            // 
             // dgvConsultarCliente
             // 
             this.dgvConsultarCliente.AllowUserToAddRows = false;
@@ -590,25 +675,29 @@
             this.dgvConsultarCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvConsultarCliente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvConsultarCliente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvConsultarCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvConsultarCliente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colIdCliente,
+            this.colNome,
+            this.colTipoDocumento,
+            this.colDocumento,
+            this.colCpf,
+            this.colDataNasc,
+            this.colEmail,
+            this.colTelefone,
+            this.colEndereco,
+            this.colCidade,
+            this.colUf,
+            this.colComplemento,
+            this.colTipoPessoa,
+            this.colTipoCliente,
+            this.colDataRegistro});
             this.dgvConsultarCliente.Location = new System.Drawing.Point(6, 151);
             this.dgvConsultarCliente.Name = "dgvConsultarCliente";
-            this.dgvConsultarCliente.ReadOnly = true;
             this.dgvConsultarCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvConsultarCliente.Size = new System.Drawing.Size(894, 315);
             this.dgvConsultarCliente.TabIndex = 22;
-            // 
-            // label6
-            // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(375, 12);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(154, 24);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "Consultar Cliente";
             // 
             // panel2
             // 
@@ -649,64 +738,111 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // panel4
+            // colIdCliente
             // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.Controls.Add(this.groupBox3);
-            this.panel4.Controls.Add(this.txtFiltro);
-            this.panel4.Controls.Add(this.label7);
-            this.panel4.Controls.Add(this.label6);
-            this.panel4.Location = new System.Drawing.Point(6, 31);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(894, 114);
-            this.panel4.TabIndex = 26;
+            this.colIdCliente.HeaderText = "ID";
+            this.colIdCliente.Name = "colIdCliente";
+            this.colIdCliente.ReadOnly = true;
+            this.colIdCliente.Width = 43;
             // 
-            // groupBox3
+            // colNome
             // 
-            this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.groupBox3.Controls.Add(this.rdbCpf);
-            this.groupBox3.Controls.Add(this.rdbNome);
-            this.groupBox3.Controls.Add(this.rdbCodigo);
-            this.groupBox3.Location = new System.Drawing.Point(726, 3);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(165, 108);
-            this.groupBox3.TabIndex = 25;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Filtrar Por";
+            this.colNome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colNome.HeaderText = "Nome";
+            this.colNome.Name = "colNome";
+            this.colNome.ReadOnly = true;
+            this.colNome.Width = 60;
             // 
-            // rdbCodigo
+            // colTipoDocumento
             // 
-            this.rdbCodigo.AutoSize = true;
-            this.rdbCodigo.Location = new System.Drawing.Point(6, 19);
-            this.rdbCodigo.Name = "rdbCodigo";
-            this.rdbCodigo.Size = new System.Drawing.Size(58, 17);
-            this.rdbCodigo.TabIndex = 0;
-            this.rdbCodigo.TabStop = true;
-            this.rdbCodigo.Text = "Código";
-            this.rdbCodigo.UseVisualStyleBackColor = true;
+            this.colTipoDocumento.HeaderText = "Tipo Documento";
+            this.colTipoDocumento.Name = "colTipoDocumento";
+            this.colTipoDocumento.ReadOnly = true;
+            this.colTipoDocumento.Width = 102;
             // 
-            // rdbNome
+            // colDocumento
             // 
-            this.rdbNome.AutoSize = true;
-            this.rdbNome.Location = new System.Drawing.Point(7, 43);
-            this.rdbNome.Name = "rdbNome";
-            this.rdbNome.Size = new System.Drawing.Size(53, 17);
-            this.rdbNome.TabIndex = 1;
-            this.rdbNome.TabStop = true;
-            this.rdbNome.Text = "Nome";
-            this.rdbNome.UseVisualStyleBackColor = true;
+            this.colDocumento.HeaderText = "Documento";
+            this.colDocumento.Name = "colDocumento";
+            this.colDocumento.ReadOnly = true;
+            this.colDocumento.Width = 87;
             // 
-            // rdbCpf
+            // colCpf
             // 
-            this.rdbCpf.AutoSize = true;
-            this.rdbCpf.Location = new System.Drawing.Point(7, 66);
-            this.rdbCpf.Name = "rdbCpf";
-            this.rdbCpf.Size = new System.Drawing.Size(45, 17);
-            this.rdbCpf.TabIndex = 2;
-            this.rdbCpf.TabStop = true;
-            this.rdbCpf.Text = "CPF";
-            this.rdbCpf.UseVisualStyleBackColor = true;
+            this.colCpf.HeaderText = "CPF";
+            this.colCpf.Name = "colCpf";
+            this.colCpf.ReadOnly = true;
+            this.colCpf.Width = 52;
+            // 
+            // colDataNasc
+            // 
+            this.colDataNasc.HeaderText = "Data Nascimento";
+            this.colDataNasc.Name = "colDataNasc";
+            this.colDataNasc.ReadOnly = true;
+            this.colDataNasc.Width = 105;
+            // 
+            // colEmail
+            // 
+            this.colEmail.HeaderText = "Email";
+            this.colEmail.Name = "colEmail";
+            this.colEmail.ReadOnly = true;
+            this.colEmail.Width = 57;
+            // 
+            // colTelefone
+            // 
+            this.colTelefone.HeaderText = "Telefone";
+            this.colTelefone.Name = "colTelefone";
+            this.colTelefone.ReadOnly = true;
+            this.colTelefone.Width = 74;
+            // 
+            // colEndereco
+            // 
+            this.colEndereco.HeaderText = "Endereço";
+            this.colEndereco.Name = "colEndereco";
+            this.colEndereco.ReadOnly = true;
+            this.colEndereco.Width = 78;
+            // 
+            // colCidade
+            // 
+            this.colCidade.HeaderText = "Cidade";
+            this.colCidade.Name = "colCidade";
+            this.colCidade.ReadOnly = true;
+            this.colCidade.Width = 65;
+            // 
+            // colUf
+            // 
+            this.colUf.HeaderText = "UF";
+            this.colUf.Name = "colUf";
+            this.colUf.ReadOnly = true;
+            this.colUf.Width = 46;
+            // 
+            // colComplemento
+            // 
+            this.colComplemento.HeaderText = "Complemento";
+            this.colComplemento.Name = "colComplemento";
+            this.colComplemento.ReadOnly = true;
+            this.colComplemento.Width = 96;
+            // 
+            // colTipoPessoa
+            // 
+            this.colTipoPessoa.HeaderText = "Tipo Pessoa";
+            this.colTipoPessoa.Name = "colTipoPessoa";
+            this.colTipoPessoa.ReadOnly = true;
+            this.colTipoPessoa.Width = 84;
+            // 
+            // colTipoCliente
+            // 
+            this.colTipoCliente.HeaderText = "Tipo Cliente";
+            this.colTipoCliente.Name = "colTipoCliente";
+            this.colTipoCliente.ReadOnly = true;
+            this.colTipoCliente.Width = 81;
+            // 
+            // colDataRegistro
+            // 
+            this.colDataRegistro.HeaderText = "Data Registro";
+            this.colDataRegistro.Name = "colDataRegistro";
+            this.colDataRegistro.ReadOnly = true;
+            this.colDataRegistro.Width = 89;
             // 
             // frmCliente
             // 
@@ -734,15 +870,15 @@
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultarCliente)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -799,5 +935,20 @@
         private System.Windows.Forms.RadioButton rdbCpf;
         private System.Windows.Forms.RadioButton rdbNome;
         private System.Windows.Forms.RadioButton rdbCodigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colIdCliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTipoDocumento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDocumento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCpf;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDataNasc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEmail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTelefone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEndereco;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colUf;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colComplemento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTipoPessoa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTipoCliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDataRegistro;
     }
 }

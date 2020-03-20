@@ -7,6 +7,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Data.Sql;
 using JOALHERIABLL;
+using System.Windows.Forms;
+
 namespace JOALHERIADAL
 {
     public class ClienteDAL : Pessoa
@@ -180,7 +182,7 @@ namespace JOALHERIADAL
         #endregion Antes
 
         public string Tipo_cliente { get; set; }
-        public DateTime Data_registro { get; set; }
+        public DateTime? Data_registro { get; set; }
 
         public ClienteDAL()
         {
@@ -202,29 +204,29 @@ namespace JOALHERIADAL
             Complemento = dr["complemento"].ToString();
             Tipo_pessoa = dr["tipo_pessoa"].ToString();
             Tipo_cliente = dr["TIPO_CLIENTE"].ToString();
-            Data_registro = Convert.ToDateTime(dr["data_registro"]);
+            Data_registro = (dr["data_registro"] == DBNull.Value) ? (DateTime?)null : ((DateTime)dr["data_registro"]);
         }
 
-        public bool Insert_Client( ClienteDAL clienteDAL)
+        public static bool Insert_Client(ClienteDAL clienteDAL)
         {
             bool sucesso = false;
             try
             {
                 SqlCommand cmd = new SqlCommand("insert into JOALHERIA.CLIENTE (nome, tipo_documento, rg, cpf, data_nascimento, email, telefone, endereco, cidade, uf, complemento, tipo_pessoa, tipo_cliente, data_registro) values (@nome, @tipo_documento, @rg, @cpf, @data_nascimento, @email, @telefone, @endereco, @cidade, @uf, @complemento, @tipo_pessoa, @tipo_cliente, @data_registro);");
-                cmd.Parameters.AddWithValue(@"nome", Nome);
-                cmd.Parameters.AddWithValue(@"tipo_documento", Tipo_documento);
-                cmd.Parameters.AddWithValue(@"rg", Documento);
-                cmd.Parameters.AddWithValue(@"cpf", Cpf_cnpj);
-                cmd.Parameters.AddWithValue(@"data_nascimento", Data_nascimento);
-                cmd.Parameters.AddWithValue(@"email", Email);
-                cmd.Parameters.AddWithValue(@"telefone", Telefone);
-                cmd.Parameters.AddWithValue(@"endereco", Endereco);
-                cmd.Parameters.AddWithValue(@"cidade", Cidade);
-                cmd.Parameters.AddWithValue(@"uf", Uf);
-                cmd.Parameters.AddWithValue(@"complemento", Complemento);
-                cmd.Parameters.AddWithValue(@"tipo_pessoa", Tipo_pessoa);
-                cmd.Parameters.AddWithValue(@"tipo_cliente", Tipo_cliente);
-                cmd.Parameters.AddWithValue(@"data_registro", Data_registro);
+                cmd.Parameters.AddWithValue(@"nome", clienteDAL.Nome);
+                cmd.Parameters.AddWithValue(@"tipo_documento", clienteDAL.Tipo_documento);
+                cmd.Parameters.AddWithValue(@"rg", clienteDAL.Documento);
+                cmd.Parameters.AddWithValue(@"cpf", clienteDAL.Cpf_cnpj);
+                cmd.Parameters.AddWithValue(@"data_nascimento", clienteDAL.Data_nascimento);
+                cmd.Parameters.AddWithValue(@"email", clienteDAL.Email);
+                cmd.Parameters.AddWithValue(@"telefone", clienteDAL.Telefone);
+                cmd.Parameters.AddWithValue(@"endereco", clienteDAL.Endereco);
+                cmd.Parameters.AddWithValue(@"cidade", clienteDAL.Cidade);
+                cmd.Parameters.AddWithValue(@"uf", clienteDAL.Uf);
+                cmd.Parameters.AddWithValue(@"complemento", clienteDAL.Complemento);
+                cmd.Parameters.AddWithValue(@"tipo_pessoa", clienteDAL.Tipo_pessoa);
+                cmd.Parameters.AddWithValue(@"tipo_cliente", clienteDAL.Tipo_cliente);
+                cmd.Parameters.AddWithValue(@"data_registro", clienteDAL.Data_registro);
 
                 Acces.ExecuteNonQuery(cmd);
 
@@ -233,32 +235,31 @@ namespace JOALHERIADAL
             catch(Exception ex)
             {
                 sucesso = false;
+                MessageBox.Show("Falha ao cadastrar Cliente! \n\r\n\r " + (ex.InnerException != null ? ex.InnerException.Message : ""), "1) " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             return sucesso;
         }
-
-
-        public bool Update_Client(ClienteDAL clienteDAL)
+        public static bool Update_Client(ClienteDAL clienteDAL)
         {
             bool sucesso = false;
             try
             {
                 SqlCommand cmd = new SqlCommand("update JOALHERIA.CLIENTE set nome = @nome, tipo_documento = @tipo_documento, rg = @rg, cpf = @cpf, data_nascimento = @data_nascimento, email = @email, telefone = @telefone, endereco = @endereco, cidade = @cidade, uf = @uf, complemento = @complemento, tipo_pessoa = @tipo_pessoa, tipo_cliente = @tipo_cliente, data_registro = @data_registro where idcliente = @idcliente;");
-                cmd.Parameters.AddWithValue(@"idcliente", Idpessoa);
-                cmd.Parameters.AddWithValue(@"nome", Nome);
-                cmd.Parameters.AddWithValue(@"tipo_documento", Tipo_documento);
-                cmd.Parameters.AddWithValue(@"rg", Documento);
-                cmd.Parameters.AddWithValue(@"cpf", Cpf_cnpj);
-                cmd.Parameters.AddWithValue(@"data_nascimento", Data_nascimento);
-                cmd.Parameters.AddWithValue(@"email", Email);
-                cmd.Parameters.AddWithValue(@"telefone", Telefone);
-                cmd.Parameters.AddWithValue(@"endereco", Endereco);
-                cmd.Parameters.AddWithValue(@"cidade", Cidade);
-                cmd.Parameters.AddWithValue(@"uf", Uf);
-                cmd.Parameters.AddWithValue(@"complemento", Complemento);
-                cmd.Parameters.AddWithValue(@"tipo_pessoa", Tipo_pessoa);
-                cmd.Parameters.AddWithValue(@"tipo_cliente", Tipo_cliente);
-                cmd.Parameters.AddWithValue(@"data_registro", Data_registro);
+                cmd.Parameters.AddWithValue(@"idcliente", clienteDAL.Idpessoa);
+                cmd.Parameters.AddWithValue(@"nome", clienteDAL.Nome);
+                cmd.Parameters.AddWithValue(@"tipo_documento", clienteDAL.Tipo_documento);
+                cmd.Parameters.AddWithValue(@"rg", clienteDAL.Documento);
+                cmd.Parameters.AddWithValue(@"cpf", clienteDAL.Cpf_cnpj);
+                cmd.Parameters.AddWithValue(@"data_nascimento", clienteDAL.Data_nascimento);
+                cmd.Parameters.AddWithValue(@"email", clienteDAL.Email);
+                cmd.Parameters.AddWithValue(@"telefone", clienteDAL.Telefone);
+                cmd.Parameters.AddWithValue(@"endereco", clienteDAL.Endereco);
+                cmd.Parameters.AddWithValue(@"cidade", clienteDAL.Cidade);
+                cmd.Parameters.AddWithValue(@"uf", clienteDAL.Uf);
+                cmd.Parameters.AddWithValue(@"complemento", clienteDAL.Complemento);
+                cmd.Parameters.AddWithValue(@"tipo_pessoa", clienteDAL.Tipo_pessoa);
+                cmd.Parameters.AddWithValue(@"tipo_cliente", clienteDAL.Tipo_cliente);
+                cmd.Parameters.AddWithValue(@"data_registro", clienteDAL.Data_registro);
 
                 Acces.ExecuteNonQuery(cmd);
 
@@ -266,6 +267,27 @@ namespace JOALHERIADAL
             }
             catch (Exception ex)
             {
+                MessageBox.Show("Falha ao atualizar dados do Cliente! \n\r\n\r " + (ex.InnerException != null ? ex.InnerException.Message : ""), "1) " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                sucesso = false;
+            }
+            return sucesso;
+        }
+
+        public static bool Delete_Client(int idcliente)
+        {
+            bool sucesso = false;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("DELETE FROM JOALHERIA.CLIENTE where IDCLIENTE = @idcliente;");
+                cmd.Parameters.AddWithValue(@"idcliente", idcliente);               
+
+                Acces.ExecuteNonQuery(cmd);
+
+                sucesso = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Não foi possível excluir o cliente! \n\r\n\r" + (ex.InnerException != null ? ex.InnerException.Message : ""), "1) " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 sucesso = false;
             }
             return sucesso;
@@ -281,12 +303,13 @@ namespace JOALHERIADAL
             return result;
         }
 
-        public Pessoa GetById(int idcliente)
+        public static ClienteDAL GetById(int idcliente)
         {
             ClienteDAL result = new ClienteDAL();
-            SqlCommand cmd = new SqlCommand("select * from JOALHERIA.CLIENTE where idcliente = '" + idcliente + "';");
-            foreach (DataRow row in Acces.ExecuteReader(cmd).Tables[0].Rows)
-               result =  new ClienteDAL(row);
+            SqlCommand cmd = new SqlCommand("select * from JOALHERIA.CLIENTE where IDCLIENTE = '" + idcliente + "';");
+            DataTable dt = Acces.ExecuteReader(cmd).Tables[0];
+            if (dt.Rows.Count > 0)
+                result = new ClienteDAL(dt.Rows[0]);                
             return result;            
         }
 
