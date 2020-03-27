@@ -29,9 +29,9 @@ namespace Estudos.Entities
         public override string Fisic()
         {
             return "\nNome: " + Nome.ToString()
-                + "\n Renda Anual:" + Renda_Anual.ToString()
-                + "\n Nro Funcionarios" + Quantidade_Funcionarios.ToString()
-                + "\n Imposto:" + Imposto().ToString();
+                + "\n Renda Anual: " + Renda_Anual.ToString()
+                + "\n Nro Funcionarios: " + Quantidade_Funcionarios.ToString()
+                + "\n Imposto: " + Imposto().ToString();
         }
     }
 }
