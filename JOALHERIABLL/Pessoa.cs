@@ -13,7 +13,7 @@ namespace JOALHERIABLL
         string tipo_documento;
         string documento;
         string cpf_cnpj;
-        DateTime data_nascimento;
+        DateTime? data_nascimento;
         string email;
         string telefone;
         string endereco;
@@ -27,7 +27,7 @@ namespace JOALHERIABLL
         public string Tipo_documento { get => tipo_documento; set => tipo_documento = value; }
         public string Documento { get => documento; set => documento = value; }
         public string Cpf_cnpj { get => cpf_cnpj; set => cpf_cnpj = value; }
-        public DateTime Data_nascimento { get => data_nascimento; set => data_nascimento = value; }
+        public DateTime? Data_nascimento { get => data_nascimento; set => data_nascimento = value; }
         public string Email { get => email; set => email = value; }
         public string Telefone { get => telefone; set => telefone = value; }
         public string Endereco { get => endereco; set => endereco = value; }

@@ -262,7 +262,6 @@ namespace JOALHERIADAL
                 cmd.Parameters.AddWithValue(@"data_registro", clienteDAL.Data_registro);
 
                 Acces.ExecuteNonQuery(cmd);
-
                 sucesso = true;
             }
             catch (Exception ex)
