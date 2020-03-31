@@ -43,7 +43,6 @@ namespace Estudos
             foreach ( var x in result)                          
                 total += x.Renda_Anual;
 
-
             Console.WriteLine();
             Console.Write("Pessoas: ");
             foreach( Pessoa pessoa in result)
