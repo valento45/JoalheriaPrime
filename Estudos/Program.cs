@@ -155,15 +155,15 @@ namespace Estudos
             }
             catch (DomainException e)
             {
-                Console.Write("Domain Exception \n\r\n\r Detalhamento: " + e.Message);
+                Console.Write("Domain Exception \n\r\n\r Detalhamento: " + e.Message + "\nA Operação foi finalizada!");
             }
             catch (FormatException e)
             {
-                Console.Write("Format Exception \n\r\n\r Detalhamento: " + e.Message);
+                Console.Write("Format Exception \n\r\n\r Detalhamento: " + e.Message + "\nA Operação foi finalizada!");
             }
             catch (Exception e)
             {
-                Console.Write("Exception \n\r\n\r Detalhamento: " + e.Message);
+                Console.Write("Exception \n\r\n\r Detalhamento: " + e.Message +"\nA Operação foi finalizada!");
             }
             Console.Read();
 

@@ -10,7 +10,7 @@ namespace Estudos.Banco.Entities.Exceptions
     {
         public DomainException(string message) : base(message)
         {
-
+            
         }
     }
 }
