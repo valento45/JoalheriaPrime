@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JOALHERIADAL", "JOALHERIADA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estudos", "Estudos\Estudos.csproj", "{548CF5C8-A8C1-4678-BF17-D5DCCED32F51}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arquivos", "Arquivos\Arquivos.csproj", "{DC27202E-8E30-4147-A796-79A51CEC85DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{548CF5C8-A8C1-4678-BF17-D5DCCED32F51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{548CF5C8-A8C1-4678-BF17-D5DCCED32F51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{548CF5C8-A8C1-4678-BF17-D5DCCED32F51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC27202E-8E30-4147-A796-79A51CEC85DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC27202E-8E30-4147-A796-79A51CEC85DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC27202E-8E30-4147-A796-79A51CEC85DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC27202E-8E30-4147-A796-79A51CEC85DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
