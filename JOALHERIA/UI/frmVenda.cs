@@ -92,15 +92,14 @@ namespace JOALHERIA.UI
 
         private void btnSelecionarCliente_Click(object sender, EventArgs e)
         {
-            //frmBuscaCliente buscacliente = new frmBuscaCliente();
-            //buscacliente.ShowDialog();
+            frmBuscaCliente buscacliente = new frmBuscaCliente();
+            buscacliente.ShowDialog();
 
-            //if (buscacliente.idCliente != 0)
-            //{
-            //    clienteBLL.Idcliente = buscacliente.idCliente;
-            //    clienteDAL.RetornarDados(clienteBLL);
-            //    txtCliente.Text = clienteBLL.Nome;
-            //}
+            if (buscacliente.idCliente > 0)
+            {                
+                clienteDAL = ClienteDAL.GetById(buscacliente.idCliente);
+                txtCliente.Text = clienteDAL.Nome;
+            }
         }
 
         private void btnSelecionarProduto_Click(object sender, EventArgs e)
@@ -116,14 +115,15 @@ namespace JOALHERIA.UI
                     //txtProduto.Text = produtoBLL.Descricao;
                     //txtPreco.Text = Convert.ToString( produtoBLL.Precovenda);
                     //imgProduto.Load(produtoBLL.Imagem);
-                    ProdutoDAL.GetById(frmBuscaProduto.idProduto);
+                    produtoBLL = ProdutoDAL.GetById(frmBuscaProduto.idProduto);
                     txtProduto.Text = produtoBLL.Descricao;
                     txtPreco.Text = Convert.ToString(produtoBLL.Precovenda);
-                    imgProduto.Load(produtoBLL.Imagem);
+                    if(produtoBLL.Imagem.Length > 0)
+                        imgProduto.Load(produtoBLL.Imagem);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Exceção " +  "\n\r\n\r\n\r" + ex.Message + "\n\r\n\r\n\r");
+                    MessageBox.Show("Um erro ocorreu " + "\n\r\n\r\n\r" + ex.Message + "\n\r\n\r\n\r", "Exceção: ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             txtQuantidade.Focus();
             txtQuantidade.Select(0, txtQuantidade.Text.Length);
@@ -246,7 +246,7 @@ namespace JOALHERIA.UI
         {
             //cadastrando itens da venda
             vendaBLL.Usuario = UI.frmLogin.usuariologado.ToString();
-            vendaBLL.Idcliente = clienteBLL.Idcliente;
+            vendaBLL.Idcliente = clienteDAL.Idpessoa;
             vendaBLL.Precototal = total;
             vendaBLL.Formapagamento = cmbForma.Text;
             vendaBLL.Valorpago = Convert.ToDecimal(txtValorPago.Text);
@@ -255,21 +255,26 @@ namespace JOALHERIA.UI
             itempedidoBLL.Idvenda = vendaDAL.Cadastrar(vendaBLL);
 
             //cadastrando itens da lista de item
-            for (int i = 0; i < dgvItens.RowCount; i++)
+            if (itempedidoBLL.Idvenda != -1)
             {
-                itempedidoBLL.Idproduto = Convert.ToInt16(dgvItens[0, i].Value);
-                itempedidoBLL.Quantidade = Convert.ToInt16(dgvItens[2, i].Value);
-                itempedidoBLL.Precounitario = Convert.ToDecimal(dgvItens[3, i].Value);
-                itempedidoDAL.Cadastrar(itempedidoBLL);
+                for (int i = 0; i < dgvItens.RowCount; i++)
+                {
+                    itempedidoBLL.Idproduto = Convert.ToInt16(dgvItens[0, i].Value);
+                    itempedidoBLL.Quantidade = Convert.ToInt16(dgvItens[2, i].Value);
+                    itempedidoBLL.Precounitario = Convert.ToDecimal(dgvItens[3, i].Value);
+                    itempedidoDAL.Cadastrar(itempedidoBLL);
 
-                //baixar estoque ainda dentro do for
-                produtoBLL.Quantidade = itempedidoBLL.Quantidade;
-                produtoBLL.Idproduto = itempedidoBLL.Idproduto;
-                produtoDAL.BaixarEstoque(produtoBLL);
+                    //baixar estoque ainda dentro do for
+                    produtoBLL.Quantidade = itempedidoBLL.Quantidade;
+                    produtoBLL.Idproduto = itempedidoBLL.Idproduto;
+                    produtoDAL.BaixarEstoque(produtoBLL);
+                }
+                //mensagem de confirmação de dados salvos
+                MessageBox.Show("Venda registrada com sucesso!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LimparCampos();
             }
-            //mensagem de confirmação de dados salvos
-            MessageBox.Show("Venda registrada com sucesso!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            LimparCampos();
+            else
+                MessageBox.Show("Esta venda pode não ter sido efetuada com sucesso! \n\r\n\r\n\rPor favor, verifique se as informações foram salvas corretamente!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         public void LimparCampos()
         {

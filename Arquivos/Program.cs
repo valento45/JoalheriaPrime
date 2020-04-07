@@ -23,9 +23,9 @@ namespace Arquivos
                     //FileInfo fileinfo = new FileInfo(sourcePath);
                     //fileinfo.CopyTo(targPath);
                     string[] lines = File.ReadAllLines(targPath);
-
+                    
                     foreach (string line in lines)
-                        Console.WriteLine(line);    
+                        Console.WriteLine(line);                
 
                     if (retry)
                         retry = false;

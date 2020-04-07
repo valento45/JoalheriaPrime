@@ -92,7 +92,6 @@ namespace JOALHERIA.UI
                 MessageBox.Show("Preencha todos os campos obrigatórios", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
             {
-
                 if (!alterar)
                 {
                     cmbCategoria.DisplayMember = "IDCATEGORIA";
@@ -105,7 +104,7 @@ namespace JOALHERIA.UI
                     produtoBLL.Precovenda = Convert.ToDecimal(txtPrecoVenda.Text);
                     produtoBLL.Lucro = Convert.ToDecimal(txtLucro.Text);
                     produtoBLL.Observacoes = txtObservacoes.Text;
-                    produtoBLL.Imagem = caminho.ToString();
+                    produtoBLL.Imagem = caminho?.ToString();
 
                     produtoDAL.Cadastrar(produtoBLL);
                     MessageBox.Show("Produto registrado com sucesso!", "Succesful", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -177,7 +176,8 @@ namespace JOALHERIA.UI
                 txtLucro.Text = Convert.ToString(produtoBLL.Lucro);
                 txtObservacoes.Text = produtoBLL.Observacoes;
                 caminho = produtoBLL.Imagem;
-                pctImagemProduto.Load(caminho);
+                if(caminho.Length > 0)
+                    pctImagemProduto.Load(caminho);
                 pctImagemProduto.SizeMode = PictureBoxSizeMode.Zoom;
                 alterar = true;
                 tabControl1.SelectedTab = tabPage1;

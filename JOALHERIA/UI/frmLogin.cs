@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JOALHERIADAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -46,15 +47,14 @@ namespace JOALHERIA.UI
             }
 
             else
-            {               
-                    usuarioBLL.Usuario = txtUsuario.Text;
-                    usuarioBLL.Senha = txtSenha.Text;
-                    usuarioDAL.Logar(usuarioBLL);     
-                
-                if(usuarioBLL.Idusuario == 0)
+            {                
+                usuarioBLL.Usuario = txtUsuario.Text;
+                usuarioBLL.Senha = Acces.Encrypt(txtUsuario.Text, txtSenha.Text);
+                usuarioDAL.Logar(usuarioBLL);
+
+                if (usuarioBLL.Idusuario <= 0)
                 {
                     MessageBox.Show("Usuario ou senha inválidos!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    
                     txtUsuario.Focus();
                     txtUsuario.Select(0, txtUsuario.Text.Length);
                 }
@@ -72,10 +72,10 @@ namespace JOALHERIA.UI
                     this.Hide();
 
                     //carregar
-                    UI.frmCaixa caixa = new frmCaixa();                    
-                    caixa.ShowDialog();                  
+                    UI.frmCaixa caixa = new frmCaixa();
+                    caixa.ShowDialog();
                 }
-                
+
             }
         }
 

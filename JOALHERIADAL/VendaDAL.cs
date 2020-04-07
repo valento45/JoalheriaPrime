@@ -10,6 +10,7 @@ using System.Xml.Linq;//
 using System.Xml.Xsl;//
 using System.Xml.XmlConfiguration;//
 using System.Xml.Schema;//
+using System.Windows.Forms;
 
 namespace JOALHERIADAL
 {
@@ -19,19 +20,39 @@ namespace JOALHERIADAL
 
         public int Cadastrar(JOALHERIABLL.VendaBLL vendaBLL)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO JOALHERIA.VENDA (IDCLIENTE, DATAVENDA, USUARIO, PRECOTOTAL, FORMAPAGAMENTO, VALORPAGO, TROCO) VALUES (@IDCLIENTE, GETDATE(), @USUARIO, @PRECOTOTAL, @FORMAPAGAMENTO, @VALORPAGO, @TROCO);SELECT SCOPE_IDENTITY();", con.Conectar());
-            cmd.Parameters.AddWithValue("@IDCLIENTE", vendaBLL.Idcliente);
-            cmd.Parameters.AddWithValue("@DATAVENDA", vendaBLL.Datavenda);
-            cmd.Parameters.AddWithValue("@USUARIO", vendaBLL.Usuario);
-            cmd.Parameters.AddWithValue("@PRECOTOTAL", vendaBLL.Precototal);
-            cmd.Parameters.AddWithValue("@FORMAPAGAMENTO", vendaBLL.Formapagamento);
-            cmd.Parameters.AddWithValue("@VALORPAGO", vendaBLL.Valorpago);
-            cmd.Parameters.AddWithValue("@TROCO", vendaBLL.Troco);
-            int chave_gerada = 0;
-            chave_gerada = Convert.ToInt16(cmd.ExecuteScalar());
-            con.Desconectar();
-            return chave_gerada;
+            SqlCommand cmd = new SqlCommand();
+            int chave_gerada = -1;
+            try
+            {
+                cmd = new SqlCommand("INSERT INTO JOALHERIA.VENDA (IDCLIENTE, DATAVENDA, USUARIO, PRECOTOTAL, FORMAPAGAMENTO, VALORPAGO, TROCO) VALUES (@IDCLIENTE, GETDATE(), @USUARIO, @PRECOTOTAL, @FORMAPAGAMENTO, @VALORPAGO, @TROCO); SELECT SCOPE_IDENTITY();", con.Conectar());
+                cmd.Parameters.AddWithValue("@IDCLIENTE", vendaBLL.Idcliente);
+                cmd.Parameters.AddWithValue("@DATAVENDA", vendaBLL.Datavenda);
+                cmd.Parameters.AddWithValue("@USUARIO", vendaBLL.Usuario);
+                cmd.Parameters.AddWithValue("@PRECOTOTAL", vendaBLL.Precototal);
+                cmd.Parameters.AddWithValue("@FORMAPAGAMENTO", vendaBLL.Formapagamento);
+                cmd.Parameters.AddWithValue("@VALORPAGO", vendaBLL.Valorpago);
+                cmd.Parameters.AddWithValue("@TROCO", vendaBLL.Troco);                
+                chave_gerada = Convert.ToInt32(cmd.ExecuteScalar());
+                              
+            }catch(SqlException ex)
+            {
+                string error = "";
+                if (cmd.Parameters.ToString() != null)
+                    foreach (var parm in cmd.Parameters)
+                        error += "\n" + parm.ToString();
 
+                MessageBox.Show("Erro: " + (error.Length > 0 ? error : "") + "\n\r\n\r\n\r" + (ex.Message),"1º) Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch(Exception ex)
+            {
+                string error = ex.Message;
+                MessageBox.Show("Ocorreu um erro: " + error, "Exception ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                con.Desconectar();
+            }
+            return chave_gerada;
         }
 
         public void Alterar(JOALHERIABLL.VendaBLL vendaBLL)

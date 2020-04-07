@@ -58,7 +58,7 @@ namespace JOALHERIA
                         usuarioBLL.Tipo = false;
                     }
                     usuarioBLL.Usuario = txtUsuario.Text;
-                    usuarioBLL.Senha = txtSenha.Text;
+                    usuarioBLL.Senha = Acces.Encrypt(txtUsuario.Text, txtSenha.Text);
 
                     usuarioDAL.Cadastrar(usuarioBLL);
                     MessageBox.Show("Dados gravados com Sucesso!","Atenção!",MessageBoxButtons.OK,MessageBoxIcon.Information);
@@ -83,7 +83,7 @@ namespace JOALHERIA
                         usuarioBLL.Tipo = false;
                     }
                     usuarioBLL.Usuario = txtUsuario.Text;
-                    usuarioBLL.Senha = txtSenha.Text;
+                    usuarioBLL.Senha = Acces.Encrypt(txtUsuario.Text, txtSenha.Text);
 
                     usuarioDAL.Atualizar(usuarioBLL);
                     MessageBox.Show("Dados Atualizados com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -94,7 +94,10 @@ namespace JOALHERIA
         }
         public void PopulaGrid()
         {
-            dgvConsultarUsuario.Rows.Add(usuarioDAL.ListarTodosUsuarios().ToArray());
+            dgvConsultarUsuario.Rows.Clear();
+            foreach (var user in usuarioDAL.ListarTodosUsuarios().ToList())
+                dgvConsultarUsuario.Rows.Add(user.Idusuario, user.Nome, user.Rg, user.Cpf, user.Telefone, user.Tipo, user.Endereco, user.Usuario, user.Senha);
+            
             //foreach (var al in usuarioDAL.ListarTodosUsuarios())
             //{
             //    dgvConsultarUsuario.Rows.Add(al.Idusuario, al.Nome, al.Rg, al.Cpf, al.Endereco, al.Telefone, al.Tipo, al.Usuario, al.Senha);

@@ -245,5 +245,10 @@ namespace JOALHERIA.UI
                     MessageBox.Show("Apenas Números são permitidos para filtrar por Código!", "Validar Filtro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }                    
         }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }//fim 
 }//fim
