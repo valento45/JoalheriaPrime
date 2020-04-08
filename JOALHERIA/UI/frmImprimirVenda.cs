@@ -189,7 +189,6 @@ namespace JOALHERIA.UI
                     vendaDAL.ExportarXml(caminho);
 
                     MessageBox.Show("XML Gerado em: " + caminho, "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 }
             }
             if (rdbSelecionado.Checked)

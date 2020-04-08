@@ -196,6 +196,14 @@ namespace JOALHERIA.UI
             //    txtCliente.Text = clienteBLL.Nome.ToString();
             //    id_cliente = clienteBLL.Idcliente;
             //}
+            frmBuscaCliente buscacliente = new frmBuscaCliente();
+            buscacliente.ShowDialog();
+
+            if (buscacliente.idCliente > 0)
+            {
+                clienteDAL = ClienteDAL.GetById(buscacliente.idCliente);
+                txtCliente.Text = clienteDAL.Nome;
+            }
         }
 
         private void btnSelecionarProduto_Click(object sender, EventArgs e)
@@ -336,7 +344,7 @@ namespace JOALHERIA.UI
             if(ValidarTudo() == true)
             {
                 //cadastrando venda e atribuindo idvenda para item
-                ordemservicoBLL.Idcliente = clienteBLL.Idcliente;                
+                ordemservicoBLL.Idcliente = clienteDAL.Idpessoa;                
                 ordemservicoBLL.Dataatual = Convert.ToDateTime(txtData.Text);
                 ordemservicoBLL.Dataentrega = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy"));
                 ordemservicoBLL.Valor_total = total;

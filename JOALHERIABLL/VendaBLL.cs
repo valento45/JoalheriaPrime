@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,19 @@ namespace JOALHERIABLL
         string formapagamento;
         decimal valorpago;
         decimal troco;
+
+        public VendaBLL() { }
+        public VendaBLL(DataRow dr)
+        {
+            Idvenda = Convert.ToInt32(dr["IDVENDA"]);
+            Idcliente = Convert.ToInt32(dr["IDCLIENTE"]);
+            Datavenda = Convert.ToDateTime(dr["DATAVENDA"]);
+            Usuario = dr["USUARIO"].ToString();
+            Precototal = Convert.ToDecimal(dr["PRECOTOTAL"]);
+            Formapagamento = dr["FORMAPAGAMENTO"].ToString();
+            Valorpago = Convert.ToDecimal(dr["VALORPAGO"]);
+            Troco = Convert.ToDecimal(dr["TROCO"]);
+        }
 
         public int Idvenda
         {

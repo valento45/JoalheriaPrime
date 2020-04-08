@@ -96,7 +96,7 @@ namespace JOALHERIA.UI
             buscacliente.ShowDialog();
 
             if (buscacliente.idCliente > 0)
-            {                
+            {
                 clienteDAL = ClienteDAL.GetById(buscacliente.idCliente);
                 txtCliente.Text = clienteDAL.Nome;
             }
@@ -118,7 +118,7 @@ namespace JOALHERIA.UI
                     produtoBLL = ProdutoDAL.GetById(frmBuscaProduto.idProduto);
                     txtProduto.Text = produtoBLL.Descricao;
                     txtPreco.Text = Convert.ToString(produtoBLL.Precovenda);
-                    if(produtoBLL.Imagem.Length > 0)
+                    if (produtoBLL.Imagem.Length > 0)
                         imgProduto.Load(produtoBLL.Imagem);
                 }
                 catch (Exception ex)
@@ -249,8 +249,11 @@ namespace JOALHERIA.UI
             vendaBLL.Idcliente = clienteDAL.Idpessoa;
             vendaBLL.Precototal = total;
             vendaBLL.Formapagamento = cmbForma.Text;
-            vendaBLL.Valorpago = Convert.ToDecimal(txtValorPago.Text);
-            vendaBLL.Troco = Convert.ToDecimal(txtTroco.Text);
+            if (cmbForma.SelectedIndex == 0)
+            {
+                vendaBLL.Valorpago = Convert.ToDecimal(txtValorPago.Text);
+                vendaBLL.Troco = Convert.ToDecimal(txtTroco.Text);
+            }
             vendaBLL.Datavenda = Convert.ToDateTime(txtData.Text);
             itempedidoBLL.Idvenda = vendaDAL.Cadastrar(vendaBLL);
 

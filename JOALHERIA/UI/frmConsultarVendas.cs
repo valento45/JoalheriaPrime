@@ -36,17 +36,20 @@ namespace JOALHERIA.UI
         {
             switch (keyData)
             {
-                case Keys.F1:
-                    txtFiltro.Focus();
-                    break;
                 case Keys.F10:
                     btnSair.PerformClick();
                     break;
+                case Keys.F1:
+                    txtFiltro.Focus();
+                    break;                
                 case Keys.F5:
                     btnVerItens.PerformClick();
                     break;
                 case Keys.F7:
                     btnRelatorio.PerformClick();
+                    break;
+                case Keys.F8:
+                    btnXml.PerformClick();
                     break;
             }
 
