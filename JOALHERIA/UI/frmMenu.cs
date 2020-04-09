@@ -174,8 +174,7 @@ namespace JOALHERIA.UI
 
         private void ordensDeServToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmConsultarOrdem ordem = new frmConsultarOrdem();
-            ordem.ShowDialog();
+           
         }
 
         private void vendasToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -210,6 +209,57 @@ namespace JOALHERIA.UI
         {
             frmUsuario usuario = new frmUsuario();
             usuario.ShowDialog();
+        }
+
+        private void ordemDeServiçoToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            frmOrdemServico ordem = new frmOrdemServico();
+            ordem.ShowDialog();
+        }
+
+        private void serviçosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmServico frmservico = new frmServico();
+
+            if (frmservico.Visible)
+                frmservico.Focus();
+            else
+                frmservico.Show();
+        }
+
+        private void consultarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void produtosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmProduto frmproduto = new frmProduto();
+            frmproduto.ShowDialog();
+        }
+
+        private void incluirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmVenda frmvenda = new frmVenda();
+            frmvenda.ShowDialog();
+        }
+
+        private void pesquisasrToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmConsultarVendas consultavenda = new frmConsultarVendas();
+            consultavenda.ShowDialog();
+        }
+
+        private void incluirToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmOrdemServico ordem = new frmOrdemServico();
+            ordem.ShowDialog();
+        }
+
+        private void pesquisarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmConsultarOrdem consultaordem = new frmConsultarOrdem();
+            consultaordem.ShowDialog();
         }
     }
 }

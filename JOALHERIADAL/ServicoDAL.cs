@@ -19,9 +19,7 @@ namespace JOALHERIADAL
             SqlCommand cmd = new SqlCommand("INSERT INTO JOALHERIA.SERVICO (DESCRICAO, PRECO_UNITARIO) VALUES (@DESCRICAO, @PRECO_UNITARIO)", con.Conectar());
             cmd.Parameters.AddWithValue(@"DESCRICAO", servicoBLL.Descricao);
             cmd.Parameters.AddWithValue(@"PRECO_UNITARIO", servicoBLL.Valor_servico);
-
-            cmd.ExecuteNonQuery();
-            con.Desconectar();
+            Acces.ExecuteNonQuery(cmd);
         }
 
         public void Alterar(JOALHERIABLL.ServicoBLL servicoBLL)
@@ -31,41 +29,34 @@ namespace JOALHERIADAL
             cmd.Parameters.AddWithValue(@"DESCRICAO", servicoBLL.Descricao);
             cmd.Parameters.AddWithValue(@"PRECO_UNITARIO", servicoBLL.Valor_servico);
 
-            cmd.ExecuteNonQuery();
-            con.Desconectar();
+            Acces.ExecuteNonQuery(cmd);
 
         }
 
         public void Excluir(JOALHERIABLL.ServicoBLL servicoBLL)
         {
-            SqlCommand cmd = new SqlCommand("DELETE FROM JOALHERIA.SERVICO WHERE IDSERVICO = @IDSERVICO",con.Conectar());
+            SqlCommand cmd = new SqlCommand("DELETE FROM JOALHERIA.SERVICO WHERE IDSERVICO = @IDSERVICO");
             cmd.Parameters.AddWithValue(@"IDSERVICO", servicoBLL.Idservico);
-
-            cmd.ExecuteNonQuery();
-            con.Desconectar();
+            Acces.ExecuteNonQuery(cmd);
         }
 
         //METODO CONSULTAR COM LISTA IGUAL O DOC    
         public List<JOALHERIABLL.ServicoBLL> ConsultarTodosList()
         {
             List<JOALHERIABLL.ServicoBLL> Result = new List<JOALHERIABLL.ServicoBLL>();
-            SqlCommand cmd = new SqlCommand("SELECT * FROM JOALHERIA.SERVICO",con.Conectar());
-
-            foreach (DataRow row in ExecuteReader(cmd).Tables[0].Rows)
+            SqlCommand cmd = new SqlCommand("SELECT * FROM JOALHERIA.SERVICO ORDER BY IDSERVICO;");
+            foreach (DataRow row in Acces.ExecuteReader(cmd).Tables[0].Rows)
                 Result.Add(new JOALHERIABLL.ServicoBLL(row));
             return Result;
-            
         }
-
-        //METODO EXECUTE READER LEITURA QUASE QUE UNIVERSAL
-        public DataSet ExecuteReader(IDbCommand cmd)
+        public List<JOALHERIABLL.ServicoBLL> FiltrarPorDescricao(string descricao)
         {
-            DataSet ds = null;
-            IDbDataAdapter da = new SqlDataAdapter((SqlCommand)cmd);
-            ds = new DataSet();
-            da.Fill(ds);
-
-            return ds;
+            List<JOALHERIABLL.ServicoBLL> Result = new List<JOALHERIABLL.ServicoBLL>();
+            SqlCommand cmd = new SqlCommand($"SELECT * FROM JOALHERIA.SERVICO WHERE DESCRICAO LIKE @DESCRICAO ORDER BY IDSERVICO;");
+            cmd.Parameters.AddWithValue(@"DESCRICAO", descricao + "%");
+            foreach (DataRow row in Acces.ExecuteReader(cmd).Tables[0].Rows)
+                Result.Add(new JOALHERIABLL.ServicoBLL(row));
+            return Result;
         }
 
         public JOALHERIABLL.ServicoBLL RetornarDados(JOALHERIABLL.ServicoBLL servicoBLL)
@@ -83,6 +74,15 @@ namespace JOALHERIADAL
             dr.Close();
             con.Desconectar();
             return servicoBLL;
+        }
+        public JOALHERIABLL.ServicoBLL GetById(int id)
+        {
+            JOALHERIABLL.ServicoBLL servico = new JOALHERIABLL.ServicoBLL();        
+            SqlCommand cmd = new SqlCommand("SELECT * FROM JOALHERIA.SERVICO WHERE IDSERVICO = @IDSERVICO", con.Conectar());
+            cmd.Parameters.AddWithValue(@"IDSERVICO", id);
+            foreach (DataRow dr in Acces.ExecuteReader(cmd).Tables[0].Rows)                
+                servico = new JOALHERIABLL.ServicoBLL(dr);
+            return servico;
         }
 
     }//

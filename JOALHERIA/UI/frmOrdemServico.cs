@@ -208,7 +208,7 @@ namespace JOALHERIA.UI
 
         private void btnSelecionarProduto_Click(object sender, EventArgs e)
         {
-            frmServico servico = new frmServico(1, "selecionar");
+            frmServico servico = new frmServico(1, true);
             servico.ShowDialog();
 
             if(servico.codigo_servico != 0)
@@ -270,21 +270,32 @@ namespace JOALHERIA.UI
 
         private void txtValorPago_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back) && e.KeyChar != Convert.ToChar(Keys.Enter) && e.KeyChar != 44)
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != Convert.ToChar(Keys.Back) && e.KeyChar != Convert.ToChar(Keys.Enter) && e.KeyChar != 44))
             {
                 e.Handled = true;
                 MessageBox.Show("Este campo so aceita números !", "Validação de campos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            if (e.KeyChar == Convert.ToChar(Keys.Enter) && txtValorPago.Text.Trim() != "")
-            {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter) && txtValorPago.Text.Length > 0)
                 CalcularTroco();
-            }
+            
         }
 
         private decimal CalcularTroco()
         {
-            if (cmbForma.SelectedIndex == 0 && txtValorPago.Text.Trim()!="")
+            decimal troco = -1;
+            if (dgvItens.RowCount <= 0)
             {
+                MessageBox.Show("Insira itens na venda para poder prosseguir!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return troco;
+            }
+
+            if (valor_pago < total)
+            {
+                MessageBox.Show("Valor pago não pode ser menor que o total !", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return troco;
+            }
+
+            if (cmbForma.SelectedIndex == 0 && txtValorPago.Text.Length > 0)            
                 try
                 {
                     valor_pago = Convert.ToDecimal(txtValorPago.Text);
@@ -293,31 +304,11 @@ namespace JOALHERIA.UI
                         troco = valor_pago - total;
                         txtTroco.Text = troco.ToString();
                     }
-                    return troco;
                 }
                 catch
-                {
-                    return -1;
-                }
-            }
-            else
-            {
-                return -1;
-            }
-           
-
-            if(txtTotal.Text.Trim() == "" || dgvItens.RowCount <= 0)
-            {
-                MessageBox.Show("Insira itens na venda para poder prosseguir!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return -1;
-            }
-
-            if (valor_pago < total)
-            {
-                MessageBox.Show("Valor pago não pode ser menor que o total !", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return -1;
-            }
-           
+                { }            
+            
+            return troco;
         }
 
         private void txtValorPago_TextChanged(object sender, EventArgs e)

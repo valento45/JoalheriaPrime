@@ -25,6 +25,11 @@ namespace JOALHERIA.UI
             InitializeComponent();
         }
 
+        public frmProduto(bool pesquisar)
+        {
+            if (pesquisar)
+                tabControl1.SelectedTab = tabPage2;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();

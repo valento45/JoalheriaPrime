@@ -87,7 +87,6 @@ namespace JOALHERIADAL
                 vendaBLL.Formapagamento = Convert.ToString(dr["FORMAPAGAMENTO"]);
                 vendaBLL.Valorpago = Convert.ToDecimal(dr["VALORPAGO"]);
                 vendaBLL.Troco = Convert.ToDecimal(dr["TROCO"]);
-
             }
 
             dr.Close();
@@ -125,11 +124,10 @@ namespace JOALHERIADAL
         {
             con.Desconectar();
 
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.ITEMPEDIDO WHERE IDVENDA = " +id_venda +";",con.Conectar());
+            SqlDataAdapter da = new SqlDataAdapter($"SELECT * FROM JOALHERIA.ITEMPEDIDO WHERE IDVENDA = { id_venda };",con.Conectar());
 
             return da;
         }
-
 
         //METODO EXPORTAR TODOS OS REGISTROS DO BANCO
         public void ExportarXml(string caminho)
