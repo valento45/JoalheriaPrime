@@ -369,7 +369,7 @@ namespace JOALHERIA.UI
             troco = 0;
             valor_pago = 0;
 
-            dgvItens.Columns.Clear();
+            dgvItens.Rows.Clear();
         }
 
         private void btnSelecionarFormaPagamento_Click(object sender, EventArgs e)

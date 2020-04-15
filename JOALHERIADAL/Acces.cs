@@ -142,6 +142,11 @@ namespace JOALHERIADAL
                     }
                     else if (ex.Data["Code"]?.ToString().CompareTo("08P01") == 0)
                         MessageBox.Show("Atenção! Erro ao executar o comando:\r\n\r\n" + cmd.CommandText + "", "Violação de protocolo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    else if (ex.Message.Contains("A instrução DELETE conflitou com a restrição do REFERENCE"))
+                    {
+                        MessageBox.Show("Atenção! Erro ao excluir o registro! \n\r\n\r\n\rEste registro possui relação com alguma entidade e não pode ser descartado ! ", "Violação de referencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                     else
                         TrataExcecao(ex, (SqlCommand)cmd);
                 }
