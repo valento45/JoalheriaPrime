@@ -65,6 +65,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvConsultarProduto = new System.Windows.Forms.DataGridView();
+            this.colIdProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDescricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIdCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colQuantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrecoVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colObservacoes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -74,12 +80,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.colIdProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDescricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIdCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colQuantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPrecoVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colObservacoes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -325,6 +325,7 @@
             // txtLucro
             // 
             this.txtLucro.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtLucro.Enabled = false;
             this.txtLucro.Font = new System.Drawing.Font("Century Gothic", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLucro.Location = new System.Drawing.Point(562, 88);
             this.txtLucro.Name = "txtLucro";
@@ -360,6 +361,7 @@
             this.txtPrecoVenda.Name = "txtPrecoVenda";
             this.txtPrecoVenda.Size = new System.Drawing.Size(181, 31);
             this.txtPrecoVenda.TabIndex = 11;
+            this.txtPrecoVenda.TextChanged += new System.EventHandler(this.txtPrecoVenda_TextChanged);
             // 
             // label7
             // 
@@ -369,9 +371,9 @@
             this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(9, 91);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(170, 23);
+            this.label7.Size = new System.Drawing.Size(162, 23);
             this.label7.TabIndex = 6;
-            this.label7.Text = "Preço Unitário R$:";
+            this.label7.Text = "Preço Venda R$:";
             // 
             // label8
             // 
@@ -562,6 +564,48 @@
             this.dgvConsultarProduto.Size = new System.Drawing.Size(1356, 198);
             this.dgvConsultarProduto.TabIndex = 23;
             // 
+            // colIdProduto
+            // 
+            this.colIdProduto.HeaderText = "ID";
+            this.colIdProduto.Name = "colIdProduto";
+            this.colIdProduto.ReadOnly = true;
+            this.colIdProduto.Width = 43;
+            // 
+            // colDescricao
+            // 
+            this.colDescricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colDescricao.HeaderText = "Descricao";
+            this.colDescricao.Name = "colDescricao";
+            this.colDescricao.ReadOnly = true;
+            // 
+            // colIdCategoria
+            // 
+            this.colIdCategoria.HeaderText = "Categoria";
+            this.colIdCategoria.Name = "colIdCategoria";
+            this.colIdCategoria.ReadOnly = true;
+            this.colIdCategoria.Width = 77;
+            // 
+            // colQuantidade
+            // 
+            this.colQuantidade.HeaderText = "Quantidade";
+            this.colQuantidade.Name = "colQuantidade";
+            this.colQuantidade.ReadOnly = true;
+            this.colQuantidade.Width = 87;
+            // 
+            // colPrecoVenda
+            // 
+            this.colPrecoVenda.HeaderText = "Preço";
+            this.colPrecoVenda.Name = "colPrecoVenda";
+            this.colPrecoVenda.ReadOnly = true;
+            this.colPrecoVenda.Width = 60;
+            // 
+            // colObservacoes
+            // 
+            this.colObservacoes.HeaderText = "Observações";
+            this.colObservacoes.Name = "colObservacoes";
+            this.colObservacoes.ReadOnly = true;
+            this.colObservacoes.Width = 95;
+            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -654,48 +698,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // colIdProduto
-            // 
-            this.colIdProduto.HeaderText = "ID";
-            this.colIdProduto.Name = "colIdProduto";
-            this.colIdProduto.ReadOnly = true;
-            this.colIdProduto.Width = 43;
-            // 
-            // colDescricao
-            // 
-            this.colDescricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colDescricao.HeaderText = "Descricao";
-            this.colDescricao.Name = "colDescricao";
-            this.colDescricao.ReadOnly = true;
-            // 
-            // colIdCategoria
-            // 
-            this.colIdCategoria.HeaderText = "Categoria";
-            this.colIdCategoria.Name = "colIdCategoria";
-            this.colIdCategoria.ReadOnly = true;
-            this.colIdCategoria.Width = 77;
-            // 
-            // colQuantidade
-            // 
-            this.colQuantidade.HeaderText = "Quantidade";
-            this.colQuantidade.Name = "colQuantidade";
-            this.colQuantidade.ReadOnly = true;
-            this.colQuantidade.Width = 87;
-            // 
-            // colPrecoVenda
-            // 
-            this.colPrecoVenda.HeaderText = "Preço";
-            this.colPrecoVenda.Name = "colPrecoVenda";
-            this.colPrecoVenda.ReadOnly = true;
-            this.colPrecoVenda.Width = 60;
-            // 
-            // colObservacoes
-            // 
-            this.colObservacoes.HeaderText = "Observações";
-            this.colObservacoes.Name = "colObservacoes";
-            this.colObservacoes.ReadOnly = true;
-            this.colObservacoes.Width = 95;
             // 
             // frmProduto
             // 

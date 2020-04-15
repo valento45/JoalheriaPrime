@@ -179,8 +179,10 @@ namespace JOALHERIA.UI
 
         private void vendasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            //FrmRelVenda RELVENDA = new FrmRelVenda();
-            //RELVENDA.ShowDialog();
+            using(FrmRelVenda rel_venda = new FrmRelVenda())
+            {
+                rel_venda.ShowDialog();
+            }            
         }
 
         private void button1_Click_1(object sender, EventArgs e)

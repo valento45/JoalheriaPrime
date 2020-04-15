@@ -50,6 +50,8 @@
     <Compile Include="CategoriaDAL.cs" />
     <Compile Include="ClienteDAL.cs" />
     <Compile Include="Conexao.cs" />
+    <Compile Include="ContaCorrente.cs" />
+    <Compile Include="Exceptions\ExceptionProduct.cs" />
     <Compile Include="FuncoesAuxiliaresDAL.cs" />
     <Compile Include="ItemPedidoDAL.cs" />
     <Compile Include="ItemServicoDAL.cs" />

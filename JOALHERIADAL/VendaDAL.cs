@@ -115,8 +115,8 @@ namespace JOALHERIADAL
         {
             con.Desconectar();
 
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.VENDA WHERE DATAVENDA >= " + "'" + data1 + " 00:00:01" + "'" + " AND DATAVENDA <= " + "'"+ data2 + " 23:59:59" + "'" + " ORDER BY IDVENDA", con.Conectar());
-
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.VENDA WHERE DATAVENDA >= " + "'" + data1 + " 00:00:01" + "'" + " AND DATAVENDA <= " + "'"+ data2 + " 23:59:59" + "'" + " ORDER BY IDVENDA;", con.Conectar());
+            
             return da;
         }
 

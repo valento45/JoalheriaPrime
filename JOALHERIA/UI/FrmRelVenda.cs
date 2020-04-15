@@ -20,10 +20,57 @@ namespace JOALHERIA.UI
         JOALHERIADAL.VendaDAL vendaDAL = new JOALHERIADAL.VendaDAL();
 
         public int codVenda { get; set; }
-
+        string Tipo { get; set; }
         public FrmRelVenda()
         {
             InitializeComponent();
+        }
+
+        //Metodo relatorio Normal
+        private void RelatorioNormal()
+        {
+            reportViewerNormal.Clear();
+
+            this.reportViewerNormal.LocalReport.SetParameters(new ReportParameter("Usuario", frmLogin.usuariologado.ToString()));
+            this.reportViewerNormal.RefreshReport();
+
+            vendaDAL.RelatorioVenda().Fill(DataSet1, "VENDA");
+
+            this.reportViewerNormal.RefreshReport();
+        }
+
+        //metodo relatorio por codigo ( detalhado )
+        private void RelatorioPorParametro(int codigo)
+        {
+            reportViewerParametros.Clear();
+            //======================================================================
+            vendaBLL.Idvenda = codigo;
+            vendaBLL = vendaDAL.RetornarDados(vendaBLL);
+
+            this.reportViewerParametros.LocalReport.SetParameters(new ReportParameter("IDVENDA", vendaBLL.Idvenda.ToString()));
+            this.reportViewerParametros.LocalReport.SetParameters(new ReportParameter("IDCLIENTE", vendaBLL.Idcliente.ToString()));
+            this.reportViewerParametros.LocalReport.SetParameters(new ReportParameter("DATAVENDA", vendaBLL.Datavenda.ToString()));
+            this.reportViewerParametros.LocalReport.SetParameters(new ReportParameter("USUARIO", vendaBLL.Usuario.ToString()));
+            this.reportViewerParametros.LocalReport.SetParameters(new ReportParameter("PRECOTOTAL", vendaBLL.Precototal.ToString()));
+            this.reportViewerParametros.LocalReport.SetParameters(new ReportParameter("FORMAPAGAMENTO", vendaBLL.Formapagamento.ToString()));
+            this.reportViewerParametros.LocalReport.SetParameters(new ReportParameter("VALORPAGO", vendaBLL.Valorpago.ToString()));
+            this.reportViewerParametros.LocalReport.SetParameters(new ReportParameter("TROCO", vendaBLL.Troco.ToString()));
+            this.reportViewerParametros.RefreshReport();
+
+            vendaDAL.RelatorioItensVenda(vendaBLL.Idvenda).Fill(DataSetVenda, "ITEMPEDIDO");
+            this.reportViewerParametros.RefreshReport();
+        }
+
+        //metodo Gerar Relatorio Por Data 
+        private void RelatorioPorData(string de, string ate)
+        {
+            reportViewerNormal.Clear();
+
+            this.reportViewerNormal.LocalReport.SetParameters(new ReportParameter("Usuario", frmLogin.usuariologado.ToString()));
+            this.reportViewerNormal.RefreshReport();
+
+            vendaDAL.RelatorioPorData(de, ate).Fill(DataSet1, "VENDA");
+            this.reportViewerNormal.RefreshReport();
         }
 
         private void FrmRelVenda_Load(object sender, EventArgs e)
@@ -32,64 +79,27 @@ namespace JOALHERIA.UI
             //string caminho = Environment.CurrentDirectory.ToString();
             //caminho = caminho.Substring(0, caminho.Length - 9);
             //caminho = caminho + @"UI\";    
-            ReportParameter reportParameter = new ReportParameter();
+            //ReportParameter reportParameter = new ReportParameter();
 
-            if (frmImprimirVenda.gerar_relatorio == "normal")
-            {
-                reportViewer1.Visible = true;
-                this.reportViewer1.LocalReport.SetParameters(new ReportParameter("Usuario", frmLogin.usuariologado.ToString()));
-                vendaDAL.RelatorioVenda().Fill(DataSet1, "VENDA");
-
-                this.reportViewer1.RefreshReport();
-            }
-            if(frmImprimirVenda.gerar_relatorio == "pordata")
-            {
-                reportViewer1.Visible = true;
-                this.reportViewer1.LocalReport.SetParameters(new ReportParameter("Usuario", frmLogin.usuariologado.ToString()));
-                vendaDAL.RelatorioPorData(frmImprimirVenda.data1, frmImprimirVenda.data2).Fill(DataSet1, "VENDA");
-
-                this.reportViewer1.RefreshReport();
-            }
-       
-            //if (Form1.gerar_relatorio == "parametros")
+            //int result;
+            //try
             //{
-            //    // -> codigo que deu certo
-            //    //reportViewer1.LocalReport.ReportPath = caminho"; 
+            //    if (Tipo == "normal")
+            //        RelatorioNormal();
 
-            //    // -> codigo para localizar caminho do software
-            //    //string caminho = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);             
+            //    if (Tipo == "pordata")
+            //        RelatorioPorData(txtDe.Text, txtAte.Text);
 
-            //    reportViewer1.LocalReport.ReportPath = caminho + "ReportParametrizado.rdlc";                
-             
+            //    if (Tipo == "parametros")
+            //    {
+            //        int.TryParse(txtFiltro.Text, out result);
+            //        RelatorioPorParametro(result);
+            //    }
 
-            //    this.reportViewer1.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("Nome", clienteBLL.Nome.ToString()));
-            //    this.reportViewer1.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("Rg", clienteBLL.Rg.ToString()));
-            //    this.reportViewer1.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("Cpf", clienteBLL.Cpf.ToString()));
-            //    this.reportViewer1.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("Endereco", clienteBLL.Endereco.ToString()));
+            //}catch(Exception ex)
+            //{
+            //    MessageBox.Show("" + ex.Message, "Erro ao gerar Relatorio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             //}
-
-            if (frmImprimirVenda.gerar_relatorio == "parametros")
-            {            
-                reportViewerParametros.Visible = true;
-                //======================================================================
-                vendaBLL.Idvenda = frmImprimirVenda.codigo_venda;
-                vendaDAL.RetornarDados(vendaBLL);
-
-                this.reportViewerParametros.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("IDVENDA", vendaBLL.Idvenda.ToString()));
-                this.reportViewerParametros.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("IDCLIENTE", vendaBLL.Idcliente.ToString()));
-                this.reportViewerParametros.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("DATAVENDA", vendaBLL.Datavenda.ToString()));
-                this.reportViewerParametros.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("USUARIO", vendaBLL.Usuario.ToString()));
-                this.reportViewerParametros.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("PRECOTOTAL", vendaBLL.Precototal.ToString()));
-                this.reportViewerParametros.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("FORMAPAGAMENTO", vendaBLL.Formapagamento.ToString()));
-                this.reportViewerParametros.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("VALORPAGO",vendaBLL.Valorpago.ToString()));
-                this.reportViewerParametros.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("TROCO",vendaBLL.Troco.ToString()));
-
-                vendaDAL.RelatorioItensVenda(vendaBLL.Idvenda).Fill(DataSetVenda, "ITEMPEDIDO");
-
-                this.reportViewerParametros.RefreshReport();
-            }
-            //this.reportViewer1.RefreshReport();
-            
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -102,8 +112,8 @@ namespace JOALHERIA.UI
                     break;
 
                 case Keys.F2:
-                   // txtCodVenda.Focus();
-                    break;                       
+                    // txtCodVenda.Focus();
+                    break;
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
@@ -111,7 +121,7 @@ namespace JOALHERIA.UI
 
         private void reportViewer1_Load(object sender, EventArgs e)
         {
-           
+
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -121,7 +131,57 @@ namespace JOALHERIA.UI
 
         private void btnVerItens_Click(object sender, EventArgs e)
         {
+        }
+        private void cmbGerarPor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Tipo = cmbGerarPor.Text;
+            FiltrarPor();
+        }
+        private void FiltrarPor()
+        {
+            if (Tipo == "Codigo")
+            {
+                reportViewerNormal.Clear();
+                reportViewerNormal.Visible = pnlPorData.Visible = false;
+                reportViewerParametros.Visible = pnlCodigo.Visible = true;
+            }
 
+            if (Tipo == "Normal")
+            {
+                reportViewerParametros.Clear();
+                reportViewerParametros.Visible = pnlPorData.Visible = false;
+                reportViewerNormal.Visible = pnlCodigo.Visible = true;
+            }
+
+            if (Tipo == "Data")
+            {
+                reportViewerParametros.Clear();
+                reportViewerParametros.Visible = pnlCodigo.Visible = false;
+                pnlPorData.Visible = reportViewerNormal.Visible = true;
+            }
+        }
+        private void btnGerar_Click(object sender, EventArgs e)
+        {
+            int result;
+            try
+            {
+                if (Tipo == "Normal")
+                    RelatorioNormal();
+
+                if (Tipo == "Data")
+                    RelatorioPorData(txtDe.Text, txtAte.Text);
+
+                if (Tipo == "Codigo")
+                {
+                    int.TryParse(txtFiltro.Text, out result);
+                    if (result > 0)
+                        RelatorioPorParametro(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "Erro ao gerar Relatorio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

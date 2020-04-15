@@ -16,7 +16,6 @@ namespace JOALHERIA.UI
         JOALHERIADAL.VendaDAL vendaDAL = new JOALHERIADAL.VendaDAL();
         public static string data1 { get; set; }
         public static string data2 { get; set; }
-        public static string gerar_relatorio { get; set; }
         public static int codigo_venda { get; set; }
 
         public frmImprimirVenda()
@@ -121,7 +120,7 @@ namespace JOALHERIA.UI
 
         private void btnGerar_Click(object sender, EventArgs e)
         {
-            gerar_relatorio = "";
+           
             codigo_venda = 0;
 
             if (rdbPorData.Checked)
@@ -129,9 +128,7 @@ namespace JOALHERIA.UI
                 try
                 {
                     data1 = mtxtData1.Text.ToString();
-                    data2 = mtxtData2.Text.ToString();
-
-                    gerar_relatorio = "pordata";
+                    data2 = mtxtData2.Text.ToString();              
 
                     FrmRelVenda frmRelatorio = new FrmRelVenda();
                     frmRelatorio.ShowDialog();
@@ -142,15 +139,8 @@ namespace JOALHERIA.UI
                 }
             }
 
-            if (rdbPorTipo.Checked)
-            {
-                gerar_relatorio = "portipo";
-            }
-
             if (rdbNormal.Checked)
             {
-                gerar_relatorio = "normal";               
-
                 FrmRelVenda frmRelatorio = new FrmRelVenda();                
                 frmRelatorio.ShowDialog();
                 
@@ -160,15 +150,14 @@ namespace JOALHERIA.UI
             {
                 try
                 {
-                    gerar_relatorio = "parametros";
                     codigo_venda = Convert.ToInt32(txtCodigo.Text.ToString());
 
                     FrmRelVenda frmRelatorio = new FrmRelVenda();
                     frmRelatorio.ShowDialog();
                 }
-                catch
+                catch(Exception ex)
                 {
-                    MessageBox.Show("Digite um id correto !", "Cacth", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("" + ex.Message, "Cacth", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
