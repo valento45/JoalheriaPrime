@@ -74,9 +74,14 @@ namespace JOALHERIADAL
 
         public void Excluir(ProdutoBLL produtoBLL)
         {
-            SqlCommand cmd = new SqlCommand("DELETE FROM JOALHERIA.PRODUTO WHERE IDPRODUTO = @IDPRODUTO", con.Conectar());
+            SqlCommand cmd = new SqlCommand("DELETE FROM JOALHERIA.PRODUTO WHERE IDPRODUTO = @IDPRODUTO");
             cmd.Parameters.AddWithValue("@IDPRODUTO", produtoBLL.Idproduto);
 
+            Acces.ExecuteNonQuery(cmd);
+        } 
+        public static void ExcluirPorCodigo(int codigo)
+        {
+            SqlCommand cmd = new SqlCommand($"DELETE FROM JOALHERIA.PRODUTO WHERE IDPRODUTO = {codigo}");
             Acces.ExecuteNonQuery(cmd);
         }
 

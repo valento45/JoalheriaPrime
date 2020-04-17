@@ -22,8 +22,8 @@ namespace JOALHERIA
         private void PopularGrid()
         {
             dgvProdutos.Rows.Clear();
-            foreach(var x in ProdutoDAL.ListarProdutos().OrderBy(x => x.Descricao).ToList())
-                dgvProdutos.Rows.Add(x.Idproduto, x.Descricao, x.Idcategoria, x.Quantidade, x.Precoimportado, x.Precovenda, x.Lucro, /*x.Imagem,*/ x.Observacoes);            
+            foreach (var x in ProdutoDAL.ListarProdutos().OrderBy(x => x.Descricao).ToList())
+                dgvProdutos.Rows.Add(x.Idproduto, x.Descricao, x.Idcategoria, x.Quantidade, x.Precoimportado, x.Precovenda, x.Lucro, /*x.Imagem,*/ x.Observacoes);
         }
 
         #region METODO OCULTA PNL NAO ENCONTROU REGISTRO
@@ -37,7 +37,7 @@ namespace JOALHERIA
         }
         #endregion
         private void btnPesquisar_Click(object sender, EventArgs e)
-        {            
+        {
             if (txtFiltro.Text.Length == 0)
                 PopularGrid();
             else
@@ -46,7 +46,7 @@ namespace JOALHERIA
             OcultaPnlNaoEncontroRegistro();
         }
         private void Popular_Grid_Filtro_Descricao(string pesquisar)
-        {            
+        {
             dgvProdutos.Rows.Clear();
             foreach (var x in ProdutoDAL.ListarPorDescricao(pesquisar))
                 dgvProdutos.Rows.Add(x.Idproduto, x.Descricao, x.Idcategoria, x.Quantidade, x.Precoimportado, x.Precovenda, x.Lucro, /*x.Imagem,*/ x.Observacoes);
@@ -54,7 +54,7 @@ namespace JOALHERIA
 
         private void btnIncluir_Click(object sender, EventArgs e)
         {
-            using(UI.frmProduto frm_produto = new UI.frmProduto(new ProdutoBLL()))
+            using (UI.frmProduto frm_produto = new UI.frmProduto(new ProdutoBLL()))
             {
                 if (frm_produto.ShowDialog() == DialogResult.OK)
                 {
@@ -83,6 +83,31 @@ namespace JOALHERIA
         private void btnImprimir_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (GridIsItem())
+            {
+                int id = Convert.ToInt32(dgvProdutos.SelectedCells[colCodigo.Index].Value);
+                string descricao = dgvProdutos.SelectedCells[colDescricao.Index].Value.ToString();
+
+                if (MessageBox.Show($"Deseja excluir o produto {descricao} ?", "ID Produto: " + id, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    ProdutoDAL.ExcluirPorCodigo(id);
+                    PopularGrid();
+                }
+            }
+            else
+                MessageBox.Show("Nenhum registro selecionado !", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private bool GridIsItem()
+        {
+            if (dgvProdutos.RowCount > 0)
+                return true;
+            else
+                return false;
         }
     }
 }

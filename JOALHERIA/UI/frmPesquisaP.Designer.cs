@@ -121,6 +121,7 @@
             this.btnExcluir.TabIndex = 25;
             this.btnExcluir.Text = "E&xcluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // pictureBox1
             // 
@@ -310,6 +311,8 @@
             // cmbFiltros
             // 
             this.cmbFiltros.FormattingEnabled = true;
+            this.cmbFiltros.Items.AddRange(new object[] {
+            "Descrição"});
             this.cmbFiltros.Location = new System.Drawing.Point(530, 53);
             this.cmbFiltros.Name = "cmbFiltros";
             this.cmbFiltros.Size = new System.Drawing.Size(121, 21);
