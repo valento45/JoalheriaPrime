@@ -88,7 +88,7 @@ namespace JOALHERIA.UI
 
         private void button4_Click(object sender, EventArgs e)
         {
-            frmProduto frmproduto = new frmProduto();
+            frmProduto frmproduto = new frmProduto(new JOALHERIABLL.ProdutoBLL());
             frmproduto.ShowDialog();
 
         }
@@ -113,7 +113,7 @@ namespace JOALHERIA.UI
 
         private void cateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmProduto produto = new frmProduto();
+            frmProduto produto = new frmProduto(new JOALHERIABLL.ProdutoBLL());
             produto.ShowDialog();
         }
 
@@ -231,12 +231,17 @@ namespace JOALHERIA.UI
 
         private void consultarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            
+            using(frmPesquisaP pesquisarP = new frmPesquisaP())
+            {
+                pesquisarP.ShowDialog();
+            }
 
         }
 
         private void produtosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmProduto frmproduto = new frmProduto();
+            frmProduto frmproduto = new frmProduto(new JOALHERIABLL.ProdutoBLL());
             frmproduto.ShowDialog();
         }
 

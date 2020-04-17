@@ -25,7 +25,7 @@ namespace JOALHERIA.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            frmProduto frmproduto = new frmProduto();
+            frmProduto frmproduto = new frmProduto( new ProdutoBLL());
             frmproduto.ShowDialog();
 
 

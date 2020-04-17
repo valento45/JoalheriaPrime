@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UI\frmPesquisaP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmPesquisaP.Designer.cs">
+      <DependentUpon>frmPesquisaP.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +181,9 @@
     <Compile Include="UI\frmVerItensDaVenda.Designer.cs">
       <DependentUpon>frmVerItensDaVenda.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\frmPesquisaP.resx">
+      <DependentUpon>frmPesquisaP.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmUsuario.resx">
       <DependentUpon>frmUsuario.cs</DependentUpon>
     </EmbeddedResource>
