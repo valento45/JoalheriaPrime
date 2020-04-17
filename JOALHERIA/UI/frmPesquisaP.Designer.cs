@@ -30,6 +30,8 @@
         {
             this.pnlFundo = new System.Windows.Forms.Panel();
             this.pnlItems = new System.Windows.Forms.Panel();
+            this.lblSelecionados = new System.Windows.Forms.Label();
+            this.btnExcluir = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.pnlNaoEncontrouRegistro = new System.Windows.Forms.Panel();
@@ -54,8 +56,6 @@
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnPesquisar = new System.Windows.Forms.Button();
-            this.btnExcluir = new System.Windows.Forms.Button();
-            this.lblSelecionados = new System.Windows.Forms.Label();
             this.pnlFundo.SuspendLayout();
             this.pnlItems.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -102,6 +102,26 @@
             this.pnlItems.Size = new System.Drawing.Size(766, 416);
             this.pnlItems.TabIndex = 0;
             // 
+            // lblSelecionados
+            // 
+            this.lblSelecionados.AutoSize = true;
+            this.lblSelecionados.ForeColor = System.Drawing.Color.DarkBlue;
+            this.lblSelecionados.Location = new System.Drawing.Point(584, 125);
+            this.lblSelecionados.Name = "lblSelecionados";
+            this.lblSelecionados.Size = new System.Drawing.Size(122, 13);
+            this.lblSelecionados.TabIndex = 26;
+            this.lblSelecionados.Text = "Registros selecionados: ";
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExcluir.Location = new System.Drawing.Point(576, 371);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(75, 23);
+            this.btnExcluir.TabIndex = 25;
+            this.btnExcluir.Text = "E&xcluir";
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -128,6 +148,7 @@
             // 
             // pnlNaoEncontrouRegistro
             // 
+            this.pnlNaoEncontrouRegistro.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnlNaoEncontrouRegistro.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlNaoEncontrouRegistro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlNaoEncontrouRegistro.Controls.Add(this.label3);
@@ -328,26 +349,6 @@
             this.btnPesquisar.Text = "Pesquisar";
             this.btnPesquisar.UseVisualStyleBackColor = true;
             this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
-            // 
-            // btnExcluir
-            // 
-            this.btnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExcluir.Location = new System.Drawing.Point(576, 371);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(75, 23);
-            this.btnExcluir.TabIndex = 25;
-            this.btnExcluir.Text = "E&xcluir";
-            this.btnExcluir.UseVisualStyleBackColor = true;
-            // 
-            // lblSelecionados
-            // 
-            this.lblSelecionados.AutoSize = true;
-            this.lblSelecionados.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblSelecionados.Location = new System.Drawing.Point(584, 125);
-            this.lblSelecionados.Name = "lblSelecionados";
-            this.lblSelecionados.Size = new System.Drawing.Size(122, 13);
-            this.lblSelecionados.TabIndex = 26;
-            this.lblSelecionados.Text = "Registros selecionados: ";
             // 
             // frmPesquisaP
             // 

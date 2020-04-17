@@ -239,12 +239,6 @@ namespace JOALHERIA.UI
 
         }
 
-        private void produtosToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            frmProduto frmproduto = new frmProduto(new JOALHERIABLL.ProdutoBLL());
-            frmproduto.ShowDialog();
-        }
-
         private void incluirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmVenda frmvenda = new frmVenda();
@@ -267,6 +261,22 @@ namespace JOALHERIA.UI
         {
             frmConsultarOrdem consultaordem = new frmConsultarOrdem();
             consultaordem.ShowDialog();
+        }
+
+        private void incluirToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            using(frmProduto frm_produto = new frmProduto(new JOALHERIABLL.ProdutoBLL()))
+            {
+                frm_produto.ShowDialog();
+            }
+        }
+
+        private void pesquisarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            using (frmPesquisaP frm_pesquisaP = new frmPesquisaP())
+            {
+                frm_pesquisaP.ShowDialog();
+            }
         }
     }
 }
