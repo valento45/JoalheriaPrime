@@ -202,6 +202,7 @@
             // 
             // btnProcurarImagem
             // 
+            this.btnProcurarImagem.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnProcurarImagem.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnProcurarImagem.Font = new System.Drawing.Font("Century Gothic", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.btnProcurarImagem.Location = new System.Drawing.Point(868, 145);
@@ -300,7 +301,7 @@
             this.txtPrecoVenda.Name = "txtPrecoVenda";
             this.txtPrecoVenda.Size = new System.Drawing.Size(181, 23);
             this.txtPrecoVenda.TabIndex = 11;
-            this.txtPrecoVenda.TextChanged += new System.EventHandler(this.txtPrecoVenda_TextChanged);
+            this.txtPrecoVenda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecoVenda_KeyPress);
             // 
             // label7
             // 

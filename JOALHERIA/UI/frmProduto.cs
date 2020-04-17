@@ -91,18 +91,31 @@ namespace JOALHERIA.UI
         }
         private decimal Lucro()
         {
-            decimal lucro = 0;
+            decimal lucro_unitario = 0;
+            try
+            {
+                if (txtPrecoImportado.Text.Trim() == "" || txtQuantidade.Text.Trim() == "")
+                    throw new ExceptionProduct("Verifique o preenchimento dos campos: \nPreço Bruto\nPreço venda\nQuantidade");
 
-            if (txtPrecoImportado.Text.Trim() == "" || txtPrecoVenda.Text.Trim() == "" || txtQuantidade.Text.Trim() == "")
-                throw new ExceptionProduct("Verifique o preenchimento dos campos: \nPreço Bruto\nPreço venda\nQuantidade");
+                decimal bruto_total = Convert.ToDecimal(txtPrecoImportado.Text);
+                int quantidade = Convert.ToInt16(txtQuantidade.Text);
+                decimal bruto_unitario = bruto_total / quantidade;
+                decimal preco_venda;
+                decimal.TryParse(txtPrecoVenda.Text, out preco_venda);
 
-            decimal bruto_total = Convert.ToDecimal(txtPrecoImportado.Text);
-            int quantidade = Convert.ToInt16(txtQuantidade.Text);
+                lucro_unitario = preco_venda - bruto_unitario;
 
-            decimal bruto_unitario = bruto_total / quantidade;
-            lucro = Convert.ToDecimal(txtPrecoVenda.Text) - bruto_unitario;
+            }
+            catch (ExceptionProduct ex)
+            {
+                MessageBox.Show(ex.Message, "Line 170, frmProduto.cs", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
-            return lucro;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Line 170, frmProduto.cs", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            return lucro_unitario;
         }
 
         private void Salvar()
@@ -171,11 +184,15 @@ namespace JOALHERIA.UI
             {
                 txtLucro.Text = Lucro().ToString("F2");
             }
-            catch (Exception ex)
+            catch (ExceptionProduct ex)
             {
-                MessageBox.Show(ex.Message, "Line 167, frmProduto.cs", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message, "Line 170, frmProduto.cs", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Line 170, frmProduto.cs", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnAddCategoria_Click_1(object sender, EventArgs e)
@@ -191,6 +208,17 @@ namespace JOALHERIA.UI
         private void button2_Click(object sender, EventArgs e)
         {
             ResetarCampos();
+        }
+
+        private void txtPrecoVenda_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && ((Keys)e.KeyChar != Keys.Delete && (Keys)e.KeyChar != Keys.Back && (Keys)e.KeyChar != Keys.Enter))
+            {
+                e.Handled = true;
+                MessageBox.Show("Este campo só aceita valores númericos !", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+                txtLucro.Text = Lucro().ToString("F2");
         }
     }//
 }//

@@ -72,13 +72,12 @@ namespace JOALHERIA
                 {
                     if (frm_produto.ShowDialog() == DialogResult.OK)
                     {
-                        Popular_Grid_Filtro_Descricao(produto.Descricao);
+                        PopularGrid();
                     }
                 }
             }
             else
                 MessageBox.Show("Nenhum registro selecionado !", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
