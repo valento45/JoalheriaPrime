@@ -120,10 +120,17 @@ namespace JOALHERIA.UI
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
-            string data1 = txtDe.Text.ToString();
-            string data2 = txtAte.Text.ToString();
+            if ((txtDe.Text.Length > 0 && txtAte.Text.Length > 0) && (txtDe.Text.Length == 10 && txtAte.Text.Length == 10))
+            {
+                string data1 = txtDe.Text.ToString();
+                string data2 = txtAte.Text.ToString();
+                dgvConsultarVendas.DataSource = vendaDAL.ConsultarPorPeriodo(data1, data2);
+            }
 
-            dgvConsultarVendas.DataSource = vendaDAL.ConsultarPorPeriodo(data1, data2);
+            else
+            {
+                MessageBox.Show("Preencha a data completa !", "Atenção",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
         }
 
         private void txtFiltro_TextChanged(object sender, EventArgs e)
