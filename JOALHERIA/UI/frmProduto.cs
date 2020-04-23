@@ -231,6 +231,24 @@ namespace JOALHERIA.UI
         {
             //Lucro();
         }
+
+        private void txtPrecoImportado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && ((Keys)e.KeyChar != Keys.Delete && (Keys)e.KeyChar != Keys.Back && (Keys)e.KeyChar != Keys.Enter))
+            {
+                e.Handled = true;
+                MessageBox.Show("Este campo só aceita valores númericos !", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtQuantidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && ((Keys)e.KeyChar != Keys.Delete && (Keys)e.KeyChar != Keys.Back && (Keys)e.KeyChar != Keys.Enter))
+            {
+                e.Handled = true;
+                MessageBox.Show("Este campo só aceita valores númericos !", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }//
 }//
 

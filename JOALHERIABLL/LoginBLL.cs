@@ -16,6 +16,7 @@ namespace JOALHERIABLL
         DateTime data_login;
         decimal valor_caixa;
 
+        public static UsuarioBLL User;
         public int Idlogin
         {
             get

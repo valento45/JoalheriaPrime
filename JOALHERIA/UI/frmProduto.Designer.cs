@@ -278,6 +278,7 @@
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.Size = new System.Drawing.Size(181, 23);
             this.txtQuantidade.TabIndex = 9;
+            this.txtQuantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantidade_KeyPress);
             // 
             // txtLucro
             // 
@@ -306,6 +307,7 @@
             this.txtPrecoImportado.Name = "txtPrecoImportado";
             this.txtPrecoImportado.Size = new System.Drawing.Size(235, 23);
             this.txtPrecoImportado.TabIndex = 10;
+            this.txtPrecoImportado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecoImportado_KeyPress);
             this.txtPrecoImportado.Leave += new System.EventHandler(this.txtPrecoImportado_Leave);
             // 
             // txtPrecoVenda

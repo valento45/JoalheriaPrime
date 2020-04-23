@@ -1,4 +1,5 @@
-﻿using JOALHERIADAL;
+﻿using JOALHERIABLL;
+using JOALHERIADAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +19,7 @@ namespace JOALHERIA.UI
 
         JOALHERIABLL.LoginBLL loginBLL = new JOALHERIABLL.LoginBLL();
         JOALHERIADAL.LoginDAL loginDAL = new JOALHERIADAL.LoginDAL();
-
+        public static JOALHERIABLL.UsuarioBLL user;
         public static int codigo_login { get; set; }
         public static string usuariologado { get; set; }
         public static int idusuariologado { get; set; }
@@ -50,7 +51,7 @@ namespace JOALHERIA.UI
             {                
                 usuarioBLL.Usuario = txtUsuario.Text;
                 usuarioBLL.Senha = Acces.Encrypt(txtUsuario.Text, txtSenha.Text);
-                usuarioDAL.Logar(usuarioBLL);
+                LoginBLL.User = usuarioBLL = usuarioDAL.Logar(usuarioBLL);
 
                 if (usuarioBLL.Idusuario <= 0)
                 {
@@ -78,7 +79,7 @@ namespace JOALHERIA.UI
 
             }
         }
-
+               
         private void txtUsuario_TextChanged(object sender, EventArgs e)
         {
 

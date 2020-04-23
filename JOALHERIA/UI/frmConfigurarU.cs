@@ -15,7 +15,7 @@ namespace JOALHERIA.UI
     public partial class frmConfigurarU : Form
     {
         UsuarioBLL Usuario_;
-
+        string[] permissoes = { "u", "e", "f", "c", "p", "x", "i" };
         string node;
         public frmConfigurarU(UsuarioBLL usuarioDAL)
         {
@@ -39,7 +39,7 @@ namespace JOALHERIA.UI
             if (treeView1.SelectedNode.Name == "NoUPermissoes")
             {
                 pnlIncluirEditar.Visible = false;
-                pnlPermissoes.Visible = true;                
+                pnlPermissoes.Visible = true;
                 node = treeView1.SelectedNode.Name;
                 PopulaGrid(dgvPermissoesUsuario);
             }
@@ -53,17 +53,37 @@ namespace JOALHERIA.UI
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Usuario_ = UsuarioDAL.GetById(Convert.ToInt32(dgvPermissoesUsuario.SelectedCells[colId.Index].Value));
+            if (dgvPermissoesUsuario.RowCount > 0)
+            {
+                Usuario_ = UsuarioDAL.GetById(Convert.ToInt32(dgvPermissoesUsuario.SelectedCells[colId.Index].Value));
+                lblUsuario.Text = Usuario_.Idusuario + " - " + Usuario_.Usuario;
+
+                if (Usuario_.Permissoes != null)
+                    for (int i = 0; i < checkedListBox1.Items.Count; i++)
+                        try
+                        {
+                            checkedListBox1.SetItemChecked(i, Usuario_.Permissoes.Contains(permissoes[i]) ? true : false);
+                        }
+                        catch { };
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string permissao = "";
-            for (int i = 0; i < checkedListBox1.Items.Count; i++)
-            {
-                
-            }
+            if (Usuario_.Idusuario <= 0)
+                return;
 
+            string permissao = "";
+
+            for (int i = 0; i < checkedListBox1.Items.Count; i++)
+                permissao += checkedListBox1.GetItemChecked(i) ? permissoes[i] : "";
+
+            Usuario_.Permissoes = permissao;
+            UsuarioDAL.Update_Permissoes(Usuario_);
+
+            checkedListBox1.ClearSelected();
+
+            PopulaGrid(dgvPermissoesUsuario);
         }
 
         private void frmConfigurarU_Load(object sender, EventArgs e)
@@ -71,7 +91,7 @@ namespace JOALHERIA.UI
 
         }
 
-       
+
 
         private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {

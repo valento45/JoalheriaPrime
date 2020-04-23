@@ -15,7 +15,7 @@ namespace JOALHERIA.UI
     {
         JOALHERIABLL.LoginBLL loginBLL = new LoginBLL();
         JOALHERIADAL.LoginDAL loginDAL = new LoginDAL();
-
+        
         public frmCaixa()
         {
             InitializeComponent();
@@ -94,7 +94,7 @@ namespace JOALHERIA.UI
         {
             //frmUsuario user = new frmUsuario();
             //user.Visible = true;
-            //this.Close();
+            this.Close();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -111,13 +111,13 @@ namespace JOALHERIA.UI
                     loginBLL.Valor_caixa = Convert.ToDecimal(txtValor.Text);
                     loginDAL.Alterar(loginBLL);
 
-                    frmMenu menu = new frmMenu();
+                    frmMenu menu = new frmMenu(LoginBLL.User);
                     this.Close();
                     menu.Show();
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show("Não foi possível prosseguir: \n\r\n\r\n\r\n" + ex.Message);
+                    MessageBox.Show("Não foi possível prosseguir: \n\r\n\r\n\r\n" + ex.Message, "Atenção",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 }
             
         }

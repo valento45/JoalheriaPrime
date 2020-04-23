@@ -46,7 +46,7 @@ namespace JOALHERIADAL
         //METODO UPDATE
         public void Atualizar(JOALHERIABLL.UsuarioBLL usuarioBLL)
         {
-            SqlCommand cmd = new SqlCommand("UPDATE JOALHERIA.USUARIO SET NOME = @NOME, RG = @RG, CPF = @CPF, ENDERECO = @ENDERECO, TIPO = @TIPO, USUARIO = @USUARIO, SENHA = @SENHA WHERE IDUSUARIO = @IDUSUARIO", con.Conectar());
+            SqlCommand cmd = new SqlCommand("UPDATE JOALHERIA.USUARIO SET NOME = @NOME, RG = @RG, CPF = @CPF, ENDERECO = @ENDERECO, TIPO = @TIPO, USUARIO = @USUARIO, SENHA = @SENHA WHERE IDUSUARIO = @IDUSUARIO");
             cmd.Parameters.AddWithValue("@IDUSUARIO", usuarioBLL.Idusuario);
             cmd.Parameters.AddWithValue("@NOME", usuarioBLL.Nome);
             cmd.Parameters.AddWithValue("@RG", usuarioBLL.Rg);
@@ -56,10 +56,18 @@ namespace JOALHERIADAL
             cmd.Parameters.AddWithValue("@TIPO", usuarioBLL.Tipo);
             cmd.Parameters.AddWithValue("@USUARIO", usuarioBLL.Usuario);
             cmd.Parameters.AddWithValue("@SENHA", usuarioBLL.Senha);
-
-            cmd.ExecuteNonQuery();
-            con.Desconectar();
+            Acces.ExecuteNonQuery(cmd);
+            
         }
+
+        public static void Update_Permissoes(JOALHERIABLL.UsuarioBLL usuarioBLL)
+        {
+            SqlCommand cmd = new SqlCommand("UPDATE JOALHERIA.USUARIO SET PERMISSAO = @PERMISSAO WHERE IDUSUARIO = @IDUSUARIO");
+            cmd.Parameters.AddWithValue(@"IDUSUARIO", usuarioBLL.Idusuario);
+            cmd.Parameters.AddWithValue(@"PERMISSAO", usuarioBLL.Permissoes);
+            Acces.ExecuteNonQuery(cmd);
+        }
+
         //METODO EXCLUIR
         public void Excluir(JOALHERIABLL.UsuarioBLL usuarioBLL)
         {
@@ -111,23 +119,18 @@ namespace JOALHERIADAL
         //METODO LE DADOS PARA LOGIN
         public JOALHERIABLL.UsuarioBLL Logar(JOALHERIABLL.UsuarioBLL usuarioBLL)
         {
-            SqlCommand cmd = new SqlCommand(@"SELECT * FROM JOALHERIA.USUARIO WHERE USUARIO = @USUARIO AND SENHA = @SENHA", con.Conectar());
+            SqlCommand cmd = new SqlCommand(@"SELECT * FROM JOALHERIA.USUARIO WHERE USUARIO = @USUARIO AND SENHA = @SENHA");
             cmd.Parameters.AddWithValue("@USUARIO", usuarioBLL.Usuario);
             cmd.Parameters.AddWithValue("@SENHA", usuarioBLL.Senha);
-            SqlDataReader dr = cmd.ExecuteReader();
-            if (dr.Read())
-            {
-                usuarioBLL.Idusuario = Convert.ToInt16(dr["IDUSUARIO"]);
-                usuarioBLL.Usuario = Convert.ToString(dr["USUARIO"]);
-                usuarioBLL.Senha = Convert.ToString(dr["SENHA"]);
-            }
 
-            else
-            {
-                usuarioBLL.Idusuario = 0;
-            }
-            dr.Close();
-            con.Desconectar();
+            DataTable dt = new DataTable();
+            dt = Acces.ExecuteReader(cmd).Tables[0];
+
+            if(dt.Rows.Count > 0)
+                usuarioBLL = new UsuarioBLL(dt.Rows[0]);          
+            else            
+                usuarioBLL.Idusuario = 0;           
+           
             return usuarioBLL;
         }
 

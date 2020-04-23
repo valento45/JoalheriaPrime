@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JOALHERIABLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,41 @@ namespace JOALHERIA.UI
 {
     public partial class frmMenu : Form
     {
+        public UsuarioBLL Usuario;
         public frmMenu()
         {
             InitializeComponent();
+        }
+
+        public frmMenu(UsuarioBLL usuario)
+        {
+            InitializeComponent();
+            Usuario = usuario;
+
+            PermissaoModulos();
+        }
+
+        private void PermissaoModulos()
+        {
+            if (Usuario.Permissoes != null)
+            {
+                bool alteracao, inclusao, exclusao;
+                inclusao = Usuario.Permissoes.Contains("i") ? true : false;
+                alteracao = Usuario.Permissoes.Contains("p") ? true : false;
+                exclusao = Usuario.Permissoes.Contains("x") ? true : false;
+
+                if (!Usuario.Permissoes.Contains("f"))
+                    btnOrdem.Visible = btnVenda.Visible = vendasToolStripMenuItem1.Visible = financeiroToolStripMenuItem.Visible = false;
+
+                if (!Usuario.Permissoes.Contains("e"))
+                    produtosToolStripMenuItem.Visible = btnProdutos.Visible = estoqueToolStripMenuItem.Visible = false;
+
+                if (!Usuario.Permissoes.Contains("c"))
+                    btnCliente.Visible = false;
+
+                if (!Usuario.Permissoes.Contains("u"))
+                    usuáriosToolStripMenuItem.Visible = false;
+            }
         }
 
         private void frmMenu_Load(object sender, EventArgs e)
@@ -26,7 +59,7 @@ namespace JOALHERIA.UI
             txtDate.Enabled = false;
             txtUsuarioLogado.Text = frmLogin.usuariologado;
 
-            
+
         }
         /* METODO PARA DEFINIR HOTKEYS (TECLAS DE ATALHO ) */
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -48,19 +81,19 @@ namespace JOALHERIA.UI
                 case Keys.F10:
                     btnSair.PerformClick();
                     break;
-                    
+
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
-        {            
+        {
             txtDate.Text = DateTime.Now.ToString("dd/MM/yyyy \n HH:mm:ss");
         }
 
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Deseja realmente Encerrar o sistema?","Atenção!",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+            if (MessageBox.Show("Deseja realmente Encerrar o sistema?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Application.Exit();
             }
@@ -74,7 +107,7 @@ namespace JOALHERIA.UI
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Deseja encerrar o sistema?","Atenção",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+            if (MessageBox.Show("Deseja encerrar o sistema?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Application.Exit();
             }
@@ -174,15 +207,15 @@ namespace JOALHERIA.UI
 
         private void ordensDeServToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void vendasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            using(FrmRelVenda rel_venda = new FrmRelVenda())
+            using (FrmRelVenda rel_venda = new FrmRelVenda())
             {
                 rel_venda.ShowDialog();
-            }            
+            }
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -229,8 +262,8 @@ namespace JOALHERIA.UI
 
         private void consultarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            
-            using(frmPesquisaP pesquisarP = new frmPesquisaP())
+
+            using (frmPesquisaP pesquisarP = new frmPesquisaP())
             {
                 pesquisarP.ShowDialog();
             }
@@ -263,7 +296,7 @@ namespace JOALHERIA.UI
 
         private void incluirToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            using(frmProduto frm_produto = new frmProduto(new JOALHERIABLL.ProdutoBLL()))
+            using (frmProduto frm_produto = new frmProduto(new JOALHERIABLL.ProdutoBLL()))
             {
                 frm_produto.ShowDialog();
             }

@@ -29,6 +29,7 @@ namespace JOALHERIABLL
             Tipo = Convert.ToBoolean(dr["TIPO"]);
             Usuario = Convert.ToString(dr["USUARIO"]);
             Senha = Convert.ToString(dr["SENHA"]);
+            Permissoes = Convert.ToString(dr["PERMISSAO"]);
         }
 
         public UsuarioBLL()

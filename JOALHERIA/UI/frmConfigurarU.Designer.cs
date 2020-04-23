@@ -28,17 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Incluir / Editar");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Permissões");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Configurações");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Usuario", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3});
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Incluir / Editar");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Permissões");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Configurações");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Usuario", new System.Windows.Forms.TreeNode[] {
+            treeNode9,
+            treeNode10,
+            treeNode11});
             this.pnlFundo = new System.Windows.Forms.Panel();
             this.pnlItems = new System.Windows.Forms.Panel();
             this.pnlPrincipal = new System.Windows.Forms.Panel();
             this.pnlPermissoes = new System.Windows.Forms.Panel();
+            this.btnSalvarPermissoes = new System.Windows.Forms.Button();
             this.pnlPermissoes2 = new System.Windows.Forms.Panel();
             this.label13 = new System.Windows.Forms.Label();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
@@ -98,7 +99,6 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.pnlConfiguracoes = new System.Windows.Forms.Panel();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.btnSalvarPermissoes = new System.Windows.Forms.Button();
             this.pnlFundo.SuspendLayout();
             this.pnlItems.SuspendLayout();
             this.pnlPrincipal.SuspendLayout();
@@ -154,6 +154,18 @@
             this.pnlPermissoes.Size = new System.Drawing.Size(605, 375);
             this.pnlPermissoes.TabIndex = 1;
             // 
+            // btnSalvarPermissoes
+            // 
+            this.btnSalvarPermissoes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSalvarPermissoes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalvarPermissoes.Location = new System.Drawing.Point(12, 346);
+            this.btnSalvarPermissoes.Name = "btnSalvarPermissoes";
+            this.btnSalvarPermissoes.Size = new System.Drawing.Size(105, 22);
+            this.btnSalvarPermissoes.TabIndex = 26;
+            this.btnSalvarPermissoes.Text = "&Salvar";
+            this.btnSalvarPermissoes.UseVisualStyleBackColor = true;
+            this.btnSalvarPermissoes.Click += new System.EventHandler(this.button1_Click);
+            // 
             // pnlPermissoes2
             // 
             this.pnlPermissoes2.BackColor = System.Drawing.SystemColors.Window;
@@ -178,14 +190,16 @@
             // 
             this.checkedListBox1.FormattingEnabled = true;
             this.checkedListBox1.Items.AddRange(new object[] {
-            "Financeiro",
+            "Usuario",
             "Estoque",
+            "Financeiro",
+            "Cliente",
             "Inclusao",
             "Edicao",
             "Exclusao"});
-            this.checkedListBox1.Location = new System.Drawing.Point(3, 33);
+            this.checkedListBox1.Location = new System.Drawing.Point(3, 22);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(91, 79);
+            this.checkedListBox1.Size = new System.Drawing.Size(133, 94);
             this.checkedListBox1.TabIndex = 2;
             // 
             // lblUsuario
@@ -725,31 +739,19 @@
             // 
             this.treeView1.Location = new System.Drawing.Point(3, 3);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "NoUincluir";
-            treeNode1.Text = "Incluir / Editar";
-            treeNode2.Name = "NoUPermissoes";
-            treeNode2.Text = "Permissões";
-            treeNode3.Name = "NoUConfiguracoes";
-            treeNode3.Text = "Configurações";
-            treeNode4.Name = "NoU";
-            treeNode4.Text = "Usuario";
+            treeNode9.Name = "NoUincluir";
+            treeNode9.Text = "Incluir / Editar";
+            treeNode10.Name = "NoUPermissoes";
+            treeNode10.Text = "Permissões";
+            treeNode11.Name = "NoUConfiguracoes";
+            treeNode11.Text = "Configurações";
+            treeNode12.Name = "NoU";
+            treeNode12.Text = "Usuario";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4});
+            treeNode12});
             this.treeView1.Size = new System.Drawing.Size(156, 400);
             this.treeView1.TabIndex = 0;
             this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
-            // 
-            // btnSalvarPermissoes
-            // 
-            this.btnSalvarPermissoes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSalvarPermissoes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalvarPermissoes.Location = new System.Drawing.Point(12, 346);
-            this.btnSalvarPermissoes.Name = "btnSalvarPermissoes";
-            this.btnSalvarPermissoes.Size = new System.Drawing.Size(105, 22);
-            this.btnSalvarPermissoes.TabIndex = 26;
-            this.btnSalvarPermissoes.Text = "&Salvar";
-            this.btnSalvarPermissoes.UseVisualStyleBackColor = true;
-            this.btnSalvarPermissoes.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmConfigurarU
             // 
