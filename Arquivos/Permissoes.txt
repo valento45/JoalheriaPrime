@@ -8,4 +8,4 @@ p - update
 x - delete
 
 
-fecupxi 
+"u", "e", "f", "c", "p", "x", "i"
