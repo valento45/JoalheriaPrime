@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UI\frmConfigurarU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmConfigurarU.Designer.cs">
+      <DependentUpon>frmConfigurarU.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmPesquisaP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +187,9 @@
     <Compile Include="UI\frmVerItensDaVenda.Designer.cs">
       <DependentUpon>frmVerItensDaVenda.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\frmConfigurarU.resx">
+      <DependentUpon>frmConfigurarU.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\frmPesquisaP.resx">
       <DependentUpon>frmPesquisaP.cs</DependentUpon>
     </EmbeddedResource>
@@ -427,6 +436,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="RESOURCES\Imprimir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RESOURCES\Produto-2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

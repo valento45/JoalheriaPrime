@@ -154,9 +154,7 @@ namespace JOALHERIA.UI
                 case Keys.F8:
                     btnRemover.PerformClick();
                     break;
-                case Keys.F9:
-                    btnSelecionarFormaPagamento.PerformClick();
-                    break;
+                
                 case Keys.F10:
                     btnFinalizar.PerformClick();
                     break;

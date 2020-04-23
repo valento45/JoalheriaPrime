@@ -30,13 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pnlNomes = new System.Windows.Forms.Panel();
             this.lblTituloUsuario = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
+            this.btnSair = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.txtData = new System.Windows.Forms.Label();
-            this.btnSair = new System.Windows.Forms.Button();
             this.txtPreco = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtProduto = new System.Windows.Forms.Label();
@@ -60,16 +59,15 @@
             this.btnSelecionarProduto = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.btnRemover = new System.Windows.Forms.Button();
-            this.imgProduto = new System.Windows.Forms.PictureBox();
             this.timerHora = new System.Windows.Forms.Timer(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.lblValorPago = new System.Windows.Forms.Label();
             this.lblTroco = new System.Windows.Forms.Label();
             this.txtValorPago = new System.Windows.Forms.TextBox();
             this.txtTroco = new System.Windows.Forms.Label();
-            this.btnSelecionarFormaPagamento = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.imgProduto = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            this.pnlNomes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItens)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantidade)).BeginInit();
@@ -82,30 +80,22 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Teal;
-            this.panel1.Controls.Add(this.pnlNomes);
+            this.panel1.Controls.Add(this.lblTituloUsuario);
+            this.panel1.Controls.Add(this.lblUsuario);
+            this.panel1.Controls.Add(this.btnSair);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.lblTitulo);
             this.panel1.Location = new System.Drawing.Point(-1, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1140, 58);
+            this.panel1.Size = new System.Drawing.Size(1115, 47);
             this.panel1.TabIndex = 0;
-            // 
-            // pnlNomes
-            // 
-            this.pnlNomes.Controls.Add(this.lblTituloUsuario);
-            this.pnlNomes.Controls.Add(this.lblUsuario);
-            this.pnlNomes.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlNomes.Location = new System.Drawing.Point(1000, 0);
-            this.pnlNomes.Name = "pnlNomes";
-            this.pnlNomes.Size = new System.Drawing.Size(140, 58);
-            this.pnlNomes.TabIndex = 53;
             // 
             // lblTituloUsuario
             // 
             this.lblTituloUsuario.AutoSize = true;
             this.lblTituloUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTituloUsuario.ForeColor = System.Drawing.Color.Black;
-            this.lblTituloUsuario.Location = new System.Drawing.Point(10, 4);
+            this.lblTituloUsuario.Location = new System.Drawing.Point(861, 9);
             this.lblTituloUsuario.Name = "lblTituloUsuario";
             this.lblTituloUsuario.Size = new System.Drawing.Size(66, 16);
             this.lblTituloUsuario.TabIndex = 11;
@@ -116,20 +106,37 @@
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.ForeColor = System.Drawing.Color.PaleTurquoise;
-            this.lblUsuario.Location = new System.Drawing.Point(9, 30);
+            this.lblUsuario.Location = new System.Drawing.Point(923, 7);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(120, 20);
             this.lblUsuario.TabIndex = 8;
             this.lblUsuario.Text = "Administrador";
+            // 
+            // btnSair
+            // 
+            this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSair.BackColor = System.Drawing.Color.Transparent;
+            this.btnSair.BackgroundImage = global::JOALHERIA.Properties.Resources.Exit_Planning_300x300;
+            this.btnSair.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSair.Font = new System.Drawing.Font("Century Gothic", 15.75F);
+            this.btnSair.ForeColor = System.Drawing.Color.Black;
+            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSair.Location = new System.Drawing.Point(1054, 5);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(56, 39);
+            this.btnSair.TabIndex = 54;
+            this.btnSair.UseVisualStyleBackColor = false;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::JOALHERIA.Properties.Resources.imgFinanceiro;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.ErrorImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(15, 5);
+            this.pictureBox1.Location = new System.Drawing.Point(15, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(62, 50);
+            this.pictureBox1.Size = new System.Drawing.Size(62, 40);
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
@@ -138,7 +145,7 @@
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.AntiqueWhite;
-            this.lblTitulo.Location = new System.Drawing.Point(96, 19);
+            this.lblTitulo.Location = new System.Drawing.Point(96, 9);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(351, 23);
             this.lblTitulo.TabIndex = 7;
@@ -151,29 +158,13 @@
             this.txtData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtData.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtData.Enabled = false;
-            this.txtData.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtData.Font = new System.Drawing.Font("Century Gothic", 15.75F);
             this.txtData.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.txtData.Location = new System.Drawing.Point(19, 3);
+            this.txtData.Location = new System.Drawing.Point(19, 8);
             this.txtData.Name = "txtData";
-            this.txtData.Size = new System.Drawing.Size(272, 76);
+            this.txtData.Size = new System.Drawing.Size(272, 35);
             this.txtData.TabIndex = 74;
             this.txtData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnSair
-            // 
-            this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSair.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSair.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold);
-            this.btnSair.ForeColor = System.Drawing.Color.Black;
-            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSair.Location = new System.Drawing.Point(847, 7);
-            this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(110, 63);
-            this.btnSair.TabIndex = 54;
-            this.btnSair.Text = "Sair (F1)";
-            this.btnSair.UseVisualStyleBackColor = false;
-            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // txtPreco
             // 
@@ -181,11 +172,11 @@
             this.txtPreco.BackColor = System.Drawing.Color.Teal;
             this.txtPreco.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPreco.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtPreco.Font = new System.Drawing.Font("Arial Rounded MT Bold", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPreco.Font = new System.Drawing.Font("Century Gothic", 15.75F);
             this.txtPreco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.txtPreco.Location = new System.Drawing.Point(277, 198);
+            this.txtPreco.Location = new System.Drawing.Point(681, 138);
             this.txtPreco.Name = "txtPreco";
-            this.txtPreco.Size = new System.Drawing.Size(217, 66);
+            this.txtPreco.Size = new System.Drawing.Size(217, 36);
             this.txtPreco.TabIndex = 61;
             this.txtPreco.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -193,10 +184,10 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(8, 198);
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 15.75F);
+            this.label2.Location = new System.Drawing.Point(470, 142);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(263, 32);
+            this.label2.Size = new System.Drawing.Size(200, 24);
             this.label2.TabIndex = 60;
             this.label2.Text = "Preço Unitário (R$):";
             // 
@@ -207,11 +198,11 @@
             this.txtProduto.BackColor = System.Drawing.Color.Teal;
             this.txtProduto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtProduto.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtProduto.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProduto.Font = new System.Drawing.Font("Century Gothic", 15.75F);
             this.txtProduto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.txtProduto.Location = new System.Drawing.Point(239, 137);
+            this.txtProduto.Location = new System.Drawing.Point(127, 137);
             this.txtProduto.Name = "txtProduto";
-            this.txtProduto.Size = new System.Drawing.Size(900, 58);
+            this.txtProduto.Size = new System.Drawing.Size(310, 35);
             this.txtProduto.TabIndex = 62;
             this.txtProduto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -222,11 +213,11 @@
             this.txtCliente.BackColor = System.Drawing.Color.Teal;
             this.txtCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCliente.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtCliente.Font = new System.Drawing.Font("Century Gothic", 20.25F);
+            this.txtCliente.Font = new System.Drawing.Font("Century Gothic", 15.75F);
             this.txtCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.txtCliente.Location = new System.Drawing.Point(127, 82);
             this.txtCliente.Name = "txtCliente";
-            this.txtCliente.Size = new System.Drawing.Size(1012, 41);
+            this.txtCliente.Size = new System.Drawing.Size(982, 41);
             this.txtCliente.TabIndex = 64;
             this.txtCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -235,10 +226,10 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(13, 84);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(114, 32);
+            this.label4.Size = new System.Drawing.Size(88, 24);
             this.label4.TabIndex = 63;
             this.label4.Text = "Cliente:";
             // 
@@ -257,11 +248,11 @@
             this.Column3,
             this.Column4,
             this.Column5});
-            this.dgvItens.Location = new System.Drawing.Point(14, 275);
+            this.dgvItens.Location = new System.Drawing.Point(14, 184);
             this.dgvItens.Name = "dgvItens";
             this.dgvItens.ReadOnly = true;
             this.dgvItens.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvItens.Size = new System.Drawing.Size(631, 284);
+            this.dgvItens.Size = new System.Drawing.Size(423, 284);
             this.dgvItens.TabIndex = 66;
             // 
             // Column1
@@ -300,11 +291,11 @@
             this.txtTotal.BackColor = System.Drawing.Color.Teal;
             this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTotal.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtTotal.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.Font = new System.Drawing.Font("Century Gothic", 15.75F);
             this.txtTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.txtTotal.Location = new System.Drawing.Point(19, 619);
+            this.txtTotal.Location = new System.Drawing.Point(19, 498);
             this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(456, 75);
+            this.txtTotal.Size = new System.Drawing.Size(272, 47);
             this.txtTotal.TabIndex = 72;
             this.txtTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -313,7 +304,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(500, 202);
+            this.label1.Location = new System.Drawing.Point(912, 137);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 32);
             this.label1.TabIndex = 71;
@@ -321,29 +312,29 @@
             // 
             // label7
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(672, 572);
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 15.75F);
+            this.label7.Location = new System.Drawing.Point(748, 225);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(171, 32);
+            this.label7.Size = new System.Drawing.Size(133, 24);
             this.label7.TabIndex = 70;
             this.label7.Text = "Forma Pgto.";
             // 
             // cmbForma
             // 
-            this.cmbForma.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbForma.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbForma.BackColor = System.Drawing.Color.Teal;
             this.cmbForma.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbForma.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbForma.Font = new System.Drawing.Font("Century Gothic", 15.75F);
             this.cmbForma.ForeColor = System.Drawing.Color.PaleTurquoise;
             this.cmbForma.FormattingEnabled = true;
             this.cmbForma.Items.AddRange(new object[] {
             "Dinheiro",
             "Cartão"});
-            this.cmbForma.Location = new System.Drawing.Point(849, 570);
+            this.cmbForma.Location = new System.Drawing.Point(887, 223);
             this.cmbForma.Name = "cmbForma";
-            this.cmbForma.Size = new System.Drawing.Size(290, 38);
+            this.cmbForma.Size = new System.Drawing.Size(205, 32);
             this.cmbForma.TabIndex = 67;
             this.cmbForma.SelectedIndexChanged += new System.EventHandler(this.cmbForma_SelectedIndexChanged);
             // 
@@ -351,10 +342,10 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(15, 587);
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 15.75F);
+            this.label6.Location = new System.Drawing.Point(16, 471);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(164, 32);
+            this.label6.Size = new System.Drawing.Size(126, 24);
             this.label6.TabIndex = 69;
             this.label6.Text = "Total Geral:";
             // 
@@ -362,8 +353,8 @@
             // 
             this.txtQuantidade.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtQuantidade.BackColor = System.Drawing.Color.Teal;
-            this.txtQuantidade.Font = new System.Drawing.Font("Century Gothic", 20.25F);
-            this.txtQuantidade.Location = new System.Drawing.Point(578, 198);
+            this.txtQuantidade.Font = new System.Drawing.Font("Century Gothic", 15.75F);
+            this.txtQuantidade.Location = new System.Drawing.Point(990, 137);
             this.txtQuantidade.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -375,7 +366,7 @@
             0,
             0});
             this.txtQuantidade.Name = "txtQuantidade";
-            this.txtQuantidade.Size = new System.Drawing.Size(175, 41);
+            this.txtQuantidade.Size = new System.Drawing.Size(102, 33);
             this.txtQuantidade.TabIndex = 68;
             this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtQuantidade.Value = new decimal(new int[] {
@@ -391,11 +382,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlRodape.BackColor = System.Drawing.Color.Teal;
             this.pnlRodape.Controls.Add(this.txtData);
-            this.pnlRodape.Controls.Add(this.btnSair);
             this.pnlRodape.Controls.Add(this.btnFinalizar);
-            this.pnlRodape.Location = new System.Drawing.Point(0, 700);
+            this.pnlRodape.Controls.Add(this.btnSelecionarCliente);
+            this.pnlRodape.Controls.Add(this.btnSelecionarProduto);
+            this.pnlRodape.Controls.Add(this.btnAdicionar);
+            this.pnlRodape.Controls.Add(this.btnRemover);
+            this.pnlRodape.Location = new System.Drawing.Point(0, 565);
             this.pnlRodape.Name = "pnlRodape";
-            this.pnlRodape.Size = new System.Drawing.Size(1144, 83);
+            this.pnlRodape.Size = new System.Drawing.Size(1114, 50);
             this.pnlRodape.TabIndex = 73;
             // 
             // btnFinalizar
@@ -403,12 +397,12 @@
             this.btnFinalizar.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnFinalizar.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnFinalizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFinalizar.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold);
+            this.btnFinalizar.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.btnFinalizar.ForeColor = System.Drawing.Color.Black;
             this.btnFinalizar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnFinalizar.Location = new System.Drawing.Point(963, 8);
+            this.btnFinalizar.Location = new System.Drawing.Point(933, 13);
             this.btnFinalizar.Name = "btnFinalizar";
-            this.btnFinalizar.Size = new System.Drawing.Size(176, 63);
+            this.btnFinalizar.Size = new System.Drawing.Size(176, 29);
             this.btnFinalizar.TabIndex = 4;
             this.btnFinalizar.Text = "Finalizar (F10)";
             this.btnFinalizar.UseVisualStyleBackColor = false;
@@ -417,14 +411,14 @@
             // btnSelecionarCliente
             // 
             this.btnSelecionarCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelecionarCliente.BackColor = System.Drawing.Color.Teal;
+            this.btnSelecionarCliente.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnSelecionarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSelecionarCliente.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelecionarCliente.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelecionarCliente.ForeColor = System.Drawing.Color.Black;
             this.btnSelecionarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSelecionarCliente.Location = new System.Drawing.Point(936, 206);
+            this.btnSelecionarCliente.Location = new System.Drawing.Point(298, 12);
             this.btnSelecionarCliente.Name = "btnSelecionarCliente";
-            this.btnSelecionarCliente.Size = new System.Drawing.Size(203, 63);
+            this.btnSelecionarCliente.Size = new System.Drawing.Size(188, 29);
             this.btnSelecionarCliente.TabIndex = 0;
             this.btnSelecionarCliente.Text = "Buscar Cliente (F5)";
             this.btnSelecionarCliente.UseVisualStyleBackColor = false;
@@ -433,14 +427,14 @@
             // btnSelecionarProduto
             // 
             this.btnSelecionarProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelecionarProduto.BackColor = System.Drawing.Color.Teal;
+            this.btnSelecionarProduto.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnSelecionarProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSelecionarProduto.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelecionarProduto.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelecionarProduto.ForeColor = System.Drawing.Color.Black;
             this.btnSelecionarProduto.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSelecionarProduto.Location = new System.Drawing.Point(936, 275);
+            this.btnSelecionarProduto.Location = new System.Drawing.Point(492, 12);
             this.btnSelecionarProduto.Name = "btnSelecionarProduto";
-            this.btnSelecionarProduto.Size = new System.Drawing.Size(203, 63);
+            this.btnSelecionarProduto.Size = new System.Drawing.Size(170, 29);
             this.btnSelecionarProduto.TabIndex = 1;
             this.btnSelecionarProduto.Text = "Buscar Produto (F6)";
             this.btnSelecionarProduto.UseVisualStyleBackColor = false;
@@ -449,14 +443,14 @@
             // btnAdicionar
             // 
             this.btnAdicionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdicionar.BackColor = System.Drawing.Color.Teal;
+            this.btnAdicionar.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdicionar.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold);
+            this.btnAdicionar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdicionar.ForeColor = System.Drawing.Color.Black;
             this.btnAdicionar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAdicionar.Location = new System.Drawing.Point(936, 344);
+            this.btnAdicionar.Location = new System.Drawing.Point(668, 13);
             this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(203, 63);
+            this.btnAdicionar.Size = new System.Drawing.Size(137, 29);
             this.btnAdicionar.TabIndex = 2;
             this.btnAdicionar.Text = "Adicionar (F7)";
             this.btnAdicionar.UseVisualStyleBackColor = false;
@@ -465,30 +459,18 @@
             // btnRemover
             // 
             this.btnRemover.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemover.BackColor = System.Drawing.Color.Teal;
+            this.btnRemover.BackColor = System.Drawing.Color.PaleTurquoise;
             this.btnRemover.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemover.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold);
+            this.btnRemover.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.btnRemover.ForeColor = System.Drawing.Color.Black;
             this.btnRemover.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnRemover.Location = new System.Drawing.Point(936, 413);
+            this.btnRemover.Location = new System.Drawing.Point(807, 13);
             this.btnRemover.Name = "btnRemover";
-            this.btnRemover.Size = new System.Drawing.Size(203, 55);
+            this.btnRemover.Size = new System.Drawing.Size(124, 29);
             this.btnRemover.TabIndex = 5;
             this.btnRemover.Text = "Remover (F8)";
             this.btnRemover.UseVisualStyleBackColor = false;
             this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
-            // 
-            // imgProduto
-            // 
-            this.imgProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.imgProduto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.imgProduto.ErrorImage = null;
-            this.imgProduto.Location = new System.Drawing.Point(649, 275);
-            this.imgProduto.Name = "imgProduto";
-            this.imgProduto.Size = new System.Drawing.Size(281, 284);
-            this.imgProduto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imgProduto.TabIndex = 65;
-            this.imgProduto.TabStop = false;
             // 
             // timerHora
             // 
@@ -499,46 +481,46 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(110, 148);
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 15.75F);
+            this.label3.Location = new System.Drawing.Point(15, 148);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(123, 32);
+            this.label3.Size = new System.Drawing.Size(95, 24);
             this.label3.TabIndex = 74;
             this.label3.Text = "Produto:";
             // 
             // lblValorPago
             // 
-            this.lblValorPago.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblValorPago.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblValorPago.AutoSize = true;
-            this.lblValorPago.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorPago.Location = new System.Drawing.Point(695, 618);
+            this.lblValorPago.Font = new System.Drawing.Font("Century Gothic", 15.75F);
+            this.lblValorPago.Location = new System.Drawing.Point(757, 269);
             this.lblValorPago.Name = "lblValorPago";
-            this.lblValorPago.Size = new System.Drawing.Size(160, 32);
+            this.lblValorPago.Size = new System.Drawing.Size(124, 24);
             this.lblValorPago.TabIndex = 75;
             this.lblValorPago.Text = "Valor Pago";
             this.lblValorPago.Visible = false;
             // 
             // lblTroco
             // 
-            this.lblTroco.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTroco.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTroco.AutoSize = true;
-            this.lblTroco.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTroco.Location = new System.Drawing.Point(768, 661);
+            this.lblTroco.Font = new System.Drawing.Font("Century Gothic", 15.75F);
+            this.lblTroco.Location = new System.Drawing.Point(815, 314);
             this.lblTroco.Name = "lblTroco";
-            this.lblTroco.Size = new System.Drawing.Size(86, 32);
+            this.lblTroco.Size = new System.Drawing.Size(66, 24);
             this.lblTroco.TabIndex = 77;
             this.lblTroco.Text = "Troco";
             this.lblTroco.Visible = false;
             // 
             // txtValorPago
             // 
-            this.txtValorPago.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtValorPago.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtValorPago.BackColor = System.Drawing.Color.Teal;
-            this.txtValorPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValorPago.Font = new System.Drawing.Font("Century Gothic", 15.75F);
             this.txtValorPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.txtValorPago.Location = new System.Drawing.Point(859, 611);
+            this.txtValorPago.Location = new System.Drawing.Point(887, 264);
             this.txtValorPago.Name = "txtValorPago";
-            this.txtValorPago.Size = new System.Drawing.Size(280, 40);
+            this.txtValorPago.Size = new System.Drawing.Size(205, 33);
             this.txtValorPago.TabIndex = 78;
             this.txtValorPago.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtValorPago.Visible = false;
@@ -546,51 +528,56 @@
             // 
             // txtTroco
             // 
-            this.txtTroco.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTroco.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTroco.BackColor = System.Drawing.Color.Teal;
             this.txtTroco.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTroco.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtTroco.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold);
+            this.txtTroco.Font = new System.Drawing.Font("Century Gothic", 15.75F);
             this.txtTroco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.txtTroco.Location = new System.Drawing.Point(859, 655);
+            this.txtTroco.Location = new System.Drawing.Point(887, 308);
             this.txtTroco.Name = "txtTroco";
-            this.txtTroco.Size = new System.Drawing.Size(280, 41);
+            this.txtTroco.Size = new System.Drawing.Size(205, 41);
             this.txtTroco.TabIndex = 80;
             this.txtTroco.Text = "00,00";
             this.txtTroco.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.txtTroco.Visible = false;
             // 
-            // btnSelecionarFormaPagamento
+            // label5
             // 
-            this.btnSelecionarFormaPagamento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelecionarFormaPagamento.BackColor = System.Drawing.Color.Teal;
-            this.btnSelecionarFormaPagamento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSelecionarFormaPagamento.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold);
-            this.btnSelecionarFormaPagamento.ForeColor = System.Drawing.Color.Black;
-            this.btnSelecionarFormaPagamento.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSelecionarFormaPagamento.Location = new System.Drawing.Point(936, 474);
-            this.btnSelecionarFormaPagamento.Name = "btnSelecionarFormaPagamento";
-            this.btnSelecionarFormaPagamento.Size = new System.Drawing.Size(203, 55);
-            this.btnSelecionarFormaPagamento.TabIndex = 81;
-            this.btnSelecionarFormaPagamento.Text = "Pagamento (F9)";
-            this.btnSelecionarFormaPagamento.UseVisualStyleBackColor = false;
-            this.btnSelecionarFormaPagamento.Click += new System.EventHandler(this.btnSelecionarFormaPagamento_Click);
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(872, 199);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(220, 21);
+            this.label5.TabIndex = 81;
+            this.label5.Text = "(F9) Selecionar forma pgto.";
+            // 
+            // imgProduto
+            // 
+            this.imgProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.imgProduto.BackgroundImage = global::JOALHERIA.Properties.Resources.Produto_2;
+            this.imgProduto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.imgProduto.ErrorImage = null;
+            this.imgProduto.Location = new System.Drawing.Point(443, 184);
+            this.imgProduto.Name = "imgProduto";
+            this.imgProduto.Size = new System.Drawing.Size(281, 284);
+            this.imgProduto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgProduto.TabIndex = 65;
+            this.imgProduto.TabStop = false;
             // 
             // frmVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.ClientSize = new System.Drawing.Size(1144, 788);
-            this.Controls.Add(this.btnSelecionarFormaPagamento);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1114, 620);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.txtTroco);
             this.Controls.Add(this.txtValorPago);
             this.Controls.Add(this.lblTroco);
             this.Controls.Add(this.lblValorPago);
-            this.Controls.Add(this.btnSelecionarProduto);
-            this.Controls.Add(this.btnRemover);
-            this.Controls.Add(this.btnAdicionar);
-            this.Controls.Add(this.btnSelecionarCliente);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pnlRodape);
             this.Controls.Add(this.txtTotal);
@@ -616,8 +603,6 @@
             this.Load += new System.EventHandler(this.frmVenda_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.pnlNomes.ResumeLayout(false);
-            this.pnlNomes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItens)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantidade)).EndInit();
@@ -633,7 +618,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.Panel pnlNomes;
         private System.Windows.Forms.Label lblTituloUsuario;
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Button btnSair;
@@ -668,6 +652,6 @@
         private System.Windows.Forms.Label lblTroco;
         private System.Windows.Forms.TextBox txtValorPago;
         private System.Windows.Forms.Label txtTroco;
-        private System.Windows.Forms.Button btnSelecionarFormaPagamento;
+        private System.Windows.Forms.Label label5;
     }
 }

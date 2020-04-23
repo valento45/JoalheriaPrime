@@ -63,9 +63,9 @@ namespace JOALHERIA
                     usuarioDAL.Cadastrar(usuarioBLL);
                     MessageBox.Show("Dados gravados com Sucesso!","Atenção!",MessageBoxButtons.OK,MessageBoxIcon.Information);
                     LimparCampos();
-                    dgvConsultarUsuario.DataSource = usuarioDAL.ConsultarTodos();
+                    
                 }
-
+          
                 if(alterar == true && ValidarCamposObrigatorios()==true)
                 {
                     usuarioBLL.Nome = txtNome.Text;
@@ -89,25 +89,14 @@ namespace JOALHERIA
                     MessageBox.Show("Dados Atualizados com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 ResetarCampos();
-                PopulaGrid();
+                PopularGrid();
                 }               
-        }
-        public void PopulaGrid()
-        {
-            dgvConsultarUsuario.Rows.Clear();
-            foreach (var user in usuarioDAL.ListarTodosUsuarios().ToList())
-                dgvConsultarUsuario.Rows.Add(user.Idusuario, user.Nome, user.Rg, user.Cpf, user.Telefone, user.Tipo, user.Endereco, user.Usuario, user.Senha);
-            
-            //foreach (var al in usuarioDAL.ListarTodosUsuarios())
-            //{
-            //    dgvConsultarUsuario.Rows.Add(al.Idusuario, al.Nome, al.Rg, al.Cpf, al.Endereco, al.Telefone, al.Tipo, al.Usuario, al.Senha);
-            //}
-
-        }
+        }       
+       
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            PopulaGrid();           
+            PopularGrid();           
         }
 
         private void tabPage2_Click(object sender, EventArgs e)
@@ -229,6 +218,14 @@ namespace JOALHERIA
             {
                 label11.Text = "Cadastrar Usuário";
             }
+        }
+
+        private void PopularGrid()
+        {
+            dgvConsultarUsuario.Rows.Clear();
+            foreach (var user in usuarioDAL.ListarTodosUsuarios().OrderBy(y => y.Usuario).ToList())
+                dgvConsultarUsuario.Rows.Add(user.Idusuario, user.Nome, user.Rg, user.Cpf, user.Endereco, user.Telefone, user.Tipo, user.Usuario, user.Senha, user.Permissoes);
+
         }
     }//
 }//

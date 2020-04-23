@@ -31,10 +31,11 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtObservacoes = new System.Windows.Forms.RichTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -53,7 +54,6 @@
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -98,6 +98,19 @@
             this.panel2.Size = new System.Drawing.Size(1062, 545);
             this.panel2.TabIndex = 0;
             // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button2.BackgroundImage = global::JOALHERIA.Properties.Resources.Novo_2;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Location = new System.Drawing.Point(410, 483);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(59, 49);
+            this.button2.TabIndex = 19;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -122,6 +135,19 @@
             this.label11.TabIndex = 34;
             this.label11.Text = "Cadastrar Produto";
             // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button1.BackgroundImage = global::JOALHERIA.Properties.Resources.NOK;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Location = new System.Drawing.Point(572, 483);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(59, 49);
+            this.button1.TabIndex = 15;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -133,19 +159,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1054, 379);
             this.panel3.TabIndex = 33;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button2.BackgroundImage = global::JOALHERIA.Properties.Resources.Novo_2;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Location = new System.Drawing.Point(410, 483);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(59, 49);
-            this.button2.TabIndex = 19;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // groupBox2
             // 
@@ -293,6 +306,7 @@
             this.txtPrecoImportado.Name = "txtPrecoImportado";
             this.txtPrecoImportado.Size = new System.Drawing.Size(235, 23);
             this.txtPrecoImportado.TabIndex = 10;
+            this.txtPrecoImportado.Leave += new System.EventHandler(this.txtPrecoImportado_Leave);
             // 
             // txtPrecoVenda
             // 
@@ -302,6 +316,7 @@
             this.txtPrecoVenda.Size = new System.Drawing.Size(181, 23);
             this.txtPrecoVenda.TabIndex = 11;
             this.txtPrecoVenda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecoVenda_KeyPress);
+            this.txtPrecoVenda.Leave += new System.EventHandler(this.txtPrecoVenda_Leave);
             // 
             // label7
             // 
@@ -354,19 +369,6 @@
             this.label4.Size = new System.Drawing.Size(76, 16);
             this.label4.TabIndex = 3;
             this.label4.Text = "Descrição:";
-            // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button1.BackgroundImage = global::JOALHERIA.Properties.Resources.NOK;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(572, 483);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(59, 49);
-            this.button1.TabIndex = 15;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // btnSalvar
             // 

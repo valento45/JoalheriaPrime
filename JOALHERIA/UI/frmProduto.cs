@@ -89,33 +89,35 @@ namespace JOALHERIA.UI
                 MessageBox.Show("Erro ao carregar o registro: " + ex.Message, "1) Line 189, frmProduto.cs", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        private decimal Lucro()
+        private void Lucro()
         {
             decimal lucro_unitario = 0;
             try
             {
-                if (txtPrecoImportado.Text.Trim() == "" || txtQuantidade.Text.Trim() == "")
-                    throw new ExceptionProduct("Verifique o preenchimento dos campos: \nPreço Bruto\nPreço venda\nQuantidade");
+                if (txtQuantidade.Text.Trim() == "" || txtPrecoImportado.Text == "")
+                    if (!(MessageBox.Show("Alguns campos não foram preenchidos! \nDeseja continuar?", "Campos vazios", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
+                        return;
 
-                decimal bruto_total = Convert.ToDecimal(txtPrecoImportado.Text);
-                int quantidade = Convert.ToInt16(txtQuantidade.Text);
+                decimal bruto_total;
+                decimal.TryParse(txtPrecoImportado.Text, out bruto_total);
+
+                int quantidade ;
+                int.TryParse(txtQuantidade.Text, out quantidade);
+
                 decimal bruto_unitario = bruto_total / quantidade;
+
                 decimal preco_venda;
                 decimal.TryParse(txtPrecoVenda.Text, out preco_venda);
 
                 lucro_unitario = preco_venda - bruto_unitario;
-
-            }
-            catch (ExceptionProduct ex)
-            {
-                MessageBox.Show(ex.Message, "Line 170, frmProduto.cs", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
+                txtLucro.Text = lucro_unitario.ToString("F2");
+            }          
             catch (Exception ex)
             {
+                txtLucro.Clear();
                 MessageBox.Show(ex.Message, "Line 170, frmProduto.cs", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            return lucro_unitario;
+            
         }
 
         private void Salvar()
@@ -182,7 +184,7 @@ namespace JOALHERIA.UI
         {
             try
             {
-                txtLucro.Text = Lucro().ToString("F2");
+                //Lucro();
             }
             catch (ExceptionProduct ex)
             {
@@ -217,8 +219,17 @@ namespace JOALHERIA.UI
                 e.Handled = true;
                 MessageBox.Show("Este campo só aceita valores númericos !", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                txtLucro.Text = Lucro().ToString("F2");
+
+        }
+
+        private void txtPrecoVenda_Leave(object sender, EventArgs e)
+        {
+              Lucro();
+        }
+
+        private void txtPrecoImportado_Leave(object sender, EventArgs e)
+        {
+            //Lucro();
         }
     }//
 }//

@@ -209,8 +209,6 @@ namespace JOALHERIA.UI
 
         private void usuáriosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmUsuario usuario = new frmUsuario();
-            usuario.ShowDialog();
         }
 
         private void ordemDeServiçoToolStripMenuItem2_Click(object sender, EventArgs e)
@@ -276,6 +274,14 @@ namespace JOALHERIA.UI
             using (frmPesquisaP frm_pesquisaP = new frmPesquisaP())
             {
                 frm_pesquisaP.ShowDialog();
+            }
+        }
+
+        private void configurarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmConfigurarU configUsuarios = new frmConfigurarU(new JOALHERIABLL.UsuarioBLL()))
+            {
+                configUsuarios.ShowDialog();
             }
         }
     }

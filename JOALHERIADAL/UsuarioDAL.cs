@@ -18,24 +18,32 @@ namespace JOALHERIADAL
         //METODO CADASTRAR
         public void Cadastrar(JOALHERIABLL.UsuarioBLL usuarioBLL)
         {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("INSERT INTO JOALHERIA.USUARIO(NOME, RG, CPF, ENDERECO, TELEFONE, TIPO, USUARIO, SENHA) VALUES (@NOME, @RG, @CPF, @ENDERECO, @TELEFONE, @TIPO, @USUARIO, @SENHA)", con.Conectar());
+                cmd.Parameters.AddWithValue("@NOME", usuarioBLL.Nome);
+                cmd.Parameters.AddWithValue("@RG", usuarioBLL.Rg);
+                cmd.Parameters.AddWithValue("@CPF", usuarioBLL.Cpf);
+                cmd.Parameters.AddWithValue("@ENDERECO", usuarioBLL.Endereco);
+                cmd.Parameters.AddWithValue("@TELEFONE", usuarioBLL.Telefone);
+                cmd.Parameters.AddWithValue("@TIPO", usuarioBLL.Tipo);
+                cmd.Parameters.AddWithValue("@USUARIO", usuarioBLL.Usuario);
+                cmd.Parameters.AddWithValue("@SENHA", usuarioBLL.Senha);
 
-            SqlCommand cmd = new SqlCommand("INSERT INTO JOALHERIA.USUARIO(NOME, RG, CPF, ENDERECO, TELEFONE, TIPO, USUARIO, SENHA) VALUES (@NOME, @RG, @CPF, @ENDERECO, @TELEFONE, @TIPO, @USUARIO, @SENHA)", con.Conectar());
-            cmd.Parameters.AddWithValue("@NOME", usuarioBLL.Nome);
-            cmd.Parameters.AddWithValue("@RG", usuarioBLL.Rg);
-            cmd.Parameters.AddWithValue("@CPF", usuarioBLL.Cpf);
-            cmd.Parameters.AddWithValue("@ENDERECO", usuarioBLL.Endereco);
-            cmd.Parameters.AddWithValue("@TELEFONE", usuarioBLL.Telefone);
-            cmd.Parameters.AddWithValue("@TIPO", usuarioBLL.Tipo);
-            cmd.Parameters.AddWithValue("@USUARIO", usuarioBLL.Usuario);
-            cmd.Parameters.AddWithValue("@SENHA", usuarioBLL.Senha);
-
-            cmd.ExecuteNonQuery();
-            con.Desconectar();
+                cmd.ExecuteNonQuery();
+                con.Desconectar();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message + (ex.InnerException != null ? ex.InnerException.Message : ""), "Falha no login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + (ex.InnerException != null ? ex.InnerException.Message : ""), "Falha no login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
-      
-     
-            //METODO UPDATE
+        //METODO UPDATE
         public void Atualizar(JOALHERIABLL.UsuarioBLL usuarioBLL)
         {
             SqlCommand cmd = new SqlCommand("UPDATE JOALHERIA.USUARIO SET NOME = @NOME, RG = @RG, CPF = @CPF, ENDERECO = @ENDERECO, TIPO = @TIPO, USUARIO = @USUARIO, SENHA = @SENHA WHERE IDUSUARIO = @IDUSUARIO", con.Conectar());
@@ -56,7 +64,7 @@ namespace JOALHERIADAL
         public void Excluir(JOALHERIABLL.UsuarioBLL usuarioBLL)
         {
 
-            
+
             SqlCommand cmd = new SqlCommand("DELETE FROM JOALHERIA.USUARIO WHERE IDUSUARIO = @IDUSUARIO", con.Conectar());
             cmd.Parameters.AddWithValue("@IDUSUARIO", usuarioBLL.Idusuario);
 
@@ -125,7 +133,7 @@ namespace JOALHERIADAL
 
         public DataTable ConsultarPorCodigo(JOALHERIABLL.UsuarioBLL usuarioBLL)
         {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.USUARIO WHERE IDUSUARIO = @IDUSUARIO",con.Conectar());
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.USUARIO WHERE IDUSUARIO = @IDUSUARIO", con.Conectar());
             da.SelectCommand.Parameters.AddWithValue(@"IDUSUARIO", usuarioBLL.Idusuario);
 
             DataTable dt = new DataTable();
@@ -137,7 +145,7 @@ namespace JOALHERIADAL
 
         public DataTable ConsultarPorNome(JOALHERIABLL.UsuarioBLL usuarioBLL)
         {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.USUARIO WHERE NOME LIKE @NOME",con.Conectar());
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.USUARIO WHERE NOME LIKE @NOME", con.Conectar());
             da.SelectCommand.Parameters.AddWithValue(@"NOME", usuarioBLL.Nome + "%");
 
             DataTable dt = new DataTable();
@@ -148,7 +156,7 @@ namespace JOALHERIADAL
 
         public DataTable ConsultarPorCpf(JOALHERIABLL.UsuarioBLL usuarioBLL)
         {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.USUARIO WHERE CPF LIKE @CPF",con.Conectar());
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.USUARIO WHERE CPF LIKE @CPF", con.Conectar());
             da.SelectCommand.Parameters.AddWithValue(@"CPF", usuarioBLL.Cpf + "%");
 
             DataTable dt = new DataTable();
@@ -159,7 +167,7 @@ namespace JOALHERIADAL
 
         public DataTable ConsultarPorUsuario(JOALHERIABLL.UsuarioBLL usuarioBLL)
         {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.USUARIO WHERE USUARIO LIKE @USUARIO",con.Conectar());
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.USUARIO WHERE USUARIO LIKE @USUARIO", con.Conectar());
             da.SelectCommand.Parameters.AddWithValue(@"USUARIO", usuarioBLL.Usuario + "%");
 
             DataTable dt = new DataTable();
@@ -171,7 +179,7 @@ namespace JOALHERIADAL
         {
             List<UsuarioBLL> result = new List<UsuarioBLL>();
             SqlCommand cmd = new SqlCommand("SELECT * FROM JOALHERIA.USUARIO", con.Conectar());
-            
+
             foreach (DataRow row in Acces.ExecuteReader(cmd).Tables[0].Rows)
                 result.Add(new UsuarioBLL(row));
 
@@ -179,5 +187,38 @@ namespace JOALHERIADAL
             return result;
         }
 
+        public static List<UsuarioBLL> ListarTodosUsuarios_()
+        {
+            List<UsuarioBLL> result = new List<UsuarioBLL>();
+            SqlCommand cmd = new SqlCommand("SELECT * FROM JOALHERIA.USUARIO");
+
+            foreach (DataRow row in Acces.ExecuteReader(cmd).Tables[0].Rows)
+                result.Add(new UsuarioBLL(row));
+
+            return result;
+        }
+
+        public static UsuarioBLL GetById(int id)
+        {
+            UsuarioBLL result = new UsuarioBLL();
+            SqlCommand cmd = new SqlCommand($"SELECT * FROM JOALHERIA.USUARIO WHERE IDUSUARIO = {id} ;");
+            DataTable dt = Acces.ExecuteReader(cmd).Tables[0];
+            result = new UsuarioBLL(dt.Rows[0]);
+            return result;
+        }
+
+        public void AtualizarPermissao(UsuarioBLL user, string update_permission)
+        {
+
+        }
+
+        public enum Permissoes
+        {
+            Financeiro = 'U',
+            Estoque = 'E',
+            Inclusao = 'I',
+            Edicao = 'D',
+            Exclusao = 'X'
+        }
     }//
 }//
