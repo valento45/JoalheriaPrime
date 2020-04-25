@@ -29,46 +29,37 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource7 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource8 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.VENDABindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DataSet1 = new JOALHERIA.UI.DataSet1();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.ITEMPEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DataSetVenda = new JOALHERIA.UI.DataSetVenda();
+            this.VENDABindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.DataSet1 = new JOALHERIA.UI.DataSet1();
             this.reportViewerParametros = new Microsoft.Reporting.WinForms.ReportViewer();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.reportViewerNormal = new Microsoft.Reporting.WinForms.ReportViewer();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pnlCodigo = new System.Windows.Forms.Panel();
             this.pnlPorData = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtAte = new System.Windows.Forms.MaskedTextBox();
             this.txtDe = new System.Windows.Forms.MaskedTextBox();
+            this.pnlCodigo = new System.Windows.Forms.Panel();
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbGerarPor = new System.Windows.Forms.ComboBox();
             this.btnGerar = new System.Windows.Forms.Button();
-            this.reportViewerNormal = new Microsoft.Reporting.WinForms.ReportViewer();
-            ((System.ComponentModel.ISupportInitialize)(this.VENDABindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DataSet1)).BeginInit();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ITEMPEDIDOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataSetVenda)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VENDABindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataSet1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.pnlCodigo.SuspendLayout();
             this.pnlPorData.SuspendLayout();
+            this.pnlCodigo.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // VENDABindingSource
-            // 
-            this.VENDABindingSource.DataMember = "VENDA";
-            this.VENDABindingSource.DataSource = this.DataSet1;
-            // 
-            // DataSet1
-            // 
-            this.DataSet1.DataSetName = "DataSet1";
-            this.DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // ITEMPEDIDOBindingSource
             // 
@@ -80,14 +71,24 @@
             this.DataSetVenda.DataSetName = "DataSetVenda";
             this.DataSetVenda.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // VENDABindingSource
+            // 
+            this.VENDABindingSource.DataMember = "VENDA";
+            this.VENDABindingSource.DataSource = this.DataSet1;
+            // 
+            // DataSet1
+            // 
+            this.DataSet1.DataSetName = "DataSet1";
+            this.DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // reportViewerParametros
             // 
             this.reportViewerParametros.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            reportDataSource7.Name = "DataSetVendaa";
-            reportDataSource7.Value = this.ITEMPEDIDOBindingSource;
-            this.reportViewerParametros.LocalReport.DataSources.Add(reportDataSource7);
+            reportDataSource1.Name = "DataSetVendaa";
+            reportDataSource1.Value = this.ITEMPEDIDOBindingSource;
+            this.reportViewerParametros.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewerParametros.LocalReport.ReportEmbeddedResource = "JOALHERIA.UI.ReportVenda.rdlc";
             this.reportViewerParametros.Location = new System.Drawing.Point(3, 140);
             this.reportViewerParametros.Name = "reportViewerParametros";
@@ -108,10 +109,25 @@
             this.panel1.Size = new System.Drawing.Size(882, 301);
             this.panel1.TabIndex = 8;
             // 
+            // reportViewerNormal
+            // 
+            this.reportViewerNormal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            reportDataSource2.Name = "DataSet1";
+            reportDataSource2.Value = this.VENDABindingSource;
+            this.reportViewerNormal.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewerNormal.LocalReport.ReportEmbeddedResource = "JOALHERIA.UI.RelVendas.rdlc";
+            this.reportViewerNormal.Location = new System.Drawing.Point(3, 140);
+            this.reportViewerNormal.Name = "reportViewerNormal";
+            this.reportViewerNormal.Size = new System.Drawing.Size(874, 156);
+            this.reportViewerNormal.TabIndex = 9;
+            // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.pnlPorData);
             this.panel2.Controls.Add(this.pnlCodigo);
             this.panel2.Controls.Add(this.label2);
@@ -122,22 +138,13 @@
             this.panel2.Size = new System.Drawing.Size(874, 131);
             this.panel2.TabIndex = 8;
             // 
-            // pnlCodigo
-            // 
-            this.pnlCodigo.Controls.Add(this.txtFiltro);
-            this.pnlCodigo.Controls.Add(this.label1);
-            this.pnlCodigo.Location = new System.Drawing.Point(3, 28);
-            this.pnlCodigo.Name = "pnlCodigo";
-            this.pnlCodigo.Size = new System.Drawing.Size(400, 75);
-            this.pnlCodigo.TabIndex = 5;
-            // 
             // pnlPorData
             // 
             this.pnlPorData.Controls.Add(this.label4);
             this.pnlPorData.Controls.Add(this.label3);
             this.pnlPorData.Controls.Add(this.txtAte);
             this.pnlPorData.Controls.Add(this.txtDe);
-            this.pnlPorData.Location = new System.Drawing.Point(5, 25);
+            this.pnlPorData.Location = new System.Drawing.Point(5, 48);
             this.pnlPorData.Name = "pnlPorData";
             this.pnlPorData.Size = new System.Drawing.Size(400, 75);
             this.pnlPorData.TabIndex = 6;
@@ -176,6 +183,15 @@
             this.txtDe.Size = new System.Drawing.Size(100, 20);
             this.txtDe.TabIndex = 0;
             // 
+            // pnlCodigo
+            // 
+            this.pnlCodigo.Controls.Add(this.txtFiltro);
+            this.pnlCodigo.Controls.Add(this.label1);
+            this.pnlCodigo.Location = new System.Drawing.Point(3, 51);
+            this.pnlCodigo.Name = "pnlCodigo";
+            this.pnlCodigo.Size = new System.Drawing.Size(400, 75);
+            this.pnlCodigo.TabIndex = 5;
+            // 
             // txtFiltro
             // 
             this.txtFiltro.Location = new System.Drawing.Point(96, 27);
@@ -195,7 +211,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(532, 58);
+            this.label2.Location = new System.Drawing.Point(411, 78);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 13);
             this.label2.TabIndex = 4;
@@ -208,7 +224,7 @@
             "Codigo",
             "Data",
             "Normal"});
-            this.cmbGerarPor.Location = new System.Drawing.Point(588, 53);
+            this.cmbGerarPor.Location = new System.Drawing.Point(467, 73);
             this.cmbGerarPor.Name = "cmbGerarPor";
             this.cmbGerarPor.Size = new System.Drawing.Size(121, 21);
             this.cmbGerarPor.TabIndex = 3;
@@ -218,7 +234,7 @@
             // 
             this.btnGerar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnGerar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnGerar.Location = new System.Drawing.Point(409, 53);
+            this.btnGerar.Location = new System.Drawing.Point(513, 100);
             this.btnGerar.Name = "btnGerar";
             this.btnGerar.Size = new System.Drawing.Size(75, 23);
             this.btnGerar.TabIndex = 1;
@@ -226,19 +242,15 @@
             this.btnGerar.UseVisualStyleBackColor = false;
             this.btnGerar.Click += new System.EventHandler(this.btnGerar_Click);
             // 
-            // reportViewerNormal
+            // label5
             // 
-            this.reportViewerNormal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            reportDataSource8.Name = "DataSet1";
-            reportDataSource8.Value = this.VENDABindingSource;
-            this.reportViewerNormal.LocalReport.DataSources.Add(reportDataSource8);
-            this.reportViewerNormal.LocalReport.ReportEmbeddedResource = "JOALHERIA.UI.RelVendas.rdlc";
-            this.reportViewerNormal.Location = new System.Drawing.Point(3, 140);
-            this.reportViewerNormal.Name = "reportViewerNormal";
-            this.reportViewerNormal.Size = new System.Drawing.Size(874, 156);
-            this.reportViewerNormal.TabIndex = 9;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(373, 10);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(198, 22);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Relatório de Vendas";
             // 
             // FrmRelVenda
             // 
@@ -251,17 +263,17 @@
             this.Text = "Relatório Venda";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmRelVenda_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.VENDABindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ITEMPEDIDOBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataSetVenda)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VENDABindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataSet1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.pnlCodigo.ResumeLayout(false);
-            this.pnlCodigo.PerformLayout();
             this.pnlPorData.ResumeLayout(false);
             this.pnlPorData.PerformLayout();
+            this.pnlCodigo.ResumeLayout(false);
+            this.pnlCodigo.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -286,5 +298,6 @@
         private System.Windows.Forms.MaskedTextBox txtAte;
         private System.Windows.Forms.MaskedTextBox txtDe;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewerNormal;
+        private System.Windows.Forms.Label label5;
     }
 }
