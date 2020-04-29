@@ -47,6 +47,7 @@
     <Compile Include="ItemPedidoBLL.cs" />
     <Compile Include="ItemServicoBLL.cs" />
     <Compile Include="LoginBLL.cs" />
+    <Compile Include="Modulo.cs" />
     <Compile Include="OrdemServicoBLL.cs" />
     <Compile Include="Pessoa.cs" />
     <Compile Include="ProdutoBLL.cs" />

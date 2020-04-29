@@ -52,6 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UI\DataSetOS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetOS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmConfigurarU.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,6 +168,12 @@
     <Compile Include="UI\frmProduto.Designer.cs">
       <DependentUpon>frmProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\frmRelatorioOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmRelatorioOS.Designer.cs">
+      <DependentUpon>frmRelatorioOS.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FrmRelVenda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +198,7 @@
     <Compile Include="UI\frmVerItensDaVenda.Designer.cs">
       <DependentUpon>frmVerItensDaVenda.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\CupomOS.rdlc" />
     <EmbeddedResource Include="UI\frmConfigurarU.resx">
       <DependentUpon>frmConfigurarU.cs</DependentUpon>
     </EmbeddedResource>
@@ -245,6 +257,9 @@
     <EmbeddedResource Include="UI\frmProduto.resx">
       <DependentUpon>frmProduto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmRelatorioOS.resx">
+      <DependentUpon>frmRelatorioOS.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmRelVenda.resx">
       <DependentUpon>FrmRelVenda.cs</DependentUpon>
     </EmbeddedResource>
@@ -257,8 +272,8 @@
     <EmbeddedResource Include="UI\frmVerItensDaVenda.resx">
       <DependentUpon>frmVerItensDaVenda.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\RelatorioOS.rdlc" />
     <EmbeddedResource Include="UI\RelVendas.rdlc" />
-    <EmbeddedResource Include="UI\ReportOrdem.rdlc" />
     <EmbeddedResource Include="UI\ReportVenda.rdlc" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -279,6 +294,17 @@
     </None>
     <None Include="UI\DataSet1.xss">
       <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="UI\DataSetOS.xsc">
+      <DependentUpon>DataSetOS.xsd</DependentUpon>
+    </None>
+    <None Include="UI\DataSetOS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetOS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="UI\DataSetOS.xss">
+      <DependentUpon>DataSetOS.xsd</DependentUpon>
     </None>
     <None Include="UI\DataSetVenda.xsc">
       <DependentUpon>DataSetVenda.xsd</DependentUpon>

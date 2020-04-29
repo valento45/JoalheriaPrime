@@ -46,7 +46,6 @@ namespace JOALHERIA.UI
                 MessageBox.Show("Preencha todos os campos!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtUsuario.Focus();
             }
-
             else
             {                
                 usuarioBLL.Usuario = txtUsuario.Text;
@@ -62,13 +61,11 @@ namespace JOALHERIA.UI
 
                 else
                 {
-                    //conseguiu logar
-                    idusuariologado = usuarioBLL.Idusuario;
-                    usuariologado = usuarioBLL.Usuario;
+                    //conseguiu logar                   
 
                     Inserir_Login();
 
-                    MessageBox.Show("Olá " + usuariologado + " , Seja bem Vindo!", "Logado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Olá " + LoginBLL.User.Usuario + " , Seja bem Vindo!", "Logado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     this.Hide();
 
@@ -119,8 +116,8 @@ namespace JOALHERIA.UI
         public void Inserir_Login()
         {
             loginBLL.Idcaixa = 1;
-            loginBLL.Idusuario = idusuariologado;
-            loginBLL.Usuario = usuariologado;
+            loginBLL.Idusuario = LoginBLL.User.Idusuario;
+            loginBLL.Usuario = LoginBLL.User.Usuario;
             loginBLL.Data_login = Convert.ToDateTime(lblDataLogin.Text);
 
             codigo_login = loginDAL.Cadastrar_Login(loginBLL);

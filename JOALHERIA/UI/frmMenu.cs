@@ -26,26 +26,30 @@ namespace JOALHERIA.UI
 
             PermissaoModulos();
         }
+        //
+        // Resumo:
+        //     Método verifica as permissões que o usuario possui.
+        //     Limita os acessos
 
         private void PermissaoModulos()
         {
             if (Usuario.Permissoes != null)
             {
-                bool alteracao, inclusao, exclusao;
-                inclusao = Usuario.Permissoes.Contains("i") ? true : false;
-                alteracao = Usuario.Permissoes.Contains("p") ? true : false;
-                exclusao = Usuario.Permissoes.Contains("x") ? true : false;
+                //bool alteracao, inclusao, exclusao;
+                //inclusao = Usuario.Permissoes.Contains("i") ? true : false;
+                //alteracao = Usuario.Permissoes.Contains("p") ? true : false;
+                //exclusao = Usuario.Permissoes.Contains("x") ? true : false;
 
-                if (!Usuario.Permissoes.Contains("f"))
-                    btnOrdem.Visible = btnVenda.Visible = vendasToolStripMenuItem1.Visible = financeiroToolStripMenuItem.Visible = false;
+                if (!Modulo.CanAcces(Modulos.Financeiro))
+                    btnOrdem.Visible = btnVenda.Visible = financeiroToolStripMenuItem.Visible = false;
 
-                if (!Usuario.Permissoes.Contains("e"))
-                    produtosToolStripMenuItem.Visible = btnProdutos.Visible = estoqueToolStripMenuItem.Visible = false;
+                if (!Modulo.CanAcces(Modulos.Estoque))
+                    btnProdutos.Visible = estoqueToolStripMenuItem.Visible = false;
 
-                if (!Usuario.Permissoes.Contains("c"))
+                if (!Modulo.CanAcces(Modulos.Cliente))
                     btnCliente.Visible = false;
 
-                if (!Usuario.Permissoes.Contains("u"))
+                if (!Modulo.CanAcces(Modulos.Usuario))
                     usuáriosToolStripMenuItem.Visible = false;
             }
         }
@@ -58,8 +62,6 @@ namespace JOALHERIA.UI
 
             txtDate.Enabled = false;
             txtUsuarioLogado.Text = frmLogin.usuariologado;
-
-
         }
         /* METODO PARA DEFINIR HOTKEYS (TECLAS DE ATALHO ) */
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -212,10 +214,7 @@ namespace JOALHERIA.UI
 
         private void vendasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            using (FrmRelVenda rel_venda = new FrmRelVenda())
-            {
-                rel_venda.ShowDialog();
-            }
+
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -296,10 +295,8 @@ namespace JOALHERIA.UI
 
         private void incluirToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            using (frmProduto frm_produto = new frmProduto(new JOALHERIABLL.ProdutoBLL()))
-            {
-                frm_produto.ShowDialog();
-            }
+            frmProduto frm_produto = new frmProduto(new JOALHERIABLL.ProdutoBLL());
+            frm_produto.ShowDialog();
         }
 
         private void pesquisarToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -316,6 +313,25 @@ namespace JOALHERIA.UI
             {
                 configUsuarios.ShowDialog();
             }
+        }
+
+        private void relatóriosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (FrmRelVenda rel_venda = new FrmRelVenda())
+            {
+                rel_venda.ShowDialog();
+            }
+        }
+
+        private void produtosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void relatóriosToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            frmRelatorioOS frmRelatorioOS = new frmRelatorioOS();
+            frmRelatorioOS.ShowDialog();
         }
     }
 }

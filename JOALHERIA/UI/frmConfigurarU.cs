@@ -15,8 +15,8 @@ namespace JOALHERIA.UI
     public partial class frmConfigurarU : Form
     {
         UsuarioBLL Usuario_;
-        string[] permissoes = { "u", "e", "f", "c", "p", "x", "i" };
-        string node;
+        Char[] permissoes = { (Char)Modulos.Usuario, (Char)Modulos.Estoque, (Char)Modulos.Financeiro, (Char)Modulos.Cliente };
+
         public frmConfigurarU(UsuarioBLL usuarioDAL)
         {
             InitializeComponent();
@@ -34,13 +34,11 @@ namespace JOALHERIA.UI
             {
                 pnlPermissoes.Visible = false;
                 pnlIncluirEditar.Visible = true;
-                node = treeView1.SelectedNode.Name;
             }
             if (treeView1.SelectedNode.Name == "NoUPermissoes")
             {
                 pnlIncluirEditar.Visible = false;
                 pnlPermissoes.Visible = true;
-                node = treeView1.SelectedNode.Name;
                 PopulaGrid(dgvPermissoesUsuario);
             }
         }
@@ -62,7 +60,7 @@ namespace JOALHERIA.UI
                     for (int i = 0; i < checkedListBox1.Items.Count; i++)
                         try
                         {
-                            checkedListBox1.SetItemChecked(i, Usuario_.Permissoes.Contains(permissoes[i]) ? true : false);
+                            checkedListBox1.SetItemChecked(i, Usuario_.Permissoes.Contains(permissoes[i].ToString()) ? true : false);
                         }
                         catch { };
             }
@@ -76,7 +74,7 @@ namespace JOALHERIA.UI
             string permissao = "";
 
             for (int i = 0; i < checkedListBox1.Items.Count; i++)
-                permissao += checkedListBox1.GetItemChecked(i) ? permissoes[i] : "";
+                permissao += checkedListBox1.GetItemChecked(i) ? permissoes[i].ToString() : "";
 
             Usuario_.Permissoes = permissao;
             UsuarioDAL.Update_Permissoes(Usuario_);
@@ -91,11 +89,14 @@ namespace JOALHERIA.UI
 
         }
 
-
-
         private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             NodeSelecionado();
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

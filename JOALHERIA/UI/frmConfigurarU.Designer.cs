@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Incluir / Editar");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Permissões");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Configurações");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Usuario", new System.Windows.Forms.TreeNode[] {
-            treeNode9,
-            treeNode10,
-            treeNode11});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Incluir / Editar");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Permissões");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Configurações");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Usuario", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3});
             this.pnlFundo = new System.Windows.Forms.Panel();
             this.pnlItems = new System.Windows.Forms.Panel();
             this.pnlPrincipal = new System.Windows.Forms.Panel();
@@ -193,10 +193,7 @@
             "Usuario",
             "Estoque",
             "Financeiro",
-            "Cliente",
-            "Inclusao",
-            "Edicao",
-            "Exclusao"});
+            "Cliente"});
             this.checkedListBox1.Location = new System.Drawing.Point(3, 22);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(133, 94);
@@ -440,6 +437,7 @@
             this.btnSalvar.Size = new System.Drawing.Size(75, 39);
             this.btnSalvar.TabIndex = 41;
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // label9
             // 
@@ -739,16 +737,16 @@
             // 
             this.treeView1.Location = new System.Drawing.Point(3, 3);
             this.treeView1.Name = "treeView1";
-            treeNode9.Name = "NoUincluir";
-            treeNode9.Text = "Incluir / Editar";
-            treeNode10.Name = "NoUPermissoes";
-            treeNode10.Text = "Permissões";
-            treeNode11.Name = "NoUConfiguracoes";
-            treeNode11.Text = "Configurações";
-            treeNode12.Name = "NoU";
-            treeNode12.Text = "Usuario";
+            treeNode1.Name = "NoUincluir";
+            treeNode1.Text = "Incluir / Editar";
+            treeNode2.Name = "NoUPermissoes";
+            treeNode2.Text = "Permissões";
+            treeNode3.Name = "NoUConfiguracoes";
+            treeNode3.Text = "Configurações";
+            treeNode4.Name = "NoU";
+            treeNode4.Text = "Usuario";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode12});
+            treeNode4});
             this.treeView1.Size = new System.Drawing.Size(156, 400);
             this.treeView1.TabIndex = 0;
             this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
