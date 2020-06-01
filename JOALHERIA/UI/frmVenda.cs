@@ -245,7 +245,7 @@ namespace JOALHERIA.UI
             try
             {
                 //cadastrando itens da venda
-                vendaBLL.Usuario = /*LoginBLL.User.Usuario != "" ? LoginBLL.User.Usuario : "suporte"*/UI.frmLogin.usuariologado.ToString();
+                vendaBLL.Usuario = LoginBLL.User.Usuario != "" ? LoginBLL.User.Usuario : "suporte";
                 vendaBLL.Idcliente = clienteDAL.Idpessoa;
                 vendaBLL.Precototal = total;
                 vendaBLL.Formapagamento = cmbForma.Text;
