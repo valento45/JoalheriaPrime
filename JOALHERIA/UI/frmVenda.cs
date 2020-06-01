@@ -245,7 +245,7 @@ namespace JOALHERIA.UI
             try
             {
                 //cadastrando itens da venda
-                vendaBLL.Usuario = UI.frmLogin.usuariologado.ToString();
+                vendaBLL.Usuario = /*LoginBLL.User.Usuario != "" ? LoginBLL.User.Usuario : "suporte"*/UI.frmLogin.usuariologado.ToString();
                 vendaBLL.Idcliente = clienteDAL.Idpessoa;
                 vendaBLL.Precototal = total;
                 vendaBLL.Formapagamento = cmbForma.Text;
@@ -281,6 +281,7 @@ namespace JOALHERIA.UI
             }
             catch (Exception ex)
             {
+                NetworkLog.Insert(ex, "Method Salvar in frmVenda.cs");
                 MessageBox.Show("Ops! \n\rOcorreu um erro: " + ex.Message + "\n\r" + (ex.InnerException != null ? ex.InnerException.Message : ""), "Atenção ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }

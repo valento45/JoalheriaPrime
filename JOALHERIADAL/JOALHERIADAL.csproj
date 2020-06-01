@@ -56,6 +56,7 @@
     <Compile Include="ItemPedidoDAL.cs" />
     <Compile Include="ItemServicoDAL.cs" />
     <Compile Include="LoginDAL.cs" />
+    <Compile Include="NetworkLog.cs" />
     <Compile Include="OrdemServicoDAL.cs" />
     <Compile Include="ProdutoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
