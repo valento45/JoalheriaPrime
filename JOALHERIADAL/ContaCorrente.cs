@@ -68,5 +68,17 @@ namespace JOALHERIADAL
                 result = new ContaCorrente(dt.Rows[0]);
             return result;
         }
+
+        public static List<string> Bancos()
+        {
+            List<string> Bancos = new List<string>();
+            Bancos.Add("Bradesco SA");
+            Bancos.Add("Itaú");
+            Bancos.Add("Caixa Econômica");
+            Bancos.Add("Brasil SA");
+            Bancos.Add("Nubank");
+            return Bancos.OrderBy(x => x).ToList();
+        }
     }
+
 }

@@ -104,6 +104,8 @@ namespace JOALHERIA.UI
                     PopulaGrid();
                 }
             }
+            else
+                MessageBox.Show("Preencha os campos obrigatórios!", "Valida campos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void btAlterar_Click(object sender, EventArgs e)
@@ -111,8 +113,8 @@ namespace JOALHERIA.UI
             if (dgvContasCorrente.RowCount > 0)
             {
                 conta = ContaCorrente.GetById((int)dgvContasCorrente.SelectedCells[colId.Index].Value);
-                cmbBanco.SelectedText = conta.Banco;
-                cmbTipo.SelectedText = conta.Tipo_conta;
+                cmbBanco.SelectedItem = conta.Banco;
+                cmbTipo.SelectedItem = conta.Tipo_conta;
                 txtAgencia.Text = conta.Agencia;
                 txtNmrConta.Text = conta.NrConta;
                 txtOperacao.Text = conta.Operacao;
@@ -120,6 +122,32 @@ namespace JOALHERIA.UI
                 tabControl1.SelectedTab = tabPage2;
                 alterar = true;
             }
+        }
+
+        private void frmContaCorrente_Shown(object sender, EventArgs e)
+        {
+            cmbBanco.DataSource = ContaCorrente.Bancos();
+        }
+
+        private void btExcluir_Click(object sender, EventArgs e)
+        {
+            if (dgvContasCorrente.RowCount > 0)
+            {
+                if (MessageBox.Show("Deseja realmente excluir a conta " + dgvContasCorrente.SelectedCells[colConta.Index].Value + "?", "Excluir conta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    int cod = (int)dgvContasCorrente.SelectedCells[colId.Index].Value;
+                    ContaCorrente.DeleteConta(cod);
+                    PopulaGrid();
+                }
+            }
+            else
+                MessageBox.Show("Seleciona algum item para excluir!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void btCancelar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Operação cancelada!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            LimparCampos();
         }
     }
 }

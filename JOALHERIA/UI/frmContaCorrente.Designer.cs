@@ -30,32 +30,32 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dgvContasCorrente = new System.Windows.Forms.DataGridView();
-            this.btIncluir = new System.Windows.Forms.Button();
-            this.btAlterar = new System.Windows.Forms.Button();
             this.btExcluir = new System.Windows.Forms.Button();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colConta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colChk = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cmbBanco = new System.Windows.Forms.ComboBox();
-            this.cmbTipo = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtAgencia = new System.Windows.Forms.TextBox();
-            this.txtNmrConta = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtOperacao = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.btAlterar = new System.Windows.Forms.Button();
+            this.btIncluir = new System.Windows.Forms.Button();
+            this.dgvContasCorrente = new System.Windows.Forms.DataGridView();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btCancelar = new System.Windows.Forms.Button();
+            this.btSalvar = new System.Windows.Forms.Button();
             this.txtFavorecido = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.btSalvar = new System.Windows.Forms.Button();
-            this.btCancelar = new System.Windows.Forms.Button();
+            this.txtOperacao = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtNmrConta = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtAgencia = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbTipo = new System.Windows.Forms.ComboBox();
+            this.cmbBanco = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colConta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colChk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContasCorrente)).BeginInit();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -82,6 +82,53 @@
             this.tabPage1.Text = "Consultar";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btExcluir
+            // 
+            this.btExcluir.Location = new System.Drawing.Point(303, 143);
+            this.btExcluir.Name = "btExcluir";
+            this.btExcluir.Size = new System.Drawing.Size(75, 23);
+            this.btExcluir.TabIndex = 3;
+            this.btExcluir.Text = "Excluir";
+            this.btExcluir.UseVisualStyleBackColor = true;
+            this.btExcluir.Click += new System.EventHandler(this.btExcluir_Click);
+            // 
+            // btAlterar
+            // 
+            this.btAlterar.Location = new System.Drawing.Point(222, 143);
+            this.btAlterar.Name = "btAlterar";
+            this.btAlterar.Size = new System.Drawing.Size(75, 23);
+            this.btAlterar.TabIndex = 2;
+            this.btAlterar.Text = "Alterar";
+            this.btAlterar.UseVisualStyleBackColor = true;
+            this.btAlterar.Click += new System.EventHandler(this.btAlterar_Click);
+            // 
+            // btIncluir
+            // 
+            this.btIncluir.Location = new System.Drawing.Point(141, 143);
+            this.btIncluir.Name = "btIncluir";
+            this.btIncluir.Size = new System.Drawing.Size(75, 23);
+            this.btIncluir.TabIndex = 1;
+            this.btIncluir.Text = "Incluir";
+            this.btIncluir.UseVisualStyleBackColor = true;
+            this.btIncluir.Click += new System.EventHandler(this.btIncluir_Click);
+            // 
+            // dgvContasCorrente
+            // 
+            this.dgvContasCorrente.AllowUserToAddRows = false;
+            this.dgvContasCorrente.AllowUserToDeleteRows = false;
+            this.dgvContasCorrente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvContasCorrente.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvContasCorrente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvContasCorrente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colId,
+            this.colConta,
+            this.colChk});
+            this.dgvContasCorrente.Location = new System.Drawing.Point(4, 6);
+            this.dgvContasCorrente.Name = "dgvContasCorrente";
+            this.dgvContasCorrente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvContasCorrente.Size = new System.Drawing.Size(509, 131);
+            this.dgvContasCorrente.TabIndex = 0;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.btCancelar);
@@ -107,51 +154,128 @@
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Leave += new System.EventHandler(this.tabPage2_Leave);
             // 
-            // dgvContasCorrente
+            // btCancelar
             // 
-            this.dgvContasCorrente.AllowUserToAddRows = false;
-            this.dgvContasCorrente.AllowUserToDeleteRows = false;
-            this.dgvContasCorrente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dgvContasCorrente.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvContasCorrente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvContasCorrente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colId,
-            this.colConta,
-            this.colChk});
-            this.dgvContasCorrente.Location = new System.Drawing.Point(4, 6);
-            this.dgvContasCorrente.Name = "dgvContasCorrente";
-            this.dgvContasCorrente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvContasCorrente.Size = new System.Drawing.Size(509, 131);
-            this.dgvContasCorrente.TabIndex = 0;
+            this.btCancelar.Location = new System.Drawing.Point(268, 143);
+            this.btCancelar.Name = "btCancelar";
+            this.btCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btCancelar.TabIndex = 14;
+            this.btCancelar.Text = "Cancelar";
+            this.btCancelar.UseVisualStyleBackColor = true;
+            this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
             // 
-            // btIncluir
+            // btSalvar
             // 
-            this.btIncluir.Location = new System.Drawing.Point(141, 143);
-            this.btIncluir.Name = "btIncluir";
-            this.btIncluir.Size = new System.Drawing.Size(75, 23);
-            this.btIncluir.TabIndex = 1;
-            this.btIncluir.Text = "Incluir";
-            this.btIncluir.UseVisualStyleBackColor = true;
-            this.btIncluir.Click += new System.EventHandler(this.btIncluir_Click);
+            this.btSalvar.Location = new System.Drawing.Point(187, 143);
+            this.btSalvar.Name = "btSalvar";
+            this.btSalvar.Size = new System.Drawing.Size(75, 23);
+            this.btSalvar.TabIndex = 13;
+            this.btSalvar.Text = "Salvar";
+            this.btSalvar.UseVisualStyleBackColor = true;
+            this.btSalvar.Click += new System.EventHandler(this.btSalvar_Click);
             // 
-            // btAlterar
+            // txtFavorecido
             // 
-            this.btAlterar.Location = new System.Drawing.Point(222, 143);
-            this.btAlterar.Name = "btAlterar";
-            this.btAlterar.Size = new System.Drawing.Size(75, 23);
-            this.btAlterar.TabIndex = 2;
-            this.btAlterar.Text = "Alterar";
-            this.btAlterar.UseVisualStyleBackColor = true;
-            this.btAlterar.Click += new System.EventHandler(this.btAlterar_Click);
+            this.txtFavorecido.Location = new System.Drawing.Point(60, 84);
+            this.txtFavorecido.Name = "txtFavorecido";
+            this.txtFavorecido.Size = new System.Drawing.Size(449, 20);
+            this.txtFavorecido.TabIndex = 12;
             // 
-            // btExcluir
+            // label6
             // 
-            this.btExcluir.Location = new System.Drawing.Point(303, 143);
-            this.btExcluir.Name = "btExcluir";
-            this.btExcluir.Size = new System.Drawing.Size(75, 23);
-            this.btExcluir.TabIndex = 3;
-            this.btExcluir.Text = "Excluir";
-            this.btExcluir.UseVisualStyleBackColor = true;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(1, 88);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(60, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Favorecido";
+            // 
+            // txtOperacao
+            // 
+            this.txtOperacao.Location = new System.Drawing.Point(446, 51);
+            this.txtOperacao.Name = "txtOperacao";
+            this.txtOperacao.Size = new System.Drawing.Size(63, 20);
+            this.txtOperacao.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(386, 54);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(54, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Operação";
+            // 
+            // txtNmrConta
+            // 
+            this.txtNmrConta.Location = new System.Drawing.Point(226, 51);
+            this.txtNmrConta.Name = "txtNmrConta";
+            this.txtNmrConta.Size = new System.Drawing.Size(125, 20);
+            this.txtNmrConta.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(174, 54);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Nºconta";
+            // 
+            // txtAgencia
+            // 
+            this.txtAgencia.Location = new System.Drawing.Point(60, 51);
+            this.txtAgencia.Name = "txtAgencia";
+            this.txtAgencia.Size = new System.Drawing.Size(108, 20);
+            this.txtAgencia.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(11, 54);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Agência";
+            // 
+            // cmbTipo
+            // 
+            this.cmbTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTipo.FormattingEnabled = true;
+            this.cmbTipo.Items.AddRange(new object[] {
+            "Corrente",
+            "Poupança"});
+            this.cmbTipo.Location = new System.Drawing.Point(391, 17);
+            this.cmbTipo.Name = "cmbTipo";
+            this.cmbTipo.Size = new System.Drawing.Size(121, 21);
+            this.cmbTipo.TabIndex = 4;
+            // 
+            // cmbBanco
+            // 
+            this.cmbBanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBanco.FormattingEnabled = true;
+            this.cmbBanco.Location = new System.Drawing.Point(60, 17);
+            this.cmbBanco.Name = "cmbBanco";
+            this.cmbBanco.Size = new System.Drawing.Size(291, 21);
+            this.cmbBanco.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(357, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(28, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Tipo";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Banco";
             // 
             // colId
             // 
@@ -171,126 +295,9 @@
             // 
             this.colChk.HeaderText = "       ";
             this.colChk.Name = "colChk";
+            this.colChk.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colChk.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.colChk.Width = 50;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Banco";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(357, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Tipo";
-            // 
-            // cmbBanco
-            // 
-            this.cmbBanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbBanco.FormattingEnabled = true;
-            this.cmbBanco.Location = new System.Drawing.Point(60, 17);
-            this.cmbBanco.Name = "cmbBanco";
-            this.cmbBanco.Size = new System.Drawing.Size(291, 21);
-            this.cmbBanco.TabIndex = 3;
-            // 
-            // cmbTipo
-            // 
-            this.cmbTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTipo.FormattingEnabled = true;
-            this.cmbTipo.Location = new System.Drawing.Point(391, 17);
-            this.cmbTipo.Name = "cmbTipo";
-            this.cmbTipo.Size = new System.Drawing.Size(121, 21);
-            this.cmbTipo.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 54);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Agência";
-            // 
-            // txtAgencia
-            // 
-            this.txtAgencia.Location = new System.Drawing.Point(60, 51);
-            this.txtAgencia.Name = "txtAgencia";
-            this.txtAgencia.Size = new System.Drawing.Size(108, 20);
-            this.txtAgencia.TabIndex = 6;
-            // 
-            // txtNmrConta
-            // 
-            this.txtNmrConta.Location = new System.Drawing.Point(226, 51);
-            this.txtNmrConta.Name = "txtNmrConta";
-            this.txtNmrConta.Size = new System.Drawing.Size(125, 20);
-            this.txtNmrConta.TabIndex = 8;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(174, 54);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Nºconta";
-            // 
-            // txtOperacao
-            // 
-            this.txtOperacao.Location = new System.Drawing.Point(446, 51);
-            this.txtOperacao.Name = "txtOperacao";
-            this.txtOperacao.Size = new System.Drawing.Size(63, 20);
-            this.txtOperacao.TabIndex = 10;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(386, 54);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Operação";
-            // 
-            // txtFavorecido
-            // 
-            this.txtFavorecido.Location = new System.Drawing.Point(60, 84);
-            this.txtFavorecido.Name = "txtFavorecido";
-            this.txtFavorecido.Size = new System.Drawing.Size(449, 20);
-            this.txtFavorecido.TabIndex = 12;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1, 88);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 13);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Favorecido";
-            // 
-            // btSalvar
-            // 
-            this.btSalvar.Location = new System.Drawing.Point(187, 143);
-            this.btSalvar.Name = "btSalvar";
-            this.btSalvar.Size = new System.Drawing.Size(75, 23);
-            this.btSalvar.TabIndex = 13;
-            this.btSalvar.Text = "Salvar";
-            this.btSalvar.UseVisualStyleBackColor = true;
-            this.btSalvar.Click += new System.EventHandler(this.btSalvar_Click);
-            // 
-            // btCancelar
-            // 
-            this.btCancelar.Location = new System.Drawing.Point(268, 143);
-            this.btCancelar.Name = "btCancelar";
-            this.btCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btCancelar.TabIndex = 14;
-            this.btCancelar.Text = "Cancelar";
-            this.btCancelar.UseVisualStyleBackColor = true;
             // 
             // frmContaCorrente
             // 
@@ -301,13 +308,15 @@
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmContaCorrente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Conta corrente";
             this.Load += new System.EventHandler(this.frmContaCorrente_Load);
+            this.Shown += new System.EventHandler(this.frmContaCorrente_Shown);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContasCorrente)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvContasCorrente)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -321,9 +330,6 @@
         private System.Windows.Forms.Button btExcluir;
         private System.Windows.Forms.Button btAlterar;
         private System.Windows.Forms.Button btIncluir;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colConta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colChk;
         private System.Windows.Forms.ComboBox cmbTipo;
         private System.Windows.Forms.ComboBox cmbBanco;
         private System.Windows.Forms.Label label2;
@@ -338,5 +344,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btCancelar;
         private System.Windows.Forms.Button btSalvar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colConta;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn colChk;
     }
 }
