@@ -62,6 +62,7 @@
             this.produtosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.incluirToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.pesquisarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.relatóriosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ferramentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bancoDeDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,7 +78,6 @@
             this.btnVenda = new System.Windows.Forms.Button();
             this.btnOrdem = new System.Windows.Forms.Button();
             this.btnCliente = new System.Windows.Forms.Button();
-            this.relatóriosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -216,21 +216,21 @@
             // incluirToolStripMenuItem
             // 
             this.incluirToolStripMenuItem.Name = "incluirToolStripMenuItem";
-            this.incluirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.incluirToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.incluirToolStripMenuItem.Text = "Incluir";
             this.incluirToolStripMenuItem.Click += new System.EventHandler(this.incluirToolStripMenuItem_Click);
             // 
             // pesquisasrToolStripMenuItem
             // 
             this.pesquisasrToolStripMenuItem.Name = "pesquisasrToolStripMenuItem";
-            this.pesquisasrToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pesquisasrToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.pesquisasrToolStripMenuItem.Text = "Pesquisasr";
             this.pesquisasrToolStripMenuItem.Click += new System.EventHandler(this.pesquisasrToolStripMenuItem_Click);
             // 
             // relatóriosToolStripMenuItem
             // 
             this.relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
-            this.relatóriosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.relatóriosToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.relatóriosToolStripMenuItem.Text = "Relatórios";
             this.relatóriosToolStripMenuItem.Click += new System.EventHandler(this.relatóriosToolStripMenuItem_Click);
             // 
@@ -288,6 +288,7 @@
             this.contasCorrentesToolStripMenuItem.Name = "contasCorrentesToolStripMenuItem";
             this.contasCorrentesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.contasCorrentesToolStripMenuItem.Text = "Contas Correntes";
+            this.contasCorrentesToolStripMenuItem.Click += new System.EventHandler(this.contasCorrentesToolStripMenuItem_Click);
             // 
             // planoDeContasToolStripMenuItem
             // 
@@ -310,14 +311,14 @@
             this.configurarToolStripMenuItem});
             this.usuáriosToolStripMenuItem.Image = global::JOALHERIA.Properties.Resources.Cliente;
             this.usuáriosToolStripMenuItem.Name = "usuáriosToolStripMenuItem";
-            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.usuáriosToolStripMenuItem.Text = "Usuários";
             this.usuáriosToolStripMenuItem.Click += new System.EventHandler(this.usuáriosToolStripMenuItem_Click);
             // 
             // configurarToolStripMenuItem
             // 
             this.configurarToolStripMenuItem.Name = "configurarToolStripMenuItem";
-            this.configurarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.configurarToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.configurarToolStripMenuItem.Text = "Configurar";
             this.configurarToolStripMenuItem.Click += new System.EventHandler(this.configurarToolStripMenuItem_Click);
             // 
@@ -339,14 +340,14 @@
             this.relatóriosToolStripMenuItem1});
             this.produtosToolStripMenuItem1.Image = global::JOALHERIA.Properties.Resources.imgCadProduto;
             this.produtosToolStripMenuItem1.Name = "produtosToolStripMenuItem1";
-            this.produtosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.produtosToolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
             this.produtosToolStripMenuItem1.Text = "Produtos";
             // 
             // incluirToolStripMenuItem2
             // 
             this.incluirToolStripMenuItem2.Image = global::JOALHERIA.Properties.Resources.Cadastro;
             this.incluirToolStripMenuItem2.Name = "incluirToolStripMenuItem2";
-            this.incluirToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.incluirToolStripMenuItem2.Size = new System.Drawing.Size(126, 22);
             this.incluirToolStripMenuItem2.Text = "Incluir";
             this.incluirToolStripMenuItem2.Click += new System.EventHandler(this.incluirToolStripMenuItem2_Click);
             // 
@@ -354,14 +355,20 @@
             // 
             this.pesquisarToolStripMenuItem1.Image = global::JOALHERIA.Properties.Resources.Consulta;
             this.pesquisarToolStripMenuItem1.Name = "pesquisarToolStripMenuItem1";
-            this.pesquisarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.pesquisarToolStripMenuItem1.Size = new System.Drawing.Size(126, 22);
             this.pesquisarToolStripMenuItem1.Text = "Pesquisar";
             this.pesquisarToolStripMenuItem1.Click += new System.EventHandler(this.pesquisarToolStripMenuItem1_Click);
+            // 
+            // relatóriosToolStripMenuItem1
+            // 
+            this.relatóriosToolStripMenuItem1.Name = "relatóriosToolStripMenuItem1";
+            this.relatóriosToolStripMenuItem1.Size = new System.Drawing.Size(126, 22);
+            this.relatóriosToolStripMenuItem1.Text = "Relatórios";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(119, 6);
             // 
             // ferramentasToolStripMenuItem
             // 
@@ -382,7 +389,7 @@
             this.bancoDeDadosToolStripMenuItem.Image = global::JOALHERIA.Properties.Resources.BancoDados1;
             this.bancoDeDadosToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bancoDeDadosToolStripMenuItem.Name = "bancoDeDadosToolStripMenuItem";
-            this.bancoDeDadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bancoDeDadosToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.bancoDeDadosToolStripMenuItem.Text = "Banco de Dados";
             // 
             // backupRestaureToolStripMenuItem
@@ -398,7 +405,7 @@
             // 
             this.calculadoraToolStripMenuItem.Image = global::JOALHERIA.Properties.Resources.Calculadora;
             this.calculadoraToolStripMenuItem.Name = "calculadoraToolStripMenuItem";
-            this.calculadoraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.calculadoraToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.calculadoraToolStripMenuItem.Text = "Calculadora";
             this.calculadoraToolStripMenuItem.Click += new System.EventHandler(this.calculadoraToolStripMenuItem_Click);
             // 
@@ -406,7 +413,7 @@
             // 
             this.blocoDeNotasToolStripMenuItem.Image = global::JOALHERIA.Properties.Resources.Notepad1;
             this.blocoDeNotasToolStripMenuItem.Name = "blocoDeNotasToolStripMenuItem";
-            this.blocoDeNotasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.blocoDeNotasToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.blocoDeNotasToolStripMenuItem.Text = "Bloco de Notas";
             this.blocoDeNotasToolStripMenuItem.Click += new System.EventHandler(this.blocoDeNotasToolStripMenuItem_Click);
             // 
@@ -414,7 +421,7 @@
             // 
             this.trocarSenhaToolStripMenuItem.Image = global::JOALHERIA.Properties.Resources.Logoff;
             this.trocarSenhaToolStripMenuItem.Name = "trocarSenhaToolStripMenuItem";
-            this.trocarSenhaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.trocarSenhaToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.trocarSenhaToolStripMenuItem.Text = "Trocar Senha";
             // 
             // ajudaToolStripMenuItem
@@ -430,7 +437,7 @@
             // 
             this.infoToolStripMenuItem.Image = global::JOALHERIA.Properties.Resources.Sobre;
             this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
-            this.infoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.infoToolStripMenuItem.Size = new System.Drawing.Size(95, 22);
             this.infoToolStripMenuItem.Text = "Info";
             // 
             // txtDate
@@ -530,12 +537,6 @@
             this.btnCliente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCliente.UseVisualStyleBackColor = false;
             this.btnCliente.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // relatóriosToolStripMenuItem1
-            // 
-            this.relatóriosToolStripMenuItem1.Name = "relatóriosToolStripMenuItem1";
-            this.relatóriosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.relatóriosToolStripMenuItem1.Text = "Relatórios";
             // 
             // frmMenu
             // 

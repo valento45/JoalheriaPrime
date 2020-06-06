@@ -333,5 +333,13 @@ namespace JOALHERIA.UI
             frmRelatorioOS frmRelatorioOS = new frmRelatorioOS();
             frmRelatorioOS.ShowDialog();
         }
+
+        private void contasCorrentesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using(frmContaCorrente conta = new frmContaCorrente())
+            {
+                conta.ShowDialog();
+            }
+        }
     }
 }
