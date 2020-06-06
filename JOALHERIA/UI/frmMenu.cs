@@ -61,7 +61,7 @@ namespace JOALHERIA.UI
             timer1.Tick += timer1_Tick;
 
             txtDate.Enabled = false;
-            txtUsuarioLogado.Text = frmLogin.usuariologado;
+            txtUsuarioLogado.Text = LoginBLL.User.Usuario;
         }
         /* METODO PARA DEFINIR HOTKEYS (TECLAS DE ATALHO ) */
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -207,16 +207,6 @@ namespace JOALHERIA.UI
             backup.ShowDialog();
         }
 
-        private void ordensDeServToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void vendasToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click_1(object sender, EventArgs e)
         {
             DateTime dataVencimento = new DateTime(2022, DateTime.Today.Month, DateTime.Today.Day);
@@ -225,18 +215,6 @@ namespace JOALHERIA.UI
             Int32 diferença = dataVencimento.CompareTo(dataAtual);
 
             MessageBox.Show("Diferença de data antiga para data atual: " + diferença);
-        }
-
-        private void serviçosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmServico servico = new frmServico();
-            servico.ShowDialog();
-        }
-
-        private void ordemDeServiçoToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            frmOrdemServico oo = new frmOrdemServico();
-            oo.ShowDialog();
         }
 
         private void usuáriosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -339,6 +317,14 @@ namespace JOALHERIA.UI
             using(frmContaCorrente conta = new frmContaCorrente())
             {
                 conta.ShowDialog();
+            }
+        }
+
+        private void faturamentoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using(frmFaturamento faturamento = new frmFaturamento())
+            {
+                faturamento.ShowDialog();
             }
         }
     }

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LOG>
+  <ERRORS>
+    <Message>A cadeia de caracteres de entrada não estava em um formato correto.</Message>
+    <StackTrace>   em System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer&amp; number, NumberFormatInfo info, Boolean parseDecimal)
+   em System.Number.ParseDecimal(String value, NumberStyles options, NumberFormatInfo numfmt)
+   em System.Convert.ToDecimal(String value)
+   em JOALHERIA.UI.frmVenda.Salvar() na C:\Users\MRX\Desktop\CProfissional\JoalheriaPrime\JOALHERIA\UI\frmVenda.cs:linha 254</StackTrace>
+    <Detalhes> - Method Salvar in frmVenda.cs</Detalhes>
+    <Data>06/06/2020 20:37:29</Data>
+  </ERRORS>
+</LOG>
