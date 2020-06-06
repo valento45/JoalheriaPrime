@@ -42,7 +42,7 @@ namespace JOALHERIA.UI
 
             if (cmbFiltro.SelectedIndex == 1)
             {
-                pnlFiltro.Visible = false;
+                pnl.Visible = false;
                 pnlPeriodo.Visible = true;
             }
         }

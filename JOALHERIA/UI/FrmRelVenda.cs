@@ -1,4 +1,6 @@
-﻿using Microsoft.Reporting.WinForms;
+﻿using JOALHERIABLL;
+using JOALHERIADAL;
+using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,7 +33,7 @@ namespace JOALHERIA.UI
         {
             reportViewerNormal.Clear();
 
-            this.reportViewerNormal.LocalReport.SetParameters(new ReportParameter("Usuario", frmLogin.usuariologado.ToString()));
+            this.reportViewerNormal.LocalReport.SetParameters(new ReportParameter("Usuario", LoginBLL.User.Usuario.ToString()));
             this.reportViewerNormal.RefreshReport();
 
             vendaDAL.RelatorioVenda().Fill(DataSet1, "VENDA");
@@ -168,10 +170,10 @@ namespace JOALHERIA.UI
                 if (Tipo == "Normal")
                     RelatorioNormal();
 
-                if (Tipo == "Data")
+                else if (Tipo == "Data")
                     RelatorioPorData(txtDe.Text, txtAte.Text);
 
-                if (Tipo == "Codigo")
+                else if (Tipo == "Codigo")
                 {
                     int.TryParse(txtFiltro.Text, out result);
                     if (result > 0)
@@ -180,6 +182,7 @@ namespace JOALHERIA.UI
             }
             catch (Exception ex)
             {
+                NetworkLog.Insert(ex, "frmRelVenda.cs");
                 MessageBox.Show("" + ex.Message, "Erro ao gerar Relatorio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }

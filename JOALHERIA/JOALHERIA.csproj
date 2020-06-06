@@ -63,6 +63,12 @@
     <Compile Include="UI\frmConfigurarU.Designer.cs">
       <DependentUpon>frmConfigurarU.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\frmContaCorrente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmContaCorrente.Designer.cs">
+      <DependentUpon>frmContaCorrente.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmPesquisaP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -201,6 +207,9 @@
     <EmbeddedResource Include="UI\CupomOS.rdlc" />
     <EmbeddedResource Include="UI\frmConfigurarU.resx">
       <DependentUpon>frmConfigurarU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmContaCorrente.resx">
+      <DependentUpon>frmContaCorrente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmPesquisaP.resx">
       <DependentUpon>frmPesquisaP.cs</DependentUpon>

@@ -78,7 +78,7 @@ namespace JOALHERIA.UI
 
             Usuario_.Permissoes = permissao;
             UsuarioDAL.Update_Permissoes(Usuario_);
-
+            MessageBox.Show("Permississões atualizadas!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             checkedListBox1.ClearSelected();
 
             PopulaGrid(dgvPermissoesUsuario);

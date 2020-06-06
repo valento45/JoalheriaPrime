@@ -127,6 +127,7 @@ namespace JOALHERIADAL
                 }
                 catch (SqlException ex)
                 {
+                    NetworkLog.Insert(ex, "Acces.cs");
                     sucesso = false;
                     //NetworkLog.Insert(ex, pCommand.CommandText);
                     if (ex.Message.Contains("Exception while writing to stream") || ex.Message.Contains("Exception while reading from stream"))

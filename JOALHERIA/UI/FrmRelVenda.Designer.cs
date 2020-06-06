@@ -39,6 +39,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.reportViewerNormal = new Microsoft.Reporting.WinForms.ReportViewer();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.pnlPorData = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -50,7 +51,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cmbGerarPor = new System.Windows.Forms.ComboBox();
             this.btnGerar = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ITEMPEDIDOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataSetVenda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VENDABindingSource)).BeginInit();
@@ -138,6 +138,16 @@
             this.panel2.Size = new System.Drawing.Size(874, 131);
             this.panel2.TabIndex = 8;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(373, 10);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(198, 22);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Relatório de Vendas";
+            // 
             // pnlPorData
             // 
             this.pnlPorData.Controls.Add(this.label4);
@@ -219,6 +229,7 @@
             // 
             // cmbGerarPor
             // 
+            this.cmbGerarPor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGerarPor.FormattingEnabled = true;
             this.cmbGerarPor.Items.AddRange(new object[] {
             "Codigo",
@@ -241,16 +252,6 @@
             this.btnGerar.Text = "Gerar";
             this.btnGerar.UseVisualStyleBackColor = false;
             this.btnGerar.Click += new System.EventHandler(this.btnGerar_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(373, 10);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(198, 22);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Relatório de Vendas";
             // 
             // FrmRelVenda
             // 
