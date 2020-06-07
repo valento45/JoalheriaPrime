@@ -19,7 +19,7 @@ namespace Aux_Joalheria
         string destinatario;
         string mensagem;
         string Erro;
-
+        string[] vetor;
         public frmEnviaEmail() { }
 
         public frmEnviaEmail(string email, string senha, string erro)
@@ -28,17 +28,17 @@ namespace Aux_Joalheria
             Email = email;
             Senha = senha;
             Erro = erro;
-            txtMensagem.Text = Erro;
+            vetor = Erro.Split(',');
+            txtMensagem.Text = vetor[0];
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             remetente = txtDe.Text.Trim();
             destinatario = txtPara.Text.Trim();
-            mensagem = txtMensagem.Text.Trim();
-            string[] vetor = Erro.Split(',');
+            mensagem = txtMensagem.Text.Trim();             
 
-            if (MessageBox.Show("Deseja enviar email com LOG em anexo?", "Opcional", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Deseja enviar email com LOG em anexo automaticamente?", "Opcional", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 MessageBox.Show(EnviarEmail.EnviaMensagemEmailComAnexo(destinatario, remetente, "Bug ou Erro", mensagem, Email, Senha, vetor[1]), "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             else

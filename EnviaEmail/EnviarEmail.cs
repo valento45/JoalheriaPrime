@@ -90,8 +90,11 @@ namespace EnviaEmail
                 //cria uma mensagem
                 MailMessage mensagemEmail = new MailMessage(remetente, destinatario, assunto, enviaMensagem);
 
-                Attachment anexado = new Attachment(caminhoAnexo, MediaTypeNames.Application.Octet);
-                mensagemEmail.Attachments.Add(anexado);
+                if (caminhoAnexo.Length > 0)
+                {
+                    Attachment anexado = new Attachment(caminhoAnexo, MediaTypeNames.Application.Octet);
+                    mensagemEmail.Attachments.Add(anexado);
+                }
                 //configuracoes do smtp
                 SmtpClient smtpClient = new SmtpClient();
                 smtpClient.Host = "smtp.gmail.com";
