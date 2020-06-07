@@ -48,10 +48,10 @@ namespace JOALHERIA.UI
             timer1.Interval = 1000;
             timer1.Tick += timer1_Tick;
 
-            if(frmLogin.usuariologado != "")
+            if(LoginBLL.User != null)
             {
-                lblUsuario.Text = frmLogin.usuariologado;
-                idusuario = frmLogin.idusuariologado;
+                lblUsuario.Text = LoginBLL.User.Usuario;
+                idusuario = LoginBLL.User.Idusuario;
             }            
 
         }
@@ -333,7 +333,7 @@ namespace JOALHERIA.UI
                 ordemservicoBLL.Forma_pagamento = cmbForma.Text;
                 ordemservicoBLL.Valor_pago = valor_pago;
                 ordemservicoBLL.Troco = troco;
-                ordemservicoBLL.Idusuario = frmLogin.idusuariologado;
+                ordemservicoBLL.Idusuario = LoginBLL.User.Idusuario;
 
                 itemservicoBLL.Idordem = ordemservicoDAL.Cadastrar(ordemservicoBLL);
 

@@ -170,7 +170,7 @@ namespace JOALHERIA.UI
 
         private void frmVenda_Load(object sender, EventArgs e)
         {
-            lblUsuario.Text = Convert.ToString(frmLogin.usuariologado);
+            lblUsuario.Text = Convert.ToString(LoginBLL.User.Usuario);
             txtCliente.Focus();
 
             timerHora.Enabled = true;

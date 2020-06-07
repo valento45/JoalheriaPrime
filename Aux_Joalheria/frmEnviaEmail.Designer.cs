@@ -46,6 +46,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.button2);
@@ -151,11 +152,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(586, 253);
             this.Controls.Add(this.panel1);
             this.Name = "frmEnviaEmail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmEnviaEmail";
+            this.Text = "Enviar Email";
             this.Load += new System.EventHandler(this.frmEnviaEmail_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -72,7 +72,7 @@ namespace JOALHERIA.UI
                         if(chkServicos.Checked)
                         {
                             List<OrdemServicoBLL> vendas = new List<OrdemServicoBLL>();
-                            lblTotalVenda.Visible = dgvVendas.Visible = true;
+                            lblTotalOS.Visible = dgvServicos.Visible = true;
                             query = "SELECT * FROM JOALHERIA.ORDEMSERVICO";
                             if (cmbFiltrar.SelectedIndex == 0)
                                 query += " WHERE DATAATUAL >= '" + DateTime.Now.ToString("dd/MM/yyyy") + " 00:00:00' AND DATAATUAL <= '" + DateTime.Now.ToString("dd/MM/yyyy") + " 23:59:59'";
@@ -89,21 +89,24 @@ namespace JOALHERIA.UI
 
                             foreach (DataRow x in Acces.ExecuteReader(cmd).Tables[0].Rows)
                                 vendas.Add(new OrdemServicoBLL(x));
-                            dgvVendas.Rows.Clear();
+                            dgvServicos.Rows.Clear();
                             if (vendas.Count > 0)
                                 foreach (OrdemServicoBLL venda in vendas.OrderBy(x => x.Dataatual).ToList())
-                                    dgvVendas.Rows.Add(venda.Idordem, venda.Idcliente, venda.Dataatual, venda.Dataentrega, venda.Desconto, venda.Valor_total, venda.Forma_pagamento, venda.Valor_pago, venda.Troco);
+                                    dgvServicos.Rows.Add(venda.Idordem, venda.Idcliente, venda.Dataatual, venda.Dataentrega, venda.Desconto, venda.Valor_total, venda.Forma_pagamento, venda.Valor_pago, venda.Troco);
                             decimal total = 0;
-                            for (int i = 0; i < dgvVendas.RowCount; i++)
+                            for (int i = 0; i < dgvServicos.RowCount; i++)
                             {
-                                total += (decimal)dgvVendas.Rows[i].Cells[colPrecoTotal.Index].Value;
+                                total += (decimal)dgvServicos.Rows[i].Cells[colValorTotalOS.Index].Value;
                             }
                             subtotal += total;
                             lblTotalOS.Text = "Total: " + total.ToString();
                         }
 
                         if (chkServicos.Checked && chkVendas.Checked)
-                            lblTotalOSeVenda.Text += subtotal.ToString();
+                        {
+                            lblTotalOSeVenda.Visible = true;
+                            lblTotalOSeVenda.Text = "Total OS e Vendas: " + subtotal.ToString();
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -127,13 +130,14 @@ namespace JOALHERIA.UI
             bool retorno = false;
             if (cmbFiltrar.SelectedIndex != -1)
             {
+                retorno = true;
                 if (cmbFiltrar.SelectedIndex == 3)
                 {
                     if (txtDe.Text.Replace("/", "").Length == 8 && txtAte.Text.Replace("/", "").Length == 8)
                         retorno = true;
                     else
                         retorno = false;
-                }
+                }                
             }
             else
                 retorno = false;

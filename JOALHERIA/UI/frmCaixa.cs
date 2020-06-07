@@ -32,9 +32,9 @@ namespace JOALHERIA.UI
         }
 
         private void frmCaixa_Load(object sender, EventArgs e)
-        {           
-            label5.Text = frmLogin.usuariologado;
-            tslblUsuario.Text = frmLogin.usuariologado;         
+        {
+            label5.Text = LoginBLL.User.Usuario; 
+            tslblUsuario.Text = LoginBLL.User.Usuario;         
 
             txtValor.Focus();
            

@@ -21,8 +21,6 @@ namespace JOALHERIA.UI
         JOALHERIADAL.LoginDAL loginDAL = new JOALHERIADAL.LoginDAL();
         public static JOALHERIABLL.UsuarioBLL user;
         public static int codigo_login { get; set; }
-        public static string usuariologado { get; set; }
-        public static int idusuariologado { get; set; }
 
         public frmLogin()
         {

@@ -68,7 +68,7 @@ namespace JOALHERIA.UI
         {
             reportViewerNormal.Clear();
 
-            this.reportViewerNormal.LocalReport.SetParameters(new ReportParameter("Usuario", frmLogin.usuariologado.ToString()));
+            this.reportViewerNormal.LocalReport.SetParameters(new ReportParameter("Usuario", LoginBLL.User.Usuario.ToString()));
             this.reportViewerNormal.RefreshReport();
 
             vendaDAL.RelatorioPorData(de, ate).Fill(DataSet1, "VENDA");
