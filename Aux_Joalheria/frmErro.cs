@@ -14,9 +14,11 @@ namespace Aux_Joalheria
     public partial class frmErro : Form
     {
         string FileName;
+        Exception Excep;
         public frmErro(Exception ex)
         {
             InitializeComponent();
+            Excep = ex;
             lblErro.Text = ex.Message;
             lblContato.Text = FuncoesAuxiliares.ContatoSuporte;
         }
@@ -60,7 +62,7 @@ namespace Aux_Joalheria
 
         private void EnviarEmail()
         {
-            frmCredenciais cred = new frmCredenciais();
+            frmCredenciais cred = new frmCredenciais(Excep.Message);
             cred.ShowDialog();
             ////cria uma instancia de email
             //MailMessage mail = new MailMessage();

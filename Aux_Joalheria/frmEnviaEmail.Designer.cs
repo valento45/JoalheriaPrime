@@ -155,6 +155,7 @@
             this.Name = "frmEnviaEmail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmEnviaEmail";
+            this.Load += new System.EventHandler(this.frmEnviaEmail_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);

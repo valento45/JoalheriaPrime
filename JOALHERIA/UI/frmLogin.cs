@@ -37,8 +37,6 @@ namespace JOALHERIA.UI
         private void frmLogin_Load(object sender, EventArgs e)
         {
             lblDataLogin.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            string x = null;
-            x.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)

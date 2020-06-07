@@ -18,12 +18,14 @@ namespace Aux_Joalheria
         string remetente;
         string destinatario;
         string mensagem;
-
-        public frmEnviaEmail(string email, string senha)
+        string Erro;
+        public frmEnviaEmail(string email, string senha, string erro)
         {
             InitializeComponent();
             Email = email;
             Senha = senha;
+            Erro = erro;
+            txtMensagem.Text = Erro;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -33,6 +35,10 @@ namespace Aux_Joalheria
             mensagem = txtMensagem.Text.Trim();
             MessageBox.Show(EnviarEmail.EnviaMensagemEmail(destinatario, remetente, "Bug ou Erro", mensagem, Email, Senha), "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        
+
+        private void frmEnviaEmail_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

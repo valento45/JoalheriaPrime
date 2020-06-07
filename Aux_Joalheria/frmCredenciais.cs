@@ -12,14 +12,16 @@ namespace Aux_Joalheria
 {
     public partial class frmCredenciais : Form
     {
-        public frmCredenciais()
+        string Erro;
+        public frmCredenciais(string erro)
         {
             InitializeComponent();
+            Erro = erro;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            frmEnviaEmail enviaemail = new frmEnviaEmail(txtEmail.Text.Trim(), txtSenha.Text.Trim());
+            frmEnviaEmail enviaemail = new frmEnviaEmail(txtEmail.Text.Trim(), txtSenha.Text.Trim(), Erro);
             enviaemail.ShowDialog();
         }
     }
