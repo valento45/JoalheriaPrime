@@ -52,5 +52,29 @@ namespace Aux_Joalheria
         {
             this.Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            EnviarEmail();
+        }
+
+        private void EnviarEmail()
+        {
+            frmCredenciais cred = new frmCredenciais();
+            cred.ShowDialog();
+            ////cria uma instancia de email
+            //MailMessage mail = new MailMessage();
+            ////origem e destino
+            //mail.From = new MailAddress("iggor1935@hotmail.com");
+            //mail.To.Add("iggor1888@hotmail.com");
+            ////define conteudo
+            //mail.Subject = "Titulo";
+            //mail.Body = "Conteudo";
+
+            ////envia de fato
+            //SmtpClient smtp = new SmtpClient("smtp.gmail.com");
+            //smtp.Send(mail);
+
+        }
     }
 }
