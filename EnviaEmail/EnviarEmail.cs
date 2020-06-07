@@ -14,6 +14,12 @@ namespace EnviaEmail
     public class EnviarEmail
     {
 
+        /*
+         1º O remetente deve ser de um email com domínio o gmail.com ( conta google ), pois foi programado utilizando classes gratuitas (existem pagas ), no entanto, o destinatario pode possuir qualquer dominio, apenas quem envia deve possuir dominio gmail.com.
+         2º O responsável pelo envio deve acessar esse link e permitir o acesso de aplicativos menos seguro (nosso software ): https://myaccount.google.com/lesssecureapps
+             */
+
+
         /// <summary>
         /// Transmite uma mensagem de email sem anexos
         /// </summary>
