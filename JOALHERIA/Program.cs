@@ -24,10 +24,8 @@ namespace JOALHERIA
         }
 
         static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
-        {
-            // Log the exception, display it, etc
-            NetworkLog.Insert(e.Exception, "Program.cs");
-            frmErro.Erro_Inesperado(e.Exception);
+        {          
+            frmErro.Erro_Inesperado(e.Exception, NetworkLog.Insert_Two(e.Exception, "Program.cs"));
         }
     }
 }

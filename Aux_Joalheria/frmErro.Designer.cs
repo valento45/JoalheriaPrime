@@ -59,7 +59,7 @@
             this.lblContato.Name = "lblContato";
             this.lblContato.Size = new System.Drawing.Size(450, 38);
             this.lblContato.TabIndex = 6;
-            this.lblContato.Text = "Fale com nosso Suporte Técnico (11) 96610-2618, das 9h00 às 17h00 horas, horário " +
+            this.lblContato.Text = "Fale com nosso Suporte Técnico (11) xxxxx-xxxx, das 9h00 às 17h00 horas, horário " +
     "de brasília, de segunda à sexta-feira (exceto feriado).";
             // 
             // lblErro

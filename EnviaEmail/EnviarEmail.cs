@@ -51,7 +51,7 @@ namespace EnviaEmail
                 smtpClient.Port = 587;
                 smtpClient.EnableSsl = true;
                 smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-                smtpClient.UseDefaultCredentials = true;                
+                smtpClient.UseDefaultCredentials = true;
                 smtpClient.Credentials = new NetworkCredential(email, senha);
 
                 //envia mensagem 
@@ -64,6 +64,49 @@ namespace EnviaEmail
                 return ex.Message;
             }
         }
+
+
+        /// <summary>
+        /// Transmite uma mensagem de email com anexos
+        /// </summary>
+        /// <param name="Destinatario">Destinatario (Recipient)</param>
+        /// <param name="Remetente">Remetente (Sender)</param>
+        /// <param name="Assunto">Assunto da mensagem (Subject)</param>
+        /// <param name="enviaMensagem">Corpo da mensagem(Body)</param>
+        /// <returns>Status da mensagem</returns>
+        public static string EnviaMensagemEmailComAnexo(string destinatario, string remetente, string assunto, string enviaMensagem, string email, string senha, string caminhoAnexo)
+        {
+            try
+            {
+                bool validaEmail = ValidaEnderecoEmail(destinatario);
+                if (!validaEmail)
+                    return "Email do destinatário é inválido: " + destinatario;
+                //cria uma mensagem
+                MailMessage mensagemEmail = new MailMessage(remetente, destinatario, assunto, enviaMensagem);
+
+                Attachment anexado = new Attachment(caminhoAnexo, MediaTypeNames.Application.Octet);
+                mensagemEmail.Attachments.Add(anexado);
+                //configuracoes do smtp
+                SmtpClient smtpClient = new SmtpClient();
+                smtpClient.Host = "smtp.gmail.com";
+                smtpClient.Port = 587;
+                smtpClient.EnableSsl = true;
+                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtpClient.UseDefaultCredentials = true;
+                smtpClient.Credentials = new NetworkCredential(email, senha);
+
+                //envia mensagem 
+                smtpClient.Send(mensagemEmail);
+
+                return "Mensagem enviada para " + destinatario + " às " + DateTime.Now.ToString() + ".";
+            }
+            catch (SmtpException ex)
+            {
+                return ex.Message;
+            }
+
+        }
+
 
         /// <summary>
         /// Confirma a validade de um email

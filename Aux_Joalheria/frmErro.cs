@@ -15,12 +15,13 @@ namespace Aux_Joalheria
     {
         string FileName;
         Exception Excep;
-        public frmErro(Exception ex)
+        string Complemento;
+        public frmErro(Exception ex, string complemento)
         {
             InitializeComponent();
             Excep = ex;
             lblErro.Text = ex.Message;
-            lblContato.Text = FuncoesAuxiliares.ContatoSuporte;
+            Complemento = complemento;
         }
 
         private void frmErro_Load(object sender, EventArgs e)
@@ -28,9 +29,9 @@ namespace Aux_Joalheria
             
         }
 
-        public static void Erro_Inesperado(Exception ex)
+        public static void Erro_Inesperado(Exception ex, string complemento)
         {
-            frmErro erro = new frmErro(ex);
+            frmErro erro = new frmErro(ex, complemento);
             erro.ShowDialog();
         }
 
@@ -62,21 +63,8 @@ namespace Aux_Joalheria
 
         private void EnviarEmail()
         {
-            frmCredenciais cred = new frmCredenciais(Excep.Message);
+            frmCredenciais cred = new frmCredenciais(Excep.Message + ", " +Complemento);
             cred.ShowDialog();
-            ////cria uma instancia de email
-            //MailMessage mail = new MailMessage();
-            ////origem e destino
-            //mail.From = new MailAddress("iggor1935@hotmail.com");
-            //mail.To.Add("iggor1888@hotmail.com");
-            ////define conteudo
-            //mail.Subject = "Titulo";
-            //mail.Body = "Conteudo";
-
-            ////envia de fato
-            //SmtpClient smtp = new SmtpClient("smtp.gmail.com");
-            //smtp.Send(mail);
-
         }
     }
 }

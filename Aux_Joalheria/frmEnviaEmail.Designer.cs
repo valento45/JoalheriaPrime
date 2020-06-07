@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtDe = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtPara = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtMensagem = new System.Windows.Forms.RichTextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtMensagem = new System.Windows.Forms.RichTextBox();
+            this.txtPara = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtDe = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -59,55 +59,24 @@
             this.panel1.Size = new System.Drawing.Size(562, 229);
             this.panel1.TabIndex = 0;
             // 
-            // label1
+            // groupBox2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(21, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "De";
+            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Location = new System.Drawing.Point(62, 157);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(495, 38);
+            this.groupBox2.TabIndex = 7;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Anexos";
+            this.groupBox2.Visible = false;
             // 
-            // txtDe
+            // textBox1
             // 
-            this.txtDe.Location = new System.Drawing.Point(62, 7);
-            this.txtDe.Name = "txtDe";
-            this.txtDe.Size = new System.Drawing.Size(495, 20);
-            this.txtDe.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 35);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Para";
-            // 
-            // txtPara
-            // 
-            this.txtPara.Location = new System.Drawing.Point(62, 33);
-            this.txtPara.Name = "txtPara";
-            this.txtPara.Size = new System.Drawing.Size(495, 20);
-            this.txtPara.TabIndex = 3;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.txtMensagem);
-            this.groupBox1.Location = new System.Drawing.Point(62, 60);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(495, 91);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Mensagem automática";
-            // 
-            // txtMensagem
-            // 
-            this.txtMensagem.Location = new System.Drawing.Point(6, 19);
-            this.txtMensagem.Name = "txtMensagem";
-            this.txtMensagem.Size = new System.Drawing.Size(483, 66);
-            this.txtMensagem.TabIndex = 0;
-            this.txtMensagem.Text = "";
+            this.textBox1.Location = new System.Drawing.Point(4, 13);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(404, 20);
+            this.textBox1.TabIndex = 8;
             // 
             // button1
             // 
@@ -128,23 +97,55 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // groupBox2
+            // groupBox1
             // 
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Location = new System.Drawing.Point(62, 157);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(495, 38);
-            this.groupBox2.TabIndex = 7;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Anexos";
+            this.groupBox1.Controls.Add(this.txtMensagem);
+            this.groupBox1.Location = new System.Drawing.Point(62, 60);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(495, 91);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Mensagem automática";
             // 
-            // textBox1
+            // txtMensagem
             // 
-            this.textBox1.Location = new System.Drawing.Point(4, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(404, 20);
-            this.textBox1.TabIndex = 8;
+            this.txtMensagem.Location = new System.Drawing.Point(6, 19);
+            this.txtMensagem.Name = "txtMensagem";
+            this.txtMensagem.Size = new System.Drawing.Size(483, 66);
+            this.txtMensagem.TabIndex = 0;
+            this.txtMensagem.Text = "";
+            // 
+            // txtPara
+            // 
+            this.txtPara.Location = new System.Drawing.Point(62, 33);
+            this.txtPara.Name = "txtPara";
+            this.txtPara.Size = new System.Drawing.Size(495, 20);
+            this.txtPara.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(27, 35);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Para";
+            // 
+            // txtDe
+            // 
+            this.txtDe.Location = new System.Drawing.Point(62, 7);
+            this.txtDe.Name = "txtDe";
+            this.txtDe.Size = new System.Drawing.Size(495, 20);
+            this.txtDe.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(35, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(21, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "De";
             // 
             // frmEnviaEmail
             // 
@@ -158,9 +159,9 @@
             this.Load += new System.EventHandler(this.frmEnviaEmail_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

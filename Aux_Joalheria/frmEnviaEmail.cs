@@ -19,6 +19,9 @@ namespace Aux_Joalheria
         string destinatario;
         string mensagem;
         string Erro;
+
+        public frmEnviaEmail() { }
+
         public frmEnviaEmail(string email, string senha, string erro)
         {
             InitializeComponent();
@@ -33,7 +36,13 @@ namespace Aux_Joalheria
             remetente = txtDe.Text.Trim();
             destinatario = txtPara.Text.Trim();
             mensagem = txtMensagem.Text.Trim();
-            MessageBox.Show(EnviarEmail.EnviaMensagemEmail(destinatario, remetente, "Bug ou Erro", mensagem, Email, Senha), "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            string[] vetor = Erro.Split(',');
+
+            if (MessageBox.Show("Deseja enviar email com LOG em anexo?", "Opcional", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                MessageBox.Show(EnviarEmail.EnviaMensagemEmailComAnexo(destinatario, remetente, "Bug ou Erro", mensagem, Email, Senha, vetor[1]), "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            else
+                MessageBox.Show(EnviarEmail.EnviaMensagemEmail(destinatario, remetente, "Bug ou Erro", mensagem, Email, Senha), "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void frmEnviaEmail_Load(object sender, EventArgs e)
