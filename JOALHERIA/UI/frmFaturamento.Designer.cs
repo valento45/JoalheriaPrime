@@ -61,6 +61,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chkServicos = new System.Windows.Forms.CheckBox();
             this.chkVendas = new System.Windows.Forms.CheckBox();
+            this.lblTotalOSeVenda = new System.Windows.Forms.Label();
             this.pnlFundo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvServicos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).BeginInit();
@@ -75,6 +76,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlFundo.BackColor = System.Drawing.SystemColors.Control;
             this.pnlFundo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlFundo.Controls.Add(this.lblTotalOSeVenda);
             this.pnlFundo.Controls.Add(this.lblTotalOS);
             this.pnlFundo.Controls.Add(this.lblTotalVenda);
             this.pnlFundo.Controls.Add(this.dgvServicos);
@@ -82,11 +84,12 @@
             this.pnlFundo.Controls.Add(this.panel1);
             this.pnlFundo.Location = new System.Drawing.Point(12, 12);
             this.pnlFundo.Name = "pnlFundo";
-            this.pnlFundo.Size = new System.Drawing.Size(764, 395);
+            this.pnlFundo.Size = new System.Drawing.Size(764, 466);
             this.pnlFundo.TabIndex = 0;
             // 
             // lblTotalOS
             // 
+            this.lblTotalOS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalOS.AutoSize = true;
             this.lblTotalOS.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalOS.Location = new System.Drawing.Point(536, 362);
@@ -98,6 +101,7 @@
             // 
             // lblTotalVenda
             // 
+            this.lblTotalVenda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalVenda.AutoSize = true;
             this.lblTotalVenda.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalVenda.Location = new System.Drawing.Point(536, 219);
@@ -111,6 +115,8 @@
             // 
             this.dgvServicos.AllowUserToAddRows = false;
             this.dgvServicos.AllowUserToDeleteRows = false;
+            this.dgvServicos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvServicos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvServicos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colIdOrdem,
@@ -177,6 +183,8 @@
             // 
             this.dgvVendas.AllowUserToAddRows = false;
             this.dgvVendas.AllowUserToDeleteRows = false;
+            this.dgvVendas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvVendas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVendas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colCodigo,
@@ -349,14 +357,26 @@
             this.chkVendas.Text = "Vendas";
             this.chkVendas.UseVisualStyleBackColor = true;
             // 
+            // lblTotalOSeVenda
+            // 
+            this.lblTotalOSeVenda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblTotalOSeVenda.AutoSize = true;
+            this.lblTotalOSeVenda.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalOSeVenda.Location = new System.Drawing.Point(3, 423);
+            this.lblTotalOSeVenda.Name = "lblTotalOSeVenda";
+            this.lblTotalOSeVenda.Size = new System.Drawing.Size(145, 18);
+            this.lblTotalOSeVenda.TabIndex = 5;
+            this.lblTotalOSeVenda.Text = "Total OS e Vendas: ";
+            // 
             // frmFaturamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(788, 419);
+            this.ClientSize = new System.Drawing.Size(788, 490);
             this.Controls.Add(this.pnlFundo);
             this.Name = "frmFaturamento";
             this.Text = "Faturamento";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.pnlFundo.ResumeLayout(false);
             this.pnlFundo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvServicos)).EndInit();
@@ -404,5 +424,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTrocoOS;
         private System.Windows.Forms.Label lblTotalOS;
         private System.Windows.Forms.Label lblTotalVenda;
+        private System.Windows.Forms.Label lblTotalOSeVenda;
     }
 }

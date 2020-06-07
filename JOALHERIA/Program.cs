@@ -1,4 +1,5 @@
-﻿using JOALHERIADAL;
+﻿using Aux_Joalheria;
+using JOALHERIADAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace JOALHERIA
         {
             // Log the exception, display it, etc
             NetworkLog.Insert(e.Exception, "Program.cs");
-            MessageBox.Show("Ocorreu um erro inesperado!\r\n\r\n\r\n" + e.Exception.Message, "Ops!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            frmErro.Erro_Inesperado(e.Exception);
         }
     }
 }

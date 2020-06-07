@@ -341,8 +341,9 @@
             // 
             // preferênciasToolStripMenuItem
             // 
+            this.preferênciasToolStripMenuItem.Image = global::JOALHERIA.Properties.Resources.process1;
             this.preferênciasToolStripMenuItem.Name = "preferênciasToolStripMenuItem";
-            this.preferênciasToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.preferênciasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.preferênciasToolStripMenuItem.Text = "Preferências";
             // 
             // estoqueToolStripMenuItem
