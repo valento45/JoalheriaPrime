@@ -62,11 +62,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chkServicos = new System.Windows.Forms.CheckBox();
             this.chkVendas = new System.Windows.Forms.CheckBox();
+            this.pnlMeio = new System.Windows.Forms.Panel();
+            this.grpVendas = new System.Windows.Forms.GroupBox();
+            this.grpServices = new System.Windows.Forms.GroupBox();
             this.pnlFundo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvServicos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).BeginInit();
             this.panel1.SuspendLayout();
             this.pnlPeriodo.SuspendLayout();
+            this.pnlMeio.SuspendLayout();
+            this.grpVendas.SuspendLayout();
+            this.grpServices.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlFundo
@@ -76,15 +82,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlFundo.BackColor = System.Drawing.SystemColors.Control;
             this.pnlFundo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlFundo.Controls.Add(this.lblTotalOSeVenda);
-            this.pnlFundo.Controls.Add(this.lblTotalOS);
-            this.pnlFundo.Controls.Add(this.lblTotalVenda);
-            this.pnlFundo.Controls.Add(this.dgvServicos);
-            this.pnlFundo.Controls.Add(this.dgvVendas);
+            this.pnlFundo.Controls.Add(this.pnlMeio);
             this.pnlFundo.Controls.Add(this.panel1);
             this.pnlFundo.Location = new System.Drawing.Point(12, 12);
             this.pnlFundo.Name = "pnlFundo";
-            this.pnlFundo.Size = new System.Drawing.Size(764, 466);
+            this.pnlFundo.Size = new System.Drawing.Size(764, 674);
             this.pnlFundo.TabIndex = 0;
             // 
             // lblTotalOSeVenda
@@ -92,7 +94,7 @@
             this.lblTotalOSeVenda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblTotalOSeVenda.AutoSize = true;
             this.lblTotalOSeVenda.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalOSeVenda.Location = new System.Drawing.Point(3, 423);
+            this.lblTotalOSeVenda.Location = new System.Drawing.Point(3, 534);
             this.lblTotalOSeVenda.Name = "lblTotalOSeVenda";
             this.lblTotalOSeVenda.Size = new System.Drawing.Size(145, 18);
             this.lblTotalOSeVenda.TabIndex = 5;
@@ -104,7 +106,7 @@
             this.lblTotalOS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalOS.AutoSize = true;
             this.lblTotalOS.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalOS.Location = new System.Drawing.Point(536, 362);
+            this.lblTotalOS.Location = new System.Drawing.Point(537, 128);
             this.lblTotalOS.Name = "lblTotalOS";
             this.lblTotalOS.Size = new System.Drawing.Size(50, 18);
             this.lblTotalOS.TabIndex = 4;
@@ -116,7 +118,7 @@
             this.lblTotalVenda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalVenda.AutoSize = true;
             this.lblTotalVenda.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalVenda.Location = new System.Drawing.Point(536, 219);
+            this.lblTotalVenda.Location = new System.Drawing.Point(537, 128);
             this.lblTotalVenda.Name = "lblTotalVenda";
             this.lblTotalVenda.Size = new System.Drawing.Size(50, 18);
             this.lblTotalVenda.TabIndex = 3;
@@ -129,7 +131,7 @@
             this.dgvServicos.AllowUserToDeleteRows = false;
             this.dgvServicos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvServicos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvServicos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvServicos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvServicos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colIdOrdem,
@@ -141,10 +143,10 @@
             this.colFormaPgtoOS,
             this.colValorPgtoOS,
             this.colTrocoOS});
-            this.dgvServicos.Location = new System.Drawing.Point(3, 253);
+            this.dgvServicos.Location = new System.Drawing.Point(6, 19);
             this.dgvServicos.Name = "dgvServicos";
             this.dgvServicos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvServicos.Size = new System.Drawing.Size(756, 106);
+            this.dgvServicos.Size = new System.Drawing.Size(736, 106);
             this.dgvServicos.TabIndex = 2;
             this.dgvServicos.Visible = false;
             // 
@@ -152,55 +154,46 @@
             // 
             this.colIdOrdem.HeaderText = "Código OS";
             this.colIdOrdem.Name = "colIdOrdem";
-            this.colIdOrdem.Width = 83;
             // 
             // colIdClienteOS
             // 
             this.colIdClienteOS.HeaderText = "Id Cliente";
             this.colIdClienteOS.Name = "colIdClienteOS";
-            this.colIdClienteOS.Width = 76;
             // 
             // colData
             // 
             this.colData.HeaderText = "Data";
             this.colData.Name = "colData";
-            this.colData.Width = 55;
             // 
             // colDataEntrega
             // 
             this.colDataEntrega.HeaderText = "Entrega";
             this.colDataEntrega.Name = "colDataEntrega";
-            this.colDataEntrega.Width = 69;
             // 
             // colDesconto
             // 
             this.colDesconto.HeaderText = "Desconto";
             this.colDesconto.Name = "colDesconto";
-            this.colDesconto.Width = 78;
             // 
             // colValorTotalOS
             // 
             this.colValorTotalOS.HeaderText = "Total";
             this.colValorTotalOS.Name = "colValorTotalOS";
-            this.colValorTotalOS.Width = 56;
             // 
             // colFormaPgtoOS
             // 
             this.colFormaPgtoOS.HeaderText = "Forma pgto";
             this.colFormaPgtoOS.Name = "colFormaPgtoOS";
-            this.colFormaPgtoOS.Width = 85;
             // 
             // colValorPgtoOS
             // 
             this.colValorPgtoOS.HeaderText = "Valor pago";
             this.colValorPgtoOS.Name = "colValorPgtoOS";
-            this.colValorPgtoOS.Width = 83;
             // 
             // colTrocoOS
             // 
             this.colTrocoOS.HeaderText = "Troco";
             this.colTrocoOS.Name = "colTrocoOS";
-            this.colTrocoOS.Width = 60;
             // 
             // dgvVendas
             // 
@@ -208,7 +201,7 @@
             this.dgvVendas.AllowUserToDeleteRows = false;
             this.dgvVendas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvVendas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvVendas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvVendas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVendas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colCodigo,
@@ -219,10 +212,10 @@
             this.colFormaPgto,
             this.colValorPago,
             this.colTroco});
-            this.dgvVendas.Location = new System.Drawing.Point(3, 110);
+            this.dgvVendas.Location = new System.Drawing.Point(6, 19);
             this.dgvVendas.Name = "dgvVendas";
             this.dgvVendas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVendas.Size = new System.Drawing.Size(756, 106);
+            this.dgvVendas.Size = new System.Drawing.Size(736, 106);
             this.dgvVendas.TabIndex = 1;
             this.dgvVendas.Visible = false;
             // 
@@ -230,49 +223,41 @@
             // 
             this.colCodigo.HeaderText = "Código";
             this.colCodigo.Name = "colCodigo";
-            this.colCodigo.Width = 65;
             // 
             // colIdCliente
             // 
             this.colIdCliente.HeaderText = "Id Cliente";
             this.colIdCliente.Name = "colIdCliente";
-            this.colIdCliente.Width = 76;
             // 
             // colDataVenda
             // 
             this.colDataVenda.HeaderText = "Data";
             this.colDataVenda.Name = "colDataVenda";
-            this.colDataVenda.Width = 55;
             // 
             // colUsuario
             // 
             this.colUsuario.HeaderText = "Usuario";
             this.colUsuario.Name = "colUsuario";
-            this.colUsuario.Width = 68;
             // 
             // colPrecoTotal
             // 
             this.colPrecoTotal.HeaderText = "Total";
             this.colPrecoTotal.Name = "colPrecoTotal";
-            this.colPrecoTotal.Width = 56;
             // 
             // colFormaPgto
             // 
             this.colFormaPgto.HeaderText = "Forma Pgto";
             this.colFormaPgto.Name = "colFormaPgto";
-            this.colFormaPgto.Width = 86;
             // 
             // colValorPago
             // 
             this.colValorPago.HeaderText = "Valor Pago";
             this.colValorPago.Name = "colValorPago";
-            this.colValorPago.Width = 84;
             // 
             // colTroco
             // 
             this.colTroco.HeaderText = "Troco";
             this.colTroco.Name = "colTroco";
-            this.colTroco.Width = 60;
             // 
             // panel1
             // 
@@ -390,23 +375,71 @@
             this.chkVendas.Text = "Vendas";
             this.chkVendas.UseVisualStyleBackColor = true;
             // 
+            // pnlMeio
+            // 
+            this.pnlMeio.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlMeio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMeio.Controls.Add(this.grpServices);
+            this.pnlMeio.Controls.Add(this.grpVendas);
+            this.pnlMeio.Controls.Add(this.lblTotalOSeVenda);
+            this.pnlMeio.Location = new System.Drawing.Point(3, 97);
+            this.pnlMeio.Name = "pnlMeio";
+            this.pnlMeio.Size = new System.Drawing.Size(756, 572);
+            this.pnlMeio.TabIndex = 6;
+            // 
+            // grpVendas
+            // 
+            this.grpVendas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpVendas.Controls.Add(this.dgvVendas);
+            this.grpVendas.Controls.Add(this.lblTotalVenda);
+            this.grpVendas.Location = new System.Drawing.Point(3, 3);
+            this.grpVendas.Name = "grpVendas";
+            this.grpVendas.Size = new System.Drawing.Size(748, 149);
+            this.grpVendas.TabIndex = 6;
+            this.grpVendas.TabStop = false;
+            this.grpVendas.Text = "Vendas";
+            // 
+            // grpServices
+            // 
+            this.grpServices.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpServices.Controls.Add(this.dgvServicos);
+            this.grpServices.Controls.Add(this.lblTotalOS);
+            this.grpServices.Location = new System.Drawing.Point(3, 261);
+            this.grpServices.Name = "grpServices";
+            this.grpServices.Size = new System.Drawing.Size(748, 158);
+            this.grpServices.TabIndex = 7;
+            this.grpServices.TabStop = false;
+            this.grpServices.Text = "Serviços";
+            // 
             // frmFaturamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(788, 490);
+            this.ClientSize = new System.Drawing.Size(788, 698);
             this.Controls.Add(this.pnlFundo);
             this.Name = "frmFaturamento";
             this.Text = "Faturamento";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Shown += new System.EventHandler(this.frmFaturamento_Shown);
             this.pnlFundo.ResumeLayout(false);
-            this.pnlFundo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvServicos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.pnlPeriodo.ResumeLayout(false);
             this.pnlPeriodo.PerformLayout();
+            this.pnlMeio.ResumeLayout(false);
+            this.pnlMeio.PerformLayout();
+            this.grpVendas.ResumeLayout(false);
+            this.grpVendas.PerformLayout();
+            this.grpServices.ResumeLayout(false);
+            this.grpServices.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -447,5 +480,8 @@
         private System.Windows.Forms.Label lblTotalOS;
         private System.Windows.Forms.Label lblTotalVenda;
         private System.Windows.Forms.Label lblTotalOSeVenda;
+        private System.Windows.Forms.Panel pnlMeio;
+        private System.Windows.Forms.GroupBox grpServices;
+        private System.Windows.Forms.GroupBox grpVendas;
     }
 }

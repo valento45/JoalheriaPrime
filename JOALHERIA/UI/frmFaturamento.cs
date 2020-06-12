@@ -51,7 +51,7 @@ namespace JOALHERIA.UI
                                 query += " WHERE DATAVENDA >= '01/01/" + DateTime.Now.Year + " 00:00:00' AND DATAVENDA <= '31/12/" + DateTime.Now.Year + " 23:59:59'";
 
                             else if (cmbFiltrar.SelectedIndex == 3)
-                                query += $" WHERE DATEVENDA >= {txtDe.Text} AND DATAVENDA <= {txtAte.Text}";
+                                query += $" WHERE DATAVENDA >= '{txtDe.Text} 00:00:00' AND DATAVENDA <= '{txtAte.Text} 23:59:59'";
                             cmd = new SqlCommand(query);
 
                             foreach (DataRow x in Acces.ExecuteReader(cmd).Tables[0].Rows)
@@ -69,7 +69,7 @@ namespace JOALHERIA.UI
                             lblTotalVenda.Text = "Total: " + total.ToString();
                         }
 
-                        if(chkServicos.Checked)
+                        if (chkServicos.Checked)
                         {
                             List<OrdemServicoBLL> vendas = new List<OrdemServicoBLL>();
                             lblTotalOS.Visible = dgvServicos.Visible = true;
@@ -123,8 +123,16 @@ namespace JOALHERIA.UI
 
         private void btGerar_Click(object sender, EventArgs e)
         {
+            ResetPanels();
             GerarFaturamento();
         }
+        private void ResetPanels()
+        {
+            grpServices.Visible = chkServicos.Checked ? true : false;
+            grpVendas.Visible = chkVendas.Checked ? true : false;
+            lblTotalOSeVenda.Visible = chkVendas.Checked && chkServicos.Checked ? true : false;
+        }
+
         private bool ValidacaoCampos()
         {
             bool retorno = false;
@@ -137,7 +145,7 @@ namespace JOALHERIA.UI
                         retorno = true;
                     else
                         retorno = false;
-                }                
+                }
             }
             else
                 retorno = false;
@@ -151,6 +159,11 @@ namespace JOALHERIA.UI
                 return true;
             else
                 return false;
+        }
+
+        private void frmFaturamento_Shown(object sender, EventArgs e)
+        {
+            ResetPanels();
         }
     }
 }

@@ -60,8 +60,7 @@ namespace JOALHERIA.UI
         {
             if (dgvConsultarVendas.RowCount > 0)
             {
-                frmVerItensDaVenda veritens = new frmVerItensDaVenda();
-                veritens.CodVenda = Convert.ToInt16(dgvConsultarVendas.SelectedCells[0].Value);
+                frmVerItensDaVenda veritens = new frmVerItensDaVenda((int)dgvConsultarVendas.SelectedCells[0].Value);
                 veritens.ShowDialog();
             }
 
