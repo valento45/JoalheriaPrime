@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.Sql;
+using JOALHERIABLL;
 
 namespace JOALHERIADAL
 {
     public class ItemPedidoDAL
     {
+                     
+        Conexao con = new Conexao();        
 
-        Conexao con = new Conexao();
 
         public void Cadastrar(JOALHERIABLL.ItemPedidoBLL itempedidoBLL)
         {
@@ -68,6 +70,15 @@ namespace JOALHERIADAL
             da.Fill(dt);
             con.Desconectar();
             return dt;
+        }
+
+        public static List<ItemPedidoBLL> GetById(int codigo)
+        {
+            List<ItemPedidoBLL> result = new List<ItemPedidoBLL>();
+            SqlCommand cmd = new SqlCommand("SELECT * FROM JOALHERIA.ITEMPEDIDO WHERE IDVENDA =" + codigo);
+            foreach (DataRow row in Acces.ExecuteReader(cmd).Tables[0].Rows)
+                result.Add(new ItemPedidoBLL(row));
+            return result;
         }
     }
 }

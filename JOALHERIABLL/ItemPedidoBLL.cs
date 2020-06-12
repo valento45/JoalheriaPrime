@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data.Sql;
+using System.Data.SqlClient;
 namespace JOALHERIABLL
 {
     public class ItemPedidoBLL
@@ -15,6 +17,24 @@ namespace JOALHERIABLL
         decimal precounitario;
         int quantidade;
         decimal desconto;
+        
+
+
+        public ItemPedidoBLL()
+        {
+
+        }
+
+        public ItemPedidoBLL(DataRow dr)
+        {
+            iditempedido = Convert.ToInt32(dr["IDITEMPEDIDO"]);
+            idvenda = Convert.ToInt32(dr["IDVENDA"]);
+            idproduto = Convert.ToInt32(dr["IDPRODUTO"]);
+            precounitario = Convert.ToDecimal(dr["PRECOUNITARIO"]);
+            quantidade = Convert.ToInt32(dr["QUANTIDADEPEDIDO"]);
+            desconto = Convert.ToDecimal(dr["DESCONTO"]);
+        }
+
 
         public int Iditempedido
         {
@@ -93,5 +113,7 @@ namespace JOALHERIABLL
                 desconto = value;
             }
         }
+
+       
     }
 }
