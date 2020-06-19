@@ -75,6 +75,12 @@
     <Compile Include="UI\frmFaturamento.Designer.cs">
       <DependentUpon>frmFaturamento.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\frmGerarFat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmGerarFat.Designer.cs">
+      <DependentUpon>frmGerarFat.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmPesquisaP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmFaturamento.resx">
       <DependentUpon>frmFaturamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmGerarFat.resx">
+      <DependentUpon>frmGerarFat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmPesquisaP.resx">
       <DependentUpon>frmPesquisaP.cs</DependentUpon>
