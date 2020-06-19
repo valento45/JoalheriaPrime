@@ -327,5 +327,13 @@ namespace JOALHERIA.UI
                 faturamento.ShowDialog();
             }
         }
+
+        private void faturamentoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            using (frmGerarFat fat = new frmGerarFat())
+            {
+                fat.ShowDialog();
+            }
+        }
     }
 }

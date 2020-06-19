@@ -22,5 +22,18 @@ namespace JOALHERIA.UI
         {
 
         }
+
+        private void DefinirFiltro()
+        {
+            if (chkPeriodo.Checked)
+                pnlPeriodo.Visible = true;
+            else
+                pnlPeriodo.Visible = false;
+        }
+
+        private void chkPeriodo_CheckedChanged(object sender, EventArgs e)
+        {
+            DefinirFiltro();
+        }
     }
 }

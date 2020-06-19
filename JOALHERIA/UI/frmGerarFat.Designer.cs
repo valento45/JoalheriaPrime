@@ -30,21 +30,21 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.chkDiario = new System.Windows.Forms.RadioButton();
-            this.chkMensal = new System.Windows.Forms.RadioButton();
-            this.chkAnual = new System.Windows.Forms.RadioButton();
-            this.chkPeriodo = new System.Windows.Forms.RadioButton();
-            this.pnlPeriodo = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtDe = new System.Windows.Forms.MaskedTextBox();
-            this.txtAte = new System.Windows.Forms.MaskedTextBox();
             this.btnGerar = new System.Windows.Forms.Button();
+            this.pnlPeriodo = new System.Windows.Forms.Panel();
+            this.txtAte = new System.Windows.Forms.MaskedTextBox();
+            this.txtDe = new System.Windows.Forms.MaskedTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.chkPeriodo = new System.Windows.Forms.RadioButton();
+            this.chkAnual = new System.Windows.Forms.RadioButton();
+            this.chkMensal = new System.Windows.Forms.RadioButton();
+            this.chkDiario = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.pnlPeriodo.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -67,6 +67,62 @@
             this.panel2.Size = new System.Drawing.Size(403, 157);
             this.panel2.TabIndex = 0;
             // 
+            // btnGerar
+            // 
+            this.btnGerar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnGerar.Location = new System.Drawing.Point(325, 131);
+            this.btnGerar.Name = "btnGerar";
+            this.btnGerar.Size = new System.Drawing.Size(75, 23);
+            this.btnGerar.TabIndex = 2;
+            this.btnGerar.Text = "Gerar";
+            this.btnGerar.UseVisualStyleBackColor = true;
+            // 
+            // pnlPeriodo
+            // 
+            this.pnlPeriodo.Controls.Add(this.txtAte);
+            this.pnlPeriodo.Controls.Add(this.txtDe);
+            this.pnlPeriodo.Controls.Add(this.label2);
+            this.pnlPeriodo.Controls.Add(this.label1);
+            this.pnlPeriodo.Location = new System.Drawing.Point(135, 6);
+            this.pnlPeriodo.Name = "pnlPeriodo";
+            this.pnlPeriodo.Size = new System.Drawing.Size(265, 100);
+            this.pnlPeriodo.TabIndex = 1;
+            this.pnlPeriodo.Visible = false;
+            // 
+            // txtAte
+            // 
+            this.txtAte.Location = new System.Drawing.Point(31, 43);
+            this.txtAte.Mask = "00/00/0000";
+            this.txtAte.Name = "txtAte";
+            this.txtAte.Size = new System.Drawing.Size(79, 20);
+            this.txtAte.TabIndex = 3;
+            // 
+            // txtDe
+            // 
+            this.txtDe.Location = new System.Drawing.Point(31, 16);
+            this.txtDe.Mask = "00/00/0000";
+            this.txtDe.Name = "txtDe";
+            this.txtDe.Size = new System.Drawing.Size(79, 20);
+            this.txtDe.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(5, 46);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(23, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Até";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(5, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(21, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "De";
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.chkPeriodo);
@@ -77,6 +133,40 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(126, 103);
             this.panel3.TabIndex = 0;
+            // 
+            // chkPeriodo
+            // 
+            this.chkPeriodo.AutoSize = true;
+            this.chkPeriodo.Location = new System.Drawing.Point(3, 72);
+            this.chkPeriodo.Name = "chkPeriodo";
+            this.chkPeriodo.Size = new System.Drawing.Size(63, 17);
+            this.chkPeriodo.TabIndex = 3;
+            this.chkPeriodo.TabStop = true;
+            this.chkPeriodo.Text = "Período";
+            this.chkPeriodo.UseVisualStyleBackColor = true;
+            this.chkPeriodo.CheckedChanged += new System.EventHandler(this.chkPeriodo_CheckedChanged);
+            // 
+            // chkAnual
+            // 
+            this.chkAnual.AutoSize = true;
+            this.chkAnual.Location = new System.Drawing.Point(3, 49);
+            this.chkAnual.Name = "chkAnual";
+            this.chkAnual.Size = new System.Drawing.Size(52, 17);
+            this.chkAnual.TabIndex = 2;
+            this.chkAnual.TabStop = true;
+            this.chkAnual.Text = "Anual";
+            this.chkAnual.UseVisualStyleBackColor = true;
+            // 
+            // chkMensal
+            // 
+            this.chkMensal.AutoSize = true;
+            this.chkMensal.Location = new System.Drawing.Point(3, 26);
+            this.chkMensal.Name = "chkMensal";
+            this.chkMensal.Size = new System.Drawing.Size(59, 17);
+            this.chkMensal.TabIndex = 1;
+            this.chkMensal.TabStop = true;
+            this.chkMensal.Text = "Mensal";
+            this.chkMensal.UseVisualStyleBackColor = true;
             // 
             // chkDiario
             // 
@@ -90,94 +180,6 @@
             this.chkDiario.Text = "Diário";
             this.chkDiario.UseVisualStyleBackColor = true;
             // 
-            // chkMensal
-            // 
-            this.chkMensal.AutoSize = true;
-            this.chkMensal.Location = new System.Drawing.Point(3, 26);
-            this.chkMensal.Name = "chkMensal";
-            this.chkMensal.Size = new System.Drawing.Size(59, 17);
-            this.chkMensal.TabIndex = 1;
-            this.chkMensal.TabStop = true;
-            this.chkMensal.Text = "Mensal";
-            this.chkMensal.UseVisualStyleBackColor = true;
-            // 
-            // chkAnual
-            // 
-            this.chkAnual.AutoSize = true;
-            this.chkAnual.Location = new System.Drawing.Point(3, 49);
-            this.chkAnual.Name = "chkAnual";
-            this.chkAnual.Size = new System.Drawing.Size(52, 17);
-            this.chkAnual.TabIndex = 2;
-            this.chkAnual.TabStop = true;
-            this.chkAnual.Text = "Anual";
-            this.chkAnual.UseVisualStyleBackColor = true;
-            // 
-            // chkPeriodo
-            // 
-            this.chkPeriodo.AutoSize = true;
-            this.chkPeriodo.Location = new System.Drawing.Point(3, 72);
-            this.chkPeriodo.Name = "chkPeriodo";
-            this.chkPeriodo.Size = new System.Drawing.Size(63, 17);
-            this.chkPeriodo.TabIndex = 3;
-            this.chkPeriodo.TabStop = true;
-            this.chkPeriodo.Text = "Período";
-            this.chkPeriodo.UseVisualStyleBackColor = true;
-            // 
-            // pnlPeriodo
-            // 
-            this.pnlPeriodo.Controls.Add(this.txtAte);
-            this.pnlPeriodo.Controls.Add(this.txtDe);
-            this.pnlPeriodo.Controls.Add(this.label2);
-            this.pnlPeriodo.Controls.Add(this.label1);
-            this.pnlPeriodo.Location = new System.Drawing.Point(135, 6);
-            this.pnlPeriodo.Name = "pnlPeriodo";
-            this.pnlPeriodo.Size = new System.Drawing.Size(265, 100);
-            this.pnlPeriodo.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(21, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "De";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 46);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(23, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Até";
-            // 
-            // txtDe
-            // 
-            this.txtDe.Location = new System.Drawing.Point(31, 16);
-            this.txtDe.Mask = "00/00/0000";
-            this.txtDe.Name = "txtDe";
-            this.txtDe.Size = new System.Drawing.Size(79, 20);
-            this.txtDe.TabIndex = 2;
-            // 
-            // txtAte
-            // 
-            this.txtAte.Location = new System.Drawing.Point(31, 43);
-            this.txtAte.Mask = "00/00/0000";
-            this.txtAte.Name = "txtAte";
-            this.txtAte.Size = new System.Drawing.Size(79, 20);
-            this.txtAte.TabIndex = 3;
-            // 
-            // btnGerar
-            // 
-            this.btnGerar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnGerar.Location = new System.Drawing.Point(325, 131);
-            this.btnGerar.Name = "btnGerar";
-            this.btnGerar.Size = new System.Drawing.Size(75, 23);
-            this.btnGerar.TabIndex = 2;
-            this.btnGerar.Text = "Gerar";
-            this.btnGerar.UseVisualStyleBackColor = true;
-            // 
             // frmGerarFat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -190,10 +192,10 @@
             this.Load += new System.EventHandler(this.frmGerarFat_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.pnlPeriodo.ResumeLayout(false);
             this.pnlPeriodo.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }

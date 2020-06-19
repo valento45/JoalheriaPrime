@@ -72,6 +72,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(349, 20);
             this.txtEmail.TabIndex = 3;
+            this.txtEmail.Text = "errojoiasmrx@gmail.com";
             // 
             // txtSenha
             // 
@@ -80,6 +81,7 @@
             this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(226, 20);
             this.txtSenha.TabIndex = 4;
+            this.txtSenha.Text = "erro1234";
             // 
             // button1
             // 
