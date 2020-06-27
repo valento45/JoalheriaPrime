@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LOG>
+  <ERRORS>
+    <Message>Nome de dispositivo de comprimento zero inválido. Envie a instrução BACKUP novamente com um nome de dispositivo válido.
+RESTORE DATABASE está sendo encerrado de forma anormal.
+Contexto do banco de dados alterado para 'master'.</Message>
+    <StackTrace>   em System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   em System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   em System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   em System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean&amp; dataReady)
+   em System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   em System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean&amp; usedCache, Boolean asyncWrite, Boolean inRetry)
+   em System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   em JOALHERIADAL.Acces.ExecuteNonQuery(IDbCommand cmd, Boolean registrolog) na C:\Users\MRX\Desktop\CProfissional\JoalheriaPrime\JOALHERIADAL\Acces.cs:linha 122</StackTrace>
+    <Detalhes> - Acces.cs</Detalhes>
+    <Data>26/06/2020 23:21:17</Data>
+  </ERRORS>
+</LOG>
