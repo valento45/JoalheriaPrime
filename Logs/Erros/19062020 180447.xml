@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LOG>
+  <ERRORS>
+    <Message>Valor não pode ser nulo.
+Nome do parâmetro: dataSet</Message>
+    <StackTrace>   em System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   em System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   em JOALHERIA.UI.frmFaturamentoVendaSimples.Gerar() na C:\Users\MRX\Desktop\CProfissional\JoalheriaPrime\JOALHERIA\UI\frmFaturamentoVendaSimples.cs:linha 45</StackTrace>
+    <Detalhes> - SELECT * FROM JOALHERIA.VENDA WHERE DATAVENDA = '19/06/2020' ORDER BY IDVENDA; in frmFaturamentoVendaSimples.cs Line 33</Detalhes>
+    <Data>19/06/2020 18:04:47</Data>
+  </ERRORS>
+</LOG>

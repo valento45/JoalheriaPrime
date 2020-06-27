@@ -163,7 +163,7 @@
             this.mudarLayoutToolStripMenuItem});
             this.opçõesToolStripMenuItem.Image = global::JOALHERIA.Properties.Resources.process;
             this.opçõesToolStripMenuItem.Name = "opçõesToolStripMenuItem";
-            this.opçõesToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.opçõesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.opçõesToolStripMenuItem.Text = "Opções";
             // 
             // alterarTemaToolStripMenuItem
@@ -184,7 +184,7 @@
             // 
             this.deslogarToolStripMenuItem.Image = global::JOALHERIA.Properties.Resources.reporSenha;
             this.deslogarToolStripMenuItem.Name = "deslogarToolStripMenuItem";
-            this.deslogarToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.deslogarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deslogarToolStripMenuItem.Text = "Deslogar";
             this.deslogarToolStripMenuItem.Click += new System.EventHandler(this.deslogarToolStripMenuItem_Click);
             // 
@@ -192,7 +192,7 @@
             // 
             this.sairToolStripMenuItem.Image = global::JOALHERIA.Properties.Resources.NOK;
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
@@ -229,7 +229,7 @@
             // 
             this.pesquisasrToolStripMenuItem.Name = "pesquisasrToolStripMenuItem";
             this.pesquisasrToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.pesquisasrToolStripMenuItem.Text = "Pesquisasr";
+            this.pesquisasrToolStripMenuItem.Text = "Pesquisar";
             this.pesquisasrToolStripMenuItem.Click += new System.EventHandler(this.pesquisasrToolStripMenuItem_Click);
             // 
             // relatóriosToolStripMenuItem

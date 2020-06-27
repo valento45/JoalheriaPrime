@@ -37,10 +37,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.chkPeriodo = new System.Windows.Forms.RadioButton();
-            this.chkAnual = new System.Windows.Forms.RadioButton();
-            this.chkMensal = new System.Windows.Forms.RadioButton();
-            this.chkDiario = new System.Windows.Forms.RadioButton();
+            this.rdbPeriodo = new System.Windows.Forms.RadioButton();
+            this.rdbAnual = new System.Windows.Forms.RadioButton();
+            this.rdbMensal = new System.Windows.Forms.RadioButton();
+            this.rdbDiario = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlPeriodo.SuspendLayout();
@@ -76,6 +76,7 @@
             this.btnGerar.TabIndex = 2;
             this.btnGerar.Text = "Gerar";
             this.btnGerar.UseVisualStyleBackColor = true;
+            this.btnGerar.Click += new System.EventHandler(this.btnGerar_Click);
             // 
             // pnlPeriodo
             // 
@@ -125,60 +126,60 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.chkPeriodo);
-            this.panel3.Controls.Add(this.chkAnual);
-            this.panel3.Controls.Add(this.chkMensal);
-            this.panel3.Controls.Add(this.chkDiario);
+            this.panel3.Controls.Add(this.rdbPeriodo);
+            this.panel3.Controls.Add(this.rdbAnual);
+            this.panel3.Controls.Add(this.rdbMensal);
+            this.panel3.Controls.Add(this.rdbDiario);
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(126, 103);
             this.panel3.TabIndex = 0;
             // 
-            // chkPeriodo
+            // rdbPeriodo
             // 
-            this.chkPeriodo.AutoSize = true;
-            this.chkPeriodo.Location = new System.Drawing.Point(3, 72);
-            this.chkPeriodo.Name = "chkPeriodo";
-            this.chkPeriodo.Size = new System.Drawing.Size(63, 17);
-            this.chkPeriodo.TabIndex = 3;
-            this.chkPeriodo.TabStop = true;
-            this.chkPeriodo.Text = "Período";
-            this.chkPeriodo.UseVisualStyleBackColor = true;
-            this.chkPeriodo.CheckedChanged += new System.EventHandler(this.chkPeriodo_CheckedChanged);
+            this.rdbPeriodo.AutoSize = true;
+            this.rdbPeriodo.Location = new System.Drawing.Point(3, 72);
+            this.rdbPeriodo.Name = "rdbPeriodo";
+            this.rdbPeriodo.Size = new System.Drawing.Size(63, 17);
+            this.rdbPeriodo.TabIndex = 3;
+            this.rdbPeriodo.TabStop = true;
+            this.rdbPeriodo.Text = "Período";
+            this.rdbPeriodo.UseVisualStyleBackColor = true;
+            this.rdbPeriodo.CheckedChanged += new System.EventHandler(this.chkPeriodo_CheckedChanged);
             // 
-            // chkAnual
+            // rdbAnual
             // 
-            this.chkAnual.AutoSize = true;
-            this.chkAnual.Location = new System.Drawing.Point(3, 49);
-            this.chkAnual.Name = "chkAnual";
-            this.chkAnual.Size = new System.Drawing.Size(52, 17);
-            this.chkAnual.TabIndex = 2;
-            this.chkAnual.TabStop = true;
-            this.chkAnual.Text = "Anual";
-            this.chkAnual.UseVisualStyleBackColor = true;
+            this.rdbAnual.AutoSize = true;
+            this.rdbAnual.Location = new System.Drawing.Point(3, 49);
+            this.rdbAnual.Name = "rdbAnual";
+            this.rdbAnual.Size = new System.Drawing.Size(52, 17);
+            this.rdbAnual.TabIndex = 2;
+            this.rdbAnual.TabStop = true;
+            this.rdbAnual.Text = "Anual";
+            this.rdbAnual.UseVisualStyleBackColor = true;
             // 
-            // chkMensal
+            // rdbMensal
             // 
-            this.chkMensal.AutoSize = true;
-            this.chkMensal.Location = new System.Drawing.Point(3, 26);
-            this.chkMensal.Name = "chkMensal";
-            this.chkMensal.Size = new System.Drawing.Size(59, 17);
-            this.chkMensal.TabIndex = 1;
-            this.chkMensal.TabStop = true;
-            this.chkMensal.Text = "Mensal";
-            this.chkMensal.UseVisualStyleBackColor = true;
+            this.rdbMensal.AutoSize = true;
+            this.rdbMensal.Location = new System.Drawing.Point(3, 26);
+            this.rdbMensal.Name = "rdbMensal";
+            this.rdbMensal.Size = new System.Drawing.Size(59, 17);
+            this.rdbMensal.TabIndex = 1;
+            this.rdbMensal.TabStop = true;
+            this.rdbMensal.Text = "Mensal";
+            this.rdbMensal.UseVisualStyleBackColor = true;
             // 
-            // chkDiario
+            // rdbDiario
             // 
-            this.chkDiario.AutoSize = true;
-            this.chkDiario.Checked = true;
-            this.chkDiario.Location = new System.Drawing.Point(3, 3);
-            this.chkDiario.Name = "chkDiario";
-            this.chkDiario.Size = new System.Drawing.Size(52, 17);
-            this.chkDiario.TabIndex = 0;
-            this.chkDiario.TabStop = true;
-            this.chkDiario.Text = "Diário";
-            this.chkDiario.UseVisualStyleBackColor = true;
+            this.rdbDiario.AutoSize = true;
+            this.rdbDiario.Checked = true;
+            this.rdbDiario.Location = new System.Drawing.Point(3, 3);
+            this.rdbDiario.Name = "rdbDiario";
+            this.rdbDiario.Size = new System.Drawing.Size(52, 17);
+            this.rdbDiario.TabIndex = 0;
+            this.rdbDiario.TabStop = true;
+            this.rdbDiario.Text = "Diário";
+            this.rdbDiario.UseVisualStyleBackColor = true;
             // 
             // frmGerarFat
             // 
@@ -210,10 +211,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.RadioButton chkPeriodo;
-        private System.Windows.Forms.RadioButton chkAnual;
-        private System.Windows.Forms.RadioButton chkMensal;
-        private System.Windows.Forms.RadioButton chkDiario;
+        private System.Windows.Forms.RadioButton rdbPeriodo;
+        private System.Windows.Forms.RadioButton rdbAnual;
+        private System.Windows.Forms.RadioButton rdbMensal;
+        private System.Windows.Forms.RadioButton rdbDiario;
         private System.Windows.Forms.Button btnGerar;
     }
 }

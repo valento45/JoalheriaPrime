@@ -31,11 +31,10 @@ namespace JOALHERIA.UI
         //Metodo relatorio Normal
         private void RelatorioNormal()
         {
-            reportViewerNormal.Clear();
+        
+            this.reportViewerNormal.Clear();
 
             this.reportViewerNormal.LocalReport.SetParameters(new ReportParameter("Usuario", LoginBLL.User.Usuario.ToString()));
-            this.reportViewerNormal.RefreshReport();
-
             vendaDAL.RelatorioVenda().Fill(DataSet1, "VENDA");
 
             this.reportViewerNormal.RefreshReport();
@@ -44,7 +43,7 @@ namespace JOALHERIA.UI
         //metodo relatorio por codigo ( detalhado )
         private void RelatorioPorParametro(int codigo)
         {
-            reportViewerParametros.Clear();
+            this.reportViewerParametros.Clear();
             //======================================================================
             vendaBLL.Idvenda = codigo;
             vendaBLL = vendaDAL.RetornarDados(vendaBLL);
@@ -65,18 +64,17 @@ namespace JOALHERIA.UI
 
         //metodo Gerar Relatorio Por Data 
         private void RelatorioPorData(string de, string ate)
-        {
-            reportViewerNormal.Clear();
-
+        {            
             this.reportViewerNormal.LocalReport.SetParameters(new ReportParameter("Usuario", LoginBLL.User.Usuario.ToString()));
-            this.reportViewerNormal.RefreshReport();
-
+            DataSet1.Tables[0].Rows.Clear();
             vendaDAL.RelatorioPorData(de, ate).Fill(DataSet1, "VENDA");
+            
             this.reportViewerNormal.RefreshReport();
         }
 
         private void FrmRelVenda_Load(object sender, EventArgs e)
         {
+            cmbGerarPor.SelectedIndex = 0;
             ////codigo localizar caminho do software
             //string caminho = Environment.CurrentDirectory.ToString();
             //caminho = caminho.Substring(0, caminho.Length - 9);

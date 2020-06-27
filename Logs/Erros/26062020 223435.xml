@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LOG>
+  <ERRORS>
+    <Message>A origem da definição do relatório não foi especificada</Message>
+    <StackTrace>   em Microsoft.Reporting.WinForms.LocalReport.EnsureExecutionSession()
+   em Microsoft.Reporting.WinForms.LocalReport.SetParameters(IEnumerable`1 parameters)
+   em Microsoft.Reporting.WinForms.Report.SetParameters(ReportParameter parameter)
+   em JOALHERIA.UI.FrmRelVenda.RelatorioPorData(String de, String ate) na C:\Users\MRX\Desktop\CProfissional\JoalheriaPrime\JOALHERIA\UI\FrmRelVenda.cs:linha 70
+   em JOALHERIA.UI.FrmRelVenda.btnGerar_Click(Object sender, EventArgs e) na C:\Users\MRX\Desktop\CProfissional\JoalheriaPrime\JOALHERIA\UI\FrmRelVenda.cs:linha 173</StackTrace>
+    <Detalhes> - frmRelVenda.cs</Detalhes>
+    <Data>26/06/2020 22:34:35</Data>
+  </ERRORS>
+</LOG>
