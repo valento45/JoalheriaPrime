@@ -3,9 +3,10 @@ Software de gestão para joalheria.
 -
 - Formação e atividades filantrópicas:  Aluno da Fatec, formado na Etec, estudante de programação, e não obstante, amante da filosofia.
 
-- Considerações: Através do foco e da persistência que de obtém o verdadeiro sucesso!
--
-Agradecimentos: Primeiramente a Deus, segundo minha mãe Elaine Cristina Martins, por ser uma mulher vencedora.
+- Considerações: Através do foco e da persistência que se obtém o verdadeiro sucesso!
+
+
+# Agradecimentos: Primeiramente a Deus, segundo minha mãe Elaine Cristina Martins, por ser uma mulher vencedora.
 -
 ATENÇÃO: Software apresentado e publicado na banca de TCC como requisito para obtenção do título Técnologo de Análise e Desenvolvimento de Sistemas.
 -
