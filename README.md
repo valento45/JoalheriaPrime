@@ -1,8 +1,7 @@
 # JoalheriaPrime
 Software de gestão para joalheria.
 -
--
-Formação e atividades filantrópicas:  Aluno da Fatec, formado na Etec, estudante de programação, e não obstante, amante da filosofia.
+- Formação e atividades filantrópicas:  Aluno da Fatec, formado na Etec, estudante de programação, e não obstante, amante da filosofia.
 
 - Considerações: Através do foco e da persistência que de obtém o verdadeiro sucesso!
 -
