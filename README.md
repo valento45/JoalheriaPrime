@@ -7,7 +7,7 @@ Software de gestão para joalheria.
 
 
 # Agradecimentos: Primeiramente a Deus, segundo minha mãe Elaine Cristina Martins, por ser uma mulher vencedora.
--
+
 ATENÇÃO: Software apresentado e publicado na banca de TCC como requisito para obtenção do título Técnologo de Análise e Desenvolvimento de Sistemas.
 ** Cópias serão vistas como plágio, seja qual for a finalidade: escolar, profissional, etc **
 
