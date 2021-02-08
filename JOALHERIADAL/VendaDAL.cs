@@ -10,6 +10,8 @@ using System.Xml.Linq;//
 using System.Xml.Xsl;//
 using System.Xml.XmlConfiguration;//
 using System.Xml.Schema;//
+using System.Windows.Forms;
+using JOALHERIABLL;
 
 namespace JOALHERIADAL
 {
@@ -19,19 +21,30 @@ namespace JOALHERIADAL
 
         public int Cadastrar(JOALHERIABLL.VendaBLL vendaBLL)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO JOALHERIA.VENDA (IDCLIENTE, DATAVENDA, USUARIO, PRECOTOTAL, FORMAPAGAMENTO, VALORPAGO, TROCO) VALUES (@IDCLIENTE, GETDATE(), @USUARIO, @PRECOTOTAL, @FORMAPAGAMENTO, @VALORPAGO, @TROCO);SELECT SCOPE_IDENTITY();", con.Conectar());
-            cmd.Parameters.AddWithValue("@IDCLIENTE", vendaBLL.Idcliente);
-            cmd.Parameters.AddWithValue("@DATAVENDA", vendaBLL.Datavenda);
-            cmd.Parameters.AddWithValue("@USUARIO", vendaBLL.Usuario);
-            cmd.Parameters.AddWithValue("@PRECOTOTAL", vendaBLL.Precototal);
-            cmd.Parameters.AddWithValue("@FORMAPAGAMENTO", vendaBLL.Formapagamento);
-            cmd.Parameters.AddWithValue("@VALORPAGO", vendaBLL.Valorpago);
-            cmd.Parameters.AddWithValue("@TROCO", vendaBLL.Troco);
-            int chave_gerada = 0;
-            chave_gerada = Convert.ToInt16(cmd.ExecuteScalar());
-            con.Desconectar();
+            int chave_gerada = -1;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("INSERT INTO JOALHERIA.VENDA (IDCLIENTE, DATAVENDA, USUARIO, PRECOTOTAL, FORMAPAGAMENTO, VALORPAGO, TROCO) VALUES (@IDCLIENTE, GETDATE(), @USUARIO, @PRECOTOTAL, @FORMAPAGAMENTO, @VALORPAGO, @TROCO); SELECT SCOPE_IDENTITY();");
+                cmd.Parameters.AddWithValue("@IDCLIENTE", vendaBLL.Idcliente);
+                cmd.Parameters.AddWithValue("@DATAVENDA", vendaBLL.Datavenda);
+                cmd.Parameters.AddWithValue("@USUARIO", vendaBLL.Usuario);
+                cmd.Parameters.AddWithValue("@PRECOTOTAL", vendaBLL.Precototal);
+                cmd.Parameters.AddWithValue("@FORMAPAGAMENTO", vendaBLL.Formapagamento);
+                cmd.Parameters.AddWithValue("@VALORPAGO", vendaBLL.Valorpago);
+                cmd.Parameters.AddWithValue("@TROCO", vendaBLL.Troco);                
+                chave_gerada = Acces.ExecuteScalar(cmd);
+                              
+            }
+            catch(Exception ex)
+            {
+                string error = ex.Message;
+                MessageBox.Show("Ocorreu um erro: " + error, "Exception ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                con.Desconectar();
+            }
             return chave_gerada;
-
         }
 
         public void Alterar(JOALHERIABLL.VendaBLL vendaBLL)
@@ -74,7 +87,6 @@ namespace JOALHERIADAL
                 vendaBLL.Formapagamento = Convert.ToString(dr["FORMAPAGAMENTO"]);
                 vendaBLL.Valorpago = Convert.ToDecimal(dr["VALORPAGO"]);
                 vendaBLL.Troco = Convert.ToDecimal(dr["TROCO"]);
-
             }
 
             dr.Close();
@@ -103,8 +115,8 @@ namespace JOALHERIADAL
         {
             con.Desconectar();
 
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.VENDA WHERE DATAVENDA >= " + "'" + data1 + " 00:00:01" + "'" + " AND DATAVENDA <= " + "'"+ data2 + " 23:59:59" + "'" + " ORDER BY IDVENDA", con.Conectar());
-
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.VENDA WHERE DATAVENDA >= " + "'" + data1 + " 00:00:00" + "'" + " AND DATAVENDA <= " + "'"+ data2 + " 23:59:59" + "'" + " ORDER BY IDVENDA;", con.Conectar());
+            
             return da;
         }
 
@@ -112,15 +124,17 @@ namespace JOALHERIADAL
         {
             con.Desconectar();
 
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM JOALHERIA.ITEMPEDIDO WHERE IDVENDA = " +id_venda +";",con.Conectar());
+            SqlDataAdapter da = new SqlDataAdapter($"SELECT * FROM JOALHERIA.ITEMPEDIDO WHERE IDVENDA = { id_venda };",con.Conectar());
 
             return da;
         }
 
-
         //METODO EXPORTAR TODOS OS REGISTROS DO BANCO
         public void ExportarXml(string caminho)
         {
+            List<VendaBLL> result = new List<VendaBLL>();
+            int i = 0;
+
             //criando xml
             XDocument xml = new XDocument(new XDeclaration("1.0","utf-8",null));
             //tag principal
@@ -130,37 +144,25 @@ namespace JOALHERIADAL
             XElement reg = new XElement("registroVenda");
 
             SqlCommand cmd = new SqlCommand("SELECT * FROM JOALHERIA.VENDA ORDER BY IDVENDA",con.Conectar());
-            SqlDataReader dr = cmd.ExecuteReader();
 
-            JOALHERIABLL.VendaBLL vendaBLL = new JOALHERIABLL.VendaBLL();
-            int i = 0;
-            while (dr.Read())
+            foreach (DataRow rows in Acces.ExecuteReader(cmd).Tables[0].Rows)
+                result.Add(new VendaBLL(rows));
+
+            foreach (VendaBLL venda in result)
             {
-                
-                vendaBLL.Idvenda = Convert.ToInt32(dr["IDVENDA"]);
-                vendaBLL.Idcliente = Convert.ToInt32(dr["IDCLIENTE"]);
-                vendaBLL.Datavenda = Convert.ToDateTime(dr["DATAVENDA"]);
-                vendaBLL.Usuario = dr["USUARIO"].ToString();
-                vendaBLL.Precototal = Convert.ToDecimal(dr["PRECOTOTAL"]);
-                vendaBLL.Formapagamento = dr["FORMAPAGAMENTO"].ToString();
-                vendaBLL.Valorpago = Convert.ToDecimal(dr["VALORPAGO"]);
-                vendaBLL.Troco = Convert.ToDecimal(dr["TROCO"]);
-
-                
-
-                reg.Add(new XElement("idvenda" + i, vendaBLL.Idvenda));
-                reg.Add(new XElement("idcliente" + i, vendaBLL.Idcliente));
-                reg.Add(new XElement("datavenda" + i, vendaBLL.Datavenda));
-                reg.Add(new XElement("usuario" + i, vendaBLL.Usuario));
-                reg.Add(new XElement("precototal" + i, vendaBLL.Precototal));
-                reg.Add(new XElement("formapagamento" + i, vendaBLL.Formapagamento));
-                reg.Add(new XElement("valorpago" + i, vendaBLL.Valorpago));
-                reg.Add(new XElement("troco" + i, vendaBLL.Troco));
+                reg.Add(new XElement("idvenda" + i, venda.Idvenda));
+                reg.Add(new XElement("idcliente" + i, venda.Idcliente));
+                reg.Add(new XElement("datavenda" + i, venda.Datavenda));
+                reg.Add(new XElement("usuario" + i, venda.Usuario));
+                reg.Add(new XElement("precototal" + i, venda.Precototal));
+                reg.Add(new XElement("formapagamento" + i, venda.Formapagamento));
+                reg.Add(new XElement("valorpago" + i, venda.Valorpago));
+                reg.Add(new XElement("troco" + i, venda.Troco));
                 i++;
             }
             root.Add(reg);
             xml.Add(root);
-            xml.Save(caminho);
+            xml.Save(caminho) ;
         }
 
         //METODO GERAR UM UNICO XML SELECIONADO

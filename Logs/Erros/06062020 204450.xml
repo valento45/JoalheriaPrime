@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LOG>
+  <ERRORS>
+    <Message>Não é possível encontrar a tabela 0.</Message>
+    <StackTrace>   em System.Data.DataTableCollection.get_Item(Int32 index)
+   em JOALHERIA.UI.frmFaturamento.GerarFaturamento() na C:\Users\MRX\Desktop\CProfissional\JoalheriaPrime\JOALHERIA\UI\frmFaturamento.cs:linha 51
+   em JOALHERIA.UI.frmFaturamento.btGerar_Click(Object sender, EventArgs e) na C:\Users\MRX\Desktop\CProfissional\JoalheriaPrime\JOALHERIA\UI\frmFaturamento.cs:linha 74
+   em System.Windows.Forms.Control.OnClick(EventArgs e)
+   em System.Windows.Forms.Button.OnClick(EventArgs e)
+   em System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   em System.Windows.Forms.Control.WmMouseUp(Message&amp; m, MouseButtons button, Int32 clicks)
+   em System.Windows.Forms.Control.WndProc(Message&amp; m)
+   em System.Windows.Forms.ButtonBase.WndProc(Message&amp; m)
+   em System.Windows.Forms.Button.WndProc(Message&amp; m)
+   em System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message&amp; m)
+   em System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message&amp; m)
+   em System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)</StackTrace>
+    <Detalhes> - Program.cs</Detalhes>
+    <Data>06/06/2020 20:44:50</Data>
+  </ERRORS>
+</LOG>

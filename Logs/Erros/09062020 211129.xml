@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LOG>
+  <ERRORS>
+    <Message>Não é possível encontrar a tabela 0.</Message>
+    <StackTrace>   em System.Data.DataTableCollection.get_Item(Int32 index)
+   em JOALHERIA.UI.frmFaturamento.GerarFaturamento() na C:\Users\MRX\Desktop\CProfissional\JoalheriaPrime\JOALHERIA\UI\frmFaturamento.cs:linha 57</StackTrace>
+    <Detalhes> - frmFaturamento.cs</Detalhes>
+    <Data>09/06/2020 21:11:29</Data>
+  </ERRORS>
+</LOG>

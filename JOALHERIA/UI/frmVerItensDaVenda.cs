@@ -23,15 +23,16 @@ namespace JOALHERIA.UI
         }
 
 
-        public frmVerItensDaVenda()
+        public frmVerItensDaVenda(int codigo)
         {
             InitializeComponent();
+            itemBLL.Idvenda = codigo;
         }
 
         private void frmVerItensDaVenda_Load(object sender, EventArgs e)
         {
-            itemBLL.Idvenda = CodVenda;
-            dgvConsultarItens.DataSource = itemDAL.ConsultarPorCodigoVenda(itemBLL);
+            if(itemBLL.Idvenda > 0)
+                dgvConsultarItens.DataSource = itemDAL.ConsultarPorCodigoVenda(itemBLL);
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)

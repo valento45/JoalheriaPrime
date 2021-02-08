@@ -7,28 +7,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using JOALHERIADAL.Exceptions;
+using JOALHERIA;
+using JOALHERIABLL;
+using JOALHERIADAL;
 namespace JOALHERIA.UI
 {
     public partial class frmProduto : Form
     {
-        JOALHERIABLL.ProdutoBLL produtoBLL = new JOALHERIABLL.ProdutoBLL();
-        JOALHERIADAL.ProdutoDAL produtoDAL = new JOALHERIADAL.ProdutoDAL();
+        ProdutoBLL produtoBLL;
+        ProdutoDAL produtoDAL = new ProdutoDAL();
+        CategoriaBLL categoriaBLL = new CategoriaBLL();
+        CategoriaDAL categoriaDAL = new CategoriaDAL();
 
-        JOALHERIABLL.CategoriaBLL categoriaBLL = new JOALHERIABLL.CategoriaBLL();
-        JOALHERIADAL.CategoriaDAL categoriaDAL = new JOALHERIADAL.CategoriaDAL();
         string caminho;
         bool alterar = false;
 
-        public frmProduto()
+        //public frmProduto()
+        //{
+        //    InitializeComponent();
+        //}
+
+        public frmProduto(ProdutoBLL produto)
         {
             InitializeComponent();
-        }
+            produtoBLL = produto;
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            alterar = false;
+            alterar = produtoBLL.Idproduto > 0 ? true : false;
         }
 
         private void frmProduto_Load(object sender, EventArgs e)
@@ -37,101 +42,8 @@ namespace JOALHERIA.UI
             cmbCategoria.DisplayMember = "CATEGORIA";
             cmbCategoria.ValueMember = "IDCATEGORIA";
 
-            ConsultarTodosGrid();
-        }
-
-        private void btnAddCategoria_Click(object sender, EventArgs e)
-        {
-            frmCategoria frmcategoria = new frmCategoria();
-            frmcategoria.ShowDialog();
-
-            cmbCategoria.DataSource = categoriaDAL.ConsultarTodos();
-            cmbCategoria.DisplayMember = "CATEGORIA";
-            cmbCategoria.ValueMember = "IDCATEGORIA";
-        }
-
-        private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void toolStripButton2_Click(object sender, EventArgs e)
-        {
-            if (dgvConsultarProduto.RowCount > 0)
-            {
-                if (MessageBox.Show("Deseja excluir este registro?", "atencao", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    produtoBLL.Idproduto = Convert.ToInt16(dgvConsultarProduto.SelectedCells[0].Value);
-                    produtoDAL.Excluir(produtoBLL);
-                    ConsultarTodosGrid();
-                }
-            }
-            else
-                MessageBox.Show("Selecione algum registro!", "Atencao", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        private void PopularGridTodos()
-        {
-            dgvConsultarProduto.Rows.Clear();
-            foreach (JOALHERIABLL.ProdutoBLL rs in JOALHERIADAL.ProdutoDAL.ListarProdutos().OrderBy(c => c.Descricao))
-                dgvConsultarProduto.Rows.Add(rs.Idproduto, rs.Descricao, rs.Idcategoria, rs.Precoimportado, rs.Precovenda, rs.Lucro, rs.Quantidade, rs.Imagem, rs.Observacoes);
-
-        }
-        private void btnSalvar_Click(object sender, EventArgs e)
-        {
-            if (txtDescricao.Text.Trim() == "" || cmbCategoria.Text == "" || txtLucro.Text.Trim() == "" || txtPrecoImportado.Text == "" || txtQuantidade.Text == "")
-                MessageBox.Show("Preencha todos os campos obrigatórios", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            else
-            {
-
-                if (!alterar)
-                {
-                    cmbCategoria.DisplayMember = "IDCATEGORIA";
-                    cmbCategoria.ValueMember = "IDCATEGORIA";
-
-                    produtoBLL.Idcategoria = Convert.ToInt16(cmbCategoria.Text);
-                    produtoBLL.Descricao = txtDescricao.Text;
-                    produtoBLL.Quantidade = Convert.ToInt16(txtQuantidade.Text);
-                    produtoBLL.Precoimportado = Convert.ToDecimal(txtPrecoImportado.Text);
-                    produtoBLL.Precovenda = Convert.ToDecimal(txtPrecoVenda.Text);
-                    produtoBLL.Lucro = Convert.ToDecimal(txtLucro.Text);
-                    produtoBLL.Observacoes = txtObservacoes.Text;
-                    produtoBLL.Imagem = caminho.ToString();
-
-                    produtoDAL.Cadastrar(produtoBLL);
-                    MessageBox.Show("Produto registrado com sucesso!", "Succesful", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                    ConsultarTodosGrid();
-                    ResetarCampos();
-                }
-                if (alterar)
-                {
-                    cmbCategoria.DisplayMember = "IDCATEGORIA";
-                    cmbCategoria.ValueMember = "IDCATEGORIA";
-
-                    produtoBLL.Idcategoria = Convert.ToInt16(cmbCategoria.Text);
-                    produtoBLL.Descricao = txtDescricao.Text;
-                    produtoBLL.Quantidade = Convert.ToInt16(txtQuantidade.Text);
-                    produtoBLL.Precoimportado = Convert.ToDecimal(txtPrecoImportado.Text);
-                    produtoBLL.Precovenda = Convert.ToDecimal(txtPrecoVenda.Text);
-                    produtoBLL.Lucro = Convert.ToDecimal(txtLucro.Text);
-                    produtoBLL.Observacoes = txtObservacoes.Text;
-                    produtoBLL.Imagem = caminho.ToString();
-
-                    produtoDAL.Alterar(produtoBLL);
-                    MessageBox.Show("Dados Alterados com sucesso!", "Succesful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ConsultarTodosGrid();
-                    ResetarCampos();
-                }
-            }
+            if (alterar)
+                Prepara_Edicao();
         }
 
         public void ResetarCampos()
@@ -151,23 +63,12 @@ namespace JOALHERIA.UI
             pctImagemProduto.Image = null;
 
         }
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void Prepara_Edicao()
         {
-            this.Close();
-        }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            if (dgvConsultarProduto.RowCount > 0)
+            try
             {
                 label11.Text = "Alterar Produto";
-                produtoBLL.Idproduto = Convert.ToInt16(dgvConsultarProduto.SelectedCells[0].Value);
-                produtoDAL.GetById(produtoBLL);
 
                 cmbCategoria.Text = Convert.ToString(produtoBLL.Idcategoria);
                 txtDescricao.Text = produtoBLL.Descricao;
@@ -177,62 +78,94 @@ namespace JOALHERIA.UI
                 txtLucro.Text = Convert.ToString(produtoBLL.Lucro);
                 txtObservacoes.Text = produtoBLL.Observacoes;
                 caminho = produtoBLL.Imagem;
-                pctImagemProduto.Load(caminho);
-                pctImagemProduto.SizeMode = PictureBoxSizeMode.Zoom;
-                alterar = true;
-                tabControl1.SelectedTab = tabPage1;
-            }
-
-            else
-                MessageBox.Show("Selecione algum registro!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            ResetarCampos();
-        }
-
-        private void txtFiltro_TextChanged(object sender, EventArgs e)
-        {
-            if (txtFiltro.Text.Length > 0)
-            {
-                if (rdbCodigo.Checked)
+                if (caminho.Length > 0)
                 {
-                    int codigo = int.Parse(txtFiltro.Text);
-                    dgvConsultarProduto.DataSource = JOALHERIADAL.ProdutoDAL.ListarProdutos().Where(p => p.Idproduto == codigo).ToList();
-                }
-                if (rdbDescricao.Checked)
-                {
-                    produtoBLL.Descricao = txtFiltro.Text;
-                    dgvConsultarProduto.DataSource = produtoDAL.ConsultarPorDescricao(produtoBLL);
+                    pctImagemProduto.SizeMode = PictureBoxSizeMode.Zoom;
+                    pctImagemProduto.Load(caminho);
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao carregar o registro: " + ex.Message, "1) Line 189, frmProduto.cs", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void Lucro()
+        {
+            decimal lucro_unitario = 0;
+            try
+            {
+                if (txtQuantidade.Text.Trim() == "" || txtPrecoImportado.Text == "")
+                    if (!(MessageBox.Show("Alguns campos não foram preenchidos! \nDeseja continuar?", "Campos vazios", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
+                        return;
+
+                decimal bruto_total;
+                decimal.TryParse(txtPrecoImportado.Text, out bruto_total);
+
+                int quantidade ;
+                int.TryParse(txtQuantidade.Text, out quantidade);
+
+                decimal bruto_unitario = bruto_total / quantidade;
+
+                decimal preco_venda;
+                decimal.TryParse(txtPrecoVenda.Text, out preco_venda);
+
+                lucro_unitario = preco_venda - bruto_unitario;
+                txtLucro.Text = lucro_unitario.ToString("F2");
+            }          
+            catch (Exception ex)
+            {
+                txtLucro.Clear();
+                MessageBox.Show(ex.Message, "Line 170, frmProduto.cs", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
+        }
+
+        private void Salvar()
+        {
+            if (txtDescricao.Text.Trim() == "" || cmbCategoria.Text == "" || txtPrecoImportado.Text.Trim() == "" || txtQuantidade.Text.Trim() == "")
+                throw new ExceptionProduct("Preencha todos os campos obrigatórios");
             else
             {
-                ConsultarTodosGrid();
+                cmbCategoria.DisplayMember = "IDCATEGORIA";
+                cmbCategoria.ValueMember = "IDCATEGORIA";
+
+                produtoBLL.Idcategoria = Convert.ToInt16(cmbCategoria.Text);
+                produtoBLL.Descricao = txtDescricao.Text;
+                produtoBLL.Quantidade = Convert.ToInt16(txtQuantidade.Text);
+                produtoBLL.Precoimportado = Convert.ToDecimal(txtPrecoImportado.Text);
+                produtoBLL.Precovenda = Convert.ToDecimal(txtPrecoVenda.Text);
+                produtoBLL.Lucro = Convert.ToDecimal(txtLucro.Text);
+                produtoBLL.Observacoes = txtObservacoes.Text;
+                produtoBLL.Imagem = caminho?.ToString();
+
+                if (alterar)
+                    produtoDAL.Alterar(produtoBLL);
+
+                else
+                {
+                    produtoDAL.Cadastrar(produtoBLL);
+                    //ResetarCampos();
+                }
+
+                MessageBox.Show(alterar ? "Produto Atualizado com sucesso!" : "Produto Incluido com sucesso!", "Succesful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
             }
         }
 
-        public void ConsultarTodosGrid()
-        {
-            dgvConsultarProduto.Rows.Clear();
-            dgvConsultarProduto.Refresh();
-            foreach (JOALHERIABLL.ProdutoBLL produto in JOALHERIADAL.ProdutoDAL.ListarProdutos().OrderBy(c => c.Descricao))
-                dgvConsultarProduto.Rows.Add(produto.Idproduto, produto.Descricao, produto.Idcategoria, produto.Quantidade, produto.Precovenda, produto.Observacoes);
 
-        }
-
-        private void txtFiltro_KeyPress(object sender, KeyPressEventArgs e)
+        private void btnSalvar_Click_1(object sender, EventArgs e)
         {
-            if (rdbCodigo.Checked)
+            try
             {
-                if (!char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != (char)Keys.Delete)
-                    e.Handled = true;
+                Salvar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Line 145, frmProduto.cs", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private void btnProcurarImagem_Click(object sender, EventArgs e)
+        private void btnProcurarImagem_Click_1(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -241,5 +174,81 @@ namespace JOALHERIA.UI
                 pctImagemProduto.SizeMode = PictureBoxSizeMode.Zoom;
             }
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtPrecoVenda_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                //Lucro();
+            }
+            catch (ExceptionProduct ex)
+            {
+                MessageBox.Show(ex.Message, "Line 170, frmProduto.cs", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Line 170, frmProduto.cs", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnAddCategoria_Click_1(object sender, EventArgs e)
+        {
+            frmCategoria frmcategoria = new frmCategoria();
+            frmcategoria.ShowDialog();
+
+            cmbCategoria.DataSource = categoriaDAL.ConsultarTodos();
+            cmbCategoria.DisplayMember = "CATEGORIA";
+            cmbCategoria.ValueMember = "IDCATEGORIA";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ResetarCampos();
+        }
+
+        private void txtPrecoVenda_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && ((Keys)e.KeyChar != Keys.Delete && (Keys)e.KeyChar != Keys.Back && (Keys)e.KeyChar != Keys.Enter))
+            {
+                e.Handled = true;
+                MessageBox.Show("Este campo só aceita valores númericos !", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void txtPrecoVenda_Leave(object sender, EventArgs e)
+        {
+              Lucro();
+        }
+
+        private void txtPrecoImportado_Leave(object sender, EventArgs e)
+        {
+            //Lucro();
+        }
+
+        private void txtPrecoImportado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && ((Keys)e.KeyChar != Keys.Delete && (Keys)e.KeyChar != Keys.Back && (Keys)e.KeyChar != Keys.Enter))
+            {
+                e.Handled = true;
+                MessageBox.Show("Este campo só aceita valores númericos !", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtQuantidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && ((Keys)e.KeyChar != Keys.Delete && (Keys)e.KeyChar != Keys.Back && (Keys)e.KeyChar != Keys.Enter))
+            {
+                e.Handled = true;
+                MessageBox.Show("Este campo só aceita valores númericos !", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }//
 }//
+

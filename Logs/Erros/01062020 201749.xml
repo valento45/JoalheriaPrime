@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LOG>
+  <ERRORS>
+    <Message>Referência de objeto não definida para uma instância de um objeto.</Message>
+    <StackTrace>   em JOALHERIA.UI.frmVenda.Salvar() na C:\Users\MRX\Desktop\CProfissional\JoalheriaPrime\JOALHERIA\UI\frmVenda.cs:linha 248</StackTrace>
+    <Detalhes> - Method Salvar in frmVenda.cs</Detalhes>
+    <Data>01/06/2020 20:17:42</Data>
+  </ERRORS>
+</LOG>

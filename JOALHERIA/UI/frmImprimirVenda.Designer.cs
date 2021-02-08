@@ -43,10 +43,10 @@
             this.pnlReport = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.pnlXml = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rdbTodos = new System.Windows.Forms.RadioButton();
-            this.rdbSelecionado = new System.Windows.Forms.RadioButton();
             this.btnGerarXml = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rdbSelecionado = new System.Windows.Forms.RadioButton();
+            this.rdbTodos = new System.Windows.Forms.RadioButton();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.groupBox1.SuspendLayout();
             this.pnlReport.SuspendLayout();
@@ -187,10 +187,11 @@
             // 
             // pnlReport
             // 
+            this.pnlReport.BackColor = System.Drawing.SystemColors.Window;
             this.pnlReport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlReport.Controls.Add(this.btnGerar);
             this.pnlReport.Controls.Add(this.groupBox1);
-            this.pnlReport.Location = new System.Drawing.Point(12, 29);
+            this.pnlReport.Location = new System.Drawing.Point(12, 25);
             this.pnlReport.Name = "pnlReport";
             this.pnlReport.Size = new System.Drawing.Size(514, 217);
             this.pnlReport.TabIndex = 4;
@@ -202,61 +203,28 @@
             this.button1.BackgroundImage = global::JOALHERIA.Properties.Resources.Cancelar11;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(441, 2);
+            this.button1.Location = new System.Drawing.Point(500, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(84, 24);
+            this.button1.Size = new System.Drawing.Size(27, 24);
             this.button1.TabIndex = 4;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pnlXml
             // 
+            this.pnlXml.BackColor = System.Drawing.SystemColors.Window;
             this.pnlXml.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlXml.Controls.Add(this.btnGerarXml);
             this.pnlXml.Controls.Add(this.groupBox2);
             this.pnlXml.Location = new System.Drawing.Point(12, 28);
             this.pnlXml.Name = "pnlXml";
-            this.pnlXml.Size = new System.Drawing.Size(514, 227);
+            this.pnlXml.Size = new System.Drawing.Size(514, 218);
             this.pnlXml.TabIndex = 5;
             this.pnlXml.Visible = false;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.rdbSelecionado);
-            this.groupBox2.Controls.Add(this.rdbTodos);
-            this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(158, 45);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 100);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "XML";
-            // 
-            // rdbTodos
-            // 
-            this.rdbTodos.AutoSize = true;
-            this.rdbTodos.Location = new System.Drawing.Point(49, 19);
-            this.rdbTodos.Name = "rdbTodos";
-            this.rdbTodos.Size = new System.Drawing.Size(80, 17);
-            this.rdbTodos.TabIndex = 0;
-            this.rdbTodos.TabStop = true;
-            this.rdbTodos.Text = "Gerar todos";
-            this.rdbTodos.UseVisualStyleBackColor = true;
-            // 
-            // rdbSelecionado
-            // 
-            this.rdbSelecionado.AutoSize = true;
-            this.rdbSelecionado.Location = new System.Drawing.Point(49, 61);
-            this.rdbSelecionado.Name = "rdbSelecionado";
-            this.rdbSelecionado.Size = new System.Drawing.Size(130, 17);
-            this.rdbSelecionado.TabIndex = 1;
-            this.rdbSelecionado.TabStop = true;
-            this.rdbSelecionado.Text = "Apenas o selecionado";
-            this.rdbSelecionado.UseVisualStyleBackColor = true;
-            // 
             // btnGerarXml
             // 
-            this.btnGerarXml.Location = new System.Drawing.Point(283, 151);
+            this.btnGerarXml.Location = new System.Drawing.Point(371, 151);
             this.btnGerarXml.Name = "btnGerarXml";
             this.btnGerarXml.Size = new System.Drawing.Size(75, 23);
             this.btnGerarXml.TabIndex = 1;
@@ -264,15 +232,54 @@
             this.btnGerarXml.UseVisualStyleBackColor = true;
             this.btnGerarXml.Click += new System.EventHandler(this.btnGerarXml_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox2.Controls.Add(this.rdbSelecionado);
+            this.groupBox2.Controls.Add(this.rdbTodos);
+            this.groupBox2.ForeColor = System.Drawing.Color.Black;
+            this.groupBox2.Location = new System.Drawing.Point(89, 45);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(357, 100);
+            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "XML";
+            // 
+            // rdbSelecionado
+            // 
+            this.rdbSelecionado.AutoSize = true;
+            this.rdbSelecionado.BackColor = System.Drawing.SystemColors.Window;
+            this.rdbSelecionado.ForeColor = System.Drawing.Color.Black;
+            this.rdbSelecionado.Location = new System.Drawing.Point(49, 61);
+            this.rdbSelecionado.Name = "rdbSelecionado";
+            this.rdbSelecionado.Size = new System.Drawing.Size(130, 17);
+            this.rdbSelecionado.TabIndex = 1;
+            this.rdbSelecionado.TabStop = true;
+            this.rdbSelecionado.Text = "Apenas o selecionado";
+            this.rdbSelecionado.UseVisualStyleBackColor = false;
+            // 
+            // rdbTodos
+            // 
+            this.rdbTodos.AutoSize = true;
+            this.rdbTodos.BackColor = System.Drawing.SystemColors.Window;
+            this.rdbTodos.ForeColor = System.Drawing.Color.Black;
+            this.rdbTodos.Location = new System.Drawing.Point(49, 19);
+            this.rdbTodos.Name = "rdbTodos";
+            this.rdbTodos.Size = new System.Drawing.Size(80, 17);
+            this.rdbTodos.TabIndex = 0;
+            this.rdbTodos.TabStop = true;
+            this.rdbTodos.Text = "Gerar todos";
+            this.rdbTodos.UseVisualStyleBackColor = false;
+            // 
             // saveFileDialog1
             // 
-            this.saveFileDialog1.Filter = "|*.xml";
+            this.saveFileDialog1.Filter = "*.xml|*txt";
             // 
             // frmImprimirVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(537, 257);
             this.Controls.Add(this.pnlXml);
             this.Controls.Add(this.button1);

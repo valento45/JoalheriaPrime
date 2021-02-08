@@ -58,14 +58,14 @@ namespace JOALHERIA
                         usuarioBLL.Tipo = false;
                     }
                     usuarioBLL.Usuario = txtUsuario.Text;
-                    usuarioBLL.Senha = txtSenha.Text;
+                    usuarioBLL.Senha = Acces.Encrypt(txtUsuario.Text, txtSenha.Text);
 
                     usuarioDAL.Cadastrar(usuarioBLL);
                     MessageBox.Show("Dados gravados com Sucesso!","Atenção!",MessageBoxButtons.OK,MessageBoxIcon.Information);
                     LimparCampos();
-                    dgvConsultarUsuario.DataSource = usuarioDAL.ConsultarTodos();
+                    
                 }
-
+          
                 if(alterar == true && ValidarCamposObrigatorios()==true)
                 {
                     usuarioBLL.Nome = txtNome.Text;
@@ -83,28 +83,20 @@ namespace JOALHERIA
                         usuarioBLL.Tipo = false;
                     }
                     usuarioBLL.Usuario = txtUsuario.Text;
-                    usuarioBLL.Senha = txtSenha.Text;
+                    usuarioBLL.Senha = Acces.Encrypt(txtUsuario.Text, txtSenha.Text);
 
                     usuarioDAL.Atualizar(usuarioBLL);
                     MessageBox.Show("Dados Atualizados com Sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 ResetarCampos();
-                PopulaGrid();
+                PopularGrid();
                 }               
-        }
-        public void PopulaGrid()
-        {
-            dgvConsultarUsuario.Rows.Add(usuarioDAL.ListarTodosUsuarios().ToArray());
-            //foreach (var al in usuarioDAL.ListarTodosUsuarios())
-            //{
-            //    dgvConsultarUsuario.Rows.Add(al.Idusuario, al.Nome, al.Rg, al.Cpf, al.Endereco, al.Telefone, al.Tipo, al.Usuario, al.Senha);
-            //}
-
-        }
+        }       
+       
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            PopulaGrid();           
+            PopularGrid();           
         }
 
         private void tabPage2_Click(object sender, EventArgs e)
@@ -226,6 +218,14 @@ namespace JOALHERIA
             {
                 label11.Text = "Cadastrar Usuário";
             }
+        }
+
+        private void PopularGrid()
+        {
+            dgvConsultarUsuario.Rows.Clear();
+            foreach (var user in usuarioDAL.ListarTodosUsuarios().OrderBy(y => y.Usuario).ToList())
+                dgvConsultarUsuario.Rows.Add(user.Idusuario, user.Nome, user.Rg, user.Cpf, user.Endereco, user.Telefone, user.Tipo, user.Usuario, user.Senha, user.Permissoes);
+
         }
     }//
 }//

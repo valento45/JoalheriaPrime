@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetOS" targetNamespace="http://tempuri.org/DataSetOS.xsd" xmlns:mstns="http://tempuri.org/DataSetOS.xsd" xmlns="http://tempuri.org/DataSetOS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetOS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetOS" msprop:Generator_UserDSName="DataSetOS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="OrdemServico" msprop:Generator_TableClassName="OrdemServicoDataTable" msprop:Generator_TableVarName="tableOrdemServico" msprop:Generator_TablePropName="OrdemServico" msprop:Generator_RowDeletingName="OrdemServicoRowDeleting" msprop:Generator_RowChangingName="OrdemServicoRowChanging" msprop:Generator_RowEvHandlerName="OrdemServicoRowChangeEventHandler" msprop:Generator_RowDeletedName="OrdemServicoRowDeleted" msprop:Generator_UserTableName="OrdemServico" msprop:Generator_RowChangedName="OrdemServicoRowChanged" msprop:Generator_RowEvArgName="OrdemServicoRowChangeEvent" msprop:Generator_RowClassName="OrdemServicoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IDORDEM" msprop:Generator_ColumnVarNameInTable="columnIDORDEM" msprop:Generator_ColumnPropNameInRow="IDORDEM" msprop:Generator_ColumnPropNameInTable="IDORDEMColumn" msprop:Generator_UserColumnName="IDORDEM" type="xs:int" />
+              <xs:element name="IDCLIENTE" msprop:Generator_ColumnVarNameInTable="columnIDCLIENTE" msprop:Generator_ColumnPropNameInRow="IDCLIENTE" msprop:Generator_ColumnPropNameInTable="IDCLIENTEColumn" msprop:Generator_UserColumnName="IDCLIENTE" type="xs:int" minOccurs="0" />
+              <xs:element name="DATAATUAL" msprop:Generator_ColumnVarNameInTable="columnDATAATUAL" msprop:Generator_ColumnPropNameInRow="DATAATUAL" msprop:Generator_ColumnPropNameInTable="DATAATUALColumn" msprop:Generator_UserColumnName="DATAATUAL" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DATAENTREGA" msprop:Generator_ColumnVarNameInTable="columnDATAENTREGA" msprop:Generator_ColumnPropNameInRow="DATAENTREGA" msprop:Generator_ColumnPropNameInTable="DATAENTREGAColumn" msprop:Generator_UserColumnName="DATAENTREGA" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DESCONTO" msprop:Generator_ColumnVarNameInTable="columnDESCONTO" msprop:Generator_ColumnPropNameInRow="DESCONTO" msprop:Generator_ColumnPropNameInTable="DESCONTOColumn" msprop:Generator_UserColumnName="DESCONTO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="VALOR_TOTAL" msprop:Generator_ColumnVarNameInTable="columnVALOR_TOTAL" msprop:Generator_ColumnPropNameInRow="VALOR_TOTAL" msprop:Generator_ColumnPropNameInTable="VALOR_TOTALColumn" msprop:Generator_UserColumnName="VALOR_TOTAL" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FORMA_PAGAMENTO" msprop:Generator_ColumnVarNameInTable="columnFORMA_PAGAMENTO" msprop:Generator_ColumnPropNameInRow="FORMA_PAGAMENTO" msprop:Generator_ColumnPropNameInTable="FORMA_PAGAMENTOColumn" msprop:Generator_UserColumnName="FORMA_PAGAMENTO" type="xs:string" minOccurs="0" />
+              <xs:element name="VALOR_PAGO" msprop:Generator_ColumnVarNameInTable="columnVALOR_PAGO" msprop:Generator_ColumnPropNameInRow="VALOR_PAGO" msprop:Generator_ColumnPropNameInTable="VALOR_PAGOColumn" msprop:Generator_UserColumnName="VALOR_PAGO" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TROCO" msprop:Generator_ColumnVarNameInTable="columnTROCO" msprop:Generator_ColumnPropNameInRow="TROCO" msprop:Generator_ColumnPropNameInTable="TROCOColumn" msprop:Generator_UserColumnName="TROCO" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="IDUSUARIO" msprop:Generator_ColumnVarNameInTable="columnIDUSUARIO" msprop:Generator_ColumnPropNameInRow="IDUSUARIO" msprop:Generator_ColumnPropNameInTable="IDUSUARIOColumn" msprop:Generator_UserColumnName="IDUSUARIO" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ITEM_ORDEMSERVICO" msprop:Generator_TableClassName="ITEM_ORDEMSERVICODataTable" msprop:Generator_TableVarName="tableITEM_ORDEMSERVICO" msprop:Generator_TablePropName="ITEM_ORDEMSERVICO" msprop:Generator_RowDeletingName="ITEM_ORDEMSERVICORowDeleting" msprop:Generator_RowChangingName="ITEM_ORDEMSERVICORowChanging" msprop:Generator_RowEvHandlerName="ITEM_ORDEMSERVICORowChangeEventHandler" msprop:Generator_RowDeletedName="ITEM_ORDEMSERVICORowDeleted" msprop:Generator_UserTableName="ITEM_ORDEMSERVICO" msprop:Generator_RowChangedName="ITEM_ORDEMSERVICORowChanged" msprop:Generator_RowEvArgName="ITEM_ORDEMSERVICORowChangeEvent" msprop:Generator_RowClassName="ITEM_ORDEMSERVICORow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IDITEM" msprop:Generator_ColumnVarNameInTable="columnIDITEM" msprop:Generator_ColumnPropNameInRow="IDITEM" msprop:Generator_ColumnPropNameInTable="IDITEMColumn" msprop:Generator_UserColumnName="IDITEM" type="xs:int" />
+              <xs:element name="IDORDEM" msprop:Generator_ColumnVarNameInTable="columnIDORDEM" msprop:Generator_ColumnPropNameInRow="IDORDEM" msprop:Generator_ColumnPropNameInTable="IDORDEMColumn" msprop:Generator_UserColumnName="IDORDEM" type="xs:int" minOccurs="0" />
+              <xs:element name="IDSERVICO" msprop:Generator_ColumnVarNameInTable="columnIDSERVICO" msprop:Generator_ColumnPropNameInRow="IDSERVICO" msprop:Generator_ColumnPropNameInTable="IDSERVICOColumn" msprop:Generator_UserColumnName="IDSERVICO" type="xs:int" minOccurs="0" />
+              <xs:element name="VALOR_SERVICO" msprop:Generator_ColumnVarNameInTable="columnVALOR_SERVICO" msprop:Generator_ColumnPropNameInRow="VALOR_SERVICO" msprop:Generator_ColumnPropNameInTable="VALOR_SERVICOColumn" msprop:Generator_UserColumnName="VALOR_SERVICO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="QUANTIDADE_PEDIDO" msprop:Generator_ColumnVarNameInTable="columnQUANTIDADE_PEDIDO" msprop:Generator_ColumnPropNameInRow="QUANTIDADE_PEDIDO" msprop:Generator_ColumnPropNameInTable="QUANTIDADE_PEDIDOColumn" msprop:Generator_UserColumnName="QUANTIDADE_PEDIDO" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="OrdemServicoKey1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:OrdemServico" />
+      <xs:field xpath="mstns:IDORDEM" />
+    </xs:unique>
+    <xs:unique name="ITEM_ORDEMSERVICOKey1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ITEM_ORDEMSERVICO" />
+      <xs:field xpath="mstns:IDITEM" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

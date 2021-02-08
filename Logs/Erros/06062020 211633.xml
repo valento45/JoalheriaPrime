@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LOG>
+  <ERRORS>
+    <Message>Referência de objeto não definida para uma instância de um objeto.</Message>
+    <StackTrace>   em JOALHERIA.UI.frmLogin.frmLogin_Load(Object sender, EventArgs e) na C:\Users\MRX\Desktop\CProfissional\JoalheriaPrime\JOALHERIA\UI\frmLogin.cs:linha 41
+   em System.Windows.Forms.Form.OnLoad(EventArgs e)
+   em System.Windows.Forms.Form.OnCreateControl()
+   em System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   em System.Windows.Forms.Control.CreateControl()
+   em System.Windows.Forms.Control.WmShowWindow(Message&amp; m)
+   em System.Windows.Forms.Control.WndProc(Message&amp; m)
+   em System.Windows.Forms.ScrollableControl.WndProc(Message&amp; m)
+   em System.Windows.Forms.Form.WmShowWindow(Message&amp; m)
+   em System.Windows.Forms.Form.WndProc(Message&amp; m)
+   em System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message&amp; m)
+   em System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message&amp; m)
+   em System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)</StackTrace>
+    <Detalhes> - Program.cs</Detalhes>
+    <Data>06/06/2020 21:16:33</Data>
+  </ERRORS>
+</LOG>

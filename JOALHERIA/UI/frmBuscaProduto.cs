@@ -25,7 +25,7 @@ namespace JOALHERIA.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            frmProduto frmproduto = new frmProduto();
+            frmProduto frmproduto = new frmProduto( new ProdutoBLL());
             frmproduto.ShowDialog();
 
 
@@ -34,6 +34,7 @@ namespace JOALHERIA.UI
         private void frmBuscaProduto_Load(object sender, EventArgs e)
         {
             dgvConsultarProduto.DataSource = JOALHERIADAL.ProdutoDAL.ListarProdutos().OrderBy(c => c.Descricao).ToList();
+            dgvConsultarProduto.Columns[0].Visible = false;
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {

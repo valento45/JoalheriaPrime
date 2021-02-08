@@ -24,13 +24,13 @@ namespace JOALHERIA.UI
         }
 
 
-        public frmServico(int aba, string modo)
+        public frmServico(int aba, bool selecionar)
         {
             InitializeComponent();
 
-            tabControl1.SelectedIndex = aba;
+            tabControl1.SelectedIndex = 1;
 
-            if(modo == "selecionar")
+            if(selecionar)
             {
                 btnSelecionar.Visible = true;
             }
@@ -69,7 +69,7 @@ namespace JOALHERIA.UI
             lblAcao.Text = "Cadastrar";
         }
 
-        public void PrepararAlteracao()
+        public void ModoAlterar()
         {
             alterar = true;
             lblAcao.Text = "Alterar";            
@@ -134,7 +134,9 @@ namespace JOALHERIA.UI
 
         public void PopularGrid()
         {
-            dgvConsultarServico.DataSource = servicoDAL.ConsultarTodosList();
+            dgvConsultarServico.Rows.Clear();
+            foreach (JOALHERIABLL.ServicoBLL serv in servicoDAL.ConsultarTodosList())
+                dgvConsultarServico.Rows.Add(serv.Idservico, serv.Descricao, serv.Valor_servico);            
         }
 
         private void tabPage2_Enter(object sender, EventArgs e)
@@ -161,19 +163,16 @@ namespace JOALHERIA.UI
             if(dgvConsultarServico.RowCount > 0)
             {
                 servicoBLL.Idservico = Convert.ToInt32(dgvConsultarServico.SelectedCells[0].Value);
-                servicoDAL.RetornarDados(servicoBLL);
+                servicoBLL = servicoDAL.GetById(servicoBLL.Idservico);
 
-                txtDescricao.Text = servicoBLL.Descricao.ToString();
+                txtDescricao.Text = servicoBLL.Descricao;
                 txtValor.Text = servicoBLL.Valor_servico.ToString();
 
-                PrepararAlteracao();
-
+                ModoAlterar();
                 tabControl1.SelectedTab = tabPage1;
             }
-            else
-            {
+            else            
                 MessageBox.Show("Selecione algum registro !", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
         }
 
         private void tbtnExcluir_Click(object sender, EventArgs e)
@@ -188,9 +187,34 @@ namespace JOALHERIA.UI
                 }
             }
             else
-            {
                 MessageBox.Show("Selecione algum registro !", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            if (txtFiltro.Text.Trim().Length > 0)
+                try
+                {
+                    if (rdbCodigo.Checked)
+                    {
+                        dgvConsultarServico.Rows.Clear();
+                        foreach (JOALHERIABLL.ServicoBLL serv in servicoDAL.ConsultarTodosList().Where(x => x.Idservico == int.Parse(txtFiltro.Text)).ToList())
+                            dgvConsultarServico.Rows.Add(serv.Idservico, serv.Descricao, serv.Valor_servico);
+                    }
+                    if (rdbDescricao.Checked)
+                    {
+                        dgvConsultarServico.Rows.Clear();
+                        foreach (var serv in servicoDAL.FiltrarPorDescricao(txtFiltro.Text.Trim()))
+                            dgvConsultarServico.Rows.Add(serv.Idservico, serv.Descricao, serv.Valor_servico);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Falha ao pesquisar \n\r\n\r\n\r" + ex.Message, "Possível erro: caractere inválido para o tipo de pesquisa", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            else
+                PopularGrid();
         }
     }
 }

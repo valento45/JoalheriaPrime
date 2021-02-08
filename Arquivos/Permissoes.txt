@@ -1,0 +1,11 @@
+Permissoes
+f - Financeiro
+e - Estoque
+c - cliente
+u - usuario
+i - insert
+p - update
+x - delete
+
+
+"u", "e", "f", "c", "p", "x", "i"

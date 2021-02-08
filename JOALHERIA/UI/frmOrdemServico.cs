@@ -48,10 +48,10 @@ namespace JOALHERIA.UI
             timer1.Interval = 1000;
             timer1.Tick += timer1_Tick;
 
-            if(frmLogin.usuariologado != "")
+            if(LoginBLL.User != null)
             {
-                lblUsuario.Text = frmLogin.usuariologado;
-                idusuario = frmLogin.idusuariologado;
+                lblUsuario.Text = LoginBLL.User.Usuario;
+                idusuario = LoginBLL.User.Idusuario;
             }            
 
         }
@@ -196,11 +196,19 @@ namespace JOALHERIA.UI
             //    txtCliente.Text = clienteBLL.Nome.ToString();
             //    id_cliente = clienteBLL.Idcliente;
             //}
+            frmBuscaCliente buscacliente = new frmBuscaCliente();
+            buscacliente.ShowDialog();
+
+            if (buscacliente.idCliente > 0)
+            {
+                clienteDAL = ClienteDAL.GetById(buscacliente.idCliente);
+                txtCliente.Text = clienteDAL.Nome;
+            }
         }
 
         private void btnSelecionarProduto_Click(object sender, EventArgs e)
         {
-            frmServico servico = new frmServico(1, "selecionar");
+            frmServico servico = new frmServico(1, true);
             servico.ShowDialog();
 
             if(servico.codigo_servico != 0)
@@ -262,54 +270,36 @@ namespace JOALHERIA.UI
 
         private void txtValorPago_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back) && e.KeyChar != Convert.ToChar(Keys.Enter) && e.KeyChar != 44)
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != Convert.ToChar(Keys.Back) && e.KeyChar != Convert.ToChar(Keys.Enter) && e.KeyChar != 44))
             {
                 e.Handled = true;
                 MessageBox.Show("Este campo so aceita números !", "Validação de campos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            if (e.KeyChar == Convert.ToChar(Keys.Enter) && txtValorPago.Text.Trim() != "")
-            {
-                CalcularTroco();
-            }
+            if (e.KeyChar == Convert.ToChar(Keys.Enter) && txtValorPago.Text.Length > 0)
+                txtTroco.Text = CalcularTroco().ToString();
+            
         }
 
         private decimal CalcularTroco()
         {
-            if (cmbForma.SelectedIndex == 0 && txtValorPago.Text.Trim()!="")
-            {
-                try
-                {
-                    valor_pago = Convert.ToDecimal(txtValorPago.Text);
-                    if (valor_pago >= total)
-                    {
-                        troco = valor_pago - total;
-                        txtTroco.Text = troco.ToString();
-                    }
-                    return troco;
-                }
-                catch
-                {
-                    return -1;
-                }
-            }
+            bool validacao = false;
+            decimal valorpago =  Convert.ToDecimal(txtValorPago.Text); 
+
+            if (txtTotal.Text.Trim() != "" && dgvItens.RowCount > 0)
+                validacao = true;
+
             else
             {
-                return -1;
-            }
-           
-
-            if(txtTotal.Text.Trim() == "" || dgvItens.RowCount <= 0)
-            {
                 MessageBox.Show("Insira itens na venda para poder prosseguir!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return -1;
             }
 
-            if (valor_pago < total)
+            if ((validacao) && (valorpago >= total))
             {
-                MessageBox.Show("Valor pago não pode ser menor que o total !", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return -1;
+                troco = valorpago - total;
             }
-           
+            else
+                MessageBox.Show("Valor pago não pode ser menor que o total !", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return troco;
         }
 
         private void txtValorPago_TextChanged(object sender, EventArgs e)
@@ -336,14 +326,14 @@ namespace JOALHERIA.UI
             if(ValidarTudo() == true)
             {
                 //cadastrando venda e atribuindo idvenda para item
-                ordemservicoBLL.Idcliente = clienteBLL.Idcliente;                
+                ordemservicoBLL.Idcliente = clienteDAL.Idpessoa;                
                 ordemservicoBLL.Dataatual = Convert.ToDateTime(txtData.Text);
                 ordemservicoBLL.Dataentrega = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy"));
                 ordemservicoBLL.Valor_total = total;
                 ordemservicoBLL.Forma_pagamento = cmbForma.Text;
                 ordemservicoBLL.Valor_pago = valor_pago;
                 ordemservicoBLL.Troco = troco;
-                ordemservicoBLL.Idusuario = frmLogin.idusuariologado;
+                ordemservicoBLL.Idusuario = LoginBLL.User.Idusuario;
 
                 itemservicoBLL.Idordem = ordemservicoDAL.Cadastrar(ordemservicoBLL);
 
@@ -379,7 +369,7 @@ namespace JOALHERIA.UI
             troco = 0;
             valor_pago = 0;
 
-            dgvItens.Columns.Clear();
+            dgvItens.Rows.Clear();
         }
 
         private void btnSelecionarFormaPagamento_Click(object sender, EventArgs e)

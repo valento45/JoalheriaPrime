@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Aux_Joalheria;
+using JOALHERIADAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,9 +17,15 @@ namespace JOALHERIA
         [STAThread]
         static void Main()
         {
+            Application.ThreadException += Application_ThreadException;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new UI.frmLogin());
+        }
+
+        static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
+        {          
+            frmErro.Erro_Inesperado(e.Exception, NetworkLog.Insert_Two(e.Exception, "Program.cs"));
         }
     }
 }

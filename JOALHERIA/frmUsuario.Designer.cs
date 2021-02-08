@@ -72,6 +72,7 @@
             this.colTipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSenha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPermissoes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chkSelecionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -423,6 +424,7 @@
             this.colTipo,
             this.colUsuario,
             this.colSenha,
+            this.colPermissoes,
             this.chkSelecionar});
             this.dgvConsultarUsuario.Location = new System.Drawing.Point(3, 89);
             this.dgvConsultarUsuario.Name = "dgvConsultarUsuario";
@@ -538,6 +540,12 @@
             this.colSenha.ReadOnly = true;
             this.colSenha.Width = 63;
             // 
+            // colPermissoes
+            // 
+            this.colPermissoes.HeaderText = "Permissões";
+            this.colPermissoes.Name = "colPermissoes";
+            this.colPermissoes.Width = 85;
+            // 
             // chkSelecionar
             // 
             this.chkSelecionar.HeaderText = "                ";
@@ -618,6 +626,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUsuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSenha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPermissoes;
         private System.Windows.Forms.DataGridViewCheckBoxColumn chkSelecionar;
     }
 }

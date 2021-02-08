@@ -62,7 +62,7 @@ namespace JOALHERIADAL
 
         public DataTable ConsultarTodos()
         {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT IDCATEGORIA, CATEGORIA FROM JOALHERIA.CATEGORIA", con.Conectar());
+            SqlDataAdapter da = new SqlDataAdapter("SELECT IDCATEGORIA, CATEGORIA FROM JOALHERIA.CATEGORIA ORDER BY CATEGORIA", con.Conectar());
             DataTable dt = new DataTable();
 
             da.Fill(dt);

@@ -37,6 +37,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.colCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultarCliente)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -94,9 +97,12 @@
             this.dgvConsultarCliente.AllowUserToAddRows = false;
             this.dgvConsultarCliente.AllowUserToDeleteRows = false;
             this.dgvConsultarCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvConsultarCliente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colCodigo,
+            this.colName,
+            this.colDocumento});
             this.dgvConsultarCliente.Location = new System.Drawing.Point(12, 113);
             this.dgvConsultarCliente.Name = "dgvConsultarCliente";
-            this.dgvConsultarCliente.ReadOnly = true;
             this.dgvConsultarCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvConsultarCliente.Size = new System.Drawing.Size(777, 271);
             this.dgvConsultarCliente.TabIndex = 33;
@@ -148,6 +154,25 @@
             this.lblTitulo.TabIndex = 8;
             this.lblTitulo.Text = "Buscar Cliente";
             // 
+            // colCodigo
+            // 
+            this.colCodigo.HeaderText = "Código";
+            this.colCodigo.Name = "colCodigo";
+            this.colCodigo.ReadOnly = true;
+            // 
+            // colName
+            // 
+            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colName.HeaderText = "Nome";
+            this.colName.Name = "colName";
+            this.colName.ReadOnly = true;
+            // 
+            // colDocumento
+            // 
+            this.colDocumento.HeaderText = "Documento";
+            this.colDocumento.Name = "colDocumento";
+            this.colDocumento.ReadOnly = true;
+            // 
             // frmBuscaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -185,5 +210,8 @@
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCodigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDocumento;
     }
 }

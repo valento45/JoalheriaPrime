@@ -36,17 +36,20 @@ namespace JOALHERIA.UI
         {
             switch (keyData)
             {
-                case Keys.F1:
-                    txtFiltro.Focus();
-                    break;
                 case Keys.F10:
                     btnSair.PerformClick();
                     break;
+                case Keys.F1:
+                    txtFiltro.Focus();
+                    break;                
                 case Keys.F5:
                     btnVerItens.PerformClick();
                     break;
                 case Keys.F7:
                     btnRelatorio.PerformClick();
+                    break;
+                case Keys.F8:
+                    btnXml.PerformClick();
                     break;
             }
 
@@ -57,8 +60,7 @@ namespace JOALHERIA.UI
         {
             if (dgvConsultarVendas.RowCount > 0)
             {
-                frmVerItensDaVenda veritens = new frmVerItensDaVenda();
-                veritens.CodVenda = Convert.ToInt16(dgvConsultarVendas.SelectedCells[0].Value);
+                frmVerItensDaVenda veritens = new frmVerItensDaVenda((int)dgvConsultarVendas.SelectedCells[0].Value);
                 veritens.ShowDialog();
             }
 
@@ -117,10 +119,17 @@ namespace JOALHERIA.UI
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
-            string data1 = txtDe.Text.ToString();
-            string data2 = txtAte.Text.ToString();
+            if ((txtDe.Text.Length > 0 && txtAte.Text.Length > 0) && (txtDe.Text.Length == 10 && txtAte.Text.Length == 10))
+            {
+                string data1 = txtDe.Text.ToString();
+                string data2 = txtAte.Text.ToString();
+                dgvConsultarVendas.DataSource = vendaDAL.ConsultarPorPeriodo(data1, data2);
+            }
 
-            dgvConsultarVendas.DataSource = vendaDAL.ConsultarPorPeriodo(data1, data2);
+            else
+            {
+                MessageBox.Show("Preencha a data completa !", "Atenção",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
         }
 
         private void txtFiltro_TextChanged(object sender, EventArgs e)

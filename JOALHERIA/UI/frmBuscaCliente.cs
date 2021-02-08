@@ -31,9 +31,9 @@ namespace JOALHERIA.UI
 
         private void frmBuscaCliente_Load(object sender, EventArgs e)
         {
-            //dgvConsultarCliente.DataSource = clienteDAL.ConsultarTodos();
-
-            //dgvConsultarCliente.Focus();
+            dgvConsultarCliente.Rows.Clear();
+            foreach (ClienteDAL cliente in ClienteDAL.ListarClientes().OrderBy(c => c.Nome).ToList())
+                dgvConsultarCliente.Rows.Add(cliente.Idpessoa,cliente.Nome, cliente.Documento);
         }
 
         //metodo para permitir teclas de Atalho HotKeys 
@@ -55,17 +55,13 @@ namespace JOALHERIA.UI
 
         private void btnSelecionar_Click(object sender, EventArgs e)
         {
-
             if (dgvConsultarCliente.RowCount > 0)
             {
                 idCliente = Convert.ToInt16(dgvConsultarCliente.SelectedCells[0].Value);
                 this.Close();
-
             }
-            else
-            {
-                MessageBox.Show("Não há registros para selecionar!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            else            
+                MessageBox.Show("Nenhum registrado selecionado! ", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning); 
         }
 
         private void button1_Click(object sender, EventArgs e)

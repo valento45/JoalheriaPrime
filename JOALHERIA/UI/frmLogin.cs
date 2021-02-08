@@ -1,4 +1,6 @@
-﻿using System;
+﻿using JOALHERIABLL;
+using JOALHERIADAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,10 +19,8 @@ namespace JOALHERIA.UI
 
         JOALHERIABLL.LoginBLL loginBLL = new JOALHERIABLL.LoginBLL();
         JOALHERIADAL.LoginDAL loginDAL = new JOALHERIADAL.LoginDAL();
-
+        public static JOALHERIABLL.UsuarioBLL user;
         public static int codigo_login { get; set; }
-        public static string usuariologado { get; set; }
-        public static int idusuariologado { get; set; }
 
         public frmLogin()
         {
@@ -44,41 +44,37 @@ namespace JOALHERIA.UI
                 MessageBox.Show("Preencha todos os campos!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtUsuario.Focus();
             }
-
             else
-            {               
-                    usuarioBLL.Usuario = txtUsuario.Text;
-                    usuarioBLL.Senha = txtSenha.Text;
-                    usuarioDAL.Logar(usuarioBLL);     
-                
-                if(usuarioBLL.Idusuario == 0)
+            {                
+                usuarioBLL.Usuario = txtUsuario.Text;
+                usuarioBLL.Senha = Acces.Encrypt(txtUsuario.Text, txtSenha.Text);
+                LoginBLL.User = usuarioBLL = usuarioDAL.Logar(usuarioBLL);
+
+                if (usuarioBLL.Idusuario <= 0)
                 {
                     MessageBox.Show("Usuario ou senha inválidos!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    
                     txtUsuario.Focus();
                     txtUsuario.Select(0, txtUsuario.Text.Length);
                 }
 
                 else
                 {
-                    //conseguiu logar
-                    idusuariologado = usuarioBLL.Idusuario;
-                    usuariologado = usuarioBLL.Usuario;
+                    //conseguiu logar                   
 
                     Inserir_Login();
 
-                    MessageBox.Show("Olá " + usuariologado + " , Seja bem Vindo!", "Logado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Olá " + LoginBLL.User.Usuario + " , Seja bem Vindo!", "Logado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     this.Hide();
 
                     //carregar
-                    UI.frmCaixa caixa = new frmCaixa();                    
-                    caixa.ShowDialog();                  
+                    UI.frmCaixa caixa = new frmCaixa();
+                    caixa.ShowDialog();
                 }
-                
+
             }
         }
-
+               
         private void txtUsuario_TextChanged(object sender, EventArgs e)
         {
 
@@ -118,8 +114,8 @@ namespace JOALHERIA.UI
         public void Inserir_Login()
         {
             loginBLL.Idcaixa = 1;
-            loginBLL.Idusuario = idusuariologado;
-            loginBLL.Usuario = usuariologado;
+            loginBLL.Idusuario = LoginBLL.User.Idusuario;
+            loginBLL.Usuario = LoginBLL.User.Usuario;
             loginBLL.Data_login = Convert.ToDateTime(lblDataLogin.Text);
 
             codigo_login = loginDAL.Cadastrar_Login(loginBLL);

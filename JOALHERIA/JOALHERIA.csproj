@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
     </Reference>
@@ -68,6 +71,55 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UI\DataSetOS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetOS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="UI\DataSets\DataSetVenda.cs">
+      <DependentUpon>DataSetVenda.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="UI\DataSets\DataSetVenda.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetVenda.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmConfigurarU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmConfigurarU.Designer.cs">
+      <DependentUpon>frmConfigurarU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmContaCorrente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmContaCorrente.Designer.cs">
+      <DependentUpon>frmContaCorrente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmFaturamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmFaturamento.Designer.cs">
+      <DependentUpon>frmFaturamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmFaturamentoVendaSimples.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmFaturamentoVendaSimples.Designer.cs">
+      <DependentUpon>frmFaturamentoVendaSimples.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmGerarFat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmGerarFat.Designer.cs">
+      <DependentUpon>frmGerarFat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmPesquisaP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmPesquisaP.Designer.cs">
+      <DependentUpon>frmPesquisaP.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +220,12 @@
     <Compile Include="UI\frmProduto.Designer.cs">
       <DependentUpon>frmProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\frmRelatorioOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmRelatorioOS.Designer.cs">
+      <DependentUpon>frmRelatorioOS.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FrmRelVenda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +250,25 @@
     <Compile Include="UI\frmVerItensDaVenda.Designer.cs">
       <DependentUpon>frmVerItensDaVenda.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\CupomOS.rdlc" />
+    <EmbeddedResource Include="UI\frmConfigurarU.resx">
+      <DependentUpon>frmConfigurarU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmContaCorrente.resx">
+      <DependentUpon>frmContaCorrente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmFaturamento.resx">
+      <DependentUpon>frmFaturamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmFaturamentoVendaSimples.resx">
+      <DependentUpon>frmFaturamentoVendaSimples.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmGerarFat.resx">
+      <DependentUpon>frmGerarFat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmPesquisaP.resx">
+      <DependentUpon>frmPesquisaP.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmUsuario.resx">
       <DependentUpon>frmUsuario.cs</DependentUpon>
     </EmbeddedResource>
@@ -244,6 +321,9 @@
     <EmbeddedResource Include="UI\frmProduto.resx">
       <DependentUpon>frmProduto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmRelatorioOS.resx">
+      <DependentUpon>frmRelatorioOS.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmRelVenda.resx">
       <DependentUpon>FrmRelVenda.cs</DependentUpon>
     </EmbeddedResource>
@@ -256,8 +336,9 @@
     <EmbeddedResource Include="UI\frmVerItensDaVenda.resx">
       <DependentUpon>frmVerItensDaVenda.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\RelatorioOS.rdlc" />
     <EmbeddedResource Include="UI\RelVendas.rdlc" />
-    <EmbeddedResource Include="UI\ReportOrdem.rdlc" />
+    <EmbeddedResource Include="UI\Reports\FatVendasSimples.rdlc" />
     <EmbeddedResource Include="UI\ReportVenda.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -279,6 +360,28 @@
     </None>
     <None Include="UI\DataSet1.xss">
       <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="UI\DataSetOS.xsc">
+      <DependentUpon>DataSetOS.xsd</DependentUpon>
+    </None>
+    <None Include="UI\DataSetOS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetOS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="UI\DataSetOS.xss">
+      <DependentUpon>DataSetOS.xsd</DependentUpon>
+    </None>
+    <None Include="UI\DataSets\DataSetVenda.xsc">
+      <DependentUpon>DataSetVenda.xsd</DependentUpon>
+    </None>
+    <None Include="UI\DataSets\DataSetVenda.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetVenda.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="UI\DataSets\DataSetVenda.xss">
+      <DependentUpon>DataSetVenda.xsd</DependentUpon>
     </None>
     <None Include="UI\DataSetVenda.xsc">
       <DependentUpon>DataSetVenda.xsd</DependentUpon>
@@ -419,6 +522,10 @@
     <None Include="RESOURCES\Consulta.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Aux_Joalheria\Aux_Joalheria.csproj">
+      <Project>{2f1f6b20-69f9-465a-98e8-7e8039817e1f}</Project>
+      <Name>Aux_Joalheria</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JOALHERIABLL\JOALHERIABLL.csproj">
       <Project>{53efda14-e157-499e-90f5-5676eb10f5a7}</Project>
       <Name>JOALHERIABLL</Name>
@@ -438,19 +545,7 @@
     <None Include="RESOURCES\Imprimir.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SqlServerTypes\readme.htm" />
-    <Content Include="SqlServerTypes\x64\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

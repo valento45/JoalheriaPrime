@@ -17,7 +17,7 @@ namespace JOALHERIABLL
         bool tipo;
         String usuario;
         String senha;
-
+        string permissoes;
         public UsuarioBLL(DataRow dr)
         {
             Idusuario = Convert.ToInt16(dr["IDUSUARIO"]);
@@ -29,6 +29,7 @@ namespace JOALHERIABLL
             Tipo = Convert.ToBoolean(dr["TIPO"]);
             Usuario = Convert.ToString(dr["USUARIO"]);
             Senha = Convert.ToString(dr["SENHA"]);
+            Permissoes = Convert.ToString(dr["PERMISSAO"]);
         }
 
         public UsuarioBLL()
@@ -152,5 +153,7 @@ namespace JOALHERIABLL
                 senha = value;
             }
         }
+
+        public string Permissoes { get => permissoes; set => permissoes = value; }
     }
 }

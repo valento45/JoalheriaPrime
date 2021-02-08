@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JOALHERIABLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,45 @@ namespace JOALHERIA.UI
 {
     public partial class frmMenu : Form
     {
+        public UsuarioBLL Usuario;
         public frmMenu()
         {
             InitializeComponent();
+        }
+
+        public frmMenu(UsuarioBLL usuario)
+        {
+            InitializeComponent();
+            Usuario = usuario;
+
+            PermissaoModulos();
+        }
+        //
+        // Resumo:
+        //     Método verifica as permissões que o usuario possui.
+        //     Limita os acessos
+
+        private void PermissaoModulos()
+        {
+            if (Usuario.Permissoes != null)
+            {
+                //bool alteracao, inclusao, exclusao;
+                //inclusao = Usuario.Permissoes.Contains("i") ? true : false;
+                //alteracao = Usuario.Permissoes.Contains("p") ? true : false;
+                //exclusao = Usuario.Permissoes.Contains("x") ? true : false;
+
+                if (!Modulo.CanAcces(Modulos.Financeiro))
+                    btnOrdem.Visible = btnVenda.Visible = financeiroToolStripMenuItem.Visible = false;
+
+                if (!Modulo.CanAcces(Modulos.Estoque))
+                    btnProdutos.Visible = estoqueToolStripMenuItem.Visible = false;
+
+                if (!Modulo.CanAcces(Modulos.Cliente))
+                    btnCliente.Visible = false;
+
+                if (!Modulo.CanAcces(Modulos.Usuario))
+                    usuáriosToolStripMenuItem.Visible = false;
+            }
         }
 
         private void frmMenu_Load(object sender, EventArgs e)
@@ -24,9 +61,7 @@ namespace JOALHERIA.UI
             timer1.Tick += timer1_Tick;
 
             txtDate.Enabled = false;
-            txtUsuarioLogado.Text = frmLogin.usuariologado;
-
-            
+            txtUsuarioLogado.Text = LoginBLL.User.Usuario;
         }
         /* METODO PARA DEFINIR HOTKEYS (TECLAS DE ATALHO ) */
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -48,19 +83,19 @@ namespace JOALHERIA.UI
                 case Keys.F10:
                     btnSair.PerformClick();
                     break;
-                    
+
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
-        {            
+        {
             txtDate.Text = DateTime.Now.ToString("dd/MM/yyyy \n HH:mm:ss");
         }
 
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Deseja realmente Encerrar o sistema?","Atenção!",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+            if (MessageBox.Show("Deseja realmente Encerrar o sistema?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Application.Exit();
             }
@@ -74,7 +109,7 @@ namespace JOALHERIA.UI
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Deseja encerrar o sistema?","Atenção",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+            if (MessageBox.Show("Deseja encerrar o sistema?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Application.Exit();
             }
@@ -88,7 +123,7 @@ namespace JOALHERIA.UI
 
         private void button4_Click(object sender, EventArgs e)
         {
-            frmProduto frmproduto = new frmProduto();
+            frmProduto frmproduto = new frmProduto(new JOALHERIABLL.ProdutoBLL());
             frmproduto.ShowDialog();
 
         }
@@ -113,7 +148,7 @@ namespace JOALHERIA.UI
 
         private void cateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmProduto produto = new frmProduto();
+            frmProduto produto = new frmProduto(new JOALHERIABLL.ProdutoBLL());
             produto.ShowDialog();
         }
 
@@ -172,18 +207,6 @@ namespace JOALHERIA.UI
             backup.ShowDialog();
         }
 
-        private void ordensDeServToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmConsultarOrdem ordem = new frmConsultarOrdem();
-            ordem.ShowDialog();
-        }
-
-        private void vendasToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            FrmRelVenda RELVENDA = new FrmRelVenda();
-            RELVENDA.ShowDialog();
-        }
-
         private void button1_Click_1(object sender, EventArgs e)
         {
             DateTime dataVencimento = new DateTime(2022, DateTime.Today.Month, DateTime.Today.Day);
@@ -194,22 +217,123 @@ namespace JOALHERIA.UI
             MessageBox.Show("Diferença de data antiga para data atual: " + diferença);
         }
 
-        private void serviçosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmServico servico = new frmServico();
-            servico.ShowDialog();
-        }
-
-        private void ordemDeServiçoToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            frmOrdemServico oo = new frmOrdemServico();
-            oo.ShowDialog();
-        }
-
         private void usuáriosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmUsuario usuario = new frmUsuario();
-            usuario.ShowDialog();
+        }
+
+        private void ordemDeServiçoToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            frmOrdemServico ordem = new frmOrdemServico();
+            ordem.ShowDialog();
+        }
+
+        private void serviçosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmServico frmservico = new frmServico();
+
+            if (frmservico.Visible)
+                frmservico.Focus();
+            else
+                frmservico.Show();
+        }
+
+        private void consultarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+            using (frmPesquisaP pesquisarP = new frmPesquisaP())
+            {
+                pesquisarP.ShowDialog();
+            }
+
+        }
+
+        private void incluirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmVenda frmvenda = new frmVenda();
+            frmvenda.ShowDialog();
+        }
+
+        private void pesquisasrToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmConsultarVendas consultavenda = new frmConsultarVendas();
+            consultavenda.ShowDialog();
+        }
+
+        private void incluirToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmOrdemServico ordem = new frmOrdemServico();
+            ordem.ShowDialog();
+        }
+
+        private void pesquisarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmConsultarOrdem consultaordem = new frmConsultarOrdem();
+            consultaordem.ShowDialog();
+        }
+
+        private void incluirToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            frmProduto frm_produto = new frmProduto(new JOALHERIABLL.ProdutoBLL());
+            frm_produto.ShowDialog();
+        }
+
+        private void pesquisarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            using (frmPesquisaP frm_pesquisaP = new frmPesquisaP())
+            {
+                frm_pesquisaP.ShowDialog();
+            }
+        }
+
+        private void configurarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmConfigurarU configUsuarios = new frmConfigurarU(new JOALHERIABLL.UsuarioBLL()))
+            {
+                configUsuarios.ShowDialog();
+            }
+        }
+
+        private void relatóriosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (FrmRelVenda rel_venda = new FrmRelVenda())
+            {
+                rel_venda.ShowDialog();
+            }
+        }
+
+        private void produtosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void relatóriosToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            frmRelatorioOS frmRelatorioOS = new frmRelatorioOS();
+            frmRelatorioOS.ShowDialog();
+        }
+
+        private void contasCorrentesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using(frmContaCorrente conta = new frmContaCorrente())
+            {
+                conta.ShowDialog();
+            }
+        }
+
+        private void faturamentoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using(frmFaturamento faturamento = new frmFaturamento())
+            {
+                faturamento.ShowDialog();
+            }
+        }
+
+        private void faturamentoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            using (frmGerarFat fat = new frmGerarFat())
+            {
+                fat.ShowDialog();
+            }
         }
     }
 }

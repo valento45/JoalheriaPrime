@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LOG>
+  <ERRORS>
+    <Message>O índice estava fora do intervalo. Ele deve ser não-negativo e menor que o tamanho da coleção.
+Nome do parâmetro: index</Message>
+    <StackTrace>   em System.Collections.ArrayList.get_Item(Int32 index)
+   em System.Windows.Forms.DataGridViewRowCollection.SharedRow(Int32 rowIndex)
+   em System.Windows.Forms.DataGridViewRowCollection.get_Item(Int32 index)
+   em JOALHERIA.UI.frmFaturamento.GerarFaturamento() na C:\Users\MRX\Desktop\CProfissional\JoalheriaPrime\JOALHERIA\UI\frmFaturamento.cs:linha 99</StackTrace>
+    <Detalhes> - frmFaturamento.cs</Detalhes>
+    <Data>07/06/2020 12:42:10</Data>
+  </ERRORS>
+</LOG>
